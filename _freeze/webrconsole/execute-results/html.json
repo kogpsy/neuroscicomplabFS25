@@ -1,0 +1,17 @@
+{
+  "hash": "2a0f4d4d266bc25323d07274ce11a1e7",
+  "result": {
+    "engine": "knitr",
+    "markdown": "# WebR Konsole {.unnumbered}\n\nIn der WebR-Konsole können Sie _R_-Code ausführen. \nErstellte Variablen werden gespeichert, so lange das Browserfenster nicht geschlossen wird.\n\n::: {.panel-tabset}\n## {{< fa code >}}&emsp;Konsole\n\nGeben Sie hier Code ein.\n\n```{webr-r}\n\n```\n\n## {{< fa regular helicopter >}}&emsp;Tipp\n\n__Packages__\n\nLaden Sie zuerst das {tidyverse} mit `library(tidyverse)`.\n\n__Datensätze__\n\nEs stehen Ihnen folgende Datensätze zur Verfügung:\n\n- `cars`\n- `iris`\n\nEs können weitere Datensätze durch das Laden von Packages genutzt werden:\n\n- `penguins` aus [{palmerpenguins}](https://allisonhorst.github.io/palmerpenguins/)\n\n\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# Laden vom penguins-Datensatz aus dem {palmerpenguins} Package\nlibrary(palmerpenguins)\nd <- penguins\n```\n:::\n\n\n\n\n\n\n\n## {{< fa check >}}&emsp;Lösung\n\n\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\n\nglimpse(cars)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\nRows: 50\nColumns: 2\n$ speed <dbl> 4, 4, 7, 7, 8, 9, 10, 10, 10, 11, 11, 12, 12, 12, 12, 13, 13, 13…\n$ dist  <dbl> 2, 10, 4, 22, 16, 10, 18, 26, 34, 17, 28, 14, 20, 24, 28, 26, 34…\n```\n\n\n:::\n\n```{.r .cell-code}\nplot(cars)\n```\n\n::: {.cell-output-display}\n![](webrconsole_files/figure-html/unnamed-chunk-2-1.png){width=672}\n:::\n:::\n\n\n\n\n\n:::\n\n",
+    "supporting": [
+      "webrconsole_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
