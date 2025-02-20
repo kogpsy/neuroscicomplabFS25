@@ -82,7 +82,7 @@ In den kognitiven Neurowissenschaften werden diese Methoden in der Regel mit Ver
 Die Wahl der Methode hängt in erster Linie von der Forschungsfrage ab. Wenn zum Beispiel der Zeitpunkt der Hirnaktivität wichtig ist, würden wir EEG verwenden. Wenn wir jedoch die Hirnaktivität genau lokalisieren wollen, würden wir fMRI verwenden.
 
 ::: callout-caution
-## EEG oder fMRI?
+## Hands-on: EEG oder fMRI?
 
 Diskutieren Sie zusammen folgende Fragen:
 
