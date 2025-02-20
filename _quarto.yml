@@ -10,7 +10,7 @@ book:
   page-footer: Copyright 2025, Gerda Wyssen & Enea Weber
   edition: 1
   reader-mode: false
-  cover-image: imgs/favicon.png
+  cover-image: imgs/logo.png
   favicon: imgs/logo.png
   site-url: https://kogpsy.github.io/neuroscicomplabFS25/
   page-navigation: true
