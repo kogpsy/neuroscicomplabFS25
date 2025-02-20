@@ -1,0 +1,116 @@
+# Voraussetzungen der Forschung
+
+> "Seeking to understand perception by studying only neurons is like trying to understand the flight of birds by studying only their wings: it is simply not possible."
+>
+> David Marr
+
+# Marr's levels of explanation
+
+David Marr hat drei Ebenen vorgeschlagen, um zu klären, wie komplexe Systeme, insbesondere kognitive Systeme wie das Gehirn, Informationen verarbeiten. Die Idee ist, dass jedes informationsverarbeitende System (biologisch oder künstlich) auf diesen drei verschiedenen Ebenen analysiert werden kann. Zusammen zeigen sie, **was das System tut, wie es das tut und wie es physikalisch realisiert ist.**
+
+## 3 Levels of analyses
+
+### Computational level (what and why)
+
+-   **Was macht das System?**\
+    Es definiert das Ziel oder den Zweck des Prozesses. Diese Ebene erklärt, welches Problem das System löst und warum es wichtig ist.
+
+-   **Beispiel aus dem Sehen:** Das System muss die 3D-Welt aus dem 2D-Input der Retina rekonstruieren. **Warum?** Weil das Verständnis der räumlichen Umgebung für das Überleben wichtig ist.
+
+-   **Was es zeigt:** Das „große Ganze“ - die Funktion, die das System erfüllt.
+
+### Algorithmic level (how)
+
+-   **Wie erreicht das System das Ziel?**\
+    Es geht um die **spezifischen Darstellungen und Verfahren**, die zur Erreichung des Ziels eingesetzt werden. Betrachten Sie dies als die „Anweisungen“ oder „Software“ des Systems.
+
+-   **Beispiel aus dem Sehen:** Das Gehirn erkennt Kanten, kombiniert Merkmale und identifiziert Objekte mithilfe von Algorithmen wie Merkmalsextraktion und Mustervergleich.
+
+-   **Was es zeigt:** Den Prozess - die schrittweise Umwandlung vom Input zum Output.
+
+### Implementational level
+
+-   **Wie wird der Prozess physisch umgesetzt?**\
+    Diese Ebene beschreibt die **Hardware** oder **biologischen Strukturen**, die die Berechnungen ausführen. Beim Menschen sind dies Neuronen, Gehirnbereiche und neuronale Schaltkreise.
+
+-   **Beispiel aus dem Sehen:** Die Randerkennung erfolgt in der Retina und in frühen visuellen Bereichen wie dem primären visuellen Kortex (V1). Bestimmte Neuronen feuern bei bestimmten Ausrichtungen des Lichts.
+
+-   **Was es zeigt:** Die materielle Basis - die Mechanismen, die es möglich machen.
+
+Kognitive Neurowissenschaft kann auf allen drei Ebenen tätig sein. Beispiel aus der Gesichtserkennung:
+
+1.  Das Gehirn muss Gesichter schnell und genau erkennen, weil dies für die soziale Interaktion evolutionär wichtig ist.
+
+2.  Die Gesichtserkennung kann die Extraktion von Merkmalen (Augen, Nase, Mund) und eine ganzheitliche Verarbeitung umfassen.
+
+3.  Das fusiforme Gesichtsareal (FFA) spielt eine Schlüsselrolle bei der Wahrnehmung von Gesichtern.
+
+## Grundlegendes Postulat:
+
+Mentale Prozesse ergeben sich aus der Gehirnaktivität.
+
+**Ganz wichtig ist:** Korrelation ≠ Kausalität. Neuroimaging-Methoden zeigen nur Korrelationen und keine Kausalität.
+
+# Erhebungsmethoden
+
+| Methode | Methode Typ | Invasivität | Verwendete Gehirn-Eigenschaft |
+|----|----|----|----|
+| **EEG** | Aufnahme | Nicht-invasiv | Elektrisch |
+| Single-cell recordings | Aufnahme | Invasiv | Elektrisch |
+| TMS | Stimulation | Nicht-invasiv | Elektromagnetisch |
+| MEG | Aufnahme | Nicht-invasiv | Magnetisch |
+| PET | Aufnahme | Invasiv | Hämodynamik |
+| **fMRI** | Aufnahme | Nicht-invasiv | Hämodynamik |
+
+In den kognitiven Neurowissenschaften werden diese Methoden in der Regel mit Verhaltensaufgaben kombiniert.
+
+-   Kognitive Aktivität ist mit einer erhöhten Aktivität der Neuronen verbunden
+
+-   Neuronen, die ähnliche Funktionen erfüllen, neigen dazu, sich zusammenzuschließen (funktionelle Spezialisierung)
+
+-   Neuronale Aktivität erzeugt elektrische Signale, die mit elektrophysiologischen Techniken gemessen werden können.
+
+-   Neuronale Aktivität führt zu Sauerstoffverbrauch und damit zu lokalen Veränderungen des Blutflusses (hämodynamische Reaktion), die durch funktionelle Bildgebung (PET, fMRI) gemessen werden können.
+
+**Jede Methode hat ihren eigenen Zweck**, mit ihren Vor- und Nachteilen:
+
+| Method | Advantages | Disadvantages |
+|---------------|-------------------------|--------------------------------|
+| **fMRI** | \- High spatial resolution (can localize brain activity precisely) <br> - Non-invasive <br> - Can detect activity in deep brain structures | \- Low temporal resolution (lags behind neural activity by seconds) <br> - Expensive and requires specialized equipment <br> - No direct measurement of neural activity (measures blood flow changes) <br> - Participants must remain very still |
+| **EEG** | \- High temporal resolution (milliseconds) <br> - Direct measurement of neural activity <br> - Portable and relatively inexpensive <br> - Non-invasive and widely available | \- Low spatial resolution (cannot precisely localize activity) <br> - Sensitive to noise (e.g., muscle movement, eye blinks) <br> - Cannot measure deep brain structures |
+
+Die Wahl der Methode hängt in erster Linie von der Forschungsfrage ab. Wenn zum Beispiel der Zeitpunkt der Hirnaktivität wichtig ist, würden wir EEG verwenden. Wenn wir jedoch die Hirnaktivität genau lokalisieren wollen, würden wir fMRI verwenden.
+
+::: callout-caution
+## EEG oder fMRI?
+
+Diskutieren Sie zusammen folgende Fragen:
+
+**A.** Ein Forscher ist daran interessiert, schnelle Veränderungen der Gehirnaktivität während der Entscheidungsfindung festzustellen. Welche Technik sollte er verwenden?
+
+**B.** Sie möchten herausfinden, ob der Okzipitallappen an der mentalen Vorstellungswelt beteiligt ist. Welche Methode würde die beste räumliche Auflösung liefern?
+
+**C.** Sie untersuchen die Schlafstadien und müssen die Gehirnwellenmuster über einen längeren Zeitraum verfolgen. Welche Methode sollten Sie verwenden?
+
+**D.** Ein Forscher untersucht, wie die Amygdala auf emotionale Gesichter reagiert. Welche Methode ist am besten geeignet?
+
+\[5-10 Min.\]
+:::
+
+<!-- ::: callout-caution -->
+
+<!-- ## Hands-on: Paper Fragen -->
+
+<!-- Lesen Sie das Paper von Dijkstra und identifizieren Sie die verschiedenen Forschungsschritte. -->
+
+<!-- Was ist der aktueller Stand der forschung? Was ist der "Research Gap"?. -->
+
+<!-- Was sind die Forschungsfragen und die Hypothesen? -->
+
+<!-- Welche Erhebungsmethode wurde benutzt? Was ist der Forschungsdesign? -->
+
+<!-- Was sind die Hauptergebnisse? Was genau zeigen die Graphics? Wie kann man sie interpretieren? -->
+
+<!-- Welche Fragen sind noch offen? Welche Methode würden Sie benutzen, um sie zu beantworten? -->
+
+<!-- ::: -->

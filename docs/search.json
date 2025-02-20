@@ -1,0 +1,108 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Neurowissenschaft Computerlab",
+    "section": "",
+    "text": "Herzlich Willkommen\nHier finden Sie das Wichtigste zum Kurs FS2025.",
+    "crumbs": [
+      "Herzlich Willkommen"
+    ]
+  },
+  {
+    "objectID": "index.html#ilias",
+    "href": "index.html#ilias",
+    "title": "Neurowissenschaft Computerlab",
+    "section": "Ilias",
+    "text": "Ilias\nUnter diesen Links finden Sie die Iliasgruppen:\nILIAS-Gruppe Freitag 08.15-10.00 👉 468703-FS2025-0\nILIAS-Gruppe Freitag 10.15-12.00 👉 468703-FS2025-1",
+    "crumbs": [
+      "Herzlich Willkommen"
+    ]
+  },
+  {
+    "objectID": "index.html#kursvoraussetzungen",
+    "href": "index.html#kursvoraussetzungen",
+    "title": "Neurowissenschaft Computerlab",
+    "section": "Kursvoraussetzungen",
+    "text": "Kursvoraussetzungen\nWir werden mit der Programmiersprache R und zu einem kleinen Teil mit Python arbeiten. Sie benötigen in der Veranstaltung deshalb einen eigenen Laptop (Tablets sind nicht geeignet!) mit ca. 20 GB freiem Speicherplatz und mit einer installierten (aktuellen) Version von R und RStudio (Link zum Download von R und RStudio).\nR Kenntnisse (gemäss Statistik I-IV in Psychologie) werden vorausgesetzt. Zur Auffrischung dient folgender Link (https://methodenlehre.github.io/einfuehrung-in-R/) oder für Fortgeschrittene die Bücher „Advanced R” und „R for Data Scientists” von Hadley Wickham.\nZusätzlich dient Übung 2 zur Auffrischung der Vorkenntnisse auf die im späteren Verlauf des Kurses aufgebaut wird.",
+    "crumbs": [
+      "Herzlich Willkommen"
+    ]
+  },
+  {
+    "objectID": "index.html#leistungsnachweise",
+    "href": "index.html#leistungsnachweise",
+    "title": "Neurowissenschaft Computerlab",
+    "section": "Leistungsnachweise",
+    "text": "Leistungsnachweise\nDer Kurs entspricht 5 ETCS. Dafür müssen 3 Bereiche erfüllt werden:\n\nAnwesenheit im Kurs\nbestandene Übungen\nbestandenes Abschlussquiz\n\nAlle Leistungsnachweise werden in den Veranstaltungen angekündigt. Die Termine für die Leistungsnachweise finden Sie unter Termine der Leistungsnachweise.\n\nAnwesenheit\nDie Anwesenheit im Kurs wird vorausgesetzt, an 2 Terminen darf gefehlt werden.\nDas Online-Skript erlaubt das Nacharbeiten des wichtigsten Stoffes im Eigenstudium, wir können jedoch nicht für die Vollständigkeit garantieren. Hilfestellung beim Programmieren und Verstehen der Inhalte erhalten Sie während der Kurszeiten. Aus zeitlichen Gründen können wir keine ausführliche Beantwortung von Fragen zum Kursinhalt per E-Mail anbieten. Bitte stellen Sie Ihre Fragen in der Veranstaltung - auch Ihre Mitstudierenden werden davon profitieren, oft haben mehrere Personen dieselbe Frage.\n\n\nÜbungen\nEs gibt fünf Übungen. Ausser Übung 2 müssen alle Übungen abgegeben und als bestanden bewertet werden. Wird eine ungenügende Übungen abgegeben erhalten Sie eine zweite Frist für die Abgabe oder einen Zusatzauftrag.\nDie Übungen werden auf der Website aufgeschaltet. Die Ergebnisse der Übungen müssen in den entsprechenden Ordner auf ILIAS hochgeladen werden. Je nach Umfang der Übung wird die Zeit bis zur Abgabe unterschiedlich ausfallen. Sie wird jedoch immer mindestens zwei Wochen betragen.\n\n\nAbschlussquiz\nDas Abschlussquiz wird gegen Ende des Semesters auf Ilias freigeschaltet und dient dazu das Gelernte zu prüfen und so Feedback zu geben, wie gut man die Lerninhalte erinnert. Sie haben die Möglichkeit das Quiz mehrmals zu wiederholen.",
+    "crumbs": [
+      "Herzlich Willkommen"
+    ]
+  },
+  {
+    "objectID": "forschungsprozess.html",
+    "href": "forschungsprozess.html",
+    "title": "1  Complab im Forschungsprozess",
+    "section": "",
+    "text": "Der Begriff Computerlab wird für unsere Veranstaltung genutzt, um sich auf die vielfältige Arbeit, die Neurowissenschaftler:innen an Computern oder anderen elektronischen Geräten durchführen, um neurowissenschaftliche Forschungsfragen zu beantworten. Jede Forschungsarbeit hat mehrere Phasen, welche ganz unterschiedliche Anforderungen stellen und eigenen Skills benötigen.\nIn jeder Phase des Forschungsprozesses werden verschiedenste\n\nelektronische Geräte (Computer, Eyetracker, EEG-Geräte, MRTs, etc.)\nProgramme (PsychoPy, E-Prime, etc.)\nProgrammiersprachen (R, MATLAB, Python, Java, C++, Ruby, Julia, etc.)\nspeicherbare Ergebnisse: Skripte, Datensätze, Stimuli, Grafiken…\netc.\n\nverwendet.\n\n\n\nPhasen des Forschungsprozesses\n\n\nIn diesem Kurs werden wir einige Stationen dieses Forschungsprozesses gemeinsam bearbeiten, um Einblick in das neurowissenschaftliche Arbeiten zu erhalten.\n\n\n\n\n\n\nHands-on: Complab im Forschungsprozess\n\n\n\n\nWählen Sie in 2-4er Gruppen eines der untenstehenden Paper (Open Access) aus:\n\n\nQuon et al. (2021): Musical components important for the Mozart K448 effect in epilepsy\nRichter et al. (2021): Listening to speech with a guinea pig-to-human brain-to-brain interface\nZhang et al. (2021): Longitudinal effects of meditation on brain resting-state functional connectivity\n\n\nSchreiben Sie zuerst in einem Satz oben auf Ihr Blatt auf, was die Fragestellung des Papers ist.\nGehen Sie das Paper durch und schreiben Sie heraus, wo überall im “Computerlab” gearbeitet wurde, bei dieser Forschungsarbeit. (Sie können auch Vermutungen anstellen.)\n\nz.B. Datenanalyse -&gt; R/RStudio\n[15 Minuten]",
+    "crumbs": [
+      "Neurowissenschaftliches Forschen",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Complab im Forschungsprozess</span>"
+    ]
+  },
+  {
+    "objectID": "voraussetzungen.html",
+    "href": "voraussetzungen.html",
+    "title": "2  Voraussetzungen der Forschung",
+    "section": "",
+    "text": "3 Marr’s levels of explanation\nDavid Marr hat drei Ebenen vorgeschlagen, um zu klären, wie komplexe Systeme, insbesondere kognitive Systeme wie das Gehirn, Informationen verarbeiten. Die Idee ist, dass jedes informationsverarbeitende System (biologisch oder künstlich) auf diesen drei verschiedenen Ebenen analysiert werden kann. Zusammen zeigen sie, was das System tut, wie es das tut und wie es physikalisch realisiert ist.",
+    "crumbs": [
+      "Neurowissenschaftliches Forschen",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Voraussetzungen der Forschung</span>"
+    ]
+  },
+  {
+    "objectID": "voraussetzungen.html#levels-of-analyses",
+    "href": "voraussetzungen.html#levels-of-analyses",
+    "title": "2  Voraussetzungen der Forschung",
+    "section": "3.1 3 Levels of analyses",
+    "text": "3.1 3 Levels of analyses\n\n3.1.1 Computational level (what and why)\n\nWas macht das System?\nEs definiert das Ziel oder den Zweck des Prozesses. Diese Ebene erklärt, welches Problem das System löst und warum es wichtig ist.\nBeispiel aus dem Sehen: Das System muss die 3D-Welt aus dem 2D-Input der Retina rekonstruieren. Warum? Weil das Verständnis der räumlichen Umgebung für das Überleben wichtig ist.\nWas es zeigt: Das „große Ganze“ - die Funktion, die das System erfüllt.\n\n\n\n3.1.2 Algorithmic level (how)\n\nWie erreicht das System das Ziel?\nEs geht um die spezifischen Darstellungen und Verfahren, die zur Erreichung des Ziels eingesetzt werden. Betrachten Sie dies als die „Anweisungen“ oder „Software“ des Systems.\nBeispiel aus dem Sehen: Das Gehirn erkennt Kanten, kombiniert Merkmale und identifiziert Objekte mithilfe von Algorithmen wie Merkmalsextraktion und Mustervergleich.\nWas es zeigt: Den Prozess - die schrittweise Umwandlung vom Input zum Output.\n\n\n\n3.1.3 Implementational level\n\nWie wird der Prozess physisch umgesetzt?\nDiese Ebene beschreibt die Hardware oder biologischen Strukturen, die die Berechnungen ausführen. Beim Menschen sind dies Neuronen, Gehirnbereiche und neuronale Schaltkreise.\nBeispiel aus dem Sehen: Die Randerkennung erfolgt in der Retina und in frühen visuellen Bereichen wie dem primären visuellen Kortex (V1). Bestimmte Neuronen feuern bei bestimmten Ausrichtungen des Lichts.\nWas es zeigt: Die materielle Basis - die Mechanismen, die es möglich machen.\n\nKognitive Neurowissenschaft kann auf allen drei Ebenen tätig sein. Beispiel aus der Gesichtserkennung:\n\nDas Gehirn muss Gesichter schnell und genau erkennen, weil dies für die soziale Interaktion evolutionär wichtig ist.\nDie Gesichtserkennung kann die Extraktion von Merkmalen (Augen, Nase, Mund) und eine ganzheitliche Verarbeitung umfassen.\nDas fusiforme Gesichtsareal (FFA) spielt eine Schlüsselrolle bei der Wahrnehmung von Gesichtern.",
+    "crumbs": [
+      "Neurowissenschaftliches Forschen",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Voraussetzungen der Forschung</span>"
+    ]
+  },
+  {
+    "objectID": "voraussetzungen.html#grundlegendes-postulat",
+    "href": "voraussetzungen.html#grundlegendes-postulat",
+    "title": "2  Voraussetzungen der Forschung",
+    "section": "3.2 Grundlegendes Postulat:",
+    "text": "3.2 Grundlegendes Postulat:\nMentale Prozesse ergeben sich aus der Gehirnaktivität.\nGanz wichtig ist: Korrelation ≠ Kausalität. Neuroimaging-Methoden zeigen nur Korrelationen und keine Kausalität.",
+    "crumbs": [
+      "Neurowissenschaftliches Forschen",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Voraussetzungen der Forschung</span>"
+    ]
+  },
+  {
+    "objectID": "webrconsole.html",
+    "href": "webrconsole.html",
+    "title": "WebR Konsole",
+    "section": "",
+    "text": "In der WebR-Konsole können Sie R-Code ausführen. Erstellte Variablen werden gespeichert, so lange das Browserfenster nicht geschlossen wird.\n\n Konsole Tipp Lösung\n\n\nGeben Sie hier Code ein.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nPackages\nLaden Sie zuerst das {tidyverse} mit library(tidyverse).\nDatensätze\nEs stehen Ihnen folgende Datensätze zur Verfügung:\n\ncars\niris\n\nEs können weitere Datensätze durch das Laden von Packages genutzt werden:\n\npenguins aus {palmerpenguins}\n\n\n# Laden vom penguins-Datensatz aus dem {palmerpenguins} Package\nlibrary(palmerpenguins)\nd &lt;- penguins\n\n\n\n\nlibrary(tidyverse)\n\nglimpse(cars)\n\nRows: 50\nColumns: 2\n$ speed &lt;dbl&gt; 4, 4, 7, 7, 8, 9, 10, 10, 10, 11, 11, 12, 12, 12, 12, 13, 13, 13…\n$ dist  &lt;dbl&gt; 2, 10, 4, 22, 16, 10, 18, 26, 34, 17, 28, 14, 20, 24, 28, 26, 34…\n\nplot(cars)",
+    "crumbs": [
+      "Anhang",
+      "WebR Konsole"
+    ]
+  },
+  {
+    "objectID": "license.html",
+    "href": "license.html",
+    "title": "License",
+    "section": "",
+    "text": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
+    "crumbs": [
+      "Anhang",
+      "License"
+    ]
+  }
+]

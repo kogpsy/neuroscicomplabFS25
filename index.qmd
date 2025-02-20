@@ -1,0 +1,94 @@
+# Herzlich Willkommen {.unnumbered}
+
+Hier finden Sie das Wichtigste zum Kurs FS2025.
+
+# Inhalte der Lehrveranstaltung
+
+In diesem anwendungsorientierten Kurs erwerben Sie Wissen über Methoden der Datenerhebung, -verarbeitung und -analyse im Feld der Neurowissenschaften.
+Wir behandeln im Rahmen der Veranstaltung folgende Inhalte:
+
+- Wichtige Programmiersprachen und - umgebungen in den Neurowissenschaften
+- Programmieren von computerbasierten Experimenten (mit PsychoPy)
+- Programmieren von Datenverarbeitungspipelines: Datenvorverarbeitung und Visualisierung („good practices", Data Cleaning, Reproduzierbarkeit)
+- Analysemethoden und Modelle zugeschnitten auf unterschiedliche neurowissenschaftliche Datensätze und Fragestellungen mit frequentistischen wie auch bayesianischen Verfahren (u.a. Reaktionszeiten, Signal detection theory, Drift diffusion models)
+- Interpretation und kritische Einordnung von Analyseergebnissen 
+
+# Aufbau der Lehrveranstaltung
+
+In diesem Kurs legen wir besonderen Fokus auf Anwendungskenntnisse, deshalb setzen sich die Termine zusammen aus Inputs, wie auch Hands-on Sessions, in welchen das erworbene Wissen praktisch umgesetzt wird. Die Aufteilung ist stark vom jeweiligen Thema anhängig. Erfahrungsgemäss lernt man Programmiersprachen und Datenanalyse am schnellsten und nachhaltigsten, wenn man sie selber anwendet. 
+
+::: callout-caution
+## Hands-on
+
+Hands-on Aufgaben werden in den Veranstaltungen angekündigt und erklärt. Auf der Website finden Sie die Aufgaben in diesen Hands-on Blöcken.
+
+:::
+
+# Organisatorisches
+
+## Ilias
+
+Unter diesen Links finden Sie die Iliasgruppen:
+
+ILIAS-Gruppe Freitag 08.15-10.00 👉 [468703-FS2025-0](https://ilias.unibe.ch/goto_ilias3_unibe_crs_3092664.html)
+
+ILIAS-Gruppe Freitag 10.15-12.00 👉 [468703-FS2025-1](https://ilias.unibe.ch/goto_ilias3_unibe_crs_3092665.html)
+
+
+## Kursvoraussetzungen
+Wir werden mit der Programmiersprache R und zu einem kleinen Teil mit Python arbeiten. Sie benötigen in der Veranstaltung deshalb einen eigenen Laptop (Tablets sind nicht geeignet!) mit ca. 20 GB freiem Speicherplatz und mit einer installierten (aktuellen) Version von R und RStudio ([Link zum Download von R und RStudio](https://posit.co/download/rstudio-desktop/)).
+
+R Kenntnisse (gemäss Statistik I-IV in Psychologie) werden vorausgesetzt. Zur Auffrischung dient folgender Link (https://methodenlehre.github.io/einfuehrung-in-R/) oder für Fortgeschrittene die Bücher [„Advanced R"](http://adv-r.had.co.nz/) und [„R for Data Scientists"](https://r4ds.had.co.nz/) von Hadley Wickham.
+
+Zusätzlich dient _Übung 2_ zur Auffrischung der Vorkenntnisse auf die im späteren Verlauf des Kurses aufgebaut wird.
+
+## Leistungsnachweise
+
+Der Kurs entspricht 5 ETCS.
+Dafür müssen 3 Bereiche erfüllt werden:
+
+- Anwesenheit im Kurs
+- bestandene Übungen
+- bestandenes Abschlussquiz 
+
+Alle Leistungsnachweise werden in den Veranstaltungen angekündigt. 
+Die Termine für die Leistungsnachweise finden Sie unter [Termine der Leistungsnachweise](index.qmd#sec-termine).
+
+### Anwesenheit
+
+Die Anwesenheit im Kurs wird vorausgesetzt, an 2 Terminen darf gefehlt werden. 
+
+Das Online-Skript erlaubt das Nacharbeiten des wichtigsten Stoffes im Eigenstudium, wir können jedoch nicht für die Vollständigkeit garantieren. 
+Hilfestellung beim Programmieren und Verstehen der Inhalte erhalten Sie während der Kurszeiten.
+Aus zeitlichen Gründen können wir keine ausführliche Beantwortung von Fragen zum Kursinhalt per E-Mail anbieten. 
+Bitte stellen Sie Ihre Fragen in der Veranstaltung - auch Ihre Mitstudierenden werden davon profitieren, oft haben mehrere Personen dieselbe Frage.
+
+
+### Übungen
+
+Es gibt fünf Übungen.
+Ausser _Übung 2_ müssen alle Übungen abgegeben und als bestanden bewertet werden. 
+Wird eine ungenügende Übungen abgegeben erhalten Sie eine zweite Frist für die Abgabe oder einen Zusatzauftrag. 
+
+Die Übungen werden auf der Website aufgeschaltet. Die Ergebnisse der Übungen müssen in den entsprechenden Ordner auf ILIAS hochgeladen werden. Je nach Umfang der Übung wird die Zeit bis zur Abgabe unterschiedlich ausfallen. Sie wird jedoch immer mindestens zwei Wochen betragen.
+
+
+### Abschlussquiz
+
+Das Abschlussquiz wird gegen Ende des Semesters auf Ilias freigeschaltet und dient dazu das Gelernte zu prüfen und so Feedback zu geben, wie gut man die Lerninhalte erinnert.
+Sie haben die Möglichkeit das Quiz mehrmals zu wiederholen.
+
+
+
+# Termine der Leistungsnachweise {#sec-termine}
+
+
+| Leistungsnachweis |Beginn | Abgabetermin | Inhalt |
+|---------|:------:|:------:|:-------|
+| [Übung 1: Experiment]() | 28.02.2025 | 03.03.2025 23:55 | Datenerheben mit einem Experiment |
+| [Übung 2: Data wrangling](datawrangling.qmd) | 28.02.2025 | 13.03.2025 | Durcharbeiten des Skripts _Wichtige {tidyverse} Funktionen_ auf eigenem PC (muss nicht abgegeben werden) |
+| [Übung 3: Datenvisualisierung]() | 21.03.2025 | 03.04.2025 23:55 | Daten verarbeiten und sinnvoll visualisieren |
+| [Übung 4: Datenanalyse Report]() | 04.04.2025 | 01.05.2025 23:55 | tba |
+| [Übung 5: EEG Project]() | 09.05.2025 | 31.05.2025 23:55 | tba |
+| [Abschlussquiz]() | 30.05.2025 | 07.06.2025 23:55 | auf Ilias |
+

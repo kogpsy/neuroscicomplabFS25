@@ -1,0 +1,38 @@
+# Complab im Forschungsprozess
+
+Der Begriff *Computerlab* wird für unsere Veranstaltung genutzt, um sich auf die vielfältige Arbeit, die Neurowissenschaftler:innen an Computern oder anderen elektronischen Geräten durchführen, um neurowissenschaftliche Forschungsfragen zu beantworten.
+Jede Forschungsarbeit hat mehrere Phasen, welche ganz unterschiedliche Anforderungen stellen und eigenen Skills benötigen.
+
+In jeder Phase des Forschungsprozesses werden verschiedenste
+
+-   elektronische Geräte (Computer, Eyetracker, EEG-Geräte, MRTs, etc.)
+-   Programme (PsychoPy, E-Prime, etc.)
+-   Programmiersprachen (R, MATLAB, Python, Java, C++, Ruby, Julia, etc.)
+-   speicherbare Ergebnisse: Skripte, Datensätze, Stimuli, Grafiken... 
+- etc.
+
+verwendet.
+
+![Phasen des Forschungsprozesses](imgs/forschungsprozess.png)
+
+In diesem Kurs werden wir einige Stationen dieses Forschungsprozesses gemeinsam bearbeiten, um Einblick in das neurowissenschaftliche Arbeiten zu erhalten.
+
+::: callout-caution
+## Hands-on: Complab im Forschungsprozess
+
+1. Wählen Sie in 2-4er Gruppen eines der untenstehenden Paper (Open Access) aus:
+
+- [Quon et al. (2021): Musical components important for the Mozart K448 effect in epilepsy](https://www.nature.com/articles/s41598-021-95922-7)
+- [Richter et al. (2021): Listening to speech with a guinea pig-to-human brain-to-brain interface](https://www.nature.com/articles/s41598-021-90823-1)
+- [Zhang et al. (2021): Longitudinal effects of meditation on brain resting-state functional connectivity](https://www.nature.com/articles/s41598-021-90729-y)
+
+2. Schreiben Sie zuerst in einem Satz oben auf Ihr Blatt auf, was die Fragestellung des Papers ist.
+
+3. Gehen Sie das Paper durch und schreiben Sie heraus, wo überall im "Computerlab" gearbeitet wurde, bei dieser Forschungsarbeit. (Sie können auch Vermutungen anstellen.)
+
+z.B. _Datenanalyse -> R/RStudio_
+
+[15 Minuten]
+
+:::
+

@@ -1,0 +1,81 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: Neurowissenschaft Computerlab
+  subtitle: Frühlingssemester 2025, Universität Bern
+ # author: Gerda Wyssen & Enea Weber
+ # date: Februar 15, 2025
+  page-footer: Copyright 2025, Gerda Wyssen & Enea Weber
+  edition: 1
+  reader-mode: false
+  cover-image: imgs/favicon.png
+  favicon: imgs/logo.png
+  site-url: https://kogpsy.github.io/neuroscicomplabFS25/
+  page-navigation: true
+  search: true
+  license: CC BY SA
+
+  # Book content:
+  chapters:
+  - index.qmd
+
+  - part: Neurowissenschaftliches Forschen
+    chapters:
+    - forschungsprozess.qmd # forschungsprozess
+    - voraussetzungen.qmd
+  - part: Experimentieren
+    #chapters:
+    #
+
+  - part: Data wrangling
+    #chapters:
+    #- datawrangling.qmd
+
+  - part: Datenvisualisieren
+    #chapters:
+    #-
+
+  - part: Datenanalyse
+    #chapters:
+    #-
+
+  - part: Datenmodellierung
+    #chapters:
+    #-
+
+  - part: Anhang
+    chapters:
+    - webrconsole.qmd
+    - license.qmd
+
+number-depth: 3
+format:
+  html:
+    theme:
+      light:
+      - flatly
+      - styles/light.scss
+      dark:
+      - darkly
+      - styles/dark.scss
+    css:
+    - /styles/global.css
+    - include/webex.css
+    link-external-newwindow: true
+    page-layout: full
+    code-background: true
+    code-copy: true
+    code-overflow: wrap
+    include-after-body: include/webex.js
+  pdf:
+    documentclass: scrreprt
+
+filters:
+  - webr
+
+execute:
+  cache: false
+  freeze: auto # re-render only when source changes
+  execute-dir: project

@@ -1,0 +1,17 @@
+/.quarto/
+
+pages/chapters/*_cache/
+pages/chapters/*_files/
+playground/
+
+.Rproj.user
+.Rhistory
+.Rdata
+JASP/
+
+.vscode
+
+# MacOS specific stuff
+.DS_Store
+
+archive
