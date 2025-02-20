@@ -196,7 +196,10 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#herzlich-willkommen" id="toc-herzlich-willkommen" class="nav-link active" data-scroll-target="#herzlich-willkommen">Herzlich Willkommen</a></li>
-  <li><a href="#inhalte-der-lehrveranstaltung" id="toc-inhalte-der-lehrveranstaltung" class="nav-link" data-scroll-target="#inhalte-der-lehrveranstaltung">Inhalte der Lehrveranstaltung</a></li>
+  <li><a href="#inhalte-der-lehrveranstaltung" id="toc-inhalte-der-lehrveranstaltung" class="nav-link" data-scroll-target="#inhalte-der-lehrveranstaltung">Inhalte der Lehrveranstaltung</a>
+  <ul class="collapse">
+  <li><a href="#lernziele" id="toc-lernziele" class="nav-link" data-scroll-target="#lernziele">Lernziele</a></li>
+  </ul></li>
   <li><a href="#aufbau-der-lehrveranstaltung" id="toc-aufbau-der-lehrveranstaltung" class="nav-link" data-scroll-target="#aufbau-der-lehrveranstaltung">Aufbau der Lehrveranstaltung</a></li>
   <li><a href="#organisatorisches" id="toc-organisatorisches" class="nav-link" data-scroll-target="#organisatorisches">Organisatorisches</a>
   <ul class="collapse">
@@ -209,7 +212,10 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#abschlussquiz" id="toc-abschlussquiz" class="nav-link" data-scroll-target="#abschlussquiz">Abschlussquiz</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#sec-termine" id="toc-sec-termine" class="nav-link" data-scroll-target="#sec-termine">Termine der Leistungsnachweise</a></li>
+  <li><a href="#sec-termine" id="toc-sec-termine" class="nav-link" data-scroll-target="#sec-termine">Termine der Leistungsnachweise</a>
+  <ul class="collapse">
+  <li><a href="#datacamp" id="toc-datacamp" class="nav-link" data-scroll-target="#datacamp">DataCamp</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -249,8 +255,20 @@ ul.task-list li input[type="checkbox"] {
 <li>Programmieren von computerbasierten Experimenten (mit PsychoPy)</li>
 <li>Programmieren von Datenverarbeitungspipelines: Datenvorverarbeitung und Visualisierung („good practices”, Data Cleaning, Reproduzierbarkeit)</li>
 <li>Analysemethoden und Modelle zugeschnitten auf unterschiedliche neurowissenschaftliche Datensätze und Fragestellungen mit frequentistischen wie auch bayesianischen Verfahren (u.a. Reaktionszeiten, Signal detection theory, Drift diffusion models)</li>
-<li>Interpretation und kritische Einordnung von Analyseergebnissen</li>
+<li>Interpretation und kritische Einordnung von Analyseergebnissen.</li>
 </ul>
+<p>Studierende werden mit der Programmiersprache R und Python arbeiten.</p>
+<section id="lernziele" class="level3">
+<h3 class="anchored" data-anchor-id="lernziele">Lernziele</h3>
+<p>Die Studierenden</p>
+<ul>
+<li>können ein computerbasiertes Experiment erstellen und durchführen.</li>
+<li>kennen wichtige neurowissenschaftlichen Datenformen und ihre Eigenschaften.</li>
+<li>können Daten aus neurowissenschaftlichen Experimenten selber vorverarbeiten und informativ visualisieren.</li>
+<li>kennen verschiedene Paradigmen der Datenanalyse, können diese angemessen anwenden.</li>
+<li>können Analyseergebnisse interpretieren, kritisch diskutieren und kommunizieren.</li>
+</ul>
+</section>
 </section>
 <section id="aufbau-der-lehrveranstaltung" class="level1">
 <h1>Aufbau der Lehrveranstaltung</h1>
@@ -299,8 +317,21 @@ Hands-on
 </section>
 <section id="übungen" class="level3">
 <h3 class="anchored" data-anchor-id="übungen">Übungen</h3>
-<p>Es gibt fünf Übungen. Ausser <em>Übung 2</em> müssen alle Übungen abgegeben und als bestanden bewertet werden. Wird eine ungenügende Übungen abgegeben erhalten Sie eine zweite Frist für die Abgabe oder einen Zusatzauftrag.</p>
-<p>Die Übungen werden auf der Website aufgeschaltet. Die Ergebnisse der Übungen müssen in den entsprechenden Ordner auf ILIAS hochgeladen werden. Je nach Umfang der Übung wird die Zeit bis zur Abgabe unterschiedlich ausfallen. Sie wird jedoch immer mindestens zwei Wochen betragen.</p>
+<p>Es gibt fünf Übungen.</p>
+<ul>
+<li>Die Übungen werden auf der Website aufgeschaltet und in der Veranstaltung erklärt.</li>
+<li>Die Ergebnisse der Übungen müssen in den entsprechenden Ordner auf ILIAS hochgeladen werden. Je nach Umfang der Übung wird die Zeit bis zur Abgabe unterschiedlich ausfallen. Sie wird jedoch immer mindestens zwei Wochen betragen.</li>
+<li>Ausser <em>Übung 2</em> müssen alle Übungen abgegeben und als bestanden bewertet werden. Wird eine ungenügende Übungen abgegeben erhalten Sie eine zweite Frist für die Abgabe oder einen Zusatzauftrag.</li>
+<li>Übungen dürfen alleine oder in Gruppen von max. 3 Personen erledigt werden. Alle Personen müssen die Übung abgeben. Damit wir sehen, welche Übungsabgaben zusammengehören: Nennen Sie das File mit der Aufgabe und allen Initialen der Gruppe. Z.B. uebung_1_GW_EW.csv</li>
+<li>Alle Übungen müssen bestanden werden. Ob die Übung bestanden wurde, sehen Sie auf Ilias. Bei Nicht-Bestehen muss die Übung nochmals abgeben werden oder eine Zusatzaufgabe erledigt werden.</li>
+</ul>
+<p><strong>Verwenden von LLMs für Übungen</strong>: Sie dürfen LLMs gerne als Tool nutzen, um die Übung zu bearbeiten. Es liegt in Ihrer Verantwortung, den Output von LLMs vor der Abgabe gründlich zu prüfen. Halten Sie sich an Folgendes:</p>
+<ul>
+<li><p>LLMs geben Code aus. Aber sogar wenn dieser problemlos ausgeführt werden kann, muss genau überprüft werden, ob der Code das Richtige tut. Dieses Überprüfen kann unter Umständen genau so lange dauern, wie das Lesen und Verstehen der Dokumentation.</p></li>
+<li><p>Das Überprüfen von Code erfordert gewisse Grundkenntnisse. Das Verwenden von LLMs ersetzt kein Lernaufwand.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p></li>
+<li><p>Das direkte Verwenden von Code ohne kompetente Prüfung ist in der Forschung unethisch!</p></li>
+<li><p>Es dürfen keine sensiblen Daten eingegeben werden bzw. auch keine Datensätze die nicht öffentlich sind.</p></li>
+</ul>
 </section>
 <section id="abschlussquiz" class="level3">
 <h3 class="anchored" data-anchor-id="abschlussquiz">Abschlussquiz</h3>
@@ -358,8 +389,23 @@ Hands-on
 </tr>
 </tbody>
 </table>
+<section id="datacamp" class="level2">
+<h2 class="anchored" data-anchor-id="datacamp">DataCamp</h2>
+<p><a href="https://www.datacamp.com/">DataCamp</a> ist eine Online-Lernplattform, welche sich auf Data Science und Datenanalyse konzentriert. Es bietet interaktive Kurse, Tutorials und Projekte in verschiedenen Programmiersprachen wie Python, R und SQL auf unterschiedlichen Niveaus an; sowohl für Anfänger als auch für Fortgeschrittene gibt es ein breites Angebot.</p>
+<p>Im Rahmen dieser Lehrveranstaltung können alle Teilnehmenden sich unter folgendem Link mit ihrer Uni Bern E-Mail Adresse (*students.unibe.ch) registrieren und die Kurse kostenlos nutzen:</p>
+<p>👉🏼 <a href="">Einladungslink DataCamp Registration</a>: <strong>Link folgt.</strong></p>
+<p>Wir werden jeweils die empfohlenen Datacamp Kurse verlinken. Sie haben mit dem Link Zugriff auf <strong>alle Datacamp-Kurse</strong> bis Ende FS25.</p>
+<p>👉🏼 Zur Auffrischung von R-Kenntnissen eignet sich dieser Kurs: <a href="https://app.datacamp.com/learn/courses/free-introduction-to-r">Introduction to R</a></p>
+<p>👉🏼 Als Einführung in Python eignet sich folgender Kurs: <a href="https://app.datacamp.com/learn/courses/intro-to-python-for-data-science">Introduction to Python</a></p>
 
 
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p><img src="imgs/groundtruth.png" class="img-fluid"><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->

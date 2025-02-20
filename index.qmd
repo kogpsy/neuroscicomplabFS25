@@ -11,7 +11,20 @@ Wir behandeln im Rahmen der Veranstaltung folgende Inhalte:
 - Programmieren von computerbasierten Experimenten (mit PsychoPy)
 - Programmieren von Datenverarbeitungspipelines: Datenvorverarbeitung und Visualisierung („good practices", Data Cleaning, Reproduzierbarkeit)
 - Analysemethoden und Modelle zugeschnitten auf unterschiedliche neurowissenschaftliche Datensätze und Fragestellungen mit frequentistischen wie auch bayesianischen Verfahren (u.a. Reaktionszeiten, Signal detection theory, Drift diffusion models)
-- Interpretation und kritische Einordnung von Analyseergebnissen 
+- Interpretation und kritische Einordnung von Analyseergebnissen. 
+
+Studierende werden mit der Programmiersprache R und Python arbeiten. 
+
+### Lernziele
+
+Die Studierenden
+
+- können ein computerbasiertes Experiment erstellen und durchführen.
+- kennen wichtige neurowissenschaftlichen Datenformen und ihre Eigenschaften.
+- können Daten aus neurowissenschaftlichen Experimenten selber vorverarbeiten und informativ visualisieren.
+- kennen verschiedene Paradigmen der Datenanalyse, können diese angemessen anwenden.
+- können Analyseergebnisse interpretieren, kritisch diskutieren und kommunizieren.
+
 
 # Aufbau der Lehrveranstaltung
 
@@ -67,10 +80,24 @@ Bitte stellen Sie Ihre Fragen in der Veranstaltung - auch Ihre Mitstudierenden w
 ### Übungen
 
 Es gibt fünf Übungen.
-Ausser _Übung 2_ müssen alle Übungen abgegeben und als bestanden bewertet werden. 
-Wird eine ungenügende Übungen abgegeben erhalten Sie eine zweite Frist für die Abgabe oder einen Zusatzauftrag. 
 
-Die Übungen werden auf der Website aufgeschaltet. Die Ergebnisse der Übungen müssen in den entsprechenden Ordner auf ILIAS hochgeladen werden. Je nach Umfang der Übung wird die Zeit bis zur Abgabe unterschiedlich ausfallen. Sie wird jedoch immer mindestens zwei Wochen betragen.
+- Die Übungen werden auf der Website aufgeschaltet und in der Veranstaltung erklärt.
+- Die Ergebnisse der Übungen müssen in den entsprechenden Ordner auf ILIAS hochgeladen werden. Je nach Umfang der Übung wird die Zeit bis zur Abgabe unterschiedlich ausfallen. Sie wird jedoch immer mindestens zwei Wochen betragen.
+- Ausser _Übung 2_ müssen alle Übungen abgegeben und als bestanden bewertet werden. Wird eine ungenügende Übungen abgegeben erhalten Sie eine zweite Frist für die Abgabe oder einen Zusatzauftrag. 
+- Übungen dürfen alleine oder in Gruppen von max. 3 Personen erledigt werden. Alle Personen müssen die Übung abgeben.
+Damit wir sehen, welche Übungsabgaben zusammengehören: Nennen Sie das File mit der Aufgabe und allen Initialen der Gruppe. Z.B. uebung_1_GW_EW.csv
+- Alle Übungen müssen bestanden werden. Ob die Übung bestanden wurde, sehen Sie auf Ilias. Bei Nicht-Bestehen muss die Übung nochmals abgeben werden oder eine Zusatzaufgabe erledigt werden.
+
+
+__Verwenden von LLMs für Übungen__: Sie dürfen LLMs gerne als Tool nutzen, um die Übung zu bearbeiten. Es liegt in Ihrer Verantwortung, den Output von LLMs vor der Abgabe gründlich zu prüfen. Halten Sie sich an Folgendes:
+
+- LLMs geben Code aus. Aber sogar wenn dieser problemlos ausgeführt werden kann, muss genau überprüft werden, ob der Code das Richtige tut. Dieses Überprüfen kann unter Umständen genau so lange dauern, wie das Lesen und Verstehen der Dokumentation.
+
+- Das Überprüfen von Code erfordert gewisse Grundkenntnisse. Das Verwenden von LLMs ersetzt kein Lernaufwand.^[![](imgs/groundtruth.png)]
+
+- Das direkte Verwenden von Code ohne kompetente Prüfung ist in der Forschung unethisch!
+
+- Es dürfen keine sensiblen Daten eingegeben werden bzw. auch keine Datensätze die nicht öffentlich sind.
 
 
 ### Abschlussquiz
@@ -92,3 +119,19 @@ Sie haben die Möglichkeit das Quiz mehrmals zu wiederholen.
 | [Übung 5: EEG Project]() | 09.05.2025 | 31.05.2025 23:55 | tba |
 | [Abschlussquiz]() | 30.05.2025 | 07.06.2025 23:55 | auf Ilias |
 
+
+## DataCamp
+
+[DataCamp](https://www.datacamp.com/) ist eine Online-Lernplattform, welche sich auf Data Science und Datenanalyse konzentriert. Es bietet interaktive Kurse, Tutorials und Projekte in verschiedenen Programmiersprachen wie Python, R und SQL auf unterschiedlichen Niveaus an; sowohl für Anfänger als auch für Fortgeschrittene gibt es ein breites Angebot. 
+
+Im Rahmen dieser Lehrveranstaltung können alle Teilnehmenden sich unter folgendem Link mit ihrer Uni Bern E-Mail Adresse (*students.unibe.ch) registrieren und die Kurse kostenlos nutzen: 
+
+👉🏼 [Einladungslink DataCamp Registration](): __Link folgt.__
+
+
+Wir werden jeweils die empfohlenen Datacamp Kurse verlinken. Sie haben mit dem Link Zugriff auf __alle Datacamp-Kurse__ bis Ende FS25.
+
+
+👉🏼 Zur Auffrischung von R-Kenntnissen eignet sich dieser Kurs: [Introduction to R](https://app.datacamp.com/learn/courses/free-introduction-to-r)
+
+👉🏼 Als Einführung in Python eignet sich folgender Kurs: [Introduction to Python](https://app.datacamp.com/learn/courses/intro-to-python-for-data-science)
