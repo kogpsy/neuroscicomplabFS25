@@ -55,6 +55,12 @@ R Kenntnisse (gemäss Statistik I-IV in Psychologie) werden vorausgesetzt. Zur A
 
 Zusätzlich dient _Übung 2_ zur Auffrischung der Vorkenntnisse auf die im späteren Verlauf des Kurses aufgebaut wird.
 
+__Bitte installieren Sie bis zum 2. Kurstermine folgende Software:__
+
+-  [Neue Versionen von R und RStudio](https://posit.co/download/rstudio-desktop/)
+-  [PsychoPy](https://www.psychopy.org/download.html)
+-  [JASP](https://jasp-stats.org/download/)
+
 ## Leistungsnachweise
 
 Der Kurs entspricht 5 ETCS.
@@ -126,11 +132,9 @@ Sie haben die Möglichkeit das Quiz mehrmals zu wiederholen.
 
 Im Rahmen dieser Lehrveranstaltung können alle Teilnehmenden sich unter folgendem Link mit ihrer Uni Bern E-Mail Adresse (*students.unibe.ch) registrieren und die Kurse kostenlos nutzen: 
 
-👉🏼 [Einladungslink DataCamp Registration](): __Link folgt.__
-
+👉🏼 [Einladungslink DataCamp Registration](https://www.datacamp.com/groups/shared_links/3fc707ac57c6293825924af2e54b2ed9743579402c1367af9aa879b7460da23a) (zuerst muss ein DataCamp Zugang erstellt werden.)
 
 Wir werden jeweils die empfohlenen Datacamp Kurse verlinken. Sie haben mit dem Link Zugriff auf __alle Datacamp-Kurse__ bis Ende FS25.
-
 
 👉🏼 Zur Auffrischung von R-Kenntnissen eignet sich dieser Kurs: [Introduction to R](https://app.datacamp.com/learn/courses/free-introduction-to-r)
 
