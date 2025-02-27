@@ -1,15 +1,9 @@
-# Wichtige {tidyverse} Funktionen {.unnumbered}
+# Daten importieren und vorverarbeiten
 
-```{r}
-#| include: false
-# Set working directory of R
-#knitr::opts_knit$set(root.dir = '../../data/data_import_single')
-```
-
-In R gibt es sehr viele hilfreiche _Funktionen_ und _Packages_, die für die Vorverarbeitung und Analyse neurowissenschaftlicher Verhaltensdaten (oder extrahierten Daten aus bildgebenden Verfahren) verwendet werden können. Beim Arbeiten in _R_ empfiehlt es sich durchgehend in einem _R-Markdown_ oder _RNotebook_ (`.Rmd`) innerhalb eines _RStudio-Projects_ zu arbeiten, da so ein reproduzierbarer Workflow erstellt werden kann. Ein weiterer Vorteil ist zudem, dass Rohdaten __nicht__ verändert werden müssen.
-Falls Sie _RNotebooks_ nicht kennen, können Sie einfach mit einem _RSkript_ arbeiten. 
+In R gibt es sehr viele hilfreiche _Funktionen_ und _Packages_, die für die Vorverarbeitung und Analyse neurowissenschaftlicher Verhaltensdaten (oder extrahierten Daten aus bildgebenden Verfahren) verwendet werden können. Beim Arbeiten in _R_ empfiehlt es sich durchgehend in einem _R-Markdown_ Dokument (`.Rmd`) innerhalb eines _RStudio-Projects_ zu arbeiten, da so ein reproduzierbarer Workflow erstellt werden kann. Ein weiterer Vorteil ist zudem, dass Rohdaten __nicht__ verändert werden müssen. 
 
 In diesem Kapitel finden Sie die wichtigesten data wrangling Funktionen des {tidyverse}-Packages:
+
 - die Pipe: `|>`
 - Daten einlesen: `read.csv()`
 - Daten filtern: `filter()`
@@ -19,7 +13,7 @@ In diesem Kapitel finden Sie die wichtigesten data wrangling Funktionen des {tid
 - Gruppieren und zusammenfassen: `group_by()`
 - Datensätze speichern: `write.csv()`
 
-![](imgs/allison_horst_rasafriend.png){width=40%}
+![](imgs/allison_horst_rasafriend.png)
 [Illustration by Allison Horst](https://allisonhorst.com/everything-else)
 
 <aside>Hilfreiche Datacamp Kurse:
@@ -51,17 +45,13 @@ Bevor mit einem Datensatz gearbeitet wird, empfiehlt es sich den Datensatz anzus
 
     - Klicken Sie dafür auf `File` > `New Project` 
     
-    - Benennen Sie das Project `complab_datawrangling_stroop` und speichern Sie es an einem sinnvollen Ort auf Ihrem Computer. Wàhlen Sie, dass ein neuer Ordner erstellt werden soll.
+    - Benennen Sie das Project `complab__fs25` und speichern Sie es an einem sinnvollen Ort auf Ihrem Computer. Wählen Sie, dass dafür ein neuer Ordner erstellt werden soll.
     
 3. Erstellen Sie in diesem Projekt-Ordner einen Ordner namens `data`.
 
-<!-- 4. Kopieren Sie in den `data`-Ordner Ihre erhobenen Daten des Stroop Experiments. Falls Sie noch keine Daten erhoben haben, dann laden Sie hier Beispiels-Datensätze herunter: Sie müssen den Ordner entzippen und den Stroop-Datensatz in den `data`-Ordner Ihres Projekts kopieren. -->
+4. Kopieren Sie in den `data`-Ordner Ihre erhobenen Daten des Stroop Experiments. Falls Sie noch keine Daten erhoben haben, dann laden Sie [hier](data/stroop_example.csv)  einen Beispiels-Datensatz herunter und speichern Sie ihn im `data`-Ordner.
 
-4. Laden Sie den Beispielsdatensatz herunter und speichern Sie ihn im `data`-Ordner Ihres Projekts.
-
-    - [Beispielsdatensatz Stroop](data/stroop_example.csv)
-
-5. Erstellen Sie ein neues `.Rmd`-File oder _RSkript_ (`File` > `New File` > `R Markdown` / `R Notebook`/ `R Skript`) und speichern Sie dieses unter `data-import` im Projekt-Ordner.
+5. Erstellen Sie ein neues `.Rmd`-File (`File` > `New File` > `R Markdown`) und speichern Sie dieses unter `intro_datawrangling` im Projekt-Ordner.
 :::
 
 :::callout-tip
@@ -76,9 +66,9 @@ Wenn Sie Filenamen auswählen, achten Sie darauf dass diese [_machine-readable_]
 
 ## Packages installieren und laden
 
-Für das Bearbeiten der Daten verwenden eignen sich Funktionen aus dem _Package_ `tidyverse`, eine Sammlung von verschiedenen, für _data science_ sehr geeigneten _R Packages_. Funktionen aus dem `tidyverse` ermöglichen und vereinfachen viele Schritte der Datenverarbeitung. Im Folgenden werden die wichtigsten und häufigst verwendeten Funktionen beschrieben. Das `tidyverse` können Sie direkt in _R_ herunterladen:
+Für das Bearbeiten der Daten verwenden eignen sich Funktionen aus dem _Package_ {tidyverse}, eine Sammlung von verschiedenen, für _data science_ sehr geeigneten _R Packages_. Funktionen aus dem {tidyverse} ermöglichen und vereinfachen viele Schritte der Datenverarbeitung. Im Folgenden werden die wichtigsten und häufigst verwendeten Funktionen beschrieben. Das {tidyverse} können Sie direkt in _R_ herunterladen:
 
-<aside>Mehr Informationen zum `tidyverse`finden Sie [hier](https://r4ds.had.co.nz/).</aside>
+<aside>Mehr Informationen zum {tidyverse} finden Sie [hier](https://r4ds.had.co.nz/).</aside>
 
 ```{r}
 #| eval: FALSE
@@ -141,7 +131,8 @@ In _R_ können Sie die _Pipe_ verwenden um mehrere Datenverarbeitungsschritte an
 d_stroop <- read.csv("data/stroop_example.csv", sep = ",") |>
     glimpse()
 ```
-Die _Base R Pipe `|>` und die _`magritter` Pipe `%>%`_ unterscheiden sich in Details, in unseren weiteren Schritten spielt es jedoch keine Rolle, welche Pipe Sie verwenden.
+
+Die _Base R Pipe `|>` und die _`magritter` Pipe `%>%`_ unterscheiden sich in Details, in diesem Kapitel spielt es jedoch keine Rolle, welche Pipe Sie verwenden.
 
 :::callout-tip
 ## Tipp
@@ -150,11 +141,11 @@ Achtung: Wenn wir zu Beginn ein `<-` oder `=` verwenden, wird alles was nach der
 
 ```{r}
 #| eval: FALSE
-d_stroop <- read.csv("data/stroop_example1.csv", sep = ",") |>
+d_stroop <- read.csv("data/stroop_example.csv", sep = ",") |>
     head()
 ```
 
-...eingegeben, besteht der Datensatz `d_stroop` dann nur noch aus 6 Zeilen. 
+...eingegeben, besteht der Datensatz `d_stroop` dann nur noch aus 6 Zeilen, weil die Funktion `head()` den Datensatz auf die ersten 6 Zeilen kürzt.
 
 Wird die Pipe ohne `<-` oder `=` verwendet, bleibt der Datensatz unverändert:
 
@@ -458,7 +449,7 @@ Speichern Sie einen neuen Datensatz mit den vorverarbeiteten Daten.
 :::callout-caution
 ## Hands-on: Data wrangling workflow
 
-Erstellen Sie nun ein Projekt für das Random-Dot Experiment und führen Sie die gelernten _data wrangling_ Schritte mit dem Datensatz [randomdot_example.csv](data/randomdot_example.csv) selbstständig durch.
+Erstellen Sie nun ein Projekt für das Random-Dot Experiment und führen Sie die gelernten _data wrangling_ Schritte selbstständig durch.
 
 :::
 

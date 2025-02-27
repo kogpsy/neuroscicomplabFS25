@@ -1,0 +1,59 @@
+# Übung 1 {.unnumbered}
+
+
+## Auftrag
+
+Führen Sie selbst und mit 2 weiteren Personen das Stroop und das Random Dot Experiment durch. Laden Sie anschliessend die 6 Datensätze auf Ilias hoch. Die beiden Experimente dauern zusammen ca. 30 Minuten (
+abhängig von den Versuchspersonen).
+
+__Wichtig:__ Die erhobenen Daten werden wir dann in den kommenden Sitzungen verwenden, achten Sie also auf gute Datenqualität.
+
+## Vorgehen
+
+- __Laden Sie die 2 Experimente herunter und testen Sie, ob Sie einwandfrei laufen.__ Die Experimente befinden sich auf Github. Sie können sie unter den untenstehenden Links downloaden. Klicken Sie dafür auf den ZIP-Ordner, und dann auf `View Raw` oder auf das Icon mit `...` und dort auf `Download`. Sie müssen das File dann evtl. entzippen, bevor Sie das Experiment starten können. Bei Problemen finden Sie unten einen Abschnitt [Troubleshooting](uebung_1_experiment.html#trouble-shooting). Wenn das nichts hilft, können Sie sich bei der nächsten Veranstaltung an uns wenden.
+    
+    - [Stroop Experiment](https://github.com/kogpsy/stroop-experiment)
+    
+    - [Random Dot Experiment](https://github.com/kogpsy/random-dot-experiment)
+    
+- __Führen Sie selber die beiden Experimente durch.__
+    
+    - Stellen Sie sicher, dass hier ein vollständiger Datensatz abgespeichert wird. Testen Sie erst dann zusätzliche Personen.
+
+- __Lassen Sie 2 weitere Personen die beiden Experimente ausführen (jede Person soll beide Experimente ausführen).__
+
+    - Die Personen müssen zwischen 18 und 60 Jahren alt sein. 
+    
+    - Die Personen sollten eine normale oder korrigiert-zu-normale (Brille/Kontaktlinsen) Sehstärke haben.   
+    
+    - Keine Mitstudierenden aus dem Computerlab testen.
+    
+    - Achten Sie darauf, dass die Personen die Aufgaben konzentriert und ohne Ablenkung lösen können.
+ 
+- __Laden Sie die 6 Datensätze auf ILIAS hoch.__
+    
+    - Zippen Sie bitte die 6 `.csv`-Datensätze vor dem Hochladen zu einem (!) Ordner.
+    
+    - Laden Sie den ZIP-Ordner auf Ilias unter `Übung 1` hoch.
+
+## Abgabetermin
+
+__14. März 2024 23:55__
+
+
+## Trouble shooting
+
+Bitte die Fehlermeldung im Fenster genau durchlesen. Dort finden Sie Hinweise darauf, was schief gelaufen ist.
+
+
+__Das Experiment startet nicht.__
+
+- Unter `Einstellungen` (Radsymbol) den Reiter `Basic` auswählen. Bei `Use PsychoPy version` die neuste PsychoPy Version auswählen.
+
+
+__Das Experiment startet zwar, der Bildschirm ist aber dann einfach für eine kurze Zeit grau und das Fenster schliesst sich wieder.__
+
+- Zugriffsrechte gegeben? (Bei Windows: Als Administrator starten, bei MacOS: [Zugriffsrechte erteilen](https://support.apple.com/en-gb/guide/mac-help/mchl07817563/12.0/mac/12.0))
+
+- Unter `Einstellungen` (Radsymbol) den Reiter `Input` auswählen. `Keyboard Backend` auf `PsychToolbox` statt `ioHub` setzen.
+

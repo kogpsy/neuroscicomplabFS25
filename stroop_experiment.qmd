@@ -1,0 +1,90 @@
+# Stroop Paradigma
+
+description: Programmieren eines klassischen neuropsychologischen Tests mit PsychoPy.
+
+
+# Stroop Task
+
+Der Stroop Task wurde 1935 zum ersten Mal beschrieben (Stroop, 1935) und ist einer der meist zitierten und verwendeten neuropsychologischen Aufgaben (MacLeod, 1991). In der Neuropsychologie wird der _Stroop Color and Word Test (SCWT)_ verwendet, um die Fähigkeit zur Inhibition kognitiver Interferenz zu messen, welche entsteht wenn zwei Stimuluseigenschaften gleichzeitig verarbeitet werden sich aber widersprechen (Scarpina & Tagini, 2017). Teilweise misst der Task auch andere kognitive Funktionen, wie visuelle Suche oder Arbeitsgedächtnis, weshalb der Vergleich von Bedingungen relevant ist (Periáñez et al., 2021).
+
+Während dem Stroop Task wird ein Text mit Farbwörtern präsentiert. Im *kongruenten* Durchgang entsprechen die Farben des Textes dem Farbwort (das Wort "rot" wird in rot präsentiert), im *inkongruenten* Durchgang unterscheiden sich die Farben des Textes vom Farbwort (das Wort "rot" wird in gelber Farbe präsentiert). Die Person muss angeben in welcher Farbe das Wort abgedruckt ist. In der kongruenten Bedingung fällt dies leichter, weil das gelesene Wort auch der Farbe entspricht. In der inkongruenten Bedingung verlangsamt sich die Geschwindigkeit durch die entstehende Interferenz von Wort und Farbe, da das Wort automatisch gelesen wird. Oft wird auch noch eine *neutrale* Bedingung verwendet, wo nur die Farbe oder das Wort präsentiert werden.
+
+![Daten Stroop-Task (Stroop, 1935)](img/stroop_original.JPG)
+
+<aside>[Hier](http://psychclassics.yorku.ca/Stroop/) finden Sie eine Online-Version des Originalpapers. Interessierte finden das Review von MacLeod (1991) auf Ilias.</aside>
+
+
+::: callout-caution
+## Hands-on: Stroop Task ausprobieren
+
+[Hier](https://www.psytoolkit.org/experiment-library/stroop.html) finden Sie eine englische Online-Version eines Stroop Tasks.
+
+Testen Sie die Demo und diskutieren Sie dann in kleinen Gruppen folgende Fragen:
+
+-   Für welche neurowissenschaftlichen Forschungsfragen eignet sich dieser Task? Mit welchen weiteren Methoden (fMRI, EEG, Hirnstimulation, etc.) liesse er sich kombinieren und was könnte man dabei lernen? Welche Patientengruppen zeigen auffällige Antworten in diesem Task?
+
+-   Welche "Elemente" des Experiments konnten Sie identifizieren?
+
+-   Welche Stimuluseigenschaften sind relevant für das Experiment? Was macht die Aufgabe einfach? Was macht sie schwieriger?
+
+- Welche Antwortmöglichkeiten haben die Versuchspersonen?
+
+-   Welche Bedingungen würden Sie vergleichen? 
+
+- Welche Stimuluseigenschaften sind wichtig, damit Sie die Resultate nicht verfälschen oder auf was muss geachtet werden bei der Stimulusauswahl?
+
+-   Was denken Sie, misst der Task was er soll? Wie werden die Verhaltensdaten Ihrer Schätzung nach aussehen?
+
+*\[\~10 Minuten\]*
+:::
+
+## Kurzbeschrieb Kursexperiment
+
+In diesem Experiment lösen die Personen zwei Bedingungen des Stroop Task, einmal geben sie die Farben der Wörter an in einer __kongruenten Bedingung__ (Wortinhalt und Wortfarbe) stimmen überein. Einmal lösen sie die Aufgabe in einer __inkongruenten Bedingung__ (Wortinhalt und Wortfarbe stimmen _nicht_ überein).
+
+Die __kongruente__ und __inkongruente__ Bedingung kommen im selben Block vor. Die Instruktion lautet für beide Bedingungen gleich, da immer die Wortfarbe angegeben werden muss. Drei Farben werden verwendet: rot, blau und gelb.
+
+Das [Stroop Kursexperiment](https://github.com/kogpsy/stroop-experiment) ist folgendermassen aufgebaut:
+
+![](img/exp_stroop_flowchart.JPG)
+
+::: callout-caution
+
+## Hands-on: Stroop Kursexperiment
+
+Laden Sie das Experiment herunter und testen Sie, ob es auf Ihrem Laptop läuft.
+[Hier](https://kogpsy.github.io/neuroscicomplabFS24/pages/chapters/uebung_1_experiment.html) finden Sie die Anweisungen dazu.
+
+1. Testen Sie, ob das Experiment startet und ob die Übungstrials funktionieren. Kontrollieren Sie, ob es ein Datenfile abgespeichert hat und schauen Sie, ob dieses Datenfile [alles Relevante](https://kogpsy.github.io/neuroscicomplabFS24/pages/chapters/psychopy_experiments.html#test-pilotierung) enthält. Wenn alles ok ist, ist das Experiment bereit für Übung 1. Führen Sie die Testungen ausserhalb des Computerlabs durch.
+
+
+2. Beantworten Sie folgende Fragen zum Experiment:
+
+- Was wurde im Experiment variiert? Wie viele unterschiedliche Trials gibt es?
+
+- Welche Bedingungen gibt es?
+
+- Wieviele Trials werden pro Bedingung durchgeführt?
+
+- Wie lange wird der Wort-Stimulus angezeigt? Wann ist er fertig (zeit oder tasten-definiert?)?
+
+- Wie denken Sie, wird sich das Verhalten (Reaktionszeit, Richtigkeit) zwischen den Bedingungen unterscheiden?
+
+:::
+
+
+## Credits
+
+Dieses Experiment wurde von Rebekka Borer im Rahmen des _Neurocomplab-Kurs 2014_ programmiert.
+
+## Referenzen
+
+MacLeod C. M. (1991). Half a century of research on the Stroop effect: an integrative review. Psychological Bulletin. 109(2), 163--203. [https://doi.org/10.1037/0033-2909.109.2.163](https://doi.org/10.1037/0033-2909.109.2.163)
+
+Periáñez, J. A., Lubrini, G., García-Gutiérrez, A., & Ríos-Lago, M. (2021). Construct validity of the stroop color-word test: influence of speed of visual search, verbal fluency, working memory, cognitive flexibility, and conflict monitoring. Archives of Clinical Neuropsychology, 36(1), 99-111. [https://doi.org/10.1093/arclin/acaa034](https://doi.org/10.1093/arclin/acaa034)
+
+Scarpina, F., & Tagini, S. (2017). The stroop color and word test. Frontiers in psychology, 8, 557. [https://doi.org/10.3389/fpsyg.2017.00557](https://doi.org/10.3389/fpsyg.2017.00557)
+
+Stroop, J. R. (1935). Studies of interference in serial verbal reactions. Journal of Experimental Psychology, 18(6), 643--662. [https://doi.org/10.1037/](https://doi.org/10.1037/)
+
+

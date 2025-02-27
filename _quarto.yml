@@ -7,7 +7,6 @@ book:
   subtitle: Frühlingssemester 2025, Universität Bern
  # author: Gerda Wyssen & Enea Weber
  # date: Februar 15, 2025
-  page-footer: Copyright 2025, Gerda Wyssen & Enea Weber
   edition: 1
   reader-mode: false
   cover-image: imgs/logo.png
@@ -16,6 +15,13 @@ book:
   page-navigation: true
   search: true
   license: CC BY SA
+  page-footer:
+    center:
+      - text: Copyright 2025, Gerda Wyssen & Enea Weber
+        href: license.qmd
+    right:
+      - icon: github
+        href: https://github.com/kogpsy/neuroscicomplabFS25
 
   # Book content:
   chapters:
@@ -26,12 +32,17 @@ book:
     - forschungsprozess.qmd # forschungsprozess
     - voraussetzungen.qmd
   - part: Experimentieren
-    #chapters:
-    #
+    chapters:
+    - experiments.qmd
+    - psychopy_experiments.qmd
+    - stroop_experiment.qmd
+    - random_dot_experiment.qmd
+    - uebung_1.qmd
 
   - part: Data wrangling
-    #chapters:
-    #- datawrangling.qmd
+    chapters:
+    - datawrangling.qmd
+    - uebung_2.qmd
 
   - part: Datenvisualisieren
     #chapters:
@@ -45,10 +56,16 @@ book:
     #chapters:
     #-
 
+  - part: Übungen
+    chapters:
+    - uebung_1.qmd
+    - uebung_2.qmd
+
   - part: Anhang
     chapters:
     - webrconsole.qmd
     - license.qmd
+
 
 number-depth: 3
 format:
@@ -79,3 +96,5 @@ execute:
   cache: false
   freeze: auto # re-render only when source changes
   execute-dir: project
+
+bibliography: bibliography.bib

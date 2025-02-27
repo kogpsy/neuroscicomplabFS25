@@ -1,0 +1,79 @@
+# Random Dot Paradigma
+Programmieren eines klassischen Perceptual Decision-Making Tasks mit PsychoPy.
+
+
+# Random Dot Experiment
+
+Jeden Tag treffen wir Tausende von kleinen Entscheidungen, meistens unter gewissem Zeitdruck. Viele davon sind trivial (z. B. welches Paar Socken man anzieht) und automatisch (z. B. ob man die Espresso- oder Lungo-Taste auf der Kaffeemaschine drückt). Die meisten Entscheidungen im wirklichen Leben setzen sich eigentlich aus zwei Entscheidungen zusammen: Einerseits der Entscheidung, mit dem Abwägen aufzuhören und aufgrund des aktuellen Wissenstandes zu handeln. Andererseits die Wahl oder Entscheidungshandlung selbst. Dieser sequentielle Charakter der Entscheidungsfindung ist eine grundlegende Eigenschaft des menschlichen Nervensystems und spiegelt seine Unfähigkeit wieder, Informationen sofort zu verarbeiten.
+
+*Perzeptuelle Entscheidungen* sind Entscheidungen, welche auf der Wahrnehmung, Einordnung und Integration von Sinnesreizen beruhen. Um beispielsweise eine Strasse sicher überqueren zu können, müssen wir mittels den Sinnesinformationen der Augen und Ohren sowie der Verarbeitung dieser Reize einschätzen mit welcher Geschwindigkeit ein herannahendes Auto unterwegs ist und ob wir lieber abwarten bis es vorbeigefahren ist. Innerhalb der Neurowissenschaften wird *perceptual decision making* untersucht, um die neuronalen Schaltkreise welche Wahrnehmungssignale kodieren, speichern und analysieren zu verstehen und mit beobachtbarem Verhalten in Verbindung zu bringen. Von Interesse ist zum Beispiel wie die Entscheidung ausfällt, wenn die sensorischen Daten undeutlich oder sogar widersprüchlich sind. Besonders spannend ist auch wie Vorwissen (*prior knowledge*) auf das Entscheidungsverhalten einwirkt.
+
+<aside>**Perceptual decision making** is the process by which sensory information is used to guide behavior toward the external world. This involves gathering information through the senses, evaluating and integrating it according to the current goals and internal state of the subject, and using it to produce motor responses. In contrast to choice behavior and decision making in general (...) perceptual decision making emphasizes the role of sensory information in directing behavior (...) within neuroscience, the goal is to reveal the computational mechanisms whereby neural circuits encode, store, and analyze perceptual signals; combine them with other behaviorally relevant information; and use them to resolve conflicts between competing motor plans. (@jaeger_perceptual_2014)</aside>
+
+Obwohl das Treffen von Entscheidungen für uns etwas sehr Vertrautes ist, ist das Wissen darum, wie das Gehirn diese Entscheidungsaufgaben löst noch sehr begrenzt. Eine einzelne Entscheidung kann schon sehr komplex sein. Um die Dynamik der Entscheidungsfindung zu verstehen, konzentrieren sich die meisten Studien deshalb auf einfache, wiederholbare Wahlprobleme mit nur zwei (binären) Antwortmöglichkeiten. Ein typisches Paradigma in neurowissenschaftlichen Studien ist das _random-dot motion paradigm_. Hierbei muss eine Person entscheiden in welche Richtung sich eine Punktewolke bewegt.
+
+<aside>Das Experiment *Bias in the brain* von @mulder_bias_2012 ist eine Reaktionszeit (RT) Version eines *random-dot motion direction discrimination task*. Sie können [hier](https://www.jneurosci.org/content/32/7/2335) nachlesen, wie der Task verwendet wurde um den Einfluss von Vorwissen auf neuronale Aktivität im Gehirn mittels fMRI zu untersuchen.</aside>
+
+
+:::callout-caution
+## Hands-on: Random Dot Experiment
+
+Lesen Sie zuerst [hier](https://neuronaldynamics.epfl.ch/online/Ch16.S1.html) eine kurze Einführung in das Random Dot Paradigma.
+
+Besprechen Sie dann in kleinen Gruppen folgende Fragen:
+
+-   Für welche neurowissenschaftlichen Forschungsfragen eignet sich dieser Task? Mit welchen weiteren Methoden (fMRI, EEG, Hirnstimulation, etc.) liesse er sich kombinieren und was könnte man dabei lernen? Welche Patientengruppen zeigen auffällige Antworten in diesem Task?
+
+-   Welche "Elemente" des Experiments konnten Sie identifizieren?
+
+-   Welche Stimuluseigenschaften sind relevant für das Experiment? Was macht die Aufgabe einfach? Was macht sie schwieriger?
+
+- Welche Antwortmöglichkeiten haben die Versuchspersonen?
+
+-   Welche Bedingungen würden Sie vergleichen? 
+
+- Welche Stimuluseigenschaften sind wichtig, damit Sie die Resultate nicht verfälschen oder auf was muss geachtet werden bei der Stimulusauswahl?
+
+-   Was denken Sie, misst der Task was er soll? Wie werden die Verhaltensdaten Ihrer Schätzung nach aussehen?
+
+Tipp: Schauen Sie sich diese Stimulusoption [hier](https://www.psychopy.org/builder/components/dots.html#dots) an.
+
+*\[\~10 Minuten\]*
+:::
+
+## Kurzbeschrieb Kursexperiment
+
+In unserem Experiment lösen die Versuchspersonen einen Random Dot Task zweimal (in zwei Blöcken). In jedem Block erhalten sie eine andere Instruktion, die Aufgabe bleibt jedoch dieselbe: Sie müssen herausfinden in welche Richtung sich die Punktewolke bewegt. In einem Block werden sie instruiert die Aufgabe __möglichst schnell__ zu lösen. Im anderen Block werden sie instruiert die Aufgabe __möglichst richtig__ zu lösen. Wir werden dann analysieren, wie sich das Entscheidungsverhalten von Menschen verändert, je nachdem wie sie instruiert wurden.
+
+Das [Random Dot Kursexperiment](random-dot-experiment) ist folgendermassen aufgebaut:
+
+![](img/exp_rd_flowchart.JPG)
+
+
+:::callout-caution
+## Hands-on: Random Dot Kursexperiment
+
+Laden Sie das Experiment herunter und testen Sie, ob es auf Ihrem Laptop läuft.
+[Hier](uebung_1_experiment.html) finden Sie die Anweisungen dazu.
+
+1. Testen Sie, ob das Experiment startet und ob die Übungstrials funktionieren. Kontrollieren Sie, ob es ein Datenfile abgespeichert hat und schauen Sie, ob dieses Datenfile [alles Relevante](psychopy_experiments.html#test-pilotierung) enthält. Wenn alles ok ist, ist das Experiment bereit für Übung 1. Führen Sie die Testungen ausserhalb des Computerlabs durch.
+
+
+2. Beantworten Sie folgende Fragen zum Experiment:
+
+- Was wurde im Experiment variiert? Wie viele unterschiedliche Trials gibt es?
+
+- Welche Bedingungen gibt es?
+
+- Wieviele Trials werden pro Bedingung durchgeführt?
+
+- Wie lange wird der Dot-Stimulus angezeigt? Wann ist er fertig (zeit oder tasten-definiert?)?
+
+- Wie denken Sie, wird sich das Verhalten (Reaktionszeit, Richtigkeit) zwischen den Bedingungen unterscheiden?
+
+:::
+
+## Credits
+
+Dieses Experiment wurde von Rebekka Borer im Rahmen des _Neurocomplab-Kurs 2014_ programmiert.
+

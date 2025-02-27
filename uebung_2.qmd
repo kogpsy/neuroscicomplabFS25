@@ -1,0 +1,22 @@
+# Übung 2 {.unnumbered}
+
+
+## Auftrag
+
+Arbeiten Sie die Datenvorverarbeitungsschritte im Kapitel [Daten importieren und vorverarbeiten](datawrangling.qmd) durch.
+
+## Abgabetermin
+
+Bei dieser Übung muss nichts abgegeben werden. 
+
+Beim Termin vom __14. März 2024__ werden wir jedoch stark auf dieses Vorwissen aufbauen.
+
+
+## Trouble shooting
+
+Sie dürfen gerne in den Pausen der vorherigen Termine auf uns zukommen, falls etwas nicht klappt oder Sie eine Frage haben.
+
+Falls Sie zusätzliche Übungsaufgaben wünschen, finden Sie hier zwei weitere Walk-throughs:
+
+- https://psylu.github.io/statistik2-fs25/datenverarbeitung/transform.html
+- https://psylu.github.io/statistik2-fs25/uebungen/uebung-02.html

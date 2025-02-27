@@ -64,7 +64,7 @@
     "href": "forschungsprozess.html",
     "title": "1  Complab im Forschungsprozess",
     "section": "",
-    "text": "Der Begriff Computerlab wird für unsere Veranstaltung genutzt, um sich auf die vielfältige Arbeit, die Neurowissenschaftler:innen an Computern oder anderen elektronischen Geräten durchführen, um neurowissenschaftliche Forschungsfragen zu beantworten. Jede Forschungsarbeit hat mehrere Phasen, welche ganz unterschiedliche Anforderungen stellen und eigenen Skills benötigen.\nIn jeder Phase des Forschungsprozesses werden verschiedenste\n\nelektronische Geräte (Computer, Eyetracker, EEG-Geräte, MRTs, etc.)\nProgramme (PsychoPy, E-Prime, etc.)\nProgrammiersprachen (R, MATLAB, Python, Java, C++, Ruby, Julia, etc.)\nspeicherbare Ergebnisse: Skripte, Datensätze, Stimuli, Grafiken…\netc.\n\nverwendet.\n\n\n\nPhasen des Forschungsprozesses\n\n\nIn diesem Kurs werden wir einige Stationen dieses Forschungsprozesses gemeinsam bearbeiten, um Einblick in das neurowissenschaftliche Arbeiten zu erhalten.\n\n\n\n\n\n\nHands-on: Complab im Forschungsprozess\n\n\n\n\nWählen Sie in 2-4er Gruppen eines der untenstehenden Paper (Open Access) aus:\n\n\nQuon et al. (2021): Musical components important for the Mozart K448 effect in epilepsy\nRichter et al. (2021): Listening to speech with a guinea pig-to-human brain-to-brain interface\nZhang et al. (2021): Longitudinal effects of meditation on brain resting-state functional connectivity\n\n\nSchreiben Sie zuerst in einem Satz oben auf Ihr Blatt auf, was die Fragestellung des Papers ist.\nGehen Sie das Paper durch und schreiben Sie heraus, wo überall im “Computerlab” gearbeitet wurde, bei dieser Forschungsarbeit. (Sie können auch Vermutungen anstellen.)\n\nz.B. Datenanalyse -&gt; R/RStudio\n[15 Minuten]",
+    "text": "Der Begriff Computerlab wird für unsere Veranstaltung genutzt, um sich auf die vielfältige Arbeit, die Neurowissenschaftler:innen an Computern oder anderen elektronischen Geräten durchführen, um neurowissenschaftliche Forschungsfragen zu beantworten. Jede Forschungsarbeit hat mehrere Phasen, welche ganz unterschiedliche Anforderungen stellen und eigenen Skills benötigen.\nIn jeder Phase des Forschungsprozesses werden verschiedenste\n\nelektronische Geräte (Computer, Eyetracker, EEG-Geräte, MRTs, etc.)\nProgramme (PsychoPy, E-Prime, etc.)\nProgrammiersprachen (R, MATLAB, Python, Java, C++, Ruby, Julia, etc.)\nspeicherbare Ergebnisse: Skripte, Datensätze, Stimuli, Grafiken…\netc.\n\nverwendet.\n\n\n\nPhasen des Forschungsprozesses\n\n\nIn diesem Kurs werden wir einige Stationen dieses Forschungsprozesses gemeinsam bearbeiten, um Einblick in das neurowissenschaftliche Arbeiten zu erhalten.\n\n\n\n\n\n\nHands-on: Complab im Forschungsprozess\n\n\n\n\nWählen Sie in 2-4er Gruppen eines der untenstehenden Paper (Open Access) aus:\n\n\nQuon et al. (2021)\nQuon et al. (2021): Musical components important for the Mozart K448 effect in epilepsy\nRichter et al. (2021): Listening to speech with a guinea pig-to-human brain-to-brain interface\nZhang et al. (2021): Longitudinal effects of meditation on brain resting-state functional connectivity\n\n\nSchreiben Sie zuerst in einem Satz oben auf Ihr Blatt auf, was die Fragestellung des Papers ist.\nGehen Sie das Paper durch und schreiben Sie heraus, wo überall im “Computerlab” gearbeitet wurde, bei dieser Forschungsarbeit. (Sie können auch Vermutungen anstellen.)\n\nz.B. Datenanalyse -&gt; R/RStudio\n[15 Minuten]\n\n\n\n\n\n\nQuon, Robert J., Michael A. Casey, Edward J. Camp, Stephen Meisenhelter, Sarah A. Steimel, Yinchen Song, Markus E. Testorf, et al. 2021. “Musical Components Important for the Mozart K448 Effect in Epilepsy.” Scientific Reports 11 (1): 16490. https://doi.org/10.1038/s41598-021-95922-7.",
     "crumbs": [
       "Neurowissenschaftliches Forschen",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Complab im Forschungsprozess</span>"
@@ -101,6 +101,512 @@
     "crumbs": [
       "Neurowissenschaftliches Forschen",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Voraussetzungen der Forschung</span>"
+    ]
+  },
+  {
+    "objectID": "experiments.html",
+    "href": "experiments.html",
+    "title": "3  Neurowissenschaftliche Experimente",
+    "section": "",
+    "text": "3.1 Forschungsbereiche der Neurowissenschaften\nIn der Neurowissenschaft wird mit naturwissenschaftlichem Schwerpunkt der Aufbau und die Funktionen des Nervensystems untersucht. Neurowissenschaften sind ein sehr weites Forschungsbereich in dem unterschiedlichste und zahlreiche Themen bearbeitet werden. Die Forschungsbereiche reichen von Affektiven Neurowissenschaften, die den Zusammenhang von Gehirn und Emotionen untersuchen, über Neurochemistry, die sich u.a. mit Neurotransmittern und psychopharmakologischen Themen befasst, bis hin zu Neuroengineering, welches neuronale Systeme zu verstehen, ersetzen, reparieren oder verbessern versucht.1\nSo vielfältig, wie die Forschungsbereiche sind auch die experimentellen Ansätze und Methoden. Neurowissenschaftliche Forschung wird oft an Organismen und Tieren durchgeführt (z.B. Einzelzellableitungen in Affen). In diesem Kurs fokussieren wir uns auf neurowissenschaftliche Forschung am Menschen im Bereich der kognitiven Neurowissenschaft und Neuropsychologie. Das bedeutet, wir besprechen die Datenerhebung und -verarbeitung in verhaltenswissenschaftlichen Experimenten (teilweise auch im Zusammenhang mit bildgebenden Verfahren), welche Gehirnprozesse von Menschen untersuchen.\nKognitive Neurowissenschaften sind eng verknüpft mit Forschungsbereichen, wie beispielsweise der Psychologie, der Linguistik, künstlicher Intelligenz, Philosophie und Anthropologie:",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Neurowissenschaftliche Experimente</span>"
+    ]
+  },
+  {
+    "objectID": "experiments.html#forschungsbereiche-der-neurowissenschaften",
+    "href": "experiments.html#forschungsbereiche-der-neurowissenschaften",
+    "title": "3  Neurowissenschaftliche Experimente",
+    "section": "",
+    "text": "Das Nebenfach Neurowissenschaften an der Universität Bern fokussiert auf Aspekte der Neurowissenschaft, die für das Gebiet der Psychologie relevant sind, wie z. B. die neuronalen Grundlagen von Kognition, Emotion oder Sozialverhalten.\n\n\n\n\n\nGrafik von O. Guest (2024) modifiziert nach dem Paper von Van Rooij et al. (2023)\n\n\n\nWer sich für die Bedeutung von AI im Zusammenhang mit den Neurowissenschaften interessiert findet im Paper von Van Rooij et al. (2023) eine kritische Auseinandersetzung mit Chancen und Herausforderungen dieser Verknüpfung.",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Neurowissenschaftliche Experimente</span>"
+    ]
+  },
+  {
+    "objectID": "experiments.html#besondere-herausforderungen-von-experimenten-in-den-verhaltenswissenschaften-kognitiven-neurowissenschaften",
+    "href": "experiments.html#besondere-herausforderungen-von-experimenten-in-den-verhaltenswissenschaften-kognitiven-neurowissenschaften",
+    "title": "3  Neurowissenschaftliche Experimente",
+    "section": "3.2 Besondere Herausforderungen von Experimenten in den Verhaltenswissenschaften / kognitiven Neurowissenschaften",
+    "text": "3.2 Besondere Herausforderungen von Experimenten in den Verhaltenswissenschaften / kognitiven Neurowissenschaften\nDas Erstellen und Durchführen neurowissenschaftlicher Experimente bringt viele Herausforderungen mit sich.\n\n3.2.1 Passung: Experimentalparadigmen passend zur Fragestellung\nNeurowissenschaftliche Experimente müssen exakt auf die Fragestellung zugeschnitten werden um aussagekräftige Daten zu liefern. Oft muss ein neues Paradigma erstellt werden, d.h. Forschende können kein schon bestehendes Experiment nutzen, sondern untersuchen einen Aspekt eines neuronalen Prozesses mit einer neuen Methode, einer neuen Fragestellung oder einem neuen Ansatz. Deshalb programmieren die meisten Forschenden ihre Experimentalparadigmen selbst. So können beispielsweise Instruktionen oder verwendete Stimuli, deren Grösse und Anzeigedauer präzise definiert werden. Dies erfordert breite Kenntnisse im Programmieren, der zu verwendenden Technik, wie auch der Gehirnprozesse.\n\n\n3.2.2 Präzision: Hohe räumliche und zeitliche Auflösung\nEine grosse Schwierigkeit neurowissenschaftlicher Experimente ist oft, dass eine präzise Kontrolle von räumlichen und zeitliche Eigenschaften der Experimente nötig ist um sinnvolle Daten zu erhalten. Visuelle Stimuli müssen z.B. sehr genau und immer gleich präsentiert werden können. Die zeitliche Auflösung ist gerade bei EEG Experimenten von enormer Bedeutung, da EEG eine sehr hohe zeitliche Auflösung hat. Räumliche Auflösung kann bedeuten, dass sehr präzise visuelle Darbietung möglich sein muss, sowie dass die Versuchsperson sich im Setup nicht bewegen darf, weil dies die Distanzen verschiebt (z.B. im MRT, oder der Abstand zum Bildschirm beim Eyetracking).\n\n\n3.2.3 Synchronisation: Mehrere Datenspuren\nNeurowissenschaftliche Experimente beinhalten oft die Datenerhebung auf mehreren Ebenen, z.B. wird gleichzeitig Hirnaktivität und das Drücken von Antwortbuttons aufgenommen. Das bedeutet, dass Bildschirm, MRT/EEG/Eyetracking/etc., sowie die Antwort zeitlich koregistriert/synchronisiert werden müssen, um die Daten im Nachhinein auswerten zu können. Technisch ist das oft mit grossem Aufwand verbunden und benötigt einiges an Pilotierung.\n\n\n3.2.4 Komplexität: Zu untersuchender Prozess und Störprozesse\nOft soll ein ganz spezifischer Prozess untersucht werden, aber das ist eine sehr komplexe Aufgabe, weil im menschlichen Gehirn gleichzeitig sehr viele verschiedene Prozesse ablaufen, kein Hirnareal hat nur eine einzige Aufgabe und aus ethischen Gründen ist das “Ausschalten” von Störfaktoren nicht immer möglich. Was kann man tun?\nEin Weg den Prozess sichtbar zu machen ist es zum Beispiel einen Kontrast zu rechnen, dies wird beispielsweise bei EEG und fMRI Experimenten, aber auch bei Reaktionszeitexperimenten sehr oft gemacht. Hierfür erhebt man Daten in einer Test-Bedingung in der der Prozess abgerufen wird und eine Kontroll-Bedingung, welche als “Baseline” dient. Die Baseline enthält alle “nicht interessierenden” Prozesse, die in der Test-Bedingung vorhanden sind. Durch das Vergleichen der Test- und Kontrollbedingung erhält man einen Kontrast: Also das was den interessierenden Prozess ausmacht!\nSie müssen sich beim Erstellen eines Experiments also nicht nur Gedanken dazu machen, was Sie interessiert - sondern genau so auch darüber was Sie nicht interessiert. In der Theorie tönt das einfach, in der Praxis ist das oft recht kniffelig.\n\n\n3.2.5 Ressourcenintensive Datenerhebung: Teuer und anspruchsvoll\nBildgebende Verfahren, benötigen zum Teil extrem teure Geräte, wie z.B. fMRI, und bedeuten oft hohen Aufwand, z.B. das Kleben der Elektroden beim EEG. Bei der Untersuchung von ganz bestimmten Patientengruppen hat man zudem oft nicht sehr viele Personen zur Verfügung die den Einschlusskriterien entsprechen. Oft müssen Personen auch aus dem Experiment ausgeschlossen werden, weil sie z.B. Auffälligkeiten im MRI zeigen, die nichts mit dem zu untersuchenden Prozess zu tun hat oder sie brechen während der Untersuchung ab. Gerade bei der Untersuchung klinischer Aspekte stellen sich oft Schwierigkeiten, wie beispielsweise fehlende Motivation oder Compliance von Patient:innen. Daher können oft keine sehr grossen Stichproben erhoben werden, was im Gegenzug besonders präzise Experimente erfordert.",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Neurowissenschaftliche Experimente</span>"
+    ]
+  },
+  {
+    "objectID": "experiments.html#wichtige-elemente-von-experimenten",
+    "href": "experiments.html#wichtige-elemente-von-experimenten",
+    "title": "3  Neurowissenschaftliche Experimente",
+    "section": "3.3 Wichtige Elemente von Experimenten",
+    "text": "3.3 Wichtige Elemente von Experimenten\nBeim Programmieren von Experimenten lohnt es sich, sich zuerst darüber im klaren zu sein, welche Bausteine das geplante Experiment hat. Im Folgenden werden einige typische Elemente eines Verhaltensexperiments beschrieben. Oft kommen hier natürlich noch Stimulations- oder Aufnahmemethoden hinzu.\n\n3.3.1 Begrüssung und Einverständniserklärung\nHier wird die Versuchsperson begrüsst, wird über das Experiment aufgeklärt und gibt (wenn nicht vorher auf Papier schon geschehen) ihre Einverständnis zur Teilnahme am Experiment. Dies wird je nach Ethikkommission und Ethikantrag unterschiedlich gehandhabt. Wichtige Informationen sind hierbei, dass die Versuchsperson weiss worauf sie sich einlässt (Ist zum Beispiel Hirnstimulation/fMRI/etc. geplant? Wie lange dauert das Experiment ungefähr? Was soll sie tun, wenn sie abbrechen möchte?). Die Schwierigkeit ist oft, genügend Information zu geben aber die Hypothese nicht zu verraten.\n\n\n3.3.2 Instruktion\nDie Instruktion wird oft schriftlich gegeben, um diese zwischen den Versuchspersonen konstant zu halten. Es ist teilweise herausfordernd, einen Task so genau zu erklären, dass er verständlich ist, aber die Erklärung auch kurz genug zu halten, dass die Instruktion auch gelesen wird. Oft werden Übungstrials verwendet um die Instruktion zu verdeutlichen.\n\n\n3.3.3 Stimuli\nUnter Stimuli werden die gezeigten Elemente verstanden, die den Task ausmachen. Es können Töne, Bilder, Wörter, etc. als Stimuli verwendet werden.\n\n\n\n\n\n\nHands-on: Stimuli\n\n\n\nWelche Stimuli aus neurowissenschaftlichen Experimenten kennen Sie?\nTauschen Sie sich mit Ihren Mitstudierenden aus und schreiben/zeichnen Sie ein paar Beispiele vorne an die Tafel.\n[~5 Minuten]\n\n\n\n\n3.3.4 Trial\nEin Trial beschreibt ein sich wiederholender Vorgang in dem der Stimulus gezeigt wird und z.B. von der Versuchsperson eine Antwort erwartet wird. Ein Trial wird oft sehr viele Male wiederholt. Die Stimuli können zwischen den Trials variieren oder gleich bleiben. Das Timing der Trials kann konstant sein (ein Stimulus wird bspw. immer gleich lang gezeigt) oder variiert werden (unterschiedliche Anzeigedauer).\nZwischen den Trials wird ein Inter-Trial-Interval (ITI) festgelegt. Dies wird z.B. bei fMRI Experimenten dann variiert, damit (je nach Repetition Time/TR) nicht immer in derselben Schicht aufgenommen wird bei Stimuluspräsentation.\nWährend einem Trial wird die Antwort / Response der Versuchsperson aufgenommen. Bei der Aufnahme von Reaktiosnzeiten muss festgelegt werden, wann der Trial oder die Stimuluspräsentation beginnt und mit welcher Handlung sie endet. Es kann bestimmt werden, welche Antworten zulässig sind (bspw. nur bestimmte Tasten) und was passiert wenn eine richtige oder falsche Antwort gegeben wird: Gibt es z.B. ein Feedback bei falschen Antworten?\n\n\n3.3.5 Run / Block\nEin Run/ein Block bezeichnet eine Einheit mit mehreren Trials. Oft werden Bedingungen z.B. zwischen den Runs randomisiert. Zwischen den Runs sind Pausen möglich, damit sich die Versuchsperson erholen kann. Oft wird vor dem Experimentstart ein “Übungsblock” durchgeführt, um sich sicher zu sein, dass die Versuchspersonen die Aufgabe und Instruktion verstanden haben.\n\n\n3.3.6 Debriefing und Verabschiedung\nIm Debriefing wird der Versuchsperson erklärt, um was es im Experiment gegangen ist, welche Hypothesen untersucht wurden und eine eventuelle Coverstory aufgedeckt. Oft werden Personen vor dem Debriefing nach der getesteten Hypothese gefragt, um zu schauen, ob sie diese erraten hatten. Das gibt Aufschluss darüber wie sehr das Experiment dadurch verzerrt sein könnte, dass die Versuchspersonen Bescheid wissen. Wichtig ist es auch den Versuchspersonen zum Schluss zu danken.",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Neurowissenschaftliche Experimente</span>"
+    ]
+  },
+  {
+    "objectID": "experiments.html#vorgehen-experiment-programmieren",
+    "href": "experiments.html#vorgehen-experiment-programmieren",
+    "title": "3  Neurowissenschaftliche Experimente",
+    "section": "3.4 Vorgehen Experiment programmieren",
+    "text": "3.4 Vorgehen Experiment programmieren\nWichtige Schritte beim Programmieren von Experimenten sind folgende (nicht unbedingt in dieser Reihenfolge, das kommt auf das Experiment an):\n\nTask auswählen\nStimuli auswählen und generieren\nTrial erstellen (Fixationskreuz? Stimulus? Antwortmöglichkeiten? Feedback? Masking?)\nTiming festlegen: Dauer Stimuluspräsentation? ITIs (Inter-Trial-Intervals)? Antwortfenster?\nDesign: Anzahl Bedingungen und Trials bestimmen (Power bedenken), within oder between Design?\nAblauf des Experiments festlegen: Gesamtdauer? Pausen nötig?\nInstruktion: klare Anweisungen, Coverstory\nEinbindung von allen technischen Geräten (z.B. EEG Recorder, MRT, Brainstimulation-Devices, Eyetracking) und Synchronisation\n\n\n3.4.1 Flowcharts\nFlowcharts, auf Deutsch Flussdiagramme, eignen sich um Prozesse zu beschreiben. Beim Programmieren kann man damit gut darstellen, was ein Programm machen soll.\n\nBei der Planung und dem Erstellen eines Experiments ist es ebenfalls hilfreich eine Flowchart zu erstellen. In einer Experiment-Flowchart sind die Elemente eines Experimentes in Boxen eingezeichnet und mit Pfeilen verbunden um sie zeitlich einzuordnen. Timing-Informationen können unter oder neben den Boxen festgehalten werden. Die Anzahl Repetitionen wird oft neben den Pfeilen eingefügt. Hilfreich ist auch zu kennzeichnen, wo welche Daten erhoben werden (button presses, EEG, etc.).\n\nWir werden in diesem Kurs immer wieder darauf eingehen, wie man ein Experiment möglichst gut planen kann um aussagekräftige Daten zu erhalten. Hier gibt es viele Möglichkeiten wie Pilotierung, Datensimulation und die adäquate Wahl der statistischen Verfahren in Bezug auf die Fragestellung.\n\nEine Flowchart eignet sich ebenfalls sehr gut, um in einem Paper/einer Arbeit darzustellen, wie der Ablauf des Experiments war.\n\n\n\n\n\n\nHands-on: Flowcharts\n\n\n\nSuchen Sie zusammen zu einem Thema Ihrer Wahl eine Flowchart.\n\nIdentifizieren Sie alle Elemente des Experiments, die Sie finden.\nGibt es Informationen zu den Stimuli?\nGibt es Informationen zum Timing?\nGibt es Informationen zur Datenerhebung?\nFehlt etwas? Wie würden Sie dies ergänzen?\n\n[~10 Minuten]\n\n\n\n\n\n\nShepherd, Gordon M. 1988. Neurobiology, 2nd Ed. Neurobiology, 2nd Ed. New York, NY, US: Oxford University Press.\n\n\nVan Rooij, Iris, Olivia Guest, Federico G Adolfi, Ronald De Haan, Antonina Kolokolova, and Patricia Rich. 2023. “Reclaiming AI as a Theoretical Tool for Cognitive Science.” Preprint. PsyArXiv. https://doi.org/10.31234/osf.io/4cbuv.",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Neurowissenschaftliche Experimente</span>"
+    ]
+  },
+  {
+    "objectID": "experiments.html#footnotes",
+    "href": "experiments.html#footnotes",
+    "title": "3  Neurowissenschaftliche Experimente",
+    "section": "",
+    "text": "Forschungsbereiche der Neurowissenschaften: ↩︎",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Neurowissenschaftliche Experimente</span>"
+    ]
+  },
+  {
+    "objectID": "psychopy_experiments.html",
+    "href": "psychopy_experiments.html",
+    "title": "4  Verhaltensexperimente mit PsychoPy",
+    "section": "",
+    "text": "5 PsychoPy Experiment: Step by Step",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Verhaltensexperimente mit PsychoPy</span>"
+    ]
+  },
+  {
+    "objectID": "psychopy_experiments.html#experiment-file-erstellen-und-abspeichern",
+    "href": "psychopy_experiments.html#experiment-file-erstellen-und-abspeichern",
+    "title": "4  Verhaltensexperimente mit PsychoPy",
+    "section": "6.1 1.1 Experiment-File erstellen und abspeichern",
+    "text": "6.1 1.1 Experiment-File erstellen und abspeichern\n\nÖffnen Sie PsychoPy und speichern Sie in einem dafür erstellten Ordner (z.B. psychopy_experiment) das Experiment-File ab (z.B. unter experiment_stroop-task).",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Verhaltensexperimente mit PsychoPy</span>"
+    ]
+  },
+  {
+    "objectID": "psychopy_experiments.html#builder-gui-und-coder",
+    "href": "psychopy_experiments.html#builder-gui-und-coder",
+    "title": "4  Verhaltensexperimente mit PsychoPy",
+    "section": "6.2 1.2 Builder (GUI) und Coder?",
+    "text": "6.2 1.2 Builder (GUI) und Coder?\nExperimente können in PsychoPy mit dem Builder (in einem GUI) erstellt werden, der Python Code wird so automatisch für Sie generiert. Sie können sich diesen Code auch anschauen und verändern. Leider können Sie sobald Sie den Code verändert haben, diese Änderungen nicht zurück in den Builder übertragen. Im Builder-Modus können Sie aber Codestücke einfügen um einzelne Teile des Experiments in Python (oder anderen Programmiersprachen) zu programmieren und dennoch im Builder weiterarbeiten zu können.\n\nFalls Sie planen ein Online-Experiment durchzuführen, eignet sich der Builder besonders, da die Experimente direkt online durchgeführt werden können.",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Verhaltensexperimente mit PsychoPy</span>"
+    ]
+  },
+  {
+    "objectID": "psychopy_experiments.html#stimuli",
+    "href": "psychopy_experiments.html#stimuli",
+    "title": "4  Verhaltensexperimente mit PsychoPy",
+    "section": "7.1 2.1 Stimuli",
+    "text": "7.1 2.1 Stimuli\nIn PsychoPy finden Sie schon vorprogrammierte Stimulus Elemente, wie Gratings oder Rating Scales und können Texte, geometrische Figuren, Bilder und Filme einfügen. Auch komplexere Stimuluselemente wie Random Dots können sehr einfach konfiguriert werden ohne dass sie von Grund auf neu programmiert werden müssen.\n\nErstellen Sie einen Stimulus. Beachten Sie folgende Aspekte:\n\nFarbe\nGrösse\nweitere Eigenschaften, wie Bedingung/Kongruenz?\nTiming (Stimulusdauer, Stimulusende)\n\nNotieren Sie, welche Eigenschaften des Stimulus sich über die Trials hinweg verändern sollte. Dies können auch mehrere Eigenschaften sein. Diese Liste benötigen Sie später.",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Verhaltensexperimente mit PsychoPy</span>"
+    ]
+  },
+  {
+    "objectID": "psychopy_experiments.html#trial",
+    "href": "psychopy_experiments.html#trial",
+    "title": "4  Verhaltensexperimente mit PsychoPy",
+    "section": "7.2 2.2 Trial",
+    "text": "7.2 2.2 Trial\n\nErgänzen Sie alle Elemente, die für einen vollständigen Trial notwendig sind:\n\nAntwort der Versuchsperson / Response (siehe auch 2.4)\nInter-Trial-Intervall (ITI): kann vor oder nach dem Stimulus eingefügt werden. (Die Zeit des ITI wird oft variiert. Dies müsste also auch auf die Liste oben)\nFixationskreuz?\nMask?\nFeedback?",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Verhaltensexperimente mit PsychoPy</span>"
+    ]
+  },
+  {
+    "objectID": "psychopy_experiments.html#trialschleife",
+    "href": "psychopy_experiments.html#trialschleife",
+    "title": "4  Verhaltensexperimente mit PsychoPy",
+    "section": "7.3 2.3 Trialschleife",
+    "text": "7.3 2.3 Trialschleife\nSie müssen nicht alle Trials (oder in PsychoPy: Routines) des Experiments einzeln programmieren, sondern können diese wiederholen, in dem Sie eine Trial-Schleife (loop) um den Trial herum erstellen.\n\nErstellen Sie einen loopindem Sie im Feld Flow auf Insert loop klicken.\n\nMit loopType können Sie steuern, die Bedingungen randomisiert/gemischt oder sequentiell/der Reihe nach angezeigt werden sollen.\nMit nReps können Sie angeben, wie oft jeder Stimulus wiederholt werden soll. Haben Sie also einen Stimulus mit zwei zu varierenden Eigenschaften (die je 3 Stufen haben) (also 9 Zeilen im conditions-File und nReps= 2, ergibt das 18 Trials.\n\n\nMittels diesen Schleifen können die Bedingungen implementiert werden z.B. dass sich der Stimulus bei jedem Trial verändert. Dies kann mit einer conditions-Datei spezifiziert werden, idealerweise im .csv oder .xlsx-Format.\n\nDie Endung .csv bedeutet, dass die Daten als comma separated values abgespeichert werden, also durch ein Komma getrennt. Dieses Dateiformat eignet sich besser als .xlsx, weil es mit vielen Programmen kompatibel und gut einlesbar ist.\n\nBeispielsweise wollen wir drei verschiedene Worte anzeigen (dog, cat und rabbit) und dieses Wort unterschiedlich lange anzeigen (Dauer: 1, 10 und 100 Frames). Die Versuchspersonen sollen dann den Anfangsbuchstaben des Wortes drücken, also d für dog, c für cat und r für rabbit.\n\nUm die Bedingungen (in unserem Fall: die sich verändernden Stimuluseigenschaften) zu definieren, erstellen wir eine .csvoder .xlsx-Datei (z.B. in Excel/Notepad/etc.) mit dem Namen conditions und speichern dieses im selben Ordner wie das Experiment.\n\nFügen Sie für jedes sich verändernde Element einen Variablennamen und die entsprechenden Werte ein (dies sind die Eigenschaften, die Sie sich bei Punkt 2.1 notiert haben). Die Variablennamen schreiben wir immer in die oberste Zeile der Datei.\nWenn wir z.B. einen Text anzeigen möchten, schreiben wir in die erste Zeile word und duration.\nIn die Spalte unter die Variablennamen schreiben wir die Werte.\nAls Beispiel könnten die Worte die wir anzeigen lassen wollen cat, dog und rabbit lauten. Dann stehen in der Spalte word, diese 3 Wörter unter dem Variablennamen. Unter dem Variablennamen duration geben wir die Anzahl Frames ein, also 1, 10 und 100. Wir wollen jedes Wort mit jeder Dauer kombinieren. Das ergibt 9 Zeilen.\nFügen Sie in jeder Zeile unter dem Variablennamen corrAns die jeweils korrekte Antwort ein.\nFügen Sie, falls vorhanden, in jeder Zeile weitere wichtige Information zum Stimulus ein.\nIm Beispiel möchten Sie z.B. später fleischfressende mit pflanzenfressenden Tieren vergleichen, deshalb eine Spalte meat. Dies verändert im Experiment nichts, dient aber am Schluss zur Auswertung, weil diese Variable auch immer in den Datensatz geschrieben wird.\n\n\nFügen Sie nun im Loop-Fenster die conditions-Datei ein.\n\n\n\n\n\n\n\n\nTipp\n\n\n\nJede Zeile in der conditions-Datei unterhalb des Variablennamens entspricht einer Bedingung (condition).\nSetzen Sie nReps auf 1 während Sie das Experiment erstellen, so sparen Sie Zeit.\n\n\nIm PsychoPy können Sie Variablen mit einem vorangestellten $einfügen.\n\nÖffnen Sie nun wieder das Stimulusfenster und passen Sie dort die Stimuluseigenschaften an. Anstatt von hard-coded values (also einmalig, fix festgelegten Werten) geben wir nun einen Variablennamen ein. Der Stimulus darf nicht auf constant gesetzt sein, sonst kann er sich nicht Trial für Trial verändern, setzen Sie ihn deshalb unbedingt auf set every repeat.\nIn unserem Beispiel fügen wir bei text die Laufvariable (verändernde Eigenschaft) ein: $word. Die Anzeigedauer des Textes soll $duration in Frames sein.\n\n\n\nLassen Sie das Experiment laufen und kontrollieren Sie, ob alles funktioniert hat.\n\n\n\n\n\n\n\nTipp\n\n\n\nMit dieser Methode können Sie auch Instruktionen, ITIs, etc. variieren lassen.",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Verhaltensexperimente mit PsychoPy</span>"
+    ]
+  },
+  {
+    "objectID": "psychopy_experiments.html#antworten-aufnehmen",
+    "href": "psychopy_experiments.html#antworten-aufnehmen",
+    "title": "4  Verhaltensexperimente mit PsychoPy",
+    "section": "7.4 2.4 Antworten aufnehmen",
+    "text": "7.4 2.4 Antworten aufnehmen\nIn PsychoPy muss definiert werden, wie die Antwort der Versuchsperson aufgenommen wird. Dies kann mit der Maus, der Tastatur oder anderen Devices umgesetzt werden. Die Möglichkeiten sehen Sie unter Responses.\n\nFügen Sie eine Antwortkomponente hinzu und benennen Sie diese sinnvoll.\nIn unserem Beispiel möchten wir, dass die Versuchsperson mittels Keyboard antwortet.\n\nMit Force end of Routine können Sie einstellen, ob eine Antwort den Trial beendet und mit dem nächsten fortfährt.\nDer Namen der Antwortkomponente wird später im Datensatz als Variable zu finden sein.\nWerden in einer Antwortkomponente namens key_resp mittels Tastendruck Antwort und Response Time aufgenommen, heissen die Variablen dann key_resp.keys(gedrückte Taste) und key_resp.rt (Antwortdauer).\nEntscheiden Sie, ob PsychoPy überprüfen soll, ob die richtige Antwort gegeben wurde.\nWenn Sie dies möchten, gleicht PsychoPy in unserem Beispiel die gegebene Antwort (key_resp.keys) mit der dafür eingegebenen Variable (hier corrAns) ab. Stimmen diese überein, fügt es in die Variable key_resp.corr 1 ein, wenn nicht 0).\nMit first key definieren Sie, dass der erste Tastendruck zählt.",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Verhaltensexperimente mit PsychoPy</span>"
+    ]
+  },
+  {
+    "objectID": "psychopy_experiments.html#weitere-elemente",
+    "href": "psychopy_experiments.html#weitere-elemente",
+    "title": "4  Verhaltensexperimente mit PsychoPy",
+    "section": "7.5 2.5 Weitere Elemente",
+    "text": "7.5 2.5 Weitere Elemente\nIn PsychoPy GUI wird Ihnen im Fenster Floweine Art Flowchart angezeigt. Hier sehen Sie, welche Elemente Ihr aktuelles Experiment enthält.\n\nFügen Sie nun alle weiteren Elemente, die Sie zu Beginn auf Ihrer Flowchart eingezeichnet hatten, z.B.\n\nBegrüssung\nEinverständnis\nInstruktion\nDebriefing, Verabschiedung\n\nLassen Sie das Experiment laufen und kontrollieren Sie, ob alles funktioniert hat.\n\n\n\n\n\n\n\nTipp\n\n\n\nBeim Programmieren lohnt es sich oft, die kleinen Schritte zwischenzutesten, weil es dann einfacher ist herauszufinden, wo genau der Fehler passiert ist.",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Verhaltensexperimente mit PsychoPy</span>"
+    ]
+  },
+  {
+    "objectID": "psychopy_experiments.html#variable-dauer-von-elementen",
+    "href": "psychopy_experiments.html#variable-dauer-von-elementen",
+    "title": "4  Verhaltensexperimente mit PsychoPy",
+    "section": "10.1 5.1 Variable Dauer von Elementen",
+    "text": "10.1 5.1 Variable Dauer von Elementen\n\n10.1.1 Fixationskreuz und ITI mit randomisierter Dauer\nUm das Experiment für die Versuchsperson unvorhersehbarer zu machen, implementieren wir vor dem eigentlichen Stimulus ein Fixationskreuz mit variabler Länge. Diese Länge soll 0.2, 0.4, 0.6, oder 0.8 Sekunden betragen.\n\nFügen Sie einen Codeblock code_fixationcross ein und definieren Sie unter Begin Routine die Variable fixationcross_duration.\n\nFügen Sie einen Textblock fixationcross ein mit dem Text + und Schriftgrösse 10. Geben Sie unter duration Ihre vorher definierte Variable ein (vergessen Sie dabei das $ nicht): $fixationcross_duration.\n\n\n\n\n\n\n\n\nHands-on: Variable ITI einbauen\n\n\n\nFügen Sie nach dem Stimulus eine ITI mit variabler Dauer hinzu.\nEinfachere Variante: Die ITI soll 10, 20, 30, 40 oder 50 Frames betragen.\nSchwierigere Variante: Die ITI soll eine Zufallszahl zwischen 0.2 und 0.8 Sekunden betragen.",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Verhaltensexperimente mit PsychoPy</span>"
+    ]
+  },
+  {
+    "objectID": "psychopy_experiments.html#feedback",
+    "href": "psychopy_experiments.html#feedback",
+    "title": "4  Verhaltensexperimente mit PsychoPy",
+    "section": "10.2 5.2 Feedback",
+    "text": "10.2 5.2 Feedback\nEs gibt Experimente, welche Feedback erfordern. Oft wird vor der Datenerhebung ein Übungsblock eingebaut, welcher Feedback enthält, so dass die Versuchspersonen wissen, ob sie den Task richtig verstanden haben.\n\nErstellen Sie zuerst eine Trialschleife mit einem Stimulus und einer Response.\nFügen Sie nach dem Stimulus und der Antwort (aber innerhalb der Trialschleife!) eine Routine feedback ein.\nFügen Sie innerhalb der Routine feedback eine Codekomponente hinzu. In dieser Komponente können Sie nun\n\nFügen Sie nun eine Textkomponente hinzu und fügen Sie beim Textfeld die Variable $response_msg ein, damit die Versuchsperson abhängig von ihrer Antwort das entsprechende Feedback erhält, welches zuvor in der Codekomponente definiert wurde.\n\n\n\n\n\n\n\n\nHands-on: Feedback geben\n\n\n\nSie können mittels einer Codekomponente auch reagieren, wenn die Versuchsperson zu schnell, zu langsam oder gar nicht antwortet.\n\nErstellen Sie einen Übungsdurchgang. Fügen Sie eine Code-Komponente hinzu und legen Sie fest, welches Feedback die Versuchsperson erhalten soll.\n\nEinfache Variante: Geben Sie der Person Feedback, ob ihre Antwort richtig oder falsch war.\nMittelschwere Variante: Geben Sie der Person Feedback, wenn Sie zu schnell oder zu langsam antwortet.\nSchwere Variante: Erstellen Sie einen Counter, welcher der Versuchsperson anzeigt, wie gut sie ist, indem für jede richtige Antwort 5 Punkte erhält, für jede falsche Antwort 5 Punkte abgezogen werden.\nFalls Sie zur Geschwindigkeit Rückmeldung geben wollen oder einen Counter bauen, können Sie etwas in dieser Art machen.\nif dots_keyboard_response.keys is None:\n    response_text = \"miss\"\n\nelif dots_keyboard_response.rt &lt;= 0.1:\n    response_text = \"too fast\"\n\nelse:\n    if (direction == \"left\" and dots_keyboard_response.keys == \"f\" or \n        direction == \"right\" and dots_keyboard_response.keys == \"j\"):\n        response_text = \"+5 points\"\n    else:\n        response_text = \"+0 points\"",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Verhaltensexperimente mit PsychoPy</span>"
+    ]
+  },
+  {
+    "objectID": "psychopy_experiments.html#degrees-of-visual-angle",
+    "href": "psychopy_experiments.html#degrees-of-visual-angle",
+    "title": "4  Verhaltensexperimente mit PsychoPy",
+    "section": "11.1 6.1 Degrees of Visual Angle",
+    "text": "11.1 6.1 Degrees of Visual Angle\nOftmals werden Grössenangaben von Stimuli noch in Pixel oder Zentimeter, sondern in degrees of visual angle gemacht. Dies hat den Vorteil, dass die Angaben nicht vom Monitor selber oder der Entferung vom Monitor abhängig sind. Degrees of visual angle gibt die wahrgenommene Grösse des Stimulus an, und berücksichtigt die Grösse des Monitors und des Stimulus, und die Entfernung der Versuchsperson vom Monitor. Weitere Informationen dazu finden Sie auf der Website von OpenSesame. Üblicherweise entspricht ein degrees of visual angle etwa einem cm bei einer Entfernung von 57 cm vom Monitor.\n\nOpenSesame ist ein weiteres, Python-basierendes Programm für die Erstellung behavioraler Experimente.\n\nZur Umrechnung zwischen cm und degrees of visual angle finden Sie unter diesem Link mehr Information.",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Verhaltensexperimente mit PsychoPy</span>"
+    ]
+  },
+  {
+    "objectID": "psychopy_experiments.html#timing",
+    "href": "psychopy_experiments.html#timing",
+    "title": "4  Verhaltensexperimente mit PsychoPy",
+    "section": "11.2 6.2 Timing",
+    "text": "11.2 6.2 Timing\nFrames vs. time (sec or ms): Die präziseste Art zur Steuerung des Timings von Stimuli besteht darin, sie für eine festgelegte Anzahl von Frames zu präsentieren. Bei einer Framerate von 60 Hz können Sie Ihren Stimulus nicht z. B. 120 ms lange präsentieren; die Bildperiode würde Sie auf einen Zeitraum von 116,7 ms (7 Bilder) oder 133,3 ms (8 Bilder) beschränken. Dies ist besonders wichtig für Reaktionszeit-Aufgaben und EEG-Studien, wo ein präzises Millisekunden-Timing erforderlich ist. Hier finden Sie weitere Informationen zu diesem Thema: Presening Stimuli - Psychopy.\n\nHertz ist eine Einheit die angibt, wie häufig etwas pro Sekunde passiert. Hertz kann wie Mal pro Sekunde ausgesprochen werden. 60 Hertz bedeutet also, 60 Mal pro Sekunde.",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Verhaltensexperimente mit PsychoPy</span>"
+    ]
+  },
+  {
+    "objectID": "psychopy_experiments.html#individualisierte-aufgabenschwierigkeit-schwellenmessung",
+    "href": "psychopy_experiments.html#individualisierte-aufgabenschwierigkeit-schwellenmessung",
+    "title": "4  Verhaltensexperimente mit PsychoPy",
+    "section": "11.3 6.3 Individualisierte Aufgabenschwierigkeit / Schwellenmessung",
+    "text": "11.3 6.3 Individualisierte Aufgabenschwierigkeit / Schwellenmessung\nIm Random Dot Experiment macht es z.B. für gewisse Fragestellungen Sinn die Aufgabenschwierigkeit für jede Person anzupassen, da sonst ceiling/floor-Effekte auftreten können.\nIn PsychoPy kann ein Staircase in einem Loop verwendet werden, um die Schwierigkeit einer Aufgabe basierend auf der Leistung der Teilnehmer dynamisch anzupassen. Sie ist besonders häufig in Experimenten zur Schwellenmessung, bei denen das Ziel darin besteht, die kleinste wahrnehmbare Reizintensität zu bestimmen. Hier finden Sie weitere Informationen zu diesem Thema: Using a Staircase - PsychoPy.",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Verhaltensexperimente mit PsychoPy</span>"
+    ]
+  },
+  {
+    "objectID": "stroop_experiment.html",
+    "href": "stroop_experiment.html",
+    "title": "5  Stroop Paradigma",
+    "section": "",
+    "text": "6 Stroop Task\nDer Stroop Task wurde 1935 zum ersten Mal beschrieben (Stroop, 1935) und ist einer der meist zitierten und verwendeten neuropsychologischen Aufgaben (MacLeod, 1991). In der Neuropsychologie wird der Stroop Color and Word Test (SCWT) verwendet, um die Fähigkeit zur Inhibition kognitiver Interferenz zu messen, welche entsteht wenn zwei Stimuluseigenschaften gleichzeitig verarbeitet werden sich aber widersprechen (Scarpina & Tagini, 2017). Teilweise misst der Task auch andere kognitive Funktionen, wie visuelle Suche oder Arbeitsgedächtnis, weshalb der Vergleich von Bedingungen relevant ist (Periáñez et al., 2021).\nWährend dem Stroop Task wird ein Text mit Farbwörtern präsentiert. Im kongruenten Durchgang entsprechen die Farben des Textes dem Farbwort (das Wort “rot” wird in rot präsentiert), im inkongruenten Durchgang unterscheiden sich die Farben des Textes vom Farbwort (das Wort “rot” wird in gelber Farbe präsentiert). Die Person muss angeben in welcher Farbe das Wort abgedruckt ist. In der kongruenten Bedingung fällt dies leichter, weil das gelesene Wort auch der Farbe entspricht. In der inkongruenten Bedingung verlangsamt sich die Geschwindigkeit durch die entstehende Interferenz von Wort und Farbe, da das Wort automatisch gelesen wird. Oft wird auch noch eine neutrale Bedingung verwendet, wo nur die Farbe oder das Wort präsentiert werden.",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Stroop Paradigma</span>"
+    ]
+  },
+  {
+    "objectID": "stroop_experiment.html#kurzbeschrieb-kursexperiment",
+    "href": "stroop_experiment.html#kurzbeschrieb-kursexperiment",
+    "title": "5  Stroop Paradigma",
+    "section": "6.1 Kurzbeschrieb Kursexperiment",
+    "text": "6.1 Kurzbeschrieb Kursexperiment\nIn diesem Experiment lösen die Personen zwei Bedingungen des Stroop Task, einmal geben sie die Farben der Wörter an in einer kongruenten Bedingung (Wortinhalt und Wortfarbe) stimmen überein. Einmal lösen sie die Aufgabe in einer inkongruenten Bedingung (Wortinhalt und Wortfarbe stimmen nicht überein).\nDie kongruente und inkongruente Bedingung kommen im selben Block vor. Die Instruktion lautet für beide Bedingungen gleich, da immer die Wortfarbe angegeben werden muss. Drei Farben werden verwendet: rot, blau und gelb.\nDas Stroop Kursexperiment ist folgendermassen aufgebaut:\n\n\n\n\n\n\n\nHands-on: Stroop Kursexperiment\n\n\n\nLaden Sie das Experiment herunter und testen Sie, ob es auf Ihrem Laptop läuft. Hier finden Sie die Anweisungen dazu.\n\nTesten Sie, ob das Experiment startet und ob die Übungstrials funktionieren. Kontrollieren Sie, ob es ein Datenfile abgespeichert hat und schauen Sie, ob dieses Datenfile alles Relevante enthält. Wenn alles ok ist, ist das Experiment bereit für Übung 1. Führen Sie die Testungen ausserhalb des Computerlabs durch.\nBeantworten Sie folgende Fragen zum Experiment:\n\n\nWas wurde im Experiment variiert? Wie viele unterschiedliche Trials gibt es?\nWelche Bedingungen gibt es?\nWieviele Trials werden pro Bedingung durchgeführt?\nWie lange wird der Wort-Stimulus angezeigt? Wann ist er fertig (zeit oder tasten-definiert?)?\nWie denken Sie, wird sich das Verhalten (Reaktionszeit, Richtigkeit) zwischen den Bedingungen unterscheiden?",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Stroop Paradigma</span>"
+    ]
+  },
+  {
+    "objectID": "stroop_experiment.html#credits",
+    "href": "stroop_experiment.html#credits",
+    "title": "5  Stroop Paradigma",
+    "section": "6.2 Credits",
+    "text": "6.2 Credits\nDieses Experiment wurde von Rebekka Borer im Rahmen des Neurocomplab-Kurs 2014 programmiert.",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Stroop Paradigma</span>"
+    ]
+  },
+  {
+    "objectID": "stroop_experiment.html#referenzen",
+    "href": "stroop_experiment.html#referenzen",
+    "title": "5  Stroop Paradigma",
+    "section": "6.3 Referenzen",
+    "text": "6.3 Referenzen\nMacLeod C. M. (1991). Half a century of research on the Stroop effect: an integrative review. Psychological Bulletin. 109(2), 163–203. https://doi.org/10.1037/0033-2909.109.2.163\nPeriáñez, J. A., Lubrini, G., García-Gutiérrez, A., & Ríos-Lago, M. (2021). Construct validity of the stroop color-word test: influence of speed of visual search, verbal fluency, working memory, cognitive flexibility, and conflict monitoring. Archives of Clinical Neuropsychology, 36(1), 99-111. https://doi.org/10.1093/arclin/acaa034\nScarpina, F., & Tagini, S. (2017). The stroop color and word test. Frontiers in psychology, 8, 557. https://doi.org/10.3389/fpsyg.2017.00557\nStroop, J. R. (1935). Studies of interference in serial verbal reactions. Journal of Experimental Psychology, 18(6), 643–662. https://doi.org/10.1037/",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Stroop Paradigma</span>"
+    ]
+  },
+  {
+    "objectID": "random_dot_experiment.html",
+    "href": "random_dot_experiment.html",
+    "title": "6  Random Dot Paradigma",
+    "section": "",
+    "text": "7 Random Dot Experiment\nJeden Tag treffen wir Tausende von kleinen Entscheidungen, meistens unter gewissem Zeitdruck. Viele davon sind trivial (z. B. welches Paar Socken man anzieht) und automatisch (z. B. ob man die Espresso- oder Lungo-Taste auf der Kaffeemaschine drückt). Die meisten Entscheidungen im wirklichen Leben setzen sich eigentlich aus zwei Entscheidungen zusammen: Einerseits der Entscheidung, mit dem Abwägen aufzuhören und aufgrund des aktuellen Wissenstandes zu handeln. Andererseits die Wahl oder Entscheidungshandlung selbst. Dieser sequentielle Charakter der Entscheidungsfindung ist eine grundlegende Eigenschaft des menschlichen Nervensystems und spiegelt seine Unfähigkeit wieder, Informationen sofort zu verarbeiten.\nPerzeptuelle Entscheidungen sind Entscheidungen, welche auf der Wahrnehmung, Einordnung und Integration von Sinnesreizen beruhen. Um beispielsweise eine Strasse sicher überqueren zu können, müssen wir mittels den Sinnesinformationen der Augen und Ohren sowie der Verarbeitung dieser Reize einschätzen mit welcher Geschwindigkeit ein herannahendes Auto unterwegs ist und ob wir lieber abwarten bis es vorbeigefahren ist. Innerhalb der Neurowissenschaften wird perceptual decision making untersucht, um die neuronalen Schaltkreise welche Wahrnehmungssignale kodieren, speichern und analysieren zu verstehen und mit beobachtbarem Verhalten in Verbindung zu bringen. Von Interesse ist zum Beispiel wie die Entscheidung ausfällt, wenn die sensorischen Daten undeutlich oder sogar widersprüchlich sind. Besonders spannend ist auch wie Vorwissen (prior knowledge) auf das Entscheidungsverhalten einwirkt.\nObwohl das Treffen von Entscheidungen für uns etwas sehr Vertrautes ist, ist das Wissen darum, wie das Gehirn diese Entscheidungsaufgaben löst noch sehr begrenzt. Eine einzelne Entscheidung kann schon sehr komplex sein. Um die Dynamik der Entscheidungsfindung zu verstehen, konzentrieren sich die meisten Studien deshalb auf einfache, wiederholbare Wahlprobleme mit nur zwei (binären) Antwortmöglichkeiten. Ein typisches Paradigma in neurowissenschaftlichen Studien ist das random-dot motion paradigm. Hierbei muss eine Person entscheiden in welche Richtung sich eine Punktewolke bewegt.",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Random Dot Paradigma</span>"
+    ]
+  },
+  {
+    "objectID": "random_dot_experiment.html#kurzbeschrieb-kursexperiment",
+    "href": "random_dot_experiment.html#kurzbeschrieb-kursexperiment",
+    "title": "6  Random Dot Paradigma",
+    "section": "7.1 Kurzbeschrieb Kursexperiment",
+    "text": "7.1 Kurzbeschrieb Kursexperiment\nIn unserem Experiment lösen die Versuchspersonen einen Random Dot Task zweimal (in zwei Blöcken). In jedem Block erhalten sie eine andere Instruktion, die Aufgabe bleibt jedoch dieselbe: Sie müssen herausfinden in welche Richtung sich die Punktewolke bewegt. In einem Block werden sie instruiert die Aufgabe möglichst schnell zu lösen. Im anderen Block werden sie instruiert die Aufgabe möglichst richtig zu lösen. Wir werden dann analysieren, wie sich das Entscheidungsverhalten von Menschen verändert, je nachdem wie sie instruiert wurden.\nDas Random Dot Kursexperiment ist folgendermassen aufgebaut:\n\n\n\n\n\n\n\nHands-on: Random Dot Kursexperiment\n\n\n\nLaden Sie das Experiment herunter und testen Sie, ob es auf Ihrem Laptop läuft. Hier finden Sie die Anweisungen dazu.\n\nTesten Sie, ob das Experiment startet und ob die Übungstrials funktionieren. Kontrollieren Sie, ob es ein Datenfile abgespeichert hat und schauen Sie, ob dieses Datenfile alles Relevante enthält. Wenn alles ok ist, ist das Experiment bereit für Übung 1. Führen Sie die Testungen ausserhalb des Computerlabs durch.\nBeantworten Sie folgende Fragen zum Experiment:\n\n\nWas wurde im Experiment variiert? Wie viele unterschiedliche Trials gibt es?\nWelche Bedingungen gibt es?\nWieviele Trials werden pro Bedingung durchgeführt?\nWie lange wird der Dot-Stimulus angezeigt? Wann ist er fertig (zeit oder tasten-definiert?)?\nWie denken Sie, wird sich das Verhalten (Reaktionszeit, Richtigkeit) zwischen den Bedingungen unterscheiden?",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Random Dot Paradigma</span>"
+    ]
+  },
+  {
+    "objectID": "random_dot_experiment.html#credits",
+    "href": "random_dot_experiment.html#credits",
+    "title": "6  Random Dot Paradigma",
+    "section": "7.2 Credits",
+    "text": "7.2 Credits\nDieses Experiment wurde von Rebekka Borer im Rahmen des Neurocomplab-Kurs 2014 programmiert.\n\n\n\n\nHauser, Christopher K., and Emilio Salinas. 2014. “Perceptual Decision Making.” In Encyclopedia of Computational Neuroscience, edited by Dieter Jaeger and Ranu Jung, 1–21. New York, NY: Springer New York. https://doi.org/10.1007/978-1-4614-7320-6_317-1.\n\n\nMulder, M. J., E.-J. Wagenmakers, R. Ratcliff, W. Boekel, and B. U. Forstmann. 2012. “Bias in the Brain: A Diffusion Model Analysis of Prior Probability and Potential Payoff.” Journal of Neuroscience 32 (7): 2335–43. https://doi.org/10.1523/JNEUROSCI.4156-11.2012.",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Random Dot Paradigma</span>"
+    ]
+  },
+  {
+    "objectID": "uebung_1.html",
+    "href": "uebung_1.html",
+    "title": "Übung 1",
+    "section": "",
+    "text": "Auftrag\nFühren Sie selbst und mit 2 weiteren Personen das Stroop und das Random Dot Experiment durch. Laden Sie anschliessend die 6 Datensätze auf Ilias hoch. Die beiden Experimente dauern zusammen ca. 30 Minuten ( abhängig von den Versuchspersonen).\nWichtig: Die erhobenen Daten werden wir dann in den kommenden Sitzungen verwenden, achten Sie also auf gute Datenqualität.",
+    "crumbs": [
+      "Experimentieren",
+      "Übung 1"
+    ]
+  },
+  {
+    "objectID": "uebung_1.html#vorgehen",
+    "href": "uebung_1.html#vorgehen",
+    "title": "Übung 1",
+    "section": "Vorgehen",
+    "text": "Vorgehen\n\nLaden Sie die 2 Experimente herunter und testen Sie, ob Sie einwandfrei laufen. Die Experimente befinden sich auf Github. Sie können sie unter den untenstehenden Links downloaden. Klicken Sie dafür auf den ZIP-Ordner, und dann auf View Raw oder auf das Icon mit ... und dort auf Download. Sie müssen das File dann evtl. entzippen, bevor Sie das Experiment starten können. Bei Problemen finden Sie unten einen Abschnitt Troubleshooting. Wenn das nichts hilft, können Sie sich bei der nächsten Veranstaltung an uns wenden.\n\nStroop Experiment\nRandom Dot Experiment\n\nFühren Sie selber die beiden Experimente durch.\n\nStellen Sie sicher, dass hier ein vollständiger Datensatz abgespeichert wird. Testen Sie erst dann zusätzliche Personen.\n\nLassen Sie 2 weitere Personen die beiden Experimente ausführen (jede Person soll beide Experimente ausführen).\n\nDie Personen müssen zwischen 18 und 60 Jahren alt sein.\nDie Personen sollten eine normale oder korrigiert-zu-normale (Brille/Kontaktlinsen) Sehstärke haben.\nKeine Mitstudierenden aus dem Computerlab testen.\nAchten Sie darauf, dass die Personen die Aufgaben konzentriert und ohne Ablenkung lösen können.\n\nLaden Sie die 6 Datensätze auf ILIAS hoch.\n\nZippen Sie bitte die 6 .csv-Datensätze vor dem Hochladen zu einem (!) Ordner.\nLaden Sie den ZIP-Ordner auf Ilias unter Übung 1 hoch.",
+    "crumbs": [
+      "Experimentieren",
+      "Übung 1"
+    ]
+  },
+  {
+    "objectID": "uebung_1.html#abgabetermin",
+    "href": "uebung_1.html#abgabetermin",
+    "title": "Übung 1",
+    "section": "Abgabetermin",
+    "text": "Abgabetermin\n14. März 2024 23:55",
+    "crumbs": [
+      "Experimentieren",
+      "Übung 1"
+    ]
+  },
+  {
+    "objectID": "uebung_1.html#trouble-shooting",
+    "href": "uebung_1.html#trouble-shooting",
+    "title": "Übung 1",
+    "section": "Trouble shooting",
+    "text": "Trouble shooting\nBitte die Fehlermeldung im Fenster genau durchlesen. Dort finden Sie Hinweise darauf, was schief gelaufen ist.\nDas Experiment startet nicht.\n\nUnter Einstellungen (Radsymbol) den Reiter Basic auswählen. Bei Use PsychoPy version die neuste PsychoPy Version auswählen.\n\nDas Experiment startet zwar, der Bildschirm ist aber dann einfach für eine kurze Zeit grau und das Fenster schliesst sich wieder.\n\nZugriffsrechte gegeben? (Bei Windows: Als Administrator starten, bei MacOS: Zugriffsrechte erteilen)\nUnter Einstellungen (Radsymbol) den Reiter Input auswählen. Keyboard Backend auf PsychToolbox statt ioHub setzen.",
+    "crumbs": [
+      "Experimentieren",
+      "Übung 1"
+    ]
+  },
+  {
+    "objectID": "datawrangling.html",
+    "href": "datawrangling.html",
+    "title": "7  Daten importieren und vorverarbeiten",
+    "section": "",
+    "text": "7.1 Datenformate\nBevor mit einem Datensatz gearbeitet wird, empfiehlt es sich den Datensatz anzuschauen und Folgendes zu identifizieren:",
+    "crumbs": [
+      "Data wrangling",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
+    ]
+  },
+  {
+    "objectID": "datawrangling.html#datenformate",
+    "href": "datawrangling.html#datenformate",
+    "title": "7  Daten importieren und vorverarbeiten",
+    "section": "",
+    "text": "In welchem Dateiformat ist der Datensatz gespeichert? (z.B. in .csv, .xlsx oder anderen?)\nIn welchem Datenformat ist der Datensatz geordnet? (long oder wide oder mixed?)\nGibt es ein data dictionary mit Erklärungen zu den Variablen?",
+    "crumbs": [
+      "Data wrangling",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
+    ]
+  },
+  {
+    "objectID": "datawrangling.html#set-up",
+    "href": "datawrangling.html#set-up",
+    "title": "7  Daten importieren und vorverarbeiten",
+    "section": "7.2 Set up",
+    "text": "7.2 Set up\n\n\n\n\n\n\nHands-on: Vorbereitung\n\n\n\n\nÖffnen Sie RStudio.\nErstellen Sie ein neues RStudio-Project\n\nKlicken Sie dafür auf File &gt; New Project\nBenennen Sie das Project complab__fs25 und speichern Sie es an einem sinnvollen Ort auf Ihrem Computer. Wählen Sie, dass dafür ein neuer Ordner erstellt werden soll.\n\nErstellen Sie in diesem Projekt-Ordner einen Ordner namens data.\nKopieren Sie in den data-Ordner Ihre erhobenen Daten des Stroop Experiments. Falls Sie noch keine Daten erhoben haben, dann laden Sie hier einen Beispiels-Datensatz herunter und speichern Sie ihn im data-Ordner.\nErstellen Sie ein neues .Rmd-File (File &gt; New File &gt; R Markdown) und speichern Sie dieses unter intro_datawrangling im Projekt-Ordner.\n\n\n\n\n\n\n\n\n\nTipp: Namensgebung für Files und Variablen\n\n\n\nWenn Sie Filenamen auswählen, achten Sie darauf dass diese machine-readable sind:\n\nkeine Lücken (verwenden Sie stattdessen den camelCase, den snake_case oder -)\nkeine ä, ö, ü oder andere Sonderzeichen verwenden",
+    "crumbs": [
+      "Data wrangling",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
+    ]
+  },
+  {
+    "objectID": "datawrangling.html#packages-installieren-und-laden",
+    "href": "datawrangling.html#packages-installieren-und-laden",
+    "title": "7  Daten importieren und vorverarbeiten",
+    "section": "7.3 Packages installieren und laden",
+    "text": "7.3 Packages installieren und laden\nFür das Bearbeiten der Daten verwenden eignen sich Funktionen aus dem Package {tidyverse}, eine Sammlung von verschiedenen, für data science sehr geeigneten R Packages. Funktionen aus dem {tidyverse} ermöglichen und vereinfachen viele Schritte der Datenverarbeitung. Im Folgenden werden die wichtigsten und häufigst verwendeten Funktionen beschrieben. Das {tidyverse} können Sie direkt in R herunterladen:\n\nMehr Informationen zum {tidyverse} finden Sie hier.\n\n\n# Download und Installieren des Packages (nur einmal ausführen)\ninstall.packages(\"tidyverse\")\n\nEin Package muss nur einmal heruntergeladen und installiert werden, danach ist es lokal auf dem Computer gespeichert. Aber: Jedes Mal wenn R geöffnet wird, müssen Packages wieder neu geladen werden.\n\n# Package laden (bei jedem Öffnen von R zu Beginn des Skripts ausführen)\nlibrary(\"tidyverse\") \n\nSobald ein Package installiert ist, können die Funktionen auch verwendet werden ohne, dass das ganze Package mit library() geladen wird, indem die Funktion mit dem Package-Namen zusammen aufgerufen wird: packagename::packagefunction(). Dies macht Sinn, wenn verschiedene Packages dieselben Namen für verschiedene Funktionen nutzen und es so zu Konflikten kommt oder wenn nur eine Funktion aus einem Package verwendet werden soll und alle anderen sowieso nicht gebraucht werden.",
+    "crumbs": [
+      "Data wrangling",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
+    ]
+  },
+  {
+    "objectID": "datawrangling.html#daten-importieren-in-r-read.csv",
+    "href": "datawrangling.html#daten-importieren-in-r-read.csv",
+    "title": "7  Daten importieren und vorverarbeiten",
+    "section": "7.4 Daten importieren in R: read.csv()",
+    "text": "7.4 Daten importieren in R: read.csv()\nEinen Datensatz in .csv-Format kann mit der Funktion read.csv() importiert werden. Teilweise muss innerhalb der Klammer zusätzlich der Separator mit sep = \",\" angegeben werden, also mit welchem Zeichen die Spalten getrennt sind. Normalerweise ist dies , in .csv (comma separated values), es kann aber auch ;, . oder eine Lücke  sein.\n\n# Daten laden und anschauen\nd_stroop &lt;- read.csv(\"data/stroop_example.csv\", sep = \",\")\nglimpse(d_stroop)\n\n\n\n\n\n\n\nHands-on: Daten einlesen\n\n\n\nLesen Sie den Stroop Datensatz in Ihrem data-Ordner ein und schauen Sie ihn dann mit den Funktionen glimpse() und head() an.\n\nWelche Variablen sind wichtig für die weitere Auswertung?\nWelche braucht es wahrscheinlich nicht mehr?\nFinden Sie Versuchspersonenidentifikation? / Reaktionszeit? / Antwort der Versuchsperson?\n\n\n\n\n\n\n\n\n\nTipp: Daten anderer Formate einlesen\n\n\n\nFalls Sie eine Excel-Datei einlesen möchten, können Sie dies mit der read_excel()-Funktion aus dem Package readxl() tun: readxl::read_excel().\nFalls Sie nicht wissen, mit welcher Funktion Sie Ihre Daten einlesen können, können Sie dies in RStudio ausprobieren indem Sie beim Reiter Environment auf Import Dataset klicken und dort Ihren Datensatz auswählen oder über File &gt; Import Dataset. Sie können dort diverse Einstellungen tätigen. In der R Console können Sie dann den Code sehen, der zum Einlesen verwendet wurde und die dortige Funktion in Ihren Code kopieren.",
+    "crumbs": [
+      "Data wrangling",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
+    ]
+  },
+  {
+    "objectID": "datawrangling.html#verwenden-der-pipe-oder",
+    "href": "datawrangling.html#verwenden-der-pipe-oder",
+    "title": "7  Daten importieren und vorverarbeiten",
+    "section": "7.5 Verwenden der Pipe: |> oder %>%",
+    "text": "7.5 Verwenden der Pipe: |&gt; oder %&gt;%\nIn R können Sie die Pipe verwenden um mehrere Datenverarbeitungsschritte aneinander zu hängen. Damit sparen Sie sich aufwändige Zwischenschritte und vermeiden das Erstellen von immer neuen Datensätzen. Statt zwei einzelne Datenverarbeitungsschritte zu machen wie oben, können mehrere Schritte (hier Daten einlesen und anzeigen) zusammengefasst werden, in dem nach Zeilenende eine Pipe eingefügt wird:\n\nWann Pipes ungeeignet sind wird hier beschrieben.\n\n\nd_stroop &lt;- read.csv(\"data/stroop_example.csv\", sep = \",\") |&gt;\n    glimpse()\n\nDie Base R Pipe |&gt; und die magritter Pipe %&gt;%_ unterscheiden sich in Details, in diesem Kapitel spielt es jedoch keine Rolle, welche Pipe Sie verwenden.\n\n\n\n\n\n\nTipp\n\n\n\nAchtung: Wenn wir zu Beginn ein &lt;- oder = verwenden, wird alles was nach der Pipe kommt wird ebenfalls im Datensatz verändert. Wird z.B. der Code …\n\nd_stroop &lt;- read.csv(\"data/stroop_example.csv\", sep = \",\") |&gt;\n    head()\n\n…eingegeben, besteht der Datensatz d_stroop dann nur noch aus 6 Zeilen, weil die Funktion head() den Datensatz auf die ersten 6 Zeilen kürzt.\nWird die Pipe ohne &lt;- oder = verwendet, bleibt der Datensatz unverändert:\n\nd_stroop |&gt;\n    head()",
+    "crumbs": [
+      "Data wrangling",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
+    ]
+  },
+  {
+    "objectID": "datawrangling.html#daten-filtern-filter",
+    "href": "datawrangling.html#daten-filtern-filter",
+    "title": "7  Daten importieren und vorverarbeiten",
+    "section": "7.6 Daten filtern: filter()",
+    "text": "7.6 Daten filtern: filter()\nMit filter() können bestimmte Beobachtungen oder Untergruppen ausgewählt werden. Hierfür muss in der Funktion filter(.data, filter, ...) der Datensatz, die betreffende Variable, sowie eine Bedingung eingegeben werden. Es wird die ganze Zeile im Datensatz behalten in der die Variable der Bedingung entspricht.\nBeispiele:\n\n# nur die Trials mit den rot angezeigten Wörtern behalten\nd_stroop_filtered &lt;- filter(d_stroop, color == \"red\")\n\n# dasselbe mit der Pipe\nd_filtered &lt;- d_stroop |&gt; filter(color == \"red\")\n\n# nur Trials die ohne blau angezeigten Wörter behalten\nd_filtered &lt;- d_stroop |&gt; filter(color != \"blue\")\n\n# nur Übungstrials mit einer Antwortszeit unter oder gleich gross wie 1 Sekunde behalten\nd_filtered &lt;- d_stroop |&gt; filter(respPractice.rt &lt;= 1)\n\n# nur Übungstrials mit Antwortzeiten zwischen 1 und 2 Sekunden behalten\nd_filtered &lt;- d_stroop |&gt; filter(respPractice.rt &gt; 1 & respPractice.rt &lt; 2)\n\n# mehrere Filter verwenden\nd_filtered &lt;- d_stroop |&gt; \n    filter(color == \"red\") |&gt;\n    filter(respPractice.rt &lt;= 1)\n\nIn unserem Datensatz möchten wir nur die gültigen Experimentdaten behalten, die Color-To-Key (ctk) Bedingung sowie die Practice Trials möchten wir ausschliessen.\nDie Variable trials_test.thisN enthält die Trialnummer, sie enthält nur Einträge, während der gültigen Trials. Wir können dies nutzen und alle Zeilen behalten in welchen die Zelle der Variable trials_test.thisN nicht leer ist:\n\nd_stroop &lt;- d_stroop |&gt; \n    filter(!is.na(trials_test.thisN)) \n\n\n\n\n\n\n\nHands-on: Daten filtern\n\n\n\nErstellen Sie einen neuen Datensatz namens d_stroop_correct und filtern Sie diesen so dass er nur Trials mit richtigen Antworten enthält. Schauen Sie in der Variable keyResp_test_run.corr, ob tatsächlich nur noch richtige Antworten übrig geblieben sind.\nAchtung: Arbeiten Sie in den weiteren Schritten nicht mit diesem Datensatz weiter, da wir die falschen Antworten in einem nächsten Schritt noch im Datensatz brauchen.",
+    "crumbs": [
+      "Data wrangling",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
+    ]
+  },
+  {
+    "objectID": "datawrangling.html#variablen-auswählen-select",
+    "href": "datawrangling.html#variablen-auswählen-select",
+    "title": "7  Daten importieren und vorverarbeiten",
+    "section": "7.7 Variablen auswählen: select()",
+    "text": "7.7 Variablen auswählen: select()\nEin komplexer Datensatz mit sehr vielen Variablen wird oft für die Analyse aus Gründen der Einfachheit oder Anonymisierung reduziert. Das bedeutet, dass man sich die nötigen Variablen herausliest, und nur mit diesem reduzierten Datensatz weiterarbeitet. Hierzu eignet sich die Funktion select() sehr gut: Mit select(.data, variablenname, ...) können die zu behaltenden Variablen ausgewählt werden. Wird ein ! vor einen Variablennamen gesetzt, wird die Variable nicht behalten.\nMit select() können wir auch die Variablen sortieren und umbenennen, damit unser Datensatz so strukturiert ist, wie wir ihn gebrauchen können.\nBeispiele:\n\n# Variable word und color behalten ohne Pipe\nd_simpler &lt;- select(d_stroop, word, color)\n\n# Variable word und color behalten mit Pipe\nd_simpler &lt;- d_stroop |&gt; select(word, color)\n\n# alle Variablen ausser word behalten\nd_simpler &lt;- d_stroop |&gt; select(!word)\n\n# Variablennamen verändern\nd_simpler &lt;- d_stroop |&gt; select(newvariablename = word)\n\nSollen mehrere Variablen am Stück ausgewählt werden, kann man die erste Variable in der Reihe (z.B. word) und die letzte in der Reihe (z.B. congruent) als word:congruent eingeben, dann werden auch alle dazwischen liegenden Variablen ausgewählt.\n\n\n\n\n\n\nHands-on: Variablen auswählen\n\n\n\nSchauen Sie sich Ihren Datensatz an, welche Variablen benötigen Sie für die weitere Analysen?\nErstellen Sie einen neuen Datensatz d_stroop_clean in welchem Sie die entsprechenden Variablen auswählen und umbennen, wenn Sie Ihnen zu lange/kompliziert erscheinen.\nUntenstehend finden Sie ein Beispiel, wie der Datensatz danach aussehen könnte.\n\n\n\n\nRows: 120\nColumns: 10\n$ id         &lt;chr&gt; \"sub-154989\", \"sub-154989\", \"sub-154989\", \"sub-154989\", \"su…\n$ experiment &lt;chr&gt; \"stroop_test\", \"stroop_test\", \"stroop_test\", \"stroop_test\",…\n$ trial      &lt;int&gt; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1…\n$ word       &lt;chr&gt; \"rot\", \"rot\", \"blau\", \"gelb\", \"rot\", \"blau\", \"blau\", \"gelb\"…\n$ color      &lt;chr&gt; \"red\", \"red\", \"blue\", \"yellow\", \"yellow\", \"yellow\", \"red\", …\n$ corrAns    &lt;chr&gt; \"r\", \"r\", \"b\", \"g\", \"g\", \"g\", \"r\", \"r\", \"b\", \"g\", \"b\", \"b\",…\n$ congruent  &lt;int&gt; 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0,…\n$ response   &lt;chr&gt; \"r\", \"r\", \"b\", \"g\", \"g\", \"g\", \"r\", \"r\", \"b\", \"g\", \"b\", \"b\",…\n$ rt         &lt;dbl&gt; 1.0639791, 0.7370255, 1.1883303, 1.2007897, 1.6688681, 1.58…\n$ accuracy   &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…",
+    "crumbs": [
+      "Data wrangling",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
+    ]
+  },
+  {
+    "objectID": "datawrangling.html#neue-variablen-generieren-und-verändern-mutate-und-case_when",
+    "href": "datawrangling.html#neue-variablen-generieren-und-verändern-mutate-und-case_when",
+    "title": "7  Daten importieren und vorverarbeiten",
+    "section": "7.8 Neue Variablen generieren und verändern: mutate() und case_when()",
+    "text": "7.8 Neue Variablen generieren und verändern: mutate() und case_when()\nMit der mutate(.data, …) Funktion können im Datensatz neue Variablen generiert oder bestehende verändert werden.\nBeispiel:\n\n# Neue Variablen erstellen\nd_new &lt;- d_stroop_clean |&gt;\n    mutate(num_variable = 1.434,\n           chr_variable = \"1.434\",\n           sumofxy_variable = rt + 1,\n           copy_variable = word)\n\n# Bestehende Variablen verändern\nd_new &lt;- d_new |&gt;\n    mutate(num_variable = num_variable * 1000) # z.B. um Sekunden zu Millisekunden zu machen\n\nMit case_when() kann eine neue Variable erstellt werden in Abhängigkeit von Werten anderer Variablen. Damit kann z.B. eine Variable accuracy erstellt werden, die den Wert correct hat, wenn die Aufgabe richtig gelöst wurde (z.B. Bedingung rot und Tastendruck r) und sonst den Wert error hat.\nBeispiel:\n\nd_condvariable &lt;- d_stroop_clean |&gt;\n    mutate(cond_variable = case_when(rt &gt; 0.8 ~ \"higher\",\n                                     rt &lt;= 0.8 ~ \"lower\",\n                                     .default = NA))\n\n\n\n\n\n\n\nHands-on: Variablen generieren und verändern\n\n\n\n\nErstellen Sie im Datensatz d_stroop_clean eine neue Variable mit dem Namen researcher, den Ihren Namen enthält.\nErstellen Sie zudem eine Variable accuracy_check, mit correct für korrekte und error für inkorrekte Trials. Kontrollieren Sie mit der Variable keyResp_test_run.corr (oder Ihrem neuen Variablennamen, wenn Sie diese umbenannt haben) im Datensatz, ob Sie die Aufgabe richtig gelöst haben.\nÄndern Sie die Trialnummer, so dass sie nicht mehr mit 0 beginnt, sondern mit 1.",
+    "crumbs": [
+      "Data wrangling",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
+    ]
+  },
+  {
+    "objectID": "datawrangling.html#variablenklasse-verändern-as.factor-as.numeric",
+    "href": "datawrangling.html#variablenklasse-verändern-as.factor-as.numeric",
+    "title": "7  Daten importieren und vorverarbeiten",
+    "section": "7.9 Variablenklasse verändern: as.factor(), as.numeric(), …",
+    "text": "7.9 Variablenklasse verändern: as.factor(), as.numeric(), …\nVariablen können verschiedene Klassen haben, sie können z.B. kategoriale (factor, character) oder numerische (integer, numeric, double) Informationen enthalten. Beim Einlesen “rät” R, welche Klasse eine Variable hat. Teilweise möchten wir dies ändern. Wenn wir eine Variable zu einem Faktor machen möchten, verwenden wir as.factor(). Dies macht z.B. Sinn, wenn die Versuchspersonennummer als Zahl eingelesen wurde. Um von einem Faktor zu einer numerischen Variable zu kommen, verwenden wir as.numeric().\n\n# Die Variable \"congruent\" zu einem Faktor machen\nd_stroop_clean |&gt; \n    mutate(congruent = as.factor(congruent))\n\n\n\n\n\n\n\nHands-on: Variablenklassen\n\n\n\nSchauen Sie sich den Datensatz mit glimpse() oder mit View() an. Welche Klassen enthält Ihr Datensatz und was bedeuten Sie?",
+    "crumbs": [
+      "Data wrangling",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
+    ]
+  },
+  {
+    "objectID": "datawrangling.html#daten-gruppieren-und-zusammenfassen-group_by-und-summarise",
+    "href": "datawrangling.html#daten-gruppieren-und-zusammenfassen-group_by-und-summarise",
+    "title": "7  Daten importieren und vorverarbeiten",
+    "section": "7.10 Daten gruppieren und zusammenfassen: group_by() und summarise()",
+    "text": "7.10 Daten gruppieren und zusammenfassen: group_by() und summarise()\nMit diesen beiden Funktionen können wir mit wenig Code den Datensatz gruppieren und zusammenfassen.\n\n# Nach Wörter gruppieren\nd_stroop_clean |&gt; group_by(word) |&gt;\n    summarise(mean_rt = mean(rt),\n              sd_rt = sd(rt))\n\n# A tibble: 3 × 3\n  word  mean_rt sd_rt\n  &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;\n1 blau     1.23 0.490\n2 gelb     1.26 0.447\n3 rot      1.16 0.552\n\n\n\n\n\n\n\n\nHands-on: Daten zusammenfassen\n\n\n\nErstellen Sie einen neuen Datensatz d_stroop_summary\n\nGruppieren Sie den Datensatz für Wortfarbe und Kongruenz.\nFassen Sie für diese Gruppen die durchschnittliche Antwortzeit und Accuracy sowie die Standardabweichungen zusammen.",
+    "crumbs": [
+      "Data wrangling",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
+    ]
+  },
+  {
+    "objectID": "datawrangling.html#datensätze-speichern-write.csv",
+    "href": "datawrangling.html#datensätze-speichern-write.csv",
+    "title": "7  Daten importieren und vorverarbeiten",
+    "section": "7.11 Datensätze speichern: write.csv()",
+    "text": "7.11 Datensätze speichern: write.csv()\n\nwrite.csv(d_stroop_clean, file = \"data/dataset_stroop_clean.csv\", row.names = FALSE)\n\n\n\n\n\n\n\nHands-on: Datensätze speichern\n\n\n\nSpeichern Sie einen neuen Datensatz mit den vorverarbeiteten Daten.",
+    "crumbs": [
+      "Data wrangling",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
+    ]
+  },
+  {
+    "objectID": "datawrangling.html#data-wrangling-workflow-implementieren",
+    "href": "datawrangling.html#data-wrangling-workflow-implementieren",
+    "title": "7  Daten importieren und vorverarbeiten",
+    "section": "7.12 Data wrangling workflow implementieren",
+    "text": "7.12 Data wrangling workflow implementieren\n\n\n\n\n\n\nHands-on: Data wrangling workflow\n\n\n\nErstellen Sie nun ein Projekt für das Random-Dot Experiment und führen Sie die gelernten data wrangling Schritte selbstständig durch.\n\n\n\nZu den gelernten Funktionen finden Sie hier Grafiken die evtl. helfen, sich die Funktions-Namen zu merken.",
+    "crumbs": [
+      "Data wrangling",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
+    ]
+  },
+  {
+    "objectID": "uebung_2.html",
+    "href": "uebung_2.html",
+    "title": "Übung 2",
+    "section": "",
+    "text": "Auftrag\nArbeiten Sie die Datenvorverarbeitungsschritte im Kapitel Daten importieren und vorverarbeiten durch.",
+    "crumbs": [
+      "Data wrangling",
+      "Übung 2"
+    ]
+  },
+  {
+    "objectID": "uebung_2.html#abgabetermin",
+    "href": "uebung_2.html#abgabetermin",
+    "title": "Übung 2",
+    "section": "Abgabetermin",
+    "text": "Abgabetermin\nBei dieser Übung muss nichts abgegeben werden.\nBeim Termin vom 14. März 2024 werden wir jedoch stark auf dieses Vorwissen aufbauen.",
+    "crumbs": [
+      "Data wrangling",
+      "Übung 2"
+    ]
+  },
+  {
+    "objectID": "uebung_2.html#trouble-shooting",
+    "href": "uebung_2.html#trouble-shooting",
+    "title": "Übung 2",
+    "section": "Trouble shooting",
+    "text": "Trouble shooting\nSie dürfen gerne in den Pausen der vorherigen Termine auf uns zukommen, falls etwas nicht klappt oder Sie eine Frage haben.\nFalls Sie zusätzliche Übungsaufgaben wünschen, finden Sie hier zwei weitere Walk-throughs:\n\nhttps://psylu.github.io/statistik2-fs25/datenverarbeitung/transform.html\nhttps://psylu.github.io/statistik2-fs25/uebungen/uebung-02.html",
+    "crumbs": [
+      "Data wrangling",
+      "Übung 2"
     ]
   },
   {

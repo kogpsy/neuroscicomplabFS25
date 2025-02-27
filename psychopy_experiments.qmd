@@ -1,0 +1,380 @@
+# Verhaltensexperimente mit PsychoPy
+
+Kurze Einführung in das Erstellen von Experimenten mit PsychoPy.
+
+Dieser Kurs legt den Fokus auf verhaltenswissenschaftliche Forschung, die sich für die Gehirnprozesse von Menschen interessiert. 
+Wir erstellen in PsychoPy von Grund auf zwei Experimente aus der Wahrnehmungs- und Entscheidungsforschung sowie der Neuropsychologie: 
+
+1. Das __Random Dot Experiment__ ist ein perzeptuelles Entscheidungsexperiment mit welchem wir den Einfluss von Anweisungen/Instruktionen auf Entscheidungen untersuchen. 
+2. Das __Stroop Experiment__ beinhaltet eine typische Aufgabe aus der (klinischen) Neuropsychologie zur Untersuchung von exekutiven Funktionen.
+
+PsychoPy ist eine kostenfreie Software zum Erstellen von verhaltenswissenschaftlichen Experimenten im Labor oder Online. Die Software basiert auf der Programmiersprache Python, man kann die Experimente (mit gewissen Begrenzungen) jedoch auch in einem GUI (guided user interface) erstellen und braucht so (fast) keine Programmierkenntnisse. PsychoPy-Experimente ermöglichen präzise räumliche und zeitliche Kontrolle. [(Peirce et al. 2019)](https://link.springer.com/article/10.3758/s13428-018-01193-y)
+
+<aside>Zu Beginn des Papers von [Peirce et al. 2019](https://link.springer.com/article/10.3758/s13428-018-01193-y) finden Sie eine kurze Übersicht über gängige Experimentalsoftware in den Verhaltenswissenschaften und was PsychoPy besonders macht. Auch weiterführende Informationen und Links sind hier zu finden.</aside>
+
+In PsychoPy erstellen Experimente können direkt auf [Pavlovia](https://pavlovia.org/) hochgeladen, und so als Online-Experimente gehostet und durchgeführt werden. Die Speicherung des Experimentes auf *gitlab* ermöglicht dabei eine Versionskontrolle, sowie das Teilen des Experimentalcodes.
+
+::: callout-caution
+## Hands-on: Experiment auswählen und programmieren
+
+1.  Wählen Sie eines der beiden Experimente, entweder das [Random Dot Experiment](random_dot_experiment.html) oder das [Stroop Experiment](stroop_experiment.html) aus.
+
+2.  Lesen Sie die Beschreibung des Experiments durch und beantworten Sie die dort gestellten Fragen.
+
+3.  Erstellen Sie eine [Flowchart](neurowissenschaftliche_experimente.html#flowcharts) zum geplanten Experiment. 
+Fügen Sie Folgendes ein:
+
+- Alle [Elemente eines Experiments](experiments.html#wichtige-elemente-von-experimenten)
+- Wiederholungen von Elementen (mit einem Loop/Pfeil)
+- Dauer von Elementen (z.B. in ms)
+- Aufgenommene Daten (z.B. button press)
+
+_Tipps_: 
+
+- Schauen Sie sich Paper, die dieses Experiment verwenden an.
+- Zeichnen Sie die Flowchart auf einem Blatt Papier, in einem Programm wie Word/Excel oder R mit dem [{`mermaidr`}-Package](https://data-mermaid.github.io/mermaidr/).
+- In PsychoPy GUI werden Sie automatisch eine Art Flowchart angezeigt erhalten, wie [hier](https://link.springer.com/article/10.3758/s13428-018-01193-y/figures/2) ein Beispiel zeigt. Sie können diese angezeigte Flowchart dann jeweils mit Ihrer gezeichneten vergleichen und so den Überblick behalten.
+
+
+4.  Erstellen Sie das Experiment in PsychoPy. Untenstehend finden Sie einen Anleitung zum Vorgehen.
+
+5.  Wenn Sie genügend Zeit haben können Sie auch noch das andere Experiment programmieren.
+
+*\[\~90 Minuten\]*
+:::
+
+# PsychoPy Experiment: Step by Step
+
+::: callout-tip
+## Tipp
+
+Hilfreiche Informationen zum Erstellen von Experimenten in PsychoPy finden Sie hier:
+
+-   [PsychoPy Website](https://www.psychopy.org/)
+
+-   [Walk-through: Builder](https://tu-coding-outreach-group.github.io/cog_summer_workshops_2021/psychopy/index.html)
+
+-   [Diskussionsforum](https://discourse.psychopy.org/)
+:::
+
+# 1. Umgebung
+
+## 1.1 Experiment-File erstellen und abspeichern
+
+-   Öffnen Sie PsychoPy und speichern Sie in einem dafür erstellten Ordner (z.B. `psychopy_experiment`) das Experiment-File ab (z.B. unter `experiment_stroop-task`).
+
+## 1.2 Builder (GUI) und Coder?
+
+Experimente können in PsychoPy mit dem Builder (in einem GUI) erstellt werden, der Python Code wird so automatisch für Sie generiert. Sie können sich diesen Code auch anschauen und verändern. Leider können Sie sobald Sie den Code verändert haben, diese Änderungen nicht zurück in den Builder übertragen. Im Builder-Modus können Sie aber Codestücke einfügen um einzelne Teile des Experiments in Python (oder anderen Programmiersprachen) zu programmieren und dennoch im Builder weiterarbeiten zu können.
+
+<aside>Falls Sie planen ein Online-Experiment durchzuführen, eignet sich der Builder besonders, da die Experimente direkt online durchgeführt werden können.</aside>
+
+# 2. Experiment erstellen
+
+## 2.1 Stimuli
+
+In PsychoPy finden Sie schon vorprogrammierte Stimulus Elemente, wie Gratings oder Rating Scales und können Texte, geometrische Figuren, Bilder und Filme einfügen. Auch komplexere Stimuluselemente wie Random Dots können sehr einfach konfiguriert werden ohne dass sie von Grund auf neu programmiert werden müssen.
+
+-   Erstellen Sie einen **Stimulus**. Beachten Sie folgende Aspekte:
+
+    -   Farbe
+
+    -   Grösse
+
+    -   weitere Eigenschaften, wie Bedingung/Kongruenz?
+
+    -   Timing (Stimulusdauer, Stimulusende)
+
+-   Notieren Sie, welche Eigenschaften des Stimulus sich über die Trials hinweg verändern sollte. Dies können auch mehrere Eigenschaften sein. Diese Liste benötigen Sie später.
+
+## 2.2 Trial
+
+-   Ergänzen Sie alle Elemente, die für einen vollständigen Trial notwendig sind:
+
+    -   Antwort der Versuchsperson / Response (siehe auch 2.4)
+
+    -   Inter-Trial-Intervall (ITI): kann vor oder nach dem Stimulus eingefügt werden. (Die Zeit des ITI wird oft variiert. Dies müsste also auch auf die Liste oben)
+
+    -   Fixationskreuz?
+
+    -   Mask?
+
+    -   Feedback?
+
+## 2.3 Trialschleife
+
+Sie müssen nicht alle Trials (oder in PsychoPy: `Routines`) des Experiments einzeln programmieren, sondern können diese wiederholen, in dem Sie eine **Trial**-Schleife (`loop`) um den Trial herum erstellen.
+
+-   Erstellen Sie einen `loop`indem Sie im Feld `Flow` auf `Insert loop` klicken.
+
+    -   Mit `loopType` können Sie steuern, die Bedingungen randomisiert/gemischt oder sequentiell/der Reihe nach angezeigt werden sollen.
+
+    -   Mit `nReps` können Sie angeben, wie oft jeder Stimulus wiederholt werden soll. Haben Sie also einen Stimulus mit zwei zu varierenden Eigenschaften (die je 3 Stufen haben) (also 9 Zeilen im `conditions`-File und `nReps`= 2, ergibt das 18 Trials.
+
+Mittels diesen Schleifen können die Bedingungen implementiert werden z.B. dass sich der Stimulus bei jedem Trial verändert. Dies kann mit einer `conditions`-Datei spezifiziert werden, idealerweise im `.csv` oder `.xlsx`-Format.
+
+<aside>Die Endung `.csv` bedeutet, dass die Daten als *comma separated values* abgespeichert werden, also durch ein Komma getrennt. Dieses Dateiformat eignet sich besser als `.xlsx`, weil es mit vielen Programmen kompatibel und gut einlesbar ist.</aside>
+
+*Beispielsweise wollen wir drei verschiedene Worte anzeigen (`dog`, `cat` und `rabbit`) und dieses Wort unterschiedlich lange anzeigen (Dauer: `1`, `10` und `100` Frames). Die Versuchspersonen sollen dann den Anfangsbuchstaben des Wortes drücken, also `d` für `dog`, `c` für `cat` und `r` für `rabbit`.*
+
+-   Um die Bedingungen (in unserem Fall: die sich verändernden Stimuluseigenschaften) zu definieren, erstellen wir eine `.csv`oder `.xlsx`-Datei (z.B. in Excel/Notepad/etc.) mit dem Namen `conditions` und speichern dieses im selben Ordner wie das Experiment.
+
+    -   Fügen Sie für jedes sich verändernde Element einen Variablennamen und die entsprechenden Werte ein (dies sind die Eigenschaften, die Sie sich bei Punkt 2.1 notiert haben). Die **Variablennamen** schreiben wir immer in die oberste Zeile der Datei.
+
+        *Wenn wir z.B. einen Text anzeigen möchten, schreiben wir in die erste Zeile `word` und `duration`.*
+
+    -   In die Spalte unter die Variablennamen schreiben wir die Werte.
+
+        *Als Beispiel könnten die Worte die wir anzeigen lassen wollen `cat`, `dog` und `rabbit` lauten. Dann stehen in der Spalte `word`, diese 3 Wörter unter dem Variablennamen. Unter dem Variablennamen `duration` geben wir die Anzahl Frames ein, also `1`, `10` und `100`. Wir wollen jedes Wort mit jeder Dauer kombinieren. Das ergibt 9 Zeilen.*
+
+    -   Fügen Sie in jeder Zeile unter dem Variablennamen `corrAns` die jeweils korrekte Antwort ein.
+
+    -   Fügen Sie, falls vorhanden, in jeder Zeile weitere wichtige Information zum Stimulus ein.
+
+        *Im Beispiel möchten Sie z.B. später fleischfressende mit pflanzenfressenden Tieren vergleichen, deshalb eine Spalte `meat`. Dies verändert im Experiment nichts, dient aber am Schluss zur Auswertung, weil diese Variable auch immer in den Datensatz geschrieben wird.*
+
+    ![](img/psychopy_conditionsfile_example.JPG)
+
+-   Fügen Sie nun im Loop-Fenster die `conditions`-Datei ein.
+
+
+    ![](img/psychopy_trialloop_example.jpg)
+
+::: callout-tip
+## Tipp
+
+Jede Zeile in der `conditions`-Datei unterhalb des Variablennamens entspricht einer Bedingung (condition).
+
+Setzen Sie `nReps` auf 1 während Sie das Experiment erstellen, so sparen Sie Zeit.
+:::
+
+Im PsychoPy können Sie Variablen mit einem vorangestellten `$`einfügen.
+
+-   Öffnen Sie nun wieder das Stimulusfenster und passen Sie dort die Stimuluseigenschaften an. Anstatt von *hard-coded values* (also einmalig, fix festgelegten Werten) geben wir nun einen Variablennamen ein. Der Stimulus darf nicht auf `constant` gesetzt sein, sonst kann er sich nicht Trial für Trial verändern, setzen Sie ihn deshalb unbedingt auf `set every repeat`.
+
+    *In unserem Beispiel fügen wir bei `text` die Laufvariable (verändernde Eigenschaft) ein: `$word`. Die Anzeigedauer des Textes soll `$duration` in Frames sein.*
+
+![](img/psychopy_variable.jpg)
+
+-   Lassen Sie das Experiment laufen und kontrollieren Sie, ob alles funktioniert hat.
+
+::: callout-tip
+## Tipp
+
+Mit dieser Methode können Sie auch Instruktionen, ITIs, etc. variieren lassen.
+:::
+
+## 2.4 Antworten aufnehmen
+
+In PsychoPy muss definiert werden, wie die Antwort der Versuchsperson aufgenommen wird. Dies kann mit der Maus, der Tastatur oder anderen Devices umgesetzt werden. Die Möglichkeiten sehen Sie unter `Responses`.
+
+-   Fügen Sie eine **Antwortkomponente** hinzu und benennen Sie diese sinnvoll.
+
+    _In unserem Beispiel möchten wir, dass die Versuchsperson mittels Keyboard antwortet._
+
+    -   Mit `Force end of Routine` können Sie einstellen, ob eine Antwort den Trial beendet und mit dem nächsten fortfährt.
+
+    -   Der Namen der Antwortkomponente wird später im Datensatz als Variable zu finden sein.
+
+        _Werden in einer Antwortkomponente namens `key_resp` mittels Tastendruck _Antwort_ und _Response Time_ aufgenommen, heissen die Variablen dann `key_resp.keys`(gedrückte Taste) und `key_resp.rt` (Antwortdauer)._
+
+    -   Entscheiden Sie, ob PsychoPy überprüfen soll, ob die richtige Antwort gegeben wurde. 
+    
+        _Wenn Sie dies möchten, gleicht PsychoPy in unserem Beispiel die gegebene Antwort (`key_resp.keys`) mit der dafür eingegebenen Variable (hier `corrAns`) ab. Stimmen diese überein, fügt es in die Variable `key_resp.corr` 1 ein, wenn nicht 0)._
+
+    -   Mit `first key` definieren Sie, dass der erste Tastendruck zählt.
+
+    ![](img/psychopy_resp_1.jpg)
+
+    ![](img/psychopy_resp_2.jpg)
+
+## 2.5 Weitere Elemente
+
+In PsychoPy GUI wird Ihnen im Fenster `Flow`eine Art Flowchart angezeigt. Hier sehen Sie, welche Elemente Ihr aktuelles Experiment enthält.
+
+-   Fügen Sie nun alle weiteren Elemente, die Sie zu Beginn auf Ihrer Flowchart eingezeichnet hatten, z.B.
+
+    -   Begrüssung
+
+    -   Einverständnis
+
+    -   Instruktion
+
+    -   Debriefing, Verabschiedung
+
+-   Lassen Sie das Experiment laufen und kontrollieren Sie, ob alles funktioniert hat.
+
+::: callout-tip
+## Tipp
+
+Beim Programmieren lohnt es sich oft, die kleinen Schritte zwischenzutesten, weil es dann einfacher ist herauszufinden, wo genau der Fehler passiert ist.
+:::
+
+# 3. Datenspeicherung
+
+Wenn man die default-Einstellungen nicht ändert, speichert PsychoPy die Daten automatisch in einer trial-by-trial `.csv`-Datei. Das bedeutet, dass jeder Trial 1 Zeile generiert. Die `.csv`-Datei erhält einen Namen, der sich aus der *Versuchspersonen-ID*, dem *Namen des Experiments*, und dem aktuellen *Datum inkl. Uhrzeit* zusammensetzt. So ist es möglich, mit derselben Versuchspersonen-ID beliebig oft das Experiment zu wiederholen. Die `.csv`-Dateien werden in einem Ordner mit dem Name **data** abgelegt.
+
+In den Fenstern der Elemente kann jeweils angegeben werden, was alles gespeichert werden soll.
+
+::: callout-tip
+## Tipp
+
+Bei der Wahl vom Datenfile-Namen empfiehlt es sich **immer** Datum und Uhrzeit anzuhängen. Dies verhindert, dass Daten überschrieben werden, wenn z.B. eine Versuchspersonen-ID falsch eingetippt oder doppelt vergeben wird.
+:::
+
+_Das oben verwendete Beispielsexperiment ergibt folgenden Datensatz:_
+
+![](img/psychopy_data_example.jpg)
+
+Sie sehen die Infos aus der `conditions`-Datei (gelb), die Zählerinformationen der Loops (hellgrau), die Timinginformationen (dunkelgrau), die Antwortinformationen (blau) und die Experimentinformationen (grün).
+
+
+# 4. Test / Pilotierung
+
+-   Führen Sie das Experiment aus und schauen Sie sich den Datensatz an: Sind alle wichtigen Informationen auf jeder Zeile vorhanden?
+
+    -   Versuchspersonen-ID
+
+    -   Bedingung
+
+    -   Stimuluseigenschaften (z.B. word)
+
+    -   Antwort der Versuchsperson
+
+    -   Antwortdauer der Versuchsperson
+
+    -   Antwort korrekt?
+
+-   Können die Daten überschrieben werden?
+
+-   Lassen Sie jemanden anderes Ihr Experiment durchführen, und geben Sie einander Feedback.
+
+# 5. Verwenden von Codekomponenten im Builder
+
+Auch wenn man das Experiment im Builder erstellt erfordern einige Experimentelemente das Verwenden von **Codekomponenten**. In diesem Abschnitt werden zwei häufige Anwendungsbeispiele besprochen: Die variable Blockdauer (z.B. für Fixationskreuze oder ITIs) und das Geben von Feedback (z.B. in einem Übungsdurchgang).
+
+:::callout-tip
+
+## If-else Statements in Python
+
+In Python können Sie für verschiedene Fälle (`cases`) andere Aktionen ausfüllen, indem Sie If-else Statements nutzen.
+
+Ein If-else Statement enthält ein `if` (_wenn_), einer `condition` (_das zutrifft_), einem `body` (_dann mach das_).
+
+Ergänzt kann dies werden mit `ifelse` (_oder wenn_)+ `condition` (_das zutrifft_) + `body` (_dann mach das_) und einem `else` (_wenn nichts davon zutrifft_) + `body` (_dann mach das_).
+
+__Wichtig:__ 
+- Python ist _indentation-sensibel_, das bedeutet: Die Einrückung (1 Tab) muss stimmen, sonst funktioniert der Code nicht. Auch der _Doppelpunkt_ `:` ist wichtig und muss an der richtigen Stelle stehen. Wenn Sie mehrere `conditions` verwenden möchten, müssen Sie diese in _Klammern_ `()` setzen. Hier sehen Sie die Syntax eines If-else Statements:
+
+```
+if (condition):
+    body
+    
+ifelse (condition):
+    body
+    
+else:
+    body
+```
+:::
+
+<aside>Einführung in Python auf Datacamp: 👉🏼 [Introduction to Python](https://app.datacamp.com/learn/courses/intro-to-python-for-data-science)</aside>
+
+
+## 5.1 Variable Dauer von Elementen
+
+### Fixationskreuz und ITI mit randomisierter Dauer
+
+Um das Experiment für die Versuchsperson unvorhersehbarer zu machen, implementieren wir vor dem eigentlichen Stimulus ein Fixationskreuz mit variabler Länge. Diese Länge soll 0.2, 0.4, 0.6, oder 0.8 Sekunden betragen.
+
+-   Fügen Sie einen Codeblock `code_fixationcross` ein und definieren Sie unter `Begin Routine` die Variable `fixationcross_duration`.
+
+    ![](img/psychopy_codecomponent_1.png)
+
+-   Fügen Sie einen Textblock `fixationcross` ein mit dem Text `+` und Schriftgrösse `10`. Geben Sie unter `duration` Ihre vorher definierte Variable ein (vergessen Sie dabei das `$` nicht): `$fixationcross_duration`.
+
+    ![](img/psychopy_codecomponent_2.png)
+
+::: callout-caution
+## Hands-on: Variable ITI einbauen
+
+Fügen Sie nach dem Stimulus eine ITI mit variabler Dauer hinzu.
+
+__Einfachere Variante:__ Die ITI soll 10, 20, 30, 40 oder 50 Frames betragen.
+
+__Schwierigere Variante:__ Die ITI soll eine Zufallszahl zwischen 0.2 und 0.8 Sekunden betragen.
+:::
+
+## 5.2 Feedback
+
+Es gibt Experimente, welche Feedback erfordern. Oft wird vor der Datenerhebung ein Übungsblock eingebaut, welcher Feedback enthält, so dass die Versuchspersonen wissen, ob sie den Task richtig verstanden haben.
+
+-   Erstellen Sie zuerst eine [Trialschleife](https://kogpsy.github.io/neuroscicomplabFS24/pages/chapters/psychopy_experiments.html#trialschleife) mit einem Stimulus und einer Response.
+
+-   Fügen Sie nach dem Stimulus und der Antwort (aber innerhalb der Trialschleife!) eine Routine `feedback` ein.
+
+-   Fügen Sie innerhalb der Routine `feedback` eine **Codekomponente** hinzu. In dieser Komponente können Sie nun
+
+    ![](img/psychopy_feedback1.jpg)
+
+
+-   Fügen Sie nun eine **Textkomponente** hinzu und fügen Sie beim Textfeld die Variable `$response_msg` ein, damit die Versuchsperson abhängig von ihrer Antwort das entsprechende Feedback erhält, welches zuvor in der Codekomponente definiert wurde.
+
+    ![](img/psychopy_feedback2.jpg)
+    
+
+::: callout-caution
+## Hands-on: Feedback geben
+
+Sie können mittels einer **Codekomponente** auch reagieren, wenn die Versuchsperson zu schnell, zu langsam oder gar nicht antwortet.
+
+-   Erstellen Sie einen Übungsdurchgang. Fügen Sie eine Code-Komponente hinzu und legen Sie fest, welches Feedback die Versuchsperson erhalten soll.
+
+__Einfache Variante:__ Geben Sie der Person Feedback, ob ihre Antwort richtig oder falsch war.
+
+__Mittelschwere Variante:__ Geben Sie der Person Feedback, wenn Sie zu schnell oder zu langsam antwortet.
+
+__Schwere Variante:__ Erstellen Sie einen Counter, welcher der Versuchsperson anzeigt, wie gut sie ist, indem für jede richtige Antwort 5 Punkte erhält, für jede falsche Antwort 5 Punkte abgezogen werden.
+
+Falls Sie zur Geschwindigkeit Rückmeldung geben wollen oder einen Counter bauen, können Sie etwas in dieser Art machen.
+        
+```{}
+if dots_keyboard_response.keys is None:
+    response_text = "miss"
+
+elif dots_keyboard_response.rt <= 0.1:
+    response_text = "too fast"
+
+else:
+    if (direction == "left" and dots_keyboard_response.keys == "f" or 
+        direction == "right" and dots_keyboard_response.keys == "j"):
+        response_text = "+5 points"
+    else:
+        response_text = "+0 points"
+    
+```
+
+:::
+
+# 6. Weitere wichtige Punkte
+
+## 6.1 Degrees of Visual Angle
+
+Oftmals werden Grössenangaben von Stimuli noch in Pixel oder Zentimeter, sondern in *degrees of visual angle* gemacht. Dies hat den Vorteil, dass die Angaben nicht vom Monitor selber oder der Entferung vom Monitor abhängig sind. *Degrees of visual angle* gibt die wahrgenommene Grösse des Stimulus an, und berücksichtigt die Grösse des Monitors und des Stimulus, und die Entfernung der Versuchsperson vom Monitor. Weitere Informationen dazu finden Sie auf der Website von [OpenSesame](https://osdoc.cogsci.nl/3.3/visualangle/). Üblicherweise entspricht ein *degrees of visual angle* etwa einem cm bei einer Entfernung von 57 cm vom Monitor.
+
+<aside>[OpenSesame](https://osdoc.cogsci.nl/) ist ein weiteres, Python-basierendes Programm für die Erstellung behavioraler Experimente.</aside>
+
+Zur Umrechnung zwischen cm und *degrees of visual angle* finden Sie unter diesem [Link](https://www.sr-research.com/eye-tracking-blog/background/visual-angle/) mehr Information.
+
+## 6.2 Timing
+
+**Frames vs. time (sec or ms)**: Die präziseste Art zur Steuerung des Timings von Stimuli besteht darin, sie für eine festgelegte Anzahl von Frames zu präsentieren. Bei einer Framerate von 60 Hz können Sie Ihren Stimulus nicht z. B. 120 ms lange präsentieren; die Bildperiode würde Sie auf einen Zeitraum von 116,7 ms (7 Bilder) oder 133,3 ms (8 Bilder) beschränken. Dies ist besonders wichtig für Reaktionszeit-Aufgaben und EEG-Studien, wo ein präzises Millisekunden-Timing erforderlich ist. Hier finden Sie weitere Informationen zu diesem Thema: [Presening Stimuli - Psychopy](https://www.psychopy.org/coder/codeStimuli.html).
+
+<aside>Hertz ist eine Einheit die angibt, wie häufig etwas pro Sekunde passiert. Hertz kann wie *Mal pro Sekunde* ausgesprochen werden. 60 Hertz bedeutet also, 60 Mal pro Sekunde.</aside>
+
+## 6.3 Individualisierte Aufgabenschwierigkeit / Schwellenmessung
+
+Im Random Dot Experiment macht es z.B. für gewisse Fragestellungen Sinn die Aufgabenschwierigkeit für jede Person anzupassen, da sonst ceiling/floor-Effekte auftreten können.
+
+In PsychoPy kann ein Staircase in einem Loop verwendet werden, um die Schwierigkeit einer Aufgabe basierend auf der Leistung der Teilnehmer dynamisch anzupassen. Sie ist besonders häufig in Experimenten zur Schwellenmessung, bei denen das Ziel darin besteht, die kleinste wahrnehmbare Reizintensität zu bestimmen. Hier finden Sie weitere Informationen zu diesem Thema: [Using a Staircase - PsychoPy](https://www.psychopy.org//general/staircases.html).
+
