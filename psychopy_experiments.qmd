@@ -1,4 +1,4 @@
-# Verhaltensexperimente mit PsychoPy
+# Verhaltensexperimente mit PsychoPy 
 
 Kurze Einführung in das Erstellen von Experimenten mit PsychoPy.
 
@@ -43,8 +43,6 @@ _Tipps_:
 *\[\~90 Minuten\]*
 :::
 
-# PsychoPy Experiment: Step by Step
-
 ::: callout-tip
 ## Tipp
 
@@ -57,21 +55,21 @@ Hilfreiche Informationen zum Erstellen von Experimenten in PsychoPy finden Sie h
 -   [Diskussionsforum](https://discourse.psychopy.org/)
 :::
 
-# 1. Umgebung
+## Umgebung
 
-## 1.1 Experiment-File erstellen und abspeichern
+### Experiment-File erstellen und abspeichern
 
 -   Öffnen Sie PsychoPy und speichern Sie in einem dafür erstellten Ordner (z.B. `psychopy_experiment`) das Experiment-File ab (z.B. unter `experiment_stroop-task`).
 
-## 1.2 Builder (GUI) und Coder?
+### Builder (GUI) und Coder?
 
 Experimente können in PsychoPy mit dem Builder (in einem GUI) erstellt werden, der Python Code wird so automatisch für Sie generiert. Sie können sich diesen Code auch anschauen und verändern. Leider können Sie sobald Sie den Code verändert haben, diese Änderungen nicht zurück in den Builder übertragen. Im Builder-Modus können Sie aber Codestücke einfügen um einzelne Teile des Experiments in Python (oder anderen Programmiersprachen) zu programmieren und dennoch im Builder weiterarbeiten zu können.
 
 <aside>Falls Sie planen ein Online-Experiment durchzuführen, eignet sich der Builder besonders, da die Experimente direkt online durchgeführt werden können.</aside>
 
-# 2. Experiment erstellen
+## Experiment erstellen
 
-## 2.1 Stimuli
+### Stimuli
 
 In PsychoPy finden Sie schon vorprogrammierte Stimulus Elemente, wie Gratings oder Rating Scales und können Texte, geometrische Figuren, Bilder und Filme einfügen. Auch komplexere Stimuluselemente wie Random Dots können sehr einfach konfiguriert werden ohne dass sie von Grund auf neu programmiert werden müssen.
 
@@ -87,7 +85,7 @@ In PsychoPy finden Sie schon vorprogrammierte Stimulus Elemente, wie Gratings od
 
 -   Notieren Sie, welche Eigenschaften des Stimulus sich über die Trials hinweg verändern sollte. Dies können auch mehrere Eigenschaften sein. Diese Liste benötigen Sie später.
 
-## 2.2 Trial
+### Trial
 
 -   Ergänzen Sie alle Elemente, die für einen vollständigen Trial notwendig sind:
 
@@ -101,7 +99,7 @@ In PsychoPy finden Sie schon vorprogrammierte Stimulus Elemente, wie Gratings od
 
     -   Feedback?
 
-## 2.3 Trialschleife
+### Trialschleife
 
 Sie müssen nicht alle Trials (oder in PsychoPy: `Routines`) des Experiments einzeln programmieren, sondern können diese wiederholen, in dem Sie eine **Trial**-Schleife (`loop`) um den Trial herum erstellen.
 
@@ -133,12 +131,12 @@ Mittels diesen Schleifen können die Bedingungen implementiert werden z.B. dass 
 
         *Im Beispiel möchten Sie z.B. später fleischfressende mit pflanzenfressenden Tieren vergleichen, deshalb eine Spalte `meat`. Dies verändert im Experiment nichts, dient aber am Schluss zur Auswertung, weil diese Variable auch immer in den Datensatz geschrieben wird.*
 
-    ![](img/psychopy_conditionsfile_example.JPG)
+    ![](imgs/psychopy_conditionsfile_example.JPG)
 
 -   Fügen Sie nun im Loop-Fenster die `conditions`-Datei ein.
 
 
-    ![](img/psychopy_trialloop_example.jpg)
+    ![](imgs/psychopy_trialloop_example.jpg)
 
 ::: callout-tip
 ## Tipp
@@ -154,7 +152,7 @@ Im PsychoPy können Sie Variablen mit einem vorangestellten `$`einfügen.
 
     *In unserem Beispiel fügen wir bei `text` die Laufvariable (verändernde Eigenschaft) ein: `$word`. Die Anzeigedauer des Textes soll `$duration` in Frames sein.*
 
-![](img/psychopy_variable.jpg)
+![](imgs/psychopy_variable.jpg)
 
 -   Lassen Sie das Experiment laufen und kontrollieren Sie, ob alles funktioniert hat.
 
@@ -164,7 +162,7 @@ Im PsychoPy können Sie Variablen mit einem vorangestellten `$`einfügen.
 Mit dieser Methode können Sie auch Instruktionen, ITIs, etc. variieren lassen.
 :::
 
-## 2.4 Antworten aufnehmen
+### Antworten aufnehmen
 
 In PsychoPy muss definiert werden, wie die Antwort der Versuchsperson aufgenommen wird. Dies kann mit der Maus, der Tastatur oder anderen Devices umgesetzt werden. Die Möglichkeiten sehen Sie unter `Responses`.
 
@@ -184,11 +182,11 @@ In PsychoPy muss definiert werden, wie die Antwort der Versuchsperson aufgenomme
 
     -   Mit `first key` definieren Sie, dass der erste Tastendruck zählt.
 
-    ![](img/psychopy_resp_1.jpg)
+    ![](imgs/psychopy_resp_1.jpg)
 
-    ![](img/psychopy_resp_2.jpg)
+    ![](imgs/psychopy_resp_2.jpg)
 
-## 2.5 Weitere Elemente
+### Weitere Elemente
 
 In PsychoPy GUI wird Ihnen im Fenster `Flow`eine Art Flowchart angezeigt. Hier sehen Sie, welche Elemente Ihr aktuelles Experiment enthält.
 
@@ -210,7 +208,7 @@ In PsychoPy GUI wird Ihnen im Fenster `Flow`eine Art Flowchart angezeigt. Hier s
 Beim Programmieren lohnt es sich oft, die kleinen Schritte zwischenzutesten, weil es dann einfacher ist herauszufinden, wo genau der Fehler passiert ist.
 :::
 
-# 3. Datenspeicherung
+## Datenspeicherung
 
 Wenn man die default-Einstellungen nicht ändert, speichert PsychoPy die Daten automatisch in einer trial-by-trial `.csv`-Datei. Das bedeutet, dass jeder Trial 1 Zeile generiert. Die `.csv`-Datei erhält einen Namen, der sich aus der *Versuchspersonen-ID*, dem *Namen des Experiments*, und dem aktuellen *Datum inkl. Uhrzeit* zusammensetzt. So ist es möglich, mit derselben Versuchspersonen-ID beliebig oft das Experiment zu wiederholen. Die `.csv`-Dateien werden in einem Ordner mit dem Name **data** abgelegt.
 
@@ -224,12 +222,12 @@ Bei der Wahl vom Datenfile-Namen empfiehlt es sich **immer** Datum und Uhrzeit a
 
 _Das oben verwendete Beispielsexperiment ergibt folgenden Datensatz:_
 
-![](img/psychopy_data_example.jpg)
+![](imgs/psychopy_data_example.jpg)
 
 Sie sehen die Infos aus der `conditions`-Datei (gelb), die Zählerinformationen der Loops (hellgrau), die Timinginformationen (dunkelgrau), die Antwortinformationen (blau) und die Experimentinformationen (grün).
 
 
-# 4. Test / Pilotierung
+## Test / Pilotierung
 
 -   Führen Sie das Experiment aus und schauen Sie sich den Datensatz an: Sind alle wichtigen Informationen auf jeder Zeile vorhanden?
 
@@ -249,13 +247,13 @@ Sie sehen die Infos aus der `conditions`-Datei (gelb), die Zählerinformationen 
 
 -   Lassen Sie jemanden anderes Ihr Experiment durchführen, und geben Sie einander Feedback.
 
-# 5. Verwenden von Codekomponenten im Builder
+## Verwenden von Codekomponenten im Builder
 
 Auch wenn man das Experiment im Builder erstellt erfordern einige Experimentelemente das Verwenden von **Codekomponenten**. In diesem Abschnitt werden zwei häufige Anwendungsbeispiele besprochen: Die variable Blockdauer (z.B. für Fixationskreuze oder ITIs) und das Geben von Feedback (z.B. in einem Übungsdurchgang).
 
 :::callout-tip
 
-## If-else Statements in Python
+### If-else Statements in Python
 
 In Python können Sie für verschiedene Fälle (`cases`) andere Aktionen ausfüllen, indem Sie If-else Statements nutzen.
 
@@ -281,19 +279,19 @@ else:
 <aside>Einführung in Python auf Datacamp: 👉🏼 [Introduction to Python](https://app.datacamp.com/learn/courses/intro-to-python-for-data-science)</aside>
 
 
-## 5.1 Variable Dauer von Elementen
+### Variable Dauer von Elementen
 
-### Fixationskreuz und ITI mit randomisierter Dauer
+#### Fixationskreuz und ITI mit randomisierter Dauer
 
 Um das Experiment für die Versuchsperson unvorhersehbarer zu machen, implementieren wir vor dem eigentlichen Stimulus ein Fixationskreuz mit variabler Länge. Diese Länge soll 0.2, 0.4, 0.6, oder 0.8 Sekunden betragen.
 
 -   Fügen Sie einen Codeblock `code_fixationcross` ein und definieren Sie unter `Begin Routine` die Variable `fixationcross_duration`.
 
-    ![](img/psychopy_codecomponent_1.png)
+    ![](imgs/psychopy_codecomponent_1.png)
 
 -   Fügen Sie einen Textblock `fixationcross` ein mit dem Text `+` und Schriftgrösse `10`. Geben Sie unter `duration` Ihre vorher definierte Variable ein (vergessen Sie dabei das `$` nicht): `$fixationcross_duration`.
 
-    ![](img/psychopy_codecomponent_2.png)
+    ![](imgs/psychopy_codecomponent_2.png)
 
 ::: callout-caution
 ## Hands-on: Variable ITI einbauen
@@ -305,7 +303,7 @@ __Einfachere Variante:__ Die ITI soll 10, 20, 30, 40 oder 50 Frames betragen.
 __Schwierigere Variante:__ Die ITI soll eine Zufallszahl zwischen 0.2 und 0.8 Sekunden betragen.
 :::
 
-## 5.2 Feedback
+### Feedback
 
 Es gibt Experimente, welche Feedback erfordern. Oft wird vor der Datenerhebung ein Übungsblock eingebaut, welcher Feedback enthält, so dass die Versuchspersonen wissen, ob sie den Task richtig verstanden haben.
 
@@ -315,12 +313,12 @@ Es gibt Experimente, welche Feedback erfordern. Oft wird vor der Datenerhebung e
 
 -   Fügen Sie innerhalb der Routine `feedback` eine **Codekomponente** hinzu. In dieser Komponente können Sie nun
 
-    ![](img/psychopy_feedback1.jpg)
+    ![](imgs/psychopy_feedback1.jpg)
 
 
 -   Fügen Sie nun eine **Textkomponente** hinzu und fügen Sie beim Textfeld die Variable `$response_msg` ein, damit die Versuchsperson abhängig von ihrer Antwort das entsprechende Feedback erhält, welches zuvor in der Codekomponente definiert wurde.
 
-    ![](img/psychopy_feedback2.jpg)
+    ![](imgs/psychopy_feedback2.jpg)
     
 
 ::: callout-caution
@@ -356,9 +354,9 @@ else:
 
 :::
 
-# 6. Weitere wichtige Punkte
+## Weitere wichtige Punkte
 
-## 6.1 Degrees of Visual Angle
+### Degrees of Visual Angle
 
 Oftmals werden Grössenangaben von Stimuli noch in Pixel oder Zentimeter, sondern in *degrees of visual angle* gemacht. Dies hat den Vorteil, dass die Angaben nicht vom Monitor selber oder der Entferung vom Monitor abhängig sind. *Degrees of visual angle* gibt die wahrgenommene Grösse des Stimulus an, und berücksichtigt die Grösse des Monitors und des Stimulus, und die Entfernung der Versuchsperson vom Monitor. Weitere Informationen dazu finden Sie auf der Website von [OpenSesame](https://osdoc.cogsci.nl/3.3/visualangle/). Üblicherweise entspricht ein *degrees of visual angle* etwa einem cm bei einer Entfernung von 57 cm vom Monitor.
 
@@ -366,13 +364,13 @@ Oftmals werden Grössenangaben von Stimuli noch in Pixel oder Zentimeter, sonder
 
 Zur Umrechnung zwischen cm und *degrees of visual angle* finden Sie unter diesem [Link](https://www.sr-research.com/eye-tracking-blog/background/visual-angle/) mehr Information.
 
-## 6.2 Timing
+### Timing
 
 **Frames vs. time (sec or ms)**: Die präziseste Art zur Steuerung des Timings von Stimuli besteht darin, sie für eine festgelegte Anzahl von Frames zu präsentieren. Bei einer Framerate von 60 Hz können Sie Ihren Stimulus nicht z. B. 120 ms lange präsentieren; die Bildperiode würde Sie auf einen Zeitraum von 116,7 ms (7 Bilder) oder 133,3 ms (8 Bilder) beschränken. Dies ist besonders wichtig für Reaktionszeit-Aufgaben und EEG-Studien, wo ein präzises Millisekunden-Timing erforderlich ist. Hier finden Sie weitere Informationen zu diesem Thema: [Presening Stimuli - Psychopy](https://www.psychopy.org/coder/codeStimuli.html).
 
 <aside>Hertz ist eine Einheit die angibt, wie häufig etwas pro Sekunde passiert. Hertz kann wie *Mal pro Sekunde* ausgesprochen werden. 60 Hertz bedeutet also, 60 Mal pro Sekunde.</aside>
 
-## 6.3 Individualisierte Aufgabenschwierigkeit / Schwellenmessung
+### Individualisierte Aufgabenschwierigkeit / Schwellenmessung
 
 Im Random Dot Experiment macht es z.B. für gewisse Fragestellungen Sinn die Aufgabenschwierigkeit für jede Person anzupassen, da sonst ceiling/floor-Effekte auftreten können.
 
