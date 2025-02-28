@@ -47,16 +47,16 @@ In unserem Experiment lösen die Versuchspersonen einen Random Dot Task zweimal 
 
 Das [Random Dot Kursexperiment](random-dot-experiment) ist folgendermassen aufgebaut:
 
-![](img/exp_rd_flowchart.JPG)
+![](imgs/exp_rd_flowchart.JPG)
 
 
 :::callout-caution
 ## Hands-on: Random Dot Kursexperiment
 
 Laden Sie das Experiment herunter und testen Sie, ob es auf Ihrem Laptop läuft.
-[Hier](uebung_1_experiment.html) finden Sie die Anweisungen dazu.
+[Hier](uebung_1.qmd) finden Sie die Anweisungen dazu.
 
-1. Testen Sie, ob das Experiment startet und ob die Übungstrials funktionieren. Kontrollieren Sie, ob es ein Datenfile abgespeichert hat und schauen Sie, ob dieses Datenfile [alles Relevante](psychopy_experiments.html#test-pilotierung) enthält. Wenn alles ok ist, ist das Experiment bereit für Übung 1. Führen Sie die Testungen ausserhalb des Computerlabs durch.
+1. Testen Sie, ob das Experiment startet und ob die Übungstrials funktionieren. Kontrollieren Sie, ob es ein Datenfile abgespeichert hat und schauen Sie, ob dieses Datenfile [alles Relevante](psychopy_experiments.qmd#test-pilotierung) enthält. Wenn alles ok ist, ist das Experiment bereit für Übung 1. Führen Sie die Testungen ausserhalb des Computerlabs durch.
 
 
 2. Beantworten Sie folgende Fragen zum Experiment:

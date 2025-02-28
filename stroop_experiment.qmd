@@ -9,7 +9,7 @@ Der Stroop Task wurde 1935 zum ersten Mal beschrieben (Stroop, 1935) und ist ein
 
 Während dem Stroop Task wird ein Text mit Farbwörtern präsentiert. Im *kongruenten* Durchgang entsprechen die Farben des Textes dem Farbwort (das Wort "rot" wird in rot präsentiert), im *inkongruenten* Durchgang unterscheiden sich die Farben des Textes vom Farbwort (das Wort "rot" wird in gelber Farbe präsentiert). Die Person muss angeben in welcher Farbe das Wort abgedruckt ist. In der kongruenten Bedingung fällt dies leichter, weil das gelesene Wort auch der Farbe entspricht. In der inkongruenten Bedingung verlangsamt sich die Geschwindigkeit durch die entstehende Interferenz von Wort und Farbe, da das Wort automatisch gelesen wird. Oft wird auch noch eine *neutrale* Bedingung verwendet, wo nur die Farbe oder das Wort präsentiert werden.
 
-![Daten Stroop-Task (Stroop, 1935)](img/stroop_original.JPG)
+![Daten Stroop-Task (Stroop, 1935)](imgs/stroop_original.JPG)
 
 <aside>[Hier](http://psychclassics.yorku.ca/Stroop/) finden Sie eine Online-Version des Originalpapers. Interessierte finden das Review von MacLeod (1991) auf Ilias.</aside>
 
@@ -46,16 +46,16 @@ Die __kongruente__ und __inkongruente__ Bedingung kommen im selben Block vor. Di
 
 Das [Stroop Kursexperiment](https://github.com/kogpsy/stroop-experiment) ist folgendermassen aufgebaut:
 
-![](img/exp_stroop_flowchart.JPG)
+![](imgs/exp_stroop_flowchart.JPG)
 
 ::: callout-caution
 
 ## Hands-on: Stroop Kursexperiment
 
 Laden Sie das Experiment herunter und testen Sie, ob es auf Ihrem Laptop läuft.
-[Hier](https://kogpsy.github.io/neuroscicomplabFS24/pages/chapters/uebung_1_experiment.html) finden Sie die Anweisungen dazu.
+[Hier](uebung_1.qmd) finden Sie die Anweisungen dazu.
 
-1. Testen Sie, ob das Experiment startet und ob die Übungstrials funktionieren. Kontrollieren Sie, ob es ein Datenfile abgespeichert hat und schauen Sie, ob dieses Datenfile [alles Relevante](https://kogpsy.github.io/neuroscicomplabFS24/pages/chapters/psychopy_experiments.html#test-pilotierung) enthält. Wenn alles ok ist, ist das Experiment bereit für Übung 1. Führen Sie die Testungen ausserhalb des Computerlabs durch.
+1. Testen Sie, ob das Experiment startet und ob die Übungstrials funktionieren. Kontrollieren Sie, ob es ein Datenfile abgespeichert hat und schauen Sie, ob dieses Datenfile [alles Relevante](psychopy_experiments.qmd#test-pilotierung) enthält. Wenn alles ok ist, ist das Experiment bereit für Übung 1. Führen Sie die Testungen ausserhalb des Computerlabs durch.
 
 
 2. Beantworten Sie folgende Fragen zum Experiment:
