@@ -16,7 +16,11 @@ Beim Termin vom __14. März 2024__ werden wir jedoch stark auf dieses Vorwissen 
 
 Sie dürfen gerne in den Pausen der vorherigen Termine auf uns zukommen, falls etwas nicht klappt oder Sie eine Frage haben.
 
-Falls Sie zusätzliche Übungsaufgaben wünschen, finden Sie hier zwei weitere Walk-throughs:
+Falls Sie zusätzliche Übungsaufgaben wünschen, finden Sie hier weitere Aufgaben:
 
-- https://psylu.github.io/statistik2-fs25/datenverarbeitung/transform.html
-- https://psylu.github.io/statistik2-fs25/uebungen/uebung-02.html
+- [Walk-through mit Lösungen](https://psylu.github.io/statistik2-fs25/datenverarbeitung/transform.html)
+- [Übungsaufgaben](https://psylu.github.io/statistik2-fs25/uebungen/uebung-02.html)
+
+Sie können auch Kurse auf _DataCamp_ besuchen, z.B.
+
+👉🏼 [Introduction to R](https://app.datacamp.com/learn/courses/free-introduction-to-r)

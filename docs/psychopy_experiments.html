@@ -222,35 +222,12 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
- <span class="menu-text">Übungen</span></a>
+ <span class="menu-text">Anhang</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./uebung_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Übung 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./uebung_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Übung 2</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
- <span class="menu-text">Anhang</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./webrconsole.html" class="sidebar-item-text sidebar-link">
@@ -350,7 +327,7 @@ Hands-on: Experiment auswählen und programmieren
 <ol type="1">
 <li><p>Wählen Sie eines der beiden Experimente, entweder das <a href="random_dot_experiment.html">Random Dot Experiment</a> oder das <a href="stroop_experiment.html">Stroop Experiment</a> aus.</p></li>
 <li><p>Lesen Sie die Beschreibung des Experiments durch und beantworten Sie die dort gestellten Fragen.</p></li>
-<li><p>Erstellen Sie eine <a href="neurowissenschaftliche_experimente.html#flowcharts">Flowchart</a> zum geplanten Experiment. Fügen Sie Folgendes ein:</p></li>
+<li><p>Erstellen Sie eine <a href="experiment.html#flowcharts">Flowchart</a> zum geplanten Experiment. Fügen Sie Folgendes ein:</p></li>
 </ol>
 <ul>
 <li>Alle <a href="experiments.html#wichtige-elemente-von-experimenten">Elemente eines Experiments</a></li>
@@ -426,7 +403,7 @@ Falls Sie planen ein Online-Experiment durchzuführen, eignet sich der Builder b
 <ul>
 <li><p>Ergänzen Sie alle Elemente, die für einen vollständigen Trial notwendig sind:</p>
 <ul>
-<li><p>Antwort der Versuchsperson / Response (siehe auch 2.4)</p></li>
+<li><p>Antwort der Versuchsperson / Response (siehe auch 4.2.4)</p></li>
 <li><p>Inter-Trial-Intervall (ITI): kann vor oder nach dem Stimulus eingefügt werden. (Die Zeit des ITI wird oft variiert. Dies müsste also auch auf die Liste oben)</p></li>
 <li><p>Fixationskreuz?</p></li>
 <li><p>Mask?</p></li>
@@ -441,7 +418,7 @@ Falls Sie planen ein Online-Experiment durchzuführen, eignet sich der Builder b
 <li><p>Erstellen Sie einen <code>loop</code>indem Sie im Feld <code>Flow</code> auf <code>Insert loop</code> klicken.</p>
 <ul>
 <li><p>Mit <code>loopType</code> können Sie steuern, die Bedingungen randomisiert/gemischt oder sequentiell/der Reihe nach angezeigt werden sollen.</p></li>
-<li><p>Mit <code>nReps</code> können Sie angeben, wie oft jeder Stimulus wiederholt werden soll. Haben Sie also einen Stimulus mit zwei zu varierenden Eigenschaften (die je 3 Stufen haben) (also 9 Zeilen im <code>conditions</code>-File und <code>nReps</code>= 2, ergibt das 18 Trials.</p></li>
+<li><p>Mit <code>nReps</code> können Sie angeben, wie oft jeder Stimulus wiederholt werden soll. Haben Sie also einen Stimulus mit zwei zu varierenden Eigenschaften , welche je 3 Stufen haben (also 9 Zeilen im <code>conditions</code>-File und <code>nReps</code>= 2), ergibt das 18 Trials.</p></li>
 </ul></li>
 </ul>
 <p>Mittels diesen Schleifen können die Bedingungen implementiert werden z.B. dass sich der Stimulus bei jedem Trial verändert. Dies kann mit einer <code>conditions</code>-Datei spezifiziert werden, idealerweise im <code>.csv</code> oder <code>.xlsx</code>-Format.</p>
@@ -452,7 +429,7 @@ Die Endung <code>.csv</code> bedeutet, dass die Daten als <em>comma separated va
 <ul>
 <li><p>Um die Bedingungen (in unserem Fall: die sich verändernden Stimuluseigenschaften) zu definieren, erstellen wir eine <code>.csv</code>oder <code>.xlsx</code>-Datei (z.B. in Excel/Notepad/etc.) mit dem Namen <code>conditions</code> und speichern dieses im selben Ordner wie das Experiment.</p>
 <ul>
-<li><p>Fügen Sie für jedes sich verändernde Element einen Variablennamen und die entsprechenden Werte ein (dies sind die Eigenschaften, die Sie sich bei Punkt 2.1 notiert haben). Die <strong>Variablennamen</strong> schreiben wir immer in die oberste Zeile der Datei.</p>
+<li><p>Fügen Sie für jedes sich verändernde Element einen Variablennamen und die entsprechenden Werte ein (dies sind die Eigenschaften, die Sie sich bei Punkt 4.2.1 notiert haben). Die <strong>Variablennamen</strong> schreiben wir immer in die oberste Zeile der Datei.</p>
 <p><em>Wenn wir z.B. einen Text anzeigen möchten, schreiben wir in die erste Zeile <code>word</code> und <code>duration</code>.</em></p></li>
 <li><p>In die Spalte unter die Variablennamen schreiben wir die Werte.</p>
 <p><em>Als Beispiel könnten die Worte die wir anzeigen lassen wollen <code>cat</code>, <code>dog</code> und <code>rabbit</code> lauten. Dann stehen in der Spalte <code>word</code>, diese 3 Wörter unter dem Variablennamen. Unter dem Variablennamen <code>duration</code> geben wir die Anzahl Frames ein, also <code>1</code>, <code>10</code> und <code>100</code>. Wir wollen jedes Wort mit jeder Dauer kombinieren. Das ergibt 9 Zeilen.</em></p></li>

@@ -56,11 +56,6 @@ book:
     #chapters:
     #-
 
-  - part: Übungen
-    chapters:
-    - uebung_1.qmd
-    - uebung_2.qmd
-
   - part: Anhang
     chapters:
     - webrconsole.qmd

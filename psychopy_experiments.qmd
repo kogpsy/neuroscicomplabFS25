@@ -21,7 +21,7 @@ In PsychoPy erstellen Experimente können direkt auf [Pavlovia](https://pavlovia
 
 2.  Lesen Sie die Beschreibung des Experiments durch und beantworten Sie die dort gestellten Fragen.
 
-3.  Erstellen Sie eine [Flowchart](neurowissenschaftliche_experimente.html#flowcharts) zum geplanten Experiment. 
+3.  Erstellen Sie eine [Flowchart](experiment.html#flowcharts) zum geplanten Experiment. 
 Fügen Sie Folgendes ein:
 
 - Alle [Elemente eines Experiments](experiments.html#wichtige-elemente-von-experimenten)
@@ -89,7 +89,7 @@ In PsychoPy finden Sie schon vorprogrammierte Stimulus Elemente, wie Gratings od
 
 -   Ergänzen Sie alle Elemente, die für einen vollständigen Trial notwendig sind:
 
-    -   Antwort der Versuchsperson / Response (siehe auch 2.4)
+    -   Antwort der Versuchsperson / Response (siehe auch 4.2.4)
 
     -   Inter-Trial-Intervall (ITI): kann vor oder nach dem Stimulus eingefügt werden. (Die Zeit des ITI wird oft variiert. Dies müsste also auch auf die Liste oben)
 
@@ -107,7 +107,7 @@ Sie müssen nicht alle Trials (oder in PsychoPy: `Routines`) des Experiments ein
 
     -   Mit `loopType` können Sie steuern, die Bedingungen randomisiert/gemischt oder sequentiell/der Reihe nach angezeigt werden sollen.
 
-    -   Mit `nReps` können Sie angeben, wie oft jeder Stimulus wiederholt werden soll. Haben Sie also einen Stimulus mit zwei zu varierenden Eigenschaften (die je 3 Stufen haben) (also 9 Zeilen im `conditions`-File und `nReps`= 2, ergibt das 18 Trials.
+    -   Mit `nReps` können Sie angeben, wie oft jeder Stimulus wiederholt werden soll. Haben Sie also einen Stimulus mit zwei zu varierenden Eigenschaften , welche je 3 Stufen haben (also 9 Zeilen im `conditions`-File und `nReps`= 2), ergibt das 18 Trials.
 
 Mittels diesen Schleifen können die Bedingungen implementiert werden z.B. dass sich der Stimulus bei jedem Trial verändert. Dies kann mit einer `conditions`-Datei spezifiziert werden, idealerweise im `.csv` oder `.xlsx`-Format.
 
@@ -117,7 +117,7 @@ Mittels diesen Schleifen können die Bedingungen implementiert werden z.B. dass 
 
 -   Um die Bedingungen (in unserem Fall: die sich verändernden Stimuluseigenschaften) zu definieren, erstellen wir eine `.csv`oder `.xlsx`-Datei (z.B. in Excel/Notepad/etc.) mit dem Namen `conditions` und speichern dieses im selben Ordner wie das Experiment.
 
-    -   Fügen Sie für jedes sich verändernde Element einen Variablennamen und die entsprechenden Werte ein (dies sind die Eigenschaften, die Sie sich bei Punkt 2.1 notiert haben). Die **Variablennamen** schreiben wir immer in die oberste Zeile der Datei.
+    -   Fügen Sie für jedes sich verändernde Element einen Variablennamen und die entsprechenden Werte ein (dies sind die Eigenschaften, die Sie sich bei Punkt 4.2.1 notiert haben). Die **Variablennamen** schreiben wir immer in die oberste Zeile der Datei.
 
         *Wenn wir z.B. einen Text anzeigen möchten, schreiben wir in die erste Zeile `word` und `duration`.*
 

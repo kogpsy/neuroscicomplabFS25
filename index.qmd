@@ -118,11 +118,11 @@ Sie haben die Möglichkeit das Quiz mehrmals zu wiederholen.
 
 | Leistungsnachweis |Beginn | Abgabetermin | Inhalt |
 |---------|:------:|:------:|:-------|
-| [Übung 1: Experiment]() | 28.02.2025 | 03.03.2025 23:55 | Datenerheben mit einem Experiment |
-| [Übung 2: Data wrangling](datawrangling.qmd) | 28.02.2025 | 13.03.2025 | Durcharbeiten des Skripts _Wichtige {tidyverse} Funktionen_ auf eigenem PC (muss nicht abgegeben werden) |
-| [Übung 3: Datenvisualisierung]() | 21.03.2025 | 03.04.2025 23:55 | Daten verarbeiten und sinnvoll visualisieren |
-| [Übung 4: Datenanalyse Report]() | 04.04.2025 | 01.05.2025 23:55 | tba |
-| [Übung 5: EEG Project]() | 09.05.2025 | 31.05.2025 23:55 | tba |
+| [Übung 1: Experiment](uebung_1.qmd) | 28.02.2025 | 14.03.2025 23:55 | Datenerheben mit einem Experiment |
+| [Übung 2: Data wrangling](uebung_2.qmd) | 28.02.2025 | 14.03.2025 | Durcharbeiten des Skripts [Daten importieren und vorverarbeiten](datawrangling.qmd) auf eigenem PC (muss nicht abgegeben werden) |
+| [Übung 3: Datenvisualisierung]() | 21.03.2025 | 04.04.2025 23:55 | Daten verarbeiten und sinnvoll visualisieren |
+| [Übung 4: Datenanalyse Report]() | 04.04.2025 | 25.04.2025 23:55 | tba |
+| [Übung 5: EEG Project]() | 09.05.2025 | 30.05.2025 23:55 | tba |
 | [Abschlussquiz]() | 30.05.2025 | 07.06.2025 23:55 | auf Ilias |
 
 
