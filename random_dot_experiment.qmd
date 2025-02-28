@@ -75,5 +75,5 @@ Laden Sie das Experiment herunter und testen Sie, ob es auf Ihrem Laptop läuft.
 
 ## Credits
 
-Dieses Experiment wurde von Rebekka Borer im Rahmen des _Neurocomplab-Kurs 2014_ programmiert.
+Dieses Experiment wurde von Rebekka Borer im Rahmen des _Neurocomplab-Kurs 2024_ programmiert.
 
