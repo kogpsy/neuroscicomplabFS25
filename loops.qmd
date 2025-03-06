@@ -1,6 +1,9 @@
-# Schleifen programmieren mit Python
+---
+filters:
+    - pyodide
+---
 
-## Einführung
+# Schleifen programmieren mit Python
 
 Schleifen sind ein wesentliches Konzept in der Programmierung, das es ermöglicht, Code mehrfach auszuführen, ohne ihn wiederholt schreiben zu müssen. In Python gibt es zwei Hauptarten von Schleifen:
 
@@ -9,49 +12,54 @@ Schleifen sind ein wesentliches Konzept in der Programmierung, das es ermöglich
 
 Um Python Codes zu testen/schreiben, gehen Sie auf: <https://www.online-python.com/>
 
-### `for`-Schleifen
+## `for`-Schleifen
 
 Die `for`-Schleife wird oft genutzt, um über eine Liste oder eine andere Sequenz zu iterieren.
 
 ``` python
-früchte = ["Apfel", "Banane", "Kirsche"]
-for frucht in früchte:
-    print("Ich mag", frucht)
+hirnregionen = ["Frontallappen", "Okzipitallappen", "Temporallappen"]
+for hirnregion in hirnregionen:
+    print("Ich mag den", hirnregion, "!")
 ```
 
-> *output:*
->
-> *Ich mag Apfel Ich mag Banane Ich mag Kirsche*
+In dieser Konsole können Sie Python-Code schreiben, verändern und ausführen:
 
-Man kann auch eine `for`-Schleife mit `range()` verwenden:
+```{pyodide-python}
+hirnregionen = ["Frontallappen", "Okzipitallappen", "Temporallappen"]
+for hirnregion in hirnregionen:
+    print("Ich mag den", hirnregion, "!")
+```
+
+Man kann eine `for`-Schleife auch mit `range()` verwenden:
 
 ``` python
 for i in range(5):  # Iteriert von 0 bis 4
     print("Iteration Nummer:", i)
+    
 ```
 
-> *output:*
->
-> *Iteration Nummer: 0 Iteration Nummer: 1 Iteration Nummer: 2 Iteration Nummer: 3 Iteration Nummer: 4*
-
-### `while`-Schleifen
+```{pyodide-python}
+for i in range(5):  # Iteriert von 0 bis 4
+    print("Iteration Nummer:", i)
+```
+## `while`-Schleifen
 
 Eine `while`-Schleife wird benutzt, wenn die Anzahl der Iterationen nicht im Voraus bekannt ist, sondern von einer Bedingung abhängt.
 
 ``` python
-zähler = 0
-while zähler < 3:
-    print("Dies ist Schleifeniteration:", zähler)
-    zähler = zähler + 1  # Erhöht den Zähler, um eine Endlosschleife zu vermeiden
+zaehler = 0
+while zaehler < 3:
+    print("Dies ist Schleifeniteration:", zaehler)
+    zaehler = zaehler + 1  # Erhöht den Zähler, um eine Endlosschleife zu vermeiden
 ```
 
-> *output:*
->
-> *Dies ist Schleifeniteration: 0*
->
-> *Dies ist Schleifeniteration: 1*
->
-> *Dies ist Schleifeniteration: 2*
+```{pyodide-python}
+zaehler = 0
+while zaehler < 3:
+    print("Dies ist Schleifeniteration:", zaehler)
+    zaehler = zaehler + 1  # Erhöht den Zähler, um eine Endlosschleife zu vermeiden
+```
+
 
 <br>
 
@@ -60,9 +68,24 @@ while zähler < 3:
 
 1.  Geben Sie die Zahlen von 1 bis 10 mit einer `for`-Schleife aus.
 
+```{pyodide-python}
+
+```
+
+
 2.  Geben Sie "Python macht Spaß!" fünfmal mit einer `while`-Schleife aus.
 
+```{pyodide-python}
+
+```
+
 3.  Erstellen Sie eine Schleife, die nur gerade Zahlen von 1 bis 20 ausgibt.
+
+
+```{pyodide-python}
+
+```
+
 :::
 
 <br>
@@ -80,8 +103,17 @@ while i <= 100:
     else:
         i = i + 1
 ```
+![<https://de.wikipedia.org/wiki/Programmablaufplan#/media/Datei:Flowchart_de.svg>](imgs/flowchart-1.png){fig-align="center" width="50%"}
 
-![](imgs/flowchart-1.png){fig-align="center" width="50%"}
+```{pyodide-python}
+i = 1
+while i <= 100:
+    print(i)
+    if i == 39:
+        i = 61
+    else:
+        i = i + 1
+```
 
 <br>
 
@@ -91,6 +123,7 @@ while i <= 100:
 Erstellen Sie eine Flowchart für die `for`-Schleife in *Aufgabe 3*.
 
 Sie können diese auf <https://app.diagrams.net/> erstellen.
+
 :::
 
 ::: callout-caution
@@ -99,6 +132,20 @@ Sie können diese auf <https://app.diagrams.net/> erstellen.
 Erstellen Sie eine Flowchart für den folgenden Code:
 
 ``` python
+donuts = 5
+while donuts > 0:
+    print("Ich esse einen Donut. Lecker!")
+    donuts = donuts - 1
+    if donuts == 1:
+        print("Oh nein! Nur noch ein Donut übrig!")
+    elif donuts == 0:
+        print("Keine Donuts mehr... Zeit, neue zu kaufen!")
+```
+
+Hier können Sie ausprobieren, was der Code macht. 
+Passt das zu Ihrer Flowchart?
+
+```{pyodide-python}
 donuts = 5
 while donuts > 0:
     print("Ich esse einen Donut. Lecker!")
@@ -120,8 +167,16 @@ while i < 1:
     i = i - 1
     print(i)  # Diese Schleife läuft endlos!
 ```
-
 Hier fehlt eine Bedingung, die `i` wieder größer macht, sodass die Schleife stoppt.
+
+Probieren Sie es aus... 
+
+```{pyodide-python}
+i = 0
+while i < 1:
+    i = i - 1
+    print(i)  # Diese Schleife läuft endlos!
+```
 
 ## Fazit
 
