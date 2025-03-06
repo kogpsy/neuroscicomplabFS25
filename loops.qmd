@@ -85,20 +85,6 @@ while i <= 100:
 
 <br>
 
-*Beispiel Flowchart:*
-
-``` python
-i = 1
-while i <= 100:
-    print(i)
-    if i == 39:
-        i = 61
-    else:
-        i = i + 1
-```
-
-![](imgs/flowchart-1.png){fig-align="center" width="50%"}
-
 ::: callout-caution
 ## Hands-on 4: Flowchart erstellen
 
@@ -139,7 +125,7 @@ Hier fehlt eine Bedingung, die `i` wieder größer macht, sodass die Schleife st
 
 ## Fazit
 
-Schleifen sind ein mächtiges Werkzeug um wiederkehrende Aufgaben effizient zu lösen. **Schleifen werden fast überall benutzt**: Expiremente programmieren, Daten einlesen, Daten bearbeiten, Graphiken erstellen, usw.
+Schleifen sind ein mächtiges Werkzeug um wiederkehrende Aufgaben effizient zu lösen. **Schleifen werden fast überall benutzt**: Experimente programmieren, Daten einlesen, Daten bearbeiten, Grafiken erstellen, usw.
 
 <br>
 
