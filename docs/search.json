@@ -339,7 +339,7 @@
     "href": "loops.html#for-schleifen",
     "title": "7  Schleifen programmieren mit Python",
     "section": "",
-    "text": "hirnregionen = [\"Frontallappen\", \"Okzipitallappen\", \"Temporallappen\"]\nfor hirnregion in hirnregionen:\n    print(\"Ich mag den\", hirnregion, \"!\")\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nfor i in range(5):  # Iteriert von 0 bis 4\n    print(\"Iteration Nummer:\", i)\n    \n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "text": "hirnregionen = [\"Frontallappen\", \"Okzipitallappen\", \"Temporallappen\"] \nfor hirnregion in hirnregionen: \n    print(\"Ich mag den\", hirnregion, \"!\")\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nfor i in range(5):  # Iteriert von 0 bis 4\n    print(\"Iteration Nummer:\", i)\n    \n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Experimentieren",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Schleifen programmieren mit Python</span>"
@@ -350,7 +350,7 @@
     "href": "loops.html#while-schleifen",
     "title": "7  Schleifen programmieren mit Python",
     "section": "7.2 while-Schleifen",
-    "text": "7.2 while-Schleifen\nEine while-Schleife wird benutzt, wenn die Anzahl der Iterationen nicht im Voraus bekannt ist, sondern von einer Bedingung abhängt.\nzaehler = 0\nwhile zaehler &lt; 3:\n    print(\"Dies ist Schleifeniteration:\", zaehler)\n    zaehler = zaehler + 1  # Erhöht den Zähler, um eine Endlosschleife zu vermeiden\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\n\nHands-on 1-3: for-Schleife erstellen\n\n\n\n\nGeben Sie die Zahlen von 1 bis 10 mit einer for-Schleife aus.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nGeben Sie “Python macht Spaß!” fünfmal mit einer while-Schleife aus.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nErstellen Sie eine Schleife, die nur gerade Zahlen von 1 bis 20 ausgibt.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "text": "7.2 while-Schleifen\nEine while-Schleife wird benutzt, wenn die Anzahl der Iterationen nicht im Voraus bekannt ist, sondern von einer Bedingung abhängt.\nzaehler = 0\nwhile zaehler &lt; 3:\n    print(\"Dies ist Schleifeniteration:\", zaehler)\n    zaehler = zaehler + 1  # Erhöht den Zähler, um eine Endlosschleife zu vermeiden\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\n\nHands-on 1-3: for und while-Schleifen erstellen\n\n\n\n\nGeben Sie die Zahlen von 1 bis 10 mit einer for-Schleife aus.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nGeben Sie “Python macht Spaß!” fünfmal mit einer while-Schleife aus.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nErstellen Sie eine Schleife, die nur gerade Zahlen von 1 bis 20 ausgibt.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Experimentieren",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Schleifen programmieren mit Python</span>"
@@ -372,7 +372,7 @@
     "href": "loops.html#wichtig-endlosschleifen-vermeiden",
     "title": "7  Schleifen programmieren mit Python",
     "section": "7.4 Wichtig: Endlosschleifen vermeiden",
-    "text": "7.4 Wichtig: Endlosschleifen vermeiden\nSchleifen müssen immer eine Bedingung haben, die sie beendet. Sonst könnte folgendes passieren:\ni = 0\nwhile i &lt; 1:\n    i = i - 1\n    print(i)  # Diese Schleife läuft endlos!\nHier fehlt eine Bedingung, die i wieder größer macht, sodass die Schleife stoppt.\nProbieren Sie es aus…\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "text": "7.4 Wichtig: Endlosschleifen vermeiden\nSchleifen müssen immer eine Bedingung haben, die sie beendet. Sonst könnte folgendes passieren:\ni = 0\nwhile i &lt; 1:\n    i = i - 1\n    print(i)  # Diese Schleife läuft endlos!\nHier fehlt eine Bedingung, die i wieder größer macht, sodass die Schleife stoppt.\nProbieren Sie es aus (wenn Sie einen Crash Ihres Browsertabs nicht scheuen…?).\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Experimentieren",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Schleifen programmieren mit Python</span>"

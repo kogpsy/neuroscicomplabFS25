@@ -16,9 +16,9 @@ Um Python Codes zu testen/schreiben, gehen Sie auf: <https://www.online-python.c
 
 Die `for`-Schleife wird oft genutzt, um über eine Liste oder eine andere Sequenz zu iterieren.
 
-``` python
-hirnregionen = ["Frontallappen", "Okzipitallappen", "Temporallappen"]
-for hirnregion in hirnregionen:
+```python
+hirnregionen = ["Frontallappen", "Okzipitallappen", "Temporallappen"] 
+for hirnregion in hirnregionen: 
     print("Ich mag den", hirnregion, "!")
 ```
 
@@ -26,7 +26,7 @@ In dieser Konsole können Sie Python-Code schreiben, verändern und ausführen:
 
 ```{pyodide-python}
 hirnregionen = ["Frontallappen", "Okzipitallappen", "Temporallappen"]
-for hirnregion in hirnregionen:
+for hirnregion in hirnregionen:   
     print("Ich mag den", hirnregion, "!")
 ```
 
@@ -64,7 +64,7 @@ while zaehler < 3:
 <br>
 
 ::: callout-caution
-## Hands-on 1-3: `for`-Schleife erstellen
+## Hands-on 1-3: `for` und `while`-Schleifen erstellen
 
 1.  Geben Sie die Zahlen von 1 bis 10 mit einer `for`-Schleife aus.
 
@@ -169,7 +169,7 @@ while i < 1:
 ```
 Hier fehlt eine Bedingung, die `i` wieder größer macht, sodass die Schleife stoppt.
 
-Probieren Sie es aus... 
+Probieren Sie es aus (wenn Sie einen Crash Ihres Browsertabs nicht scheuen...?). 
 
 ```{pyodide-python}
 i = 0
