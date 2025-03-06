@@ -31,12 +31,14 @@ book:
     chapters:
     - forschungsprozess.qmd # forschungsprozess
     - voraussetzungen.qmd
+
   - part: Experimentieren
     chapters:
     - experiments.qmd
     - psychopy_experiments.qmd
     - stroop_experiment.qmd
     - random_dot_experiment.qmd
+    - loops.qmd
     - uebung_1.qmd
 
   - part: Data wrangling

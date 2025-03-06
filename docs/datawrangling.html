@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>7&nbsp; Daten importieren und vorverarbeiten – Neurowissenschaft Computerlab</title>
+<title>8&nbsp; Daten importieren und vorverarbeiten – Neurowissenschaft Computerlab</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -120,7 +120,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./datawrangling.html">Data wrangling</a></li><li class="breadcrumb-item"><a href="./datawrangling.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Daten importieren und vorverarbeiten</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./datawrangling.html">Data wrangling</a></li><li class="breadcrumb-item"><a href="./datawrangling.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Daten importieren und vorverarbeiten</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -212,6 +212,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./loops.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Schleifen programmieren mit Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./uebung_1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Übung 1</span></a>
   </div>
@@ -230,7 +236,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./datawrangling.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Daten importieren und vorverarbeiten</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Daten importieren und vorverarbeiten</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -286,27 +292,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#datenformate" id="toc-datenformate" class="nav-link active" data-scroll-target="#datenformate"><span class="header-section-number">7.1</span> Datenformate</a></li>
-  <li><a href="#set-up" id="toc-set-up" class="nav-link" data-scroll-target="#set-up"><span class="header-section-number">7.2</span> Set up</a></li>
-  <li><a href="#packages-installieren-und-laden" id="toc-packages-installieren-und-laden" class="nav-link" data-scroll-target="#packages-installieren-und-laden"><span class="header-section-number">7.3</span> Packages installieren und laden</a></li>
-  <li><a href="#daten-importieren-in-r-read.csv" id="toc-daten-importieren-in-r-read.csv" class="nav-link" data-scroll-target="#daten-importieren-in-r-read.csv"><span class="header-section-number">7.4</span> Daten importieren in R: <code>read.csv()</code></a></li>
-  <li><a href="#verwenden-der-pipe-oder" id="toc-verwenden-der-pipe-oder" class="nav-link" data-scroll-target="#verwenden-der-pipe-oder"><span class="header-section-number">7.5</span> Verwenden der Pipe: <code>|&gt;</code> oder <code>%&gt;%</code></a></li>
-  <li><a href="#daten-filtern-filter" id="toc-daten-filtern-filter" class="nav-link" data-scroll-target="#daten-filtern-filter"><span class="header-section-number">7.6</span> Daten filtern: <code>filter()</code></a></li>
-  <li><a href="#variablen-auswählen-select" id="toc-variablen-auswählen-select" class="nav-link" data-scroll-target="#variablen-auswählen-select"><span class="header-section-number">7.7</span> Variablen auswählen: <code>select()</code></a></li>
-  <li><a href="#neue-variablen-generieren-und-verändern-mutate-und-case_when" id="toc-neue-variablen-generieren-und-verändern-mutate-und-case_when" class="nav-link" data-scroll-target="#neue-variablen-generieren-und-verändern-mutate-und-case_when"><span class="header-section-number">7.8</span> Neue Variablen generieren und verändern: <code>mutate()</code> und <code>case_when()</code></a></li>
-  <li><a href="#variablenklasse-verändern-as.factor-as.numeric" id="toc-variablenklasse-verändern-as.factor-as.numeric" class="nav-link" data-scroll-target="#variablenklasse-verändern-as.factor-as.numeric"><span class="header-section-number">7.9</span> Variablenklasse verändern: <code>as.factor()</code>, <code>as.numeric()</code>, …</a></li>
-  <li><a href="#daten-gruppieren-und-zusammenfassen-group_by-und-summarise" id="toc-daten-gruppieren-und-zusammenfassen-group_by-und-summarise" class="nav-link" data-scroll-target="#daten-gruppieren-und-zusammenfassen-group_by-und-summarise"><span class="header-section-number">7.10</span> Daten gruppieren und zusammenfassen: <code>group_by()</code> und <code>summarise()</code></a></li>
-  <li><a href="#datensätze-speichern-write.csv" id="toc-datensätze-speichern-write.csv" class="nav-link" data-scroll-target="#datensätze-speichern-write.csv"><span class="header-section-number">7.11</span> Datensätze speichern: <code>write.csv()</code></a></li>
-  <li><a href="#data-wrangling-workflow-implementieren" id="toc-data-wrangling-workflow-implementieren" class="nav-link" data-scroll-target="#data-wrangling-workflow-implementieren"><span class="header-section-number">7.12</span> Data wrangling workflow implementieren</a></li>
+  <li><a href="#datenformate" id="toc-datenformate" class="nav-link active" data-scroll-target="#datenformate"><span class="header-section-number">8.1</span> Datenformate</a></li>
+  <li><a href="#set-up" id="toc-set-up" class="nav-link" data-scroll-target="#set-up"><span class="header-section-number">8.2</span> Set up</a></li>
+  <li><a href="#packages-installieren-und-laden" id="toc-packages-installieren-und-laden" class="nav-link" data-scroll-target="#packages-installieren-und-laden"><span class="header-section-number">8.3</span> Packages installieren und laden</a></li>
+  <li><a href="#daten-importieren-in-r-read.csv" id="toc-daten-importieren-in-r-read.csv" class="nav-link" data-scroll-target="#daten-importieren-in-r-read.csv"><span class="header-section-number">8.4</span> Daten importieren in R: <code>read.csv()</code></a></li>
+  <li><a href="#verwenden-der-pipe-oder" id="toc-verwenden-der-pipe-oder" class="nav-link" data-scroll-target="#verwenden-der-pipe-oder"><span class="header-section-number">8.5</span> Verwenden der Pipe: <code>|&gt;</code> oder <code>%&gt;%</code></a></li>
+  <li><a href="#daten-filtern-filter" id="toc-daten-filtern-filter" class="nav-link" data-scroll-target="#daten-filtern-filter"><span class="header-section-number">8.6</span> Daten filtern: <code>filter()</code></a></li>
+  <li><a href="#variablen-auswählen-select" id="toc-variablen-auswählen-select" class="nav-link" data-scroll-target="#variablen-auswählen-select"><span class="header-section-number">8.7</span> Variablen auswählen: <code>select()</code></a></li>
+  <li><a href="#neue-variablen-generieren-und-verändern-mutate-und-case_when" id="toc-neue-variablen-generieren-und-verändern-mutate-und-case_when" class="nav-link" data-scroll-target="#neue-variablen-generieren-und-verändern-mutate-und-case_when"><span class="header-section-number">8.8</span> Neue Variablen generieren und verändern: <code>mutate()</code> und <code>case_when()</code></a></li>
+  <li><a href="#variablenklasse-verändern-as.factor-as.numeric" id="toc-variablenklasse-verändern-as.factor-as.numeric" class="nav-link" data-scroll-target="#variablenklasse-verändern-as.factor-as.numeric"><span class="header-section-number">8.9</span> Variablenklasse verändern: <code>as.factor()</code>, <code>as.numeric()</code>, …</a></li>
+  <li><a href="#daten-gruppieren-und-zusammenfassen-group_by-und-summarise" id="toc-daten-gruppieren-und-zusammenfassen-group_by-und-summarise" class="nav-link" data-scroll-target="#daten-gruppieren-und-zusammenfassen-group_by-und-summarise"><span class="header-section-number">8.10</span> Daten gruppieren und zusammenfassen: <code>group_by()</code> und <code>summarise()</code></a></li>
+  <li><a href="#datensätze-speichern-write.csv" id="toc-datensätze-speichern-write.csv" class="nav-link" data-scroll-target="#datensätze-speichern-write.csv"><span class="header-section-number">8.11</span> Datensätze speichern: <code>write.csv()</code></a></li>
+  <li><a href="#data-wrangling-workflow-implementieren" id="toc-data-wrangling-workflow-implementieren" class="nav-link" data-scroll-target="#data-wrangling-workflow-implementieren"><span class="header-section-number">8.12</span> Data wrangling workflow implementieren</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./datawrangling.html">Data wrangling</a></li><li class="breadcrumb-item"><a href="./datawrangling.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Daten importieren und vorverarbeiten</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./datawrangling.html">Data wrangling</a></li><li class="breadcrumb-item"><a href="./datawrangling.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Daten importieren und vorverarbeiten</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Daten importieren und vorverarbeiten</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Daten importieren und vorverarbeiten</span></h1>
 </div>
 
 
@@ -343,8 +349,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><a href="https://app.datacamp.com/learn/courses/introduction-to-the-tidyverse">Introduction to the Tidyverse</a>.</p></li>
 </ul>
 </aside>
-<section id="datenformate" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="datenformate"><span class="header-section-number">7.1</span> Datenformate</h2>
+<section id="datenformate" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="datenformate"><span class="header-section-number">8.1</span> Datenformate</h2>
 <p>Bevor mit einem Datensatz gearbeitet wird, empfiehlt es sich den Datensatz anzuschauen und Folgendes zu identifizieren:</p>
 <ul>
 <li><p>In welchem Dateiformat ist der Datensatz gespeichert? (z.B. in <code>.csv</code>, <code>.xlsx</code> oder anderen?)</p></li>
@@ -352,8 +358,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Gibt es ein <code>data dictionary</code> mit Erklärungen zu den Variablen?</p></li>
 </ul>
 </section>
-<section id="set-up" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="set-up"><span class="header-section-number">7.2</span> Set up</h2>
+<section id="set-up" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="set-up"><span class="header-section-number">8.2</span> Set up</h2>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -395,8 +401,8 @@ Tipp: Namensgebung für Files und Variablen
 </div>
 </div>
 </section>
-<section id="packages-installieren-und-laden" class="level2 page-columns page-full" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="packages-installieren-und-laden"><span class="header-section-number">7.3</span> Packages installieren und laden</h2>
+<section id="packages-installieren-und-laden" class="level2 page-columns page-full" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="packages-installieren-und-laden"><span class="header-section-number">8.3</span> Packages installieren und laden</h2>
 <p>Für das Bearbeiten der Daten verwenden eignen sich Funktionen aus dem <em>Package</em> {tidyverse}, eine Sammlung von verschiedenen, für <em>data science</em> sehr geeigneten <em>R Packages</em>. Funktionen aus dem {tidyverse} ermöglichen und vereinfachen viele Schritte der Datenverarbeitung. Im Folgenden werden die wichtigsten und häufigst verwendeten Funktionen beschrieben. Das {tidyverse} können Sie direkt in <em>R</em> herunterladen:</p>
 <aside>
 Mehr Informationen zum {tidyverse} finden Sie <a href="https://r4ds.had.co.nz/">hier</a>.
@@ -412,8 +418,8 @@ Mehr Informationen zum {tidyverse} finden Sie <a href="https://r4ds.had.co.nz/">
 </div>
 <p>Sobald ein <em>Package</em> installiert ist, können die Funktionen auch verwendet werden ohne, dass das ganze <em>Package</em> mit <code>library()</code> geladen wird, indem die Funktion mit dem <em>Package</em>-Namen zusammen aufgerufen wird: <code>packagename::packagefunction()</code>. Dies macht Sinn, wenn verschiedene <em>Packages</em> dieselben Namen für verschiedene Funktionen nutzen und es so zu Konflikten kommt oder wenn nur eine Funktion aus einem <em>Package</em> verwendet werden soll und alle anderen sowieso nicht gebraucht werden.</p>
 </section>
-<section id="daten-importieren-in-r-read.csv" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="daten-importieren-in-r-read.csv"><span class="header-section-number">7.4</span> Daten importieren in R: <code>read.csv()</code></h2>
+<section id="daten-importieren-in-r-read.csv" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="daten-importieren-in-r-read.csv"><span class="header-section-number">8.4</span> Daten importieren in R: <code>read.csv()</code></h2>
 <p>Einen Datensatz in <code>.csv</code>-Format kann mit der Funktion <code>read.csv()</code> importiert werden. Teilweise muss innerhalb der Klammer zusätzlich der <em>Separator</em> mit <code>sep = ","</code> angegeben werden, also mit welchem Zeichen die Spalten getrennt sind. Normalerweise ist dies <code>,</code> in <code>.csv</code> (<em>comma separated values</em>), es kann aber auch <code>;</code>, <code>.</code> oder eine Lücke <code></code> sein.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Daten laden und anschauen</span></span>
@@ -453,8 +459,8 @@ Tipp: Daten anderer Formate einlesen
 </div>
 </div>
 </section>
-<section id="verwenden-der-pipe-oder" class="level2 page-columns page-full" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="verwenden-der-pipe-oder"><span class="header-section-number">7.5</span> Verwenden der Pipe: <code>|&gt;</code> oder <code>%&gt;%</code></h2>
+<section id="verwenden-der-pipe-oder" class="level2 page-columns page-full" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="verwenden-der-pipe-oder"><span class="header-section-number">8.5</span> Verwenden der Pipe: <code>|&gt;</code> oder <code>%&gt;%</code></h2>
 <p>In <em>R</em> können Sie die <em>Pipe</em> verwenden um mehrere Datenverarbeitungsschritte aneinander zu hängen. Damit sparen Sie sich aufwändige Zwischenschritte und vermeiden das Erstellen von immer neuen Datensätzen. Statt zwei einzelne Datenverarbeitungsschritte zu machen wie oben, können mehrere Schritte (hier Daten einlesen und anzeigen) zusammengefasst werden, in dem nach Zeilenende eine <em>Pipe</em> eingefügt wird:</p>
 <aside>
 Wann <em>Pipes</em> ungeeignet sind wird <a href="https://r4ds.had.co.nz/pipes.html#when-not-to-use-the-pipe">hier</a> beschrieben.
@@ -488,8 +494,8 @@ Tipp
 </div>
 </div>
 </section>
-<section id="daten-filtern-filter" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="daten-filtern-filter"><span class="header-section-number">7.6</span> Daten filtern: <code>filter()</code></h2>
+<section id="daten-filtern-filter" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="daten-filtern-filter"><span class="header-section-number">8.6</span> Daten filtern: <code>filter()</code></h2>
 <p>Mit <code>filter()</code> können bestimmte Beobachtungen oder Untergruppen ausgewählt werden. Hierfür muss in der Funktion <code>filter(.data, filter, ...)</code> der Datensatz, die betreffende Variable, sowie eine Bedingung eingegeben werden. Es wird die ganze Zeile im Datensatz behalten in der die Variable der Bedingung entspricht.</p>
 <p><em>Beispiele:</em></p>
 <div class="cell">
@@ -534,8 +540,8 @@ Hands-on: Daten filtern
 </div>
 </div>
 </section>
-<section id="variablen-auswählen-select" class="level2" data-number="7.7">
-<h2 data-number="7.7" class="anchored" data-anchor-id="variablen-auswählen-select"><span class="header-section-number">7.7</span> Variablen auswählen: <code>select()</code></h2>
+<section id="variablen-auswählen-select" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="variablen-auswählen-select"><span class="header-section-number">8.7</span> Variablen auswählen: <code>select()</code></h2>
 <p>Ein komplexer Datensatz mit sehr vielen Variablen wird oft für die Analyse aus Gründen der Einfachheit oder Anonymisierung reduziert. Das bedeutet, dass man sich die nötigen Variablen herausliest, und nur mit diesem reduzierten Datensatz weiterarbeitet. Hierzu eignet sich die Funktion <code>select()</code> sehr gut: Mit <code>select(.data, variablenname, ...)</code> können die zu behaltenden Variablen ausgewählt werden. Wird ein <code>!</code> vor einen Variablennamen gesetzt, wird die Variable <strong>nicht</strong> behalten.</p>
 <p>Mit <code>select()</code> können wir auch die Variablen sortieren und umbenennen, damit unser Datensatz so strukturiert ist, wie wir ihn gebrauchen können.</p>
 <p><em>Beispiele:</em></p>
@@ -585,8 +591,8 @@ $ accuracy   &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 </div>
 </div>
 </section>
-<section id="neue-variablen-generieren-und-verändern-mutate-und-case_when" class="level2" data-number="7.8">
-<h2 data-number="7.8" class="anchored" data-anchor-id="neue-variablen-generieren-und-verändern-mutate-und-case_when"><span class="header-section-number">7.8</span> Neue Variablen generieren und verändern: <code>mutate()</code> und <code>case_when()</code></h2>
+<section id="neue-variablen-generieren-und-verändern-mutate-und-case_when" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="neue-variablen-generieren-und-verändern-mutate-und-case_when"><span class="header-section-number">8.8</span> Neue Variablen generieren und verändern: <code>mutate()</code> und <code>case_when()</code></h2>
 <p>Mit der <code>mutate(.data, …)</code> Funktion können im Datensatz neue Variablen generiert oder bestehende verändert werden.</p>
 <p><em>Beispiel:</em></p>
 <div class="cell">
@@ -627,8 +633,8 @@ Hands-on: Variablen generieren und verändern
 </div>
 </div>
 </section>
-<section id="variablenklasse-verändern-as.factor-as.numeric" class="level2" data-number="7.9">
-<h2 data-number="7.9" class="anchored" data-anchor-id="variablenklasse-verändern-as.factor-as.numeric"><span class="header-section-number">7.9</span> Variablenklasse verändern: <code>as.factor()</code>, <code>as.numeric()</code>, …</h2>
+<section id="variablenklasse-verändern-as.factor-as.numeric" class="level2" data-number="8.9">
+<h2 data-number="8.9" class="anchored" data-anchor-id="variablenklasse-verändern-as.factor-as.numeric"><span class="header-section-number">8.9</span> Variablenklasse verändern: <code>as.factor()</code>, <code>as.numeric()</code>, …</h2>
 <p>Variablen können verschiedene Klassen haben, sie können z.B. kategoriale (<code>factor</code>, <code>character</code>) oder numerische (<code>integer</code>, <code>numeric</code>, <code>double</code>) Informationen enthalten. Beim Einlesen “rät” <em>R</em>, welche Klasse eine Variable hat. Teilweise möchten wir dies ändern. Wenn wir eine Variable zu einem Faktor machen möchten, verwenden wir <code>as.factor()</code>. Dies macht z.B. Sinn, wenn die Versuchspersonennummer als Zahl eingelesen wurde. Um von einem Faktor zu einer numerischen Variable zu kommen, verwenden wir <code>as.numeric()</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Die Variable "congruent" zu einem Faktor machen</span></span>
@@ -650,8 +656,8 @@ Hands-on: Variablenklassen
 </div>
 <!-- #### `relevel()` -->
 </section>
-<section id="daten-gruppieren-und-zusammenfassen-group_by-und-summarise" class="level2" data-number="7.10">
-<h2 data-number="7.10" class="anchored" data-anchor-id="daten-gruppieren-und-zusammenfassen-group_by-und-summarise"><span class="header-section-number">7.10</span> Daten gruppieren und zusammenfassen: <code>group_by()</code> und <code>summarise()</code></h2>
+<section id="daten-gruppieren-und-zusammenfassen-group_by-und-summarise" class="level2" data-number="8.10">
+<h2 data-number="8.10" class="anchored" data-anchor-id="daten-gruppieren-und-zusammenfassen-group_by-und-summarise"><span class="header-section-number">8.10</span> Daten gruppieren und zusammenfassen: <code>group_by()</code> und <code>summarise()</code></h2>
 <p>Mit diesen beiden Funktionen können wir mit wenig Code den Datensatz gruppieren und zusammenfassen.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Nach Wörter gruppieren</span></span>
@@ -685,8 +691,8 @@ Hands-on: Daten zusammenfassen
 </div>
 </div>
 </section>
-<section id="datensätze-speichern-write.csv" class="level2" data-number="7.11">
-<h2 data-number="7.11" class="anchored" data-anchor-id="datensätze-speichern-write.csv"><span class="header-section-number">7.11</span> Datensätze speichern: <code>write.csv()</code></h2>
+<section id="datensätze-speichern-write.csv" class="level2" data-number="8.11">
+<h2 data-number="8.11" class="anchored" data-anchor-id="datensätze-speichern-write.csv"><span class="header-section-number">8.11</span> Datensätze speichern: <code>write.csv()</code></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(d_stroop_clean, <span class="at">file =</span> <span class="st">"data/dataset_stroop_clean.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -751,8 +757,8 @@ Hands-on: Datensätze speichern
 <!-- -   Factor levels (e.g. condition levels such as `away`) should be coded within rows. -->
 <!-- ::: -->
 </section>
-<section id="data-wrangling-workflow-implementieren" class="level2 page-columns page-full" data-number="7.12">
-<h2 data-number="7.12" class="anchored" data-anchor-id="data-wrangling-workflow-implementieren"><span class="header-section-number">7.12</span> Data wrangling workflow implementieren</h2>
+<section id="data-wrangling-workflow-implementieren" class="level2 page-columns page-full" data-number="8.12">
+<h2 data-number="8.12" class="anchored" data-anchor-id="data-wrangling-workflow-implementieren"><span class="header-section-number">8.12</span> Data wrangling workflow implementieren</h2>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">

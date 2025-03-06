@@ -273,7 +273,7 @@
     "href": "stroop_experiment.html#credits",
     "title": "5  Stroop Paradigma",
     "section": "6.2 Credits",
-    "text": "6.2 Credits\nDieses Experiment wurde von Rebekka Borer im Rahmen des Neurocomplab-Kurs 2024 programmiert.",
+    "text": "6.2 Credits\nDieses Experiment wurde von Rebekka Borer programmiert.",
     "crumbs": [
       "Experimentieren",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Stroop Paradigma</span>"
@@ -317,10 +317,65 @@
     "href": "random_dot_experiment.html#credits",
     "title": "6  Random Dot Paradigma",
     "section": "7.2 Credits",
-    "text": "7.2 Credits\nDieses Experiment wurde von Rebekka Borer im Rahmen des Neurocomplab-Kurs 2024 programmiert.\n\n\n\n\nHauser, Christopher K., and Emilio Salinas. 2014. “Perceptual Decision Making.” In Encyclopedia of Computational Neuroscience, edited by Dieter Jaeger and Ranu Jung, 1–21. New York, NY: Springer New York. https://doi.org/10.1007/978-1-4614-7320-6_317-1.\n\n\nMulder, M. J., E.-J. Wagenmakers, R. Ratcliff, W. Boekel, and B. U. Forstmann. 2012. “Bias in the Brain: A Diffusion Model Analysis of Prior Probability and Potential Payoff.” Journal of Neuroscience 32 (7): 2335–43. https://doi.org/10.1523/JNEUROSCI.4156-11.2012.",
+    "text": "7.2 Credits\nDieses Experiment wurde von Rebekka Borer programmiert.\n\n\n\n\nHauser, Christopher K., and Emilio Salinas. 2014. “Perceptual Decision Making.” In Encyclopedia of Computational Neuroscience, edited by Dieter Jaeger and Ranu Jung, 1–21. New York, NY: Springer New York. https://doi.org/10.1007/978-1-4614-7320-6_317-1.\n\n\nMulder, M. J., E.-J. Wagenmakers, R. Ratcliff, W. Boekel, and B. U. Forstmann. 2012. “Bias in the Brain: A Diffusion Model Analysis of Prior Probability and Potential Payoff.” Journal of Neuroscience 32 (7): 2335–43. https://doi.org/10.1523/JNEUROSCI.4156-11.2012.",
     "crumbs": [
       "Experimentieren",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Random Dot Paradigma</span>"
+    ]
+  },
+  {
+    "objectID": "loops.html",
+    "href": "loops.html",
+    "title": "7  Schleifen programmieren mit Python",
+    "section": "",
+    "text": "7.1 Einführung\nSchleifen sind ein wesentliches Konzept in der Programmierung, das es ermöglicht, Code mehrfach auszuführen, ohne ihn wiederholt schreiben zu müssen. In Python gibt es zwei Hauptarten von Schleifen:\nUm Python Codes zu testen/schreiben, gehen Sie auf: https://www.online-python.com/",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Schleifen programmieren mit Python</span>"
+    ]
+  },
+  {
+    "objectID": "loops.html#einführung",
+    "href": "loops.html#einführung",
+    "title": "7  Schleifen programmieren mit Python",
+    "section": "",
+    "text": "for-Schleifen: Ideal für die Iteration über eine Sequenz.\nwhile-Schleifen: Läuft so lange, bis eine bestimmte Bedingung erfüllt ist.\n\n\n\n7.1.1 for-Schleifen\nDie for-Schleife wird oft genutzt, um über eine Liste oder eine andere Sequenz zu iterieren.\nfrüchte = [\"Apfel\", \"Banane\", \"Kirsche\"]\nfor frucht in früchte:\n    print(\"Ich mag\", frucht)\n\noutput:\nIch mag Apfel Ich mag Banane Ich mag Kirsche\n\nMan kann auch eine for-Schleife mit range() verwenden:\nfor i in range(5):  # Iteriert von 0 bis 4\n    print(\"Iteration Nummer:\", i)\n\noutput:\nIteration Nummer: 0 Iteration Nummer: 1 Iteration Nummer: 2 Iteration Nummer: 3 Iteration Nummer: 4\n\n\n\n7.1.2 while-Schleifen\nEine while-Schleife wird benutzt, wenn die Anzahl der Iterationen nicht im Voraus bekannt ist, sondern von einer Bedingung abhängt.\nzähler = 0\nwhile zähler &lt; 3:\n    print(\"Dies ist Schleifeniteration:\", zähler)\n    zähler = zähler + 1  # Erhöht den Zähler, um eine Endlosschleife zu vermeiden\n\noutput:\nDies ist Schleifeniteration: 0\nDies ist Schleifeniteration: 1\nDies ist Schleifeniteration: 2\n\n\n\n\n\n\n\n\nHands-on 1-3: for-Schleife erstellen\n\n\n\n\nGeben Sie die Zahlen von 1 bis 10 mit einer for-Schleife aus.\nGeben Sie “Python macht Spaß!” fünfmal mit einer while-Schleife aus.\nErstellen Sie eine Schleife, die nur gerade Zahlen von 1 bis 20 ausgibt.",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Schleifen programmieren mit Python</span>"
+    ]
+  },
+  {
+    "objectID": "loops.html#flowcharts",
+    "href": "loops.html#flowcharts",
+    "title": "7  Schleifen programmieren mit Python",
+    "section": "7.2 Flowcharts",
+    "text": "7.2 Flowcharts\nBeispiel Flowchart:\ni = 1\nwhile i &lt;= 100:\n    print(i)\n    if i == 39:\n        i = 61\n    else:\n        i = i + 1\n\n\n\n\n\n\nBeispiel Flowchart:\ni = 1\nwhile i &lt;= 100:\n    print(i)\n    if i == 39:\n        i = 61\n    else:\n        i = i + 1\n\n\n\n\n\n\n\n\n\n\n\nHands-on 4: Flowchart erstellen\n\n\n\nErstellen Sie eine Flowchart für die for-Schleife in Aufgabe 3.\nSie können diese auf https://app.diagrams.net/ erstellen.\n\n\n\n\n\n\n\n\nHands-on 5: Fortgeschrittene Übung: Donuts-Essen\n\n\n\nErstellen Sie eine Flowchart für den folgenden Code:\ndonuts = 5\nwhile donuts &gt; 0:\n    print(\"Ich esse einen Donut. Lecker!\")\n    donuts = donuts - 1\n    if donuts == 1:\n        print(\"Oh nein! Nur noch ein Donut übrig!\")\n    elif donuts == 0:\n        print(\"Keine Donuts mehr... Zeit, neue zu kaufen!\")",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Schleifen programmieren mit Python</span>"
+    ]
+  },
+  {
+    "objectID": "loops.html#wichtig-endlosschleifen-vermeiden",
+    "href": "loops.html#wichtig-endlosschleifen-vermeiden",
+    "title": "7  Schleifen programmieren mit Python",
+    "section": "7.3 Wichtig: Endlosschleifen vermeiden",
+    "text": "7.3 Wichtig: Endlosschleifen vermeiden\nSchleifen müssen immer eine Bedingung haben, die sie beendet. Sonst könnte folgendes passieren:\ni = 0\nwhile i &lt; 1:\n    i = i - 1\n    print(i)  # Diese Schleife läuft endlos!\nHier fehlt eine Bedingung, die i wieder größer macht, sodass die Schleife stoppt.",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Schleifen programmieren mit Python</span>"
+    ]
+  },
+  {
+    "objectID": "loops.html#fazit",
+    "href": "loops.html#fazit",
+    "title": "7  Schleifen programmieren mit Python",
+    "section": "7.4 Fazit",
+    "text": "7.4 Fazit\nSchleifen sind ein mächtiges Werkzeug um wiederkehrende Aufgaben effizient zu lösen. Schleifen werden fast überall benutzt: Expiremente programmieren, Daten einlesen, Daten bearbeiten, Graphiken erstellen, usw.\n\n\n\n\n\n\n\nHands-on Lösungen\n\n\n\n\n\n\n7.4.1 Hands-on 1\nfor i in range(10):\n    print(i + 1)\nAlternativ:\nzahlen = [1,2,3,4,5,6,7,8,9,10]\nfor z in zahlen:\n    print(z)\nOder:\nzahlen = 1\nwhile zahlen &lt;= 10:\n    print(zahlen)\n    zahlen = zahlen + 1\n\n\n7.4.2 Hands-on 2\ni = 0\nwhile i &lt; 5:\n    print(\"Python macht Spaß!\")\n    i = i + 1\n\n\n7.4.3 Hands-on 3\nn = 2\nwhile n &lt;= 20:\n    print(n)\n    n = n + 2\n\n\n7.4.4 Hands-on 4\n\n\n\n\n\n\n\n7.4.5 Hands-on 5",
+    "crumbs": [
+      "Experimentieren",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Schleifen programmieren mit Python</span>"
     ]
   },
   {
@@ -370,144 +425,144 @@
   {
     "objectID": "datawrangling.html",
     "href": "datawrangling.html",
-    "title": "7  Daten importieren und vorverarbeiten",
+    "title": "8  Daten importieren und vorverarbeiten",
     "section": "",
-    "text": "7.1 Datenformate\nBevor mit einem Datensatz gearbeitet wird, empfiehlt es sich den Datensatz anzuschauen und Folgendes zu identifizieren:",
+    "text": "8.1 Datenformate\nBevor mit einem Datensatz gearbeitet wird, empfiehlt es sich den Datensatz anzuschauen und Folgendes zu identifizieren:",
     "crumbs": [
       "Data wrangling",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
     ]
   },
   {
     "objectID": "datawrangling.html#datenformate",
     "href": "datawrangling.html#datenformate",
-    "title": "7  Daten importieren und vorverarbeiten",
+    "title": "8  Daten importieren und vorverarbeiten",
     "section": "",
     "text": "In welchem Dateiformat ist der Datensatz gespeichert? (z.B. in .csv, .xlsx oder anderen?)\nIn welchem Datenformat ist der Datensatz geordnet? (long oder wide oder mixed?)\nGibt es ein data dictionary mit Erklärungen zu den Variablen?",
     "crumbs": [
       "Data wrangling",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
     ]
   },
   {
     "objectID": "datawrangling.html#set-up",
     "href": "datawrangling.html#set-up",
-    "title": "7  Daten importieren und vorverarbeiten",
-    "section": "7.2 Set up",
-    "text": "7.2 Set up\n\n\n\n\n\n\nHands-on: Vorbereitung\n\n\n\n\nÖffnen Sie RStudio.\nErstellen Sie ein neues RStudio-Project\n\nKlicken Sie dafür auf File &gt; New Project\nBenennen Sie das Project complab__fs25 und speichern Sie es an einem sinnvollen Ort auf Ihrem Computer. Wählen Sie, dass dafür ein neuer Ordner erstellt werden soll.\n\nErstellen Sie in diesem Projekt-Ordner einen Ordner namens data.\nKopieren Sie in den data-Ordner Ihre erhobenen Daten des Stroop Experiments. Falls Sie noch keine Daten erhoben haben, dann laden Sie hier einen Beispiels-Datensatz herunter und speichern Sie ihn im data-Ordner.\nErstellen Sie ein neues .Rmd-File (File &gt; New File &gt; R Markdown) und speichern Sie dieses unter intro_datawrangling im Projekt-Ordner.\n\n\n\n\n\n\n\n\n\nTipp: Namensgebung für Files und Variablen\n\n\n\nWenn Sie Filenamen auswählen, achten Sie darauf dass diese machine-readable sind:\n\nkeine Lücken (verwenden Sie stattdessen den camelCase, den snake_case oder -)\nkeine ä, ö, ü oder andere Sonderzeichen verwenden",
+    "title": "8  Daten importieren und vorverarbeiten",
+    "section": "8.2 Set up",
+    "text": "8.2 Set up\n\n\n\n\n\n\nHands-on: Vorbereitung\n\n\n\n\nÖffnen Sie RStudio.\nErstellen Sie ein neues RStudio-Project\n\nKlicken Sie dafür auf File &gt; New Project\nBenennen Sie das Project complab__fs25 und speichern Sie es an einem sinnvollen Ort auf Ihrem Computer. Wählen Sie, dass dafür ein neuer Ordner erstellt werden soll.\n\nErstellen Sie in diesem Projekt-Ordner einen Ordner namens data.\nKopieren Sie in den data-Ordner Ihre erhobenen Daten des Stroop Experiments. Falls Sie noch keine Daten erhoben haben, dann laden Sie hier einen Beispiels-Datensatz herunter und speichern Sie ihn im data-Ordner.\nErstellen Sie ein neues .Rmd-File (File &gt; New File &gt; R Markdown) und speichern Sie dieses unter intro_datawrangling im Projekt-Ordner.\n\n\n\n\n\n\n\n\n\nTipp: Namensgebung für Files und Variablen\n\n\n\nWenn Sie Filenamen auswählen, achten Sie darauf dass diese machine-readable sind:\n\nkeine Lücken (verwenden Sie stattdessen den camelCase, den snake_case oder -)\nkeine ä, ö, ü oder andere Sonderzeichen verwenden",
     "crumbs": [
       "Data wrangling",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
     ]
   },
   {
     "objectID": "datawrangling.html#packages-installieren-und-laden",
     "href": "datawrangling.html#packages-installieren-und-laden",
-    "title": "7  Daten importieren und vorverarbeiten",
-    "section": "7.3 Packages installieren und laden",
-    "text": "7.3 Packages installieren und laden\nFür das Bearbeiten der Daten verwenden eignen sich Funktionen aus dem Package {tidyverse}, eine Sammlung von verschiedenen, für data science sehr geeigneten R Packages. Funktionen aus dem {tidyverse} ermöglichen und vereinfachen viele Schritte der Datenverarbeitung. Im Folgenden werden die wichtigsten und häufigst verwendeten Funktionen beschrieben. Das {tidyverse} können Sie direkt in R herunterladen:\n\nMehr Informationen zum {tidyverse} finden Sie hier.\n\n\n# Download und Installieren des Packages (nur einmal ausführen)\ninstall.packages(\"tidyverse\")\n\nEin Package muss nur einmal heruntergeladen und installiert werden, danach ist es lokal auf dem Computer gespeichert. Aber: Jedes Mal wenn R geöffnet wird, müssen Packages wieder neu geladen werden.\n\n# Package laden (bei jedem Öffnen von R zu Beginn des Skripts ausführen)\nlibrary(\"tidyverse\") \n\nSobald ein Package installiert ist, können die Funktionen auch verwendet werden ohne, dass das ganze Package mit library() geladen wird, indem die Funktion mit dem Package-Namen zusammen aufgerufen wird: packagename::packagefunction(). Dies macht Sinn, wenn verschiedene Packages dieselben Namen für verschiedene Funktionen nutzen und es so zu Konflikten kommt oder wenn nur eine Funktion aus einem Package verwendet werden soll und alle anderen sowieso nicht gebraucht werden.",
+    "title": "8  Daten importieren und vorverarbeiten",
+    "section": "8.3 Packages installieren und laden",
+    "text": "8.3 Packages installieren und laden\nFür das Bearbeiten der Daten verwenden eignen sich Funktionen aus dem Package {tidyverse}, eine Sammlung von verschiedenen, für data science sehr geeigneten R Packages. Funktionen aus dem {tidyverse} ermöglichen und vereinfachen viele Schritte der Datenverarbeitung. Im Folgenden werden die wichtigsten und häufigst verwendeten Funktionen beschrieben. Das {tidyverse} können Sie direkt in R herunterladen:\n\nMehr Informationen zum {tidyverse} finden Sie hier.\n\n\n# Download und Installieren des Packages (nur einmal ausführen)\ninstall.packages(\"tidyverse\")\n\nEin Package muss nur einmal heruntergeladen und installiert werden, danach ist es lokal auf dem Computer gespeichert. Aber: Jedes Mal wenn R geöffnet wird, müssen Packages wieder neu geladen werden.\n\n# Package laden (bei jedem Öffnen von R zu Beginn des Skripts ausführen)\nlibrary(\"tidyverse\") \n\nSobald ein Package installiert ist, können die Funktionen auch verwendet werden ohne, dass das ganze Package mit library() geladen wird, indem die Funktion mit dem Package-Namen zusammen aufgerufen wird: packagename::packagefunction(). Dies macht Sinn, wenn verschiedene Packages dieselben Namen für verschiedene Funktionen nutzen und es so zu Konflikten kommt oder wenn nur eine Funktion aus einem Package verwendet werden soll und alle anderen sowieso nicht gebraucht werden.",
     "crumbs": [
       "Data wrangling",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
     ]
   },
   {
     "objectID": "datawrangling.html#daten-importieren-in-r-read.csv",
     "href": "datawrangling.html#daten-importieren-in-r-read.csv",
-    "title": "7  Daten importieren und vorverarbeiten",
-    "section": "7.4 Daten importieren in R: read.csv()",
-    "text": "7.4 Daten importieren in R: read.csv()\nEinen Datensatz in .csv-Format kann mit der Funktion read.csv() importiert werden. Teilweise muss innerhalb der Klammer zusätzlich der Separator mit sep = \",\" angegeben werden, also mit welchem Zeichen die Spalten getrennt sind. Normalerweise ist dies , in .csv (comma separated values), es kann aber auch ;, . oder eine Lücke  sein.\n\n# Daten laden und anschauen\nd_stroop &lt;- read.csv(\"data/stroop_example.csv\", sep = \",\")\nglimpse(d_stroop)\n\n\n\n\n\n\n\nHands-on: Daten einlesen\n\n\n\nLesen Sie den Stroop Datensatz in Ihrem data-Ordner ein und schauen Sie ihn dann mit den Funktionen glimpse() und head() an.\n\nWelche Variablen sind wichtig für die weitere Auswertung?\nWelche braucht es wahrscheinlich nicht mehr?\nFinden Sie Versuchspersonenidentifikation? / Reaktionszeit? / Antwort der Versuchsperson?\n\n\n\n\n\n\n\n\n\nTipp: Daten anderer Formate einlesen\n\n\n\nFalls Sie eine Excel-Datei einlesen möchten, können Sie dies mit der read_excel()-Funktion aus dem Package readxl() tun: readxl::read_excel().\nFalls Sie nicht wissen, mit welcher Funktion Sie Ihre Daten einlesen können, können Sie dies in RStudio ausprobieren indem Sie beim Reiter Environment auf Import Dataset klicken und dort Ihren Datensatz auswählen oder über File &gt; Import Dataset. Sie können dort diverse Einstellungen tätigen. In der R Console können Sie dann den Code sehen, der zum Einlesen verwendet wurde und die dortige Funktion in Ihren Code kopieren.",
+    "title": "8  Daten importieren und vorverarbeiten",
+    "section": "8.4 Daten importieren in R: read.csv()",
+    "text": "8.4 Daten importieren in R: read.csv()\nEinen Datensatz in .csv-Format kann mit der Funktion read.csv() importiert werden. Teilweise muss innerhalb der Klammer zusätzlich der Separator mit sep = \",\" angegeben werden, also mit welchem Zeichen die Spalten getrennt sind. Normalerweise ist dies , in .csv (comma separated values), es kann aber auch ;, . oder eine Lücke  sein.\n\n# Daten laden und anschauen\nd_stroop &lt;- read.csv(\"data/stroop_example.csv\", sep = \",\")\nglimpse(d_stroop)\n\n\n\n\n\n\n\nHands-on: Daten einlesen\n\n\n\nLesen Sie den Stroop Datensatz in Ihrem data-Ordner ein und schauen Sie ihn dann mit den Funktionen glimpse() und head() an.\n\nWelche Variablen sind wichtig für die weitere Auswertung?\nWelche braucht es wahrscheinlich nicht mehr?\nFinden Sie Versuchspersonenidentifikation? / Reaktionszeit? / Antwort der Versuchsperson?\n\n\n\n\n\n\n\n\n\nTipp: Daten anderer Formate einlesen\n\n\n\nFalls Sie eine Excel-Datei einlesen möchten, können Sie dies mit der read_excel()-Funktion aus dem Package readxl() tun: readxl::read_excel().\nFalls Sie nicht wissen, mit welcher Funktion Sie Ihre Daten einlesen können, können Sie dies in RStudio ausprobieren indem Sie beim Reiter Environment auf Import Dataset klicken und dort Ihren Datensatz auswählen oder über File &gt; Import Dataset. Sie können dort diverse Einstellungen tätigen. In der R Console können Sie dann den Code sehen, der zum Einlesen verwendet wurde und die dortige Funktion in Ihren Code kopieren.",
     "crumbs": [
       "Data wrangling",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
     ]
   },
   {
     "objectID": "datawrangling.html#verwenden-der-pipe-oder",
     "href": "datawrangling.html#verwenden-der-pipe-oder",
-    "title": "7  Daten importieren und vorverarbeiten",
-    "section": "7.5 Verwenden der Pipe: |> oder %>%",
-    "text": "7.5 Verwenden der Pipe: |&gt; oder %&gt;%\nIn R können Sie die Pipe verwenden um mehrere Datenverarbeitungsschritte aneinander zu hängen. Damit sparen Sie sich aufwändige Zwischenschritte und vermeiden das Erstellen von immer neuen Datensätzen. Statt zwei einzelne Datenverarbeitungsschritte zu machen wie oben, können mehrere Schritte (hier Daten einlesen und anzeigen) zusammengefasst werden, in dem nach Zeilenende eine Pipe eingefügt wird:\n\nWann Pipes ungeeignet sind wird hier beschrieben.\n\n\nd_stroop &lt;- read.csv(\"data/stroop_example.csv\", sep = \",\") |&gt;\n    glimpse()\n\nDie Base R Pipe |&gt; und die magritter Pipe %&gt;%_ unterscheiden sich in Details, in diesem Kapitel spielt es jedoch keine Rolle, welche Pipe Sie verwenden.\n\n\n\n\n\n\nTipp\n\n\n\nAchtung: Wenn wir zu Beginn ein &lt;- oder = verwenden, wird alles was nach der Pipe kommt wird ebenfalls im Datensatz verändert. Wird z.B. der Code …\n\nd_stroop &lt;- read.csv(\"data/stroop_example.csv\", sep = \",\") |&gt;\n    head()\n\n…eingegeben, besteht der Datensatz d_stroop dann nur noch aus 6 Zeilen, weil die Funktion head() den Datensatz auf die ersten 6 Zeilen kürzt.\nWird die Pipe ohne &lt;- oder = verwendet, bleibt der Datensatz unverändert:\n\nd_stroop |&gt;\n    head()",
+    "title": "8  Daten importieren und vorverarbeiten",
+    "section": "8.5 Verwenden der Pipe: |> oder %>%",
+    "text": "8.5 Verwenden der Pipe: |&gt; oder %&gt;%\nIn R können Sie die Pipe verwenden um mehrere Datenverarbeitungsschritte aneinander zu hängen. Damit sparen Sie sich aufwändige Zwischenschritte und vermeiden das Erstellen von immer neuen Datensätzen. Statt zwei einzelne Datenverarbeitungsschritte zu machen wie oben, können mehrere Schritte (hier Daten einlesen und anzeigen) zusammengefasst werden, in dem nach Zeilenende eine Pipe eingefügt wird:\n\nWann Pipes ungeeignet sind wird hier beschrieben.\n\n\nd_stroop &lt;- read.csv(\"data/stroop_example.csv\", sep = \",\") |&gt;\n    glimpse()\n\nDie Base R Pipe |&gt; und die magritter Pipe %&gt;%_ unterscheiden sich in Details, in diesem Kapitel spielt es jedoch keine Rolle, welche Pipe Sie verwenden.\n\n\n\n\n\n\nTipp\n\n\n\nAchtung: Wenn wir zu Beginn ein &lt;- oder = verwenden, wird alles was nach der Pipe kommt wird ebenfalls im Datensatz verändert. Wird z.B. der Code …\n\nd_stroop &lt;- read.csv(\"data/stroop_example.csv\", sep = \",\") |&gt;\n    head()\n\n…eingegeben, besteht der Datensatz d_stroop dann nur noch aus 6 Zeilen, weil die Funktion head() den Datensatz auf die ersten 6 Zeilen kürzt.\nWird die Pipe ohne &lt;- oder = verwendet, bleibt der Datensatz unverändert:\n\nd_stroop |&gt;\n    head()",
     "crumbs": [
       "Data wrangling",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
     ]
   },
   {
     "objectID": "datawrangling.html#daten-filtern-filter",
     "href": "datawrangling.html#daten-filtern-filter",
-    "title": "7  Daten importieren und vorverarbeiten",
-    "section": "7.6 Daten filtern: filter()",
-    "text": "7.6 Daten filtern: filter()\nMit filter() können bestimmte Beobachtungen oder Untergruppen ausgewählt werden. Hierfür muss in der Funktion filter(.data, filter, ...) der Datensatz, die betreffende Variable, sowie eine Bedingung eingegeben werden. Es wird die ganze Zeile im Datensatz behalten in der die Variable der Bedingung entspricht.\nBeispiele:\n\n# nur die Trials mit den rot angezeigten Wörtern behalten\nd_stroop_filtered &lt;- filter(d_stroop, color == \"red\")\n\n# dasselbe mit der Pipe\nd_filtered &lt;- d_stroop |&gt; filter(color == \"red\")\n\n# nur Trials die ohne blau angezeigten Wörter behalten\nd_filtered &lt;- d_stroop |&gt; filter(color != \"blue\")\n\n# nur Übungstrials mit einer Antwortszeit unter oder gleich gross wie 1 Sekunde behalten\nd_filtered &lt;- d_stroop |&gt; filter(respPractice.rt &lt;= 1)\n\n# nur Übungstrials mit Antwortzeiten zwischen 1 und 2 Sekunden behalten\nd_filtered &lt;- d_stroop |&gt; filter(respPractice.rt &gt; 1 & respPractice.rt &lt; 2)\n\n# mehrere Filter verwenden\nd_filtered &lt;- d_stroop |&gt; \n    filter(color == \"red\") |&gt;\n    filter(respPractice.rt &lt;= 1)\n\nIn unserem Datensatz möchten wir nur die gültigen Experimentdaten behalten, die Color-To-Key (ctk) Bedingung sowie die Practice Trials möchten wir ausschliessen.\nDie Variable trials_test.thisN enthält die Trialnummer, sie enthält nur Einträge, während der gültigen Trials. Wir können dies nutzen und alle Zeilen behalten in welchen die Zelle der Variable trials_test.thisN nicht leer ist:\n\nd_stroop &lt;- d_stroop |&gt; \n    filter(!is.na(trials_test.thisN)) \n\n\n\n\n\n\n\nHands-on: Daten filtern\n\n\n\nErstellen Sie einen neuen Datensatz namens d_stroop_correct und filtern Sie diesen so dass er nur Trials mit richtigen Antworten enthält. Schauen Sie in der Variable keyResp_test_run.corr, ob tatsächlich nur noch richtige Antworten übrig geblieben sind.\nAchtung: Arbeiten Sie in den weiteren Schritten nicht mit diesem Datensatz weiter, da wir die falschen Antworten in einem nächsten Schritt noch im Datensatz brauchen.",
+    "title": "8  Daten importieren und vorverarbeiten",
+    "section": "8.6 Daten filtern: filter()",
+    "text": "8.6 Daten filtern: filter()\nMit filter() können bestimmte Beobachtungen oder Untergruppen ausgewählt werden. Hierfür muss in der Funktion filter(.data, filter, ...) der Datensatz, die betreffende Variable, sowie eine Bedingung eingegeben werden. Es wird die ganze Zeile im Datensatz behalten in der die Variable der Bedingung entspricht.\nBeispiele:\n\n# nur die Trials mit den rot angezeigten Wörtern behalten\nd_stroop_filtered &lt;- filter(d_stroop, color == \"red\")\n\n# dasselbe mit der Pipe\nd_filtered &lt;- d_stroop |&gt; filter(color == \"red\")\n\n# nur Trials die ohne blau angezeigten Wörter behalten\nd_filtered &lt;- d_stroop |&gt; filter(color != \"blue\")\n\n# nur Übungstrials mit einer Antwortszeit unter oder gleich gross wie 1 Sekunde behalten\nd_filtered &lt;- d_stroop |&gt; filter(respPractice.rt &lt;= 1)\n\n# nur Übungstrials mit Antwortzeiten zwischen 1 und 2 Sekunden behalten\nd_filtered &lt;- d_stroop |&gt; filter(respPractice.rt &gt; 1 & respPractice.rt &lt; 2)\n\n# mehrere Filter verwenden\nd_filtered &lt;- d_stroop |&gt; \n    filter(color == \"red\") |&gt;\n    filter(respPractice.rt &lt;= 1)\n\nIn unserem Datensatz möchten wir nur die gültigen Experimentdaten behalten, die Color-To-Key (ctk) Bedingung sowie die Practice Trials möchten wir ausschliessen.\nDie Variable trials_test.thisN enthält die Trialnummer, sie enthält nur Einträge, während der gültigen Trials. Wir können dies nutzen und alle Zeilen behalten in welchen die Zelle der Variable trials_test.thisN nicht leer ist:\n\nd_stroop &lt;- d_stroop |&gt; \n    filter(!is.na(trials_test.thisN)) \n\n\n\n\n\n\n\nHands-on: Daten filtern\n\n\n\nErstellen Sie einen neuen Datensatz namens d_stroop_correct und filtern Sie diesen so dass er nur Trials mit richtigen Antworten enthält. Schauen Sie in der Variable keyResp_test_run.corr, ob tatsächlich nur noch richtige Antworten übrig geblieben sind.\nAchtung: Arbeiten Sie in den weiteren Schritten nicht mit diesem Datensatz weiter, da wir die falschen Antworten in einem nächsten Schritt noch im Datensatz brauchen.",
     "crumbs": [
       "Data wrangling",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
     ]
   },
   {
     "objectID": "datawrangling.html#variablen-auswählen-select",
     "href": "datawrangling.html#variablen-auswählen-select",
-    "title": "7  Daten importieren und vorverarbeiten",
-    "section": "7.7 Variablen auswählen: select()",
-    "text": "7.7 Variablen auswählen: select()\nEin komplexer Datensatz mit sehr vielen Variablen wird oft für die Analyse aus Gründen der Einfachheit oder Anonymisierung reduziert. Das bedeutet, dass man sich die nötigen Variablen herausliest, und nur mit diesem reduzierten Datensatz weiterarbeitet. Hierzu eignet sich die Funktion select() sehr gut: Mit select(.data, variablenname, ...) können die zu behaltenden Variablen ausgewählt werden. Wird ein ! vor einen Variablennamen gesetzt, wird die Variable nicht behalten.\nMit select() können wir auch die Variablen sortieren und umbenennen, damit unser Datensatz so strukturiert ist, wie wir ihn gebrauchen können.\nBeispiele:\n\n# Variable word und color behalten ohne Pipe\nd_simpler &lt;- select(d_stroop, word, color)\n\n# Variable word und color behalten mit Pipe\nd_simpler &lt;- d_stroop |&gt; select(word, color)\n\n# alle Variablen ausser word behalten\nd_simpler &lt;- d_stroop |&gt; select(!word)\n\n# Variablennamen verändern\nd_simpler &lt;- d_stroop |&gt; select(newvariablename = word)\n\nSollen mehrere Variablen am Stück ausgewählt werden, kann man die erste Variable in der Reihe (z.B. word) und die letzte in der Reihe (z.B. congruent) als word:congruent eingeben, dann werden auch alle dazwischen liegenden Variablen ausgewählt.\n\n\n\n\n\n\nHands-on: Variablen auswählen\n\n\n\nSchauen Sie sich Ihren Datensatz an, welche Variablen benötigen Sie für die weitere Analysen?\nErstellen Sie einen neuen Datensatz d_stroop_clean in welchem Sie die entsprechenden Variablen auswählen und umbennen, wenn Sie Ihnen zu lange/kompliziert erscheinen.\nUntenstehend finden Sie ein Beispiel, wie der Datensatz danach aussehen könnte.\n\n\n\n\nRows: 120\nColumns: 10\n$ id         &lt;chr&gt; \"sub-154989\", \"sub-154989\", \"sub-154989\", \"sub-154989\", \"su…\n$ experiment &lt;chr&gt; \"stroop_test\", \"stroop_test\", \"stroop_test\", \"stroop_test\",…\n$ trial      &lt;int&gt; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1…\n$ word       &lt;chr&gt; \"rot\", \"rot\", \"blau\", \"gelb\", \"rot\", \"blau\", \"blau\", \"gelb\"…\n$ color      &lt;chr&gt; \"red\", \"red\", \"blue\", \"yellow\", \"yellow\", \"yellow\", \"red\", …\n$ corrAns    &lt;chr&gt; \"r\", \"r\", \"b\", \"g\", \"g\", \"g\", \"r\", \"r\", \"b\", \"g\", \"b\", \"b\",…\n$ congruent  &lt;int&gt; 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0,…\n$ response   &lt;chr&gt; \"r\", \"r\", \"b\", \"g\", \"g\", \"g\", \"r\", \"r\", \"b\", \"g\", \"b\", \"b\",…\n$ rt         &lt;dbl&gt; 1.0639791, 0.7370255, 1.1883303, 1.2007897, 1.6688681, 1.58…\n$ accuracy   &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…",
+    "title": "8  Daten importieren und vorverarbeiten",
+    "section": "8.7 Variablen auswählen: select()",
+    "text": "8.7 Variablen auswählen: select()\nEin komplexer Datensatz mit sehr vielen Variablen wird oft für die Analyse aus Gründen der Einfachheit oder Anonymisierung reduziert. Das bedeutet, dass man sich die nötigen Variablen herausliest, und nur mit diesem reduzierten Datensatz weiterarbeitet. Hierzu eignet sich die Funktion select() sehr gut: Mit select(.data, variablenname, ...) können die zu behaltenden Variablen ausgewählt werden. Wird ein ! vor einen Variablennamen gesetzt, wird die Variable nicht behalten.\nMit select() können wir auch die Variablen sortieren und umbenennen, damit unser Datensatz so strukturiert ist, wie wir ihn gebrauchen können.\nBeispiele:\n\n# Variable word und color behalten ohne Pipe\nd_simpler &lt;- select(d_stroop, word, color)\n\n# Variable word und color behalten mit Pipe\nd_simpler &lt;- d_stroop |&gt; select(word, color)\n\n# alle Variablen ausser word behalten\nd_simpler &lt;- d_stroop |&gt; select(!word)\n\n# Variablennamen verändern\nd_simpler &lt;- d_stroop |&gt; select(newvariablename = word)\n\nSollen mehrere Variablen am Stück ausgewählt werden, kann man die erste Variable in der Reihe (z.B. word) und die letzte in der Reihe (z.B. congruent) als word:congruent eingeben, dann werden auch alle dazwischen liegenden Variablen ausgewählt.\n\n\n\n\n\n\nHands-on: Variablen auswählen\n\n\n\nSchauen Sie sich Ihren Datensatz an, welche Variablen benötigen Sie für die weitere Analysen?\nErstellen Sie einen neuen Datensatz d_stroop_clean in welchem Sie die entsprechenden Variablen auswählen und umbennen, wenn Sie Ihnen zu lange/kompliziert erscheinen.\nUntenstehend finden Sie ein Beispiel, wie der Datensatz danach aussehen könnte.\n\n\n\n\nRows: 120\nColumns: 10\n$ id         &lt;chr&gt; \"sub-154989\", \"sub-154989\", \"sub-154989\", \"sub-154989\", \"su…\n$ experiment &lt;chr&gt; \"stroop_test\", \"stroop_test\", \"stroop_test\", \"stroop_test\",…\n$ trial      &lt;int&gt; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1…\n$ word       &lt;chr&gt; \"rot\", \"rot\", \"blau\", \"gelb\", \"rot\", \"blau\", \"blau\", \"gelb\"…\n$ color      &lt;chr&gt; \"red\", \"red\", \"blue\", \"yellow\", \"yellow\", \"yellow\", \"red\", …\n$ corrAns    &lt;chr&gt; \"r\", \"r\", \"b\", \"g\", \"g\", \"g\", \"r\", \"r\", \"b\", \"g\", \"b\", \"b\",…\n$ congruent  &lt;int&gt; 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0,…\n$ response   &lt;chr&gt; \"r\", \"r\", \"b\", \"g\", \"g\", \"g\", \"r\", \"r\", \"b\", \"g\", \"b\", \"b\",…\n$ rt         &lt;dbl&gt; 1.0639791, 0.7370255, 1.1883303, 1.2007897, 1.6688681, 1.58…\n$ accuracy   &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…",
     "crumbs": [
       "Data wrangling",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
     ]
   },
   {
     "objectID": "datawrangling.html#neue-variablen-generieren-und-verändern-mutate-und-case_when",
     "href": "datawrangling.html#neue-variablen-generieren-und-verändern-mutate-und-case_when",
-    "title": "7  Daten importieren und vorverarbeiten",
-    "section": "7.8 Neue Variablen generieren und verändern: mutate() und case_when()",
-    "text": "7.8 Neue Variablen generieren und verändern: mutate() und case_when()\nMit der mutate(.data, …) Funktion können im Datensatz neue Variablen generiert oder bestehende verändert werden.\nBeispiel:\n\n# Neue Variablen erstellen\nd_new &lt;- d_stroop_clean |&gt;\n    mutate(num_variable = 1.434,\n           chr_variable = \"1.434\",\n           sumofxy_variable = rt + 1,\n           copy_variable = word)\n\n# Bestehende Variablen verändern\nd_new &lt;- d_new |&gt;\n    mutate(num_variable = num_variable * 1000) # z.B. um Sekunden zu Millisekunden zu machen\n\nMit case_when() kann eine neue Variable erstellt werden in Abhängigkeit von Werten anderer Variablen. Damit kann z.B. eine Variable accuracy erstellt werden, die den Wert correct hat, wenn die Aufgabe richtig gelöst wurde (z.B. Bedingung rot und Tastendruck r) und sonst den Wert error hat.\nBeispiel:\n\nd_condvariable &lt;- d_stroop_clean |&gt;\n    mutate(cond_variable = case_when(rt &gt; 0.8 ~ \"higher\",\n                                     rt &lt;= 0.8 ~ \"lower\",\n                                     .default = NA))\n\n\n\n\n\n\n\nHands-on: Variablen generieren und verändern\n\n\n\n\nErstellen Sie im Datensatz d_stroop_clean eine neue Variable mit dem Namen researcher, den Ihren Namen enthält.\nErstellen Sie zudem eine Variable accuracy_check, mit correct für korrekte und error für inkorrekte Trials. Kontrollieren Sie mit der Variable keyResp_test_run.corr (oder Ihrem neuen Variablennamen, wenn Sie diese umbenannt haben) im Datensatz, ob Sie die Aufgabe richtig gelöst haben.\nÄndern Sie die Trialnummer, so dass sie nicht mehr mit 0 beginnt, sondern mit 1.",
+    "title": "8  Daten importieren und vorverarbeiten",
+    "section": "8.8 Neue Variablen generieren und verändern: mutate() und case_when()",
+    "text": "8.8 Neue Variablen generieren und verändern: mutate() und case_when()\nMit der mutate(.data, …) Funktion können im Datensatz neue Variablen generiert oder bestehende verändert werden.\nBeispiel:\n\n# Neue Variablen erstellen\nd_new &lt;- d_stroop_clean |&gt;\n    mutate(num_variable = 1.434,\n           chr_variable = \"1.434\",\n           sumofxy_variable = rt + 1,\n           copy_variable = word)\n\n# Bestehende Variablen verändern\nd_new &lt;- d_new |&gt;\n    mutate(num_variable = num_variable * 1000) # z.B. um Sekunden zu Millisekunden zu machen\n\nMit case_when() kann eine neue Variable erstellt werden in Abhängigkeit von Werten anderer Variablen. Damit kann z.B. eine Variable accuracy erstellt werden, die den Wert correct hat, wenn die Aufgabe richtig gelöst wurde (z.B. Bedingung rot und Tastendruck r) und sonst den Wert error hat.\nBeispiel:\n\nd_condvariable &lt;- d_stroop_clean |&gt;\n    mutate(cond_variable = case_when(rt &gt; 0.8 ~ \"higher\",\n                                     rt &lt;= 0.8 ~ \"lower\",\n                                     .default = NA))\n\n\n\n\n\n\n\nHands-on: Variablen generieren und verändern\n\n\n\n\nErstellen Sie im Datensatz d_stroop_clean eine neue Variable mit dem Namen researcher, den Ihren Namen enthält.\nErstellen Sie zudem eine Variable accuracy_check, mit correct für korrekte und error für inkorrekte Trials. Kontrollieren Sie mit der Variable keyResp_test_run.corr (oder Ihrem neuen Variablennamen, wenn Sie diese umbenannt haben) im Datensatz, ob Sie die Aufgabe richtig gelöst haben.\nÄndern Sie die Trialnummer, so dass sie nicht mehr mit 0 beginnt, sondern mit 1.",
     "crumbs": [
       "Data wrangling",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
     ]
   },
   {
     "objectID": "datawrangling.html#variablenklasse-verändern-as.factor-as.numeric",
     "href": "datawrangling.html#variablenklasse-verändern-as.factor-as.numeric",
-    "title": "7  Daten importieren und vorverarbeiten",
-    "section": "7.9 Variablenklasse verändern: as.factor(), as.numeric(), …",
-    "text": "7.9 Variablenklasse verändern: as.factor(), as.numeric(), …\nVariablen können verschiedene Klassen haben, sie können z.B. kategoriale (factor, character) oder numerische (integer, numeric, double) Informationen enthalten. Beim Einlesen “rät” R, welche Klasse eine Variable hat. Teilweise möchten wir dies ändern. Wenn wir eine Variable zu einem Faktor machen möchten, verwenden wir as.factor(). Dies macht z.B. Sinn, wenn die Versuchspersonennummer als Zahl eingelesen wurde. Um von einem Faktor zu einer numerischen Variable zu kommen, verwenden wir as.numeric().\n\n# Die Variable \"congruent\" zu einem Faktor machen\nd_stroop_clean |&gt; \n    mutate(congruent = as.factor(congruent))\n\n\n\n\n\n\n\nHands-on: Variablenklassen\n\n\n\nSchauen Sie sich den Datensatz mit glimpse() oder mit View() an. Welche Klassen enthält Ihr Datensatz und was bedeuten Sie?",
+    "title": "8  Daten importieren und vorverarbeiten",
+    "section": "8.9 Variablenklasse verändern: as.factor(), as.numeric(), …",
+    "text": "8.9 Variablenklasse verändern: as.factor(), as.numeric(), …\nVariablen können verschiedene Klassen haben, sie können z.B. kategoriale (factor, character) oder numerische (integer, numeric, double) Informationen enthalten. Beim Einlesen “rät” R, welche Klasse eine Variable hat. Teilweise möchten wir dies ändern. Wenn wir eine Variable zu einem Faktor machen möchten, verwenden wir as.factor(). Dies macht z.B. Sinn, wenn die Versuchspersonennummer als Zahl eingelesen wurde. Um von einem Faktor zu einer numerischen Variable zu kommen, verwenden wir as.numeric().\n\n# Die Variable \"congruent\" zu einem Faktor machen\nd_stroop_clean |&gt; \n    mutate(congruent = as.factor(congruent))\n\n\n\n\n\n\n\nHands-on: Variablenklassen\n\n\n\nSchauen Sie sich den Datensatz mit glimpse() oder mit View() an. Welche Klassen enthält Ihr Datensatz und was bedeuten Sie?",
     "crumbs": [
       "Data wrangling",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
     ]
   },
   {
     "objectID": "datawrangling.html#daten-gruppieren-und-zusammenfassen-group_by-und-summarise",
     "href": "datawrangling.html#daten-gruppieren-und-zusammenfassen-group_by-und-summarise",
-    "title": "7  Daten importieren und vorverarbeiten",
-    "section": "7.10 Daten gruppieren und zusammenfassen: group_by() und summarise()",
-    "text": "7.10 Daten gruppieren und zusammenfassen: group_by() und summarise()\nMit diesen beiden Funktionen können wir mit wenig Code den Datensatz gruppieren und zusammenfassen.\n\n# Nach Wörter gruppieren\nd_stroop_clean |&gt; group_by(word) |&gt;\n    summarise(mean_rt = mean(rt),\n              sd_rt = sd(rt))\n\n# A tibble: 3 × 3\n  word  mean_rt sd_rt\n  &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;\n1 blau     1.23 0.490\n2 gelb     1.26 0.447\n3 rot      1.16 0.552\n\n\n\n\n\n\n\n\nHands-on: Daten zusammenfassen\n\n\n\nErstellen Sie einen neuen Datensatz d_stroop_summary\n\nGruppieren Sie den Datensatz für Wortfarbe und Kongruenz.\nFassen Sie für diese Gruppen die durchschnittliche Antwortzeit und Accuracy sowie die Standardabweichungen zusammen.",
+    "title": "8  Daten importieren und vorverarbeiten",
+    "section": "8.10 Daten gruppieren und zusammenfassen: group_by() und summarise()",
+    "text": "8.10 Daten gruppieren und zusammenfassen: group_by() und summarise()\nMit diesen beiden Funktionen können wir mit wenig Code den Datensatz gruppieren und zusammenfassen.\n\n# Nach Wörter gruppieren\nd_stroop_clean |&gt; group_by(word) |&gt;\n    summarise(mean_rt = mean(rt),\n              sd_rt = sd(rt))\n\n# A tibble: 3 × 3\n  word  mean_rt sd_rt\n  &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;\n1 blau     1.23 0.490\n2 gelb     1.26 0.447\n3 rot      1.16 0.552\n\n\n\n\n\n\n\n\nHands-on: Daten zusammenfassen\n\n\n\nErstellen Sie einen neuen Datensatz d_stroop_summary\n\nGruppieren Sie den Datensatz für Wortfarbe und Kongruenz.\nFassen Sie für diese Gruppen die durchschnittliche Antwortzeit und Accuracy sowie die Standardabweichungen zusammen.",
     "crumbs": [
       "Data wrangling",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
     ]
   },
   {
     "objectID": "datawrangling.html#datensätze-speichern-write.csv",
     "href": "datawrangling.html#datensätze-speichern-write.csv",
-    "title": "7  Daten importieren und vorverarbeiten",
-    "section": "7.11 Datensätze speichern: write.csv()",
-    "text": "7.11 Datensätze speichern: write.csv()\n\nwrite.csv(d_stroop_clean, file = \"data/dataset_stroop_clean.csv\", row.names = FALSE)\n\n\n\n\n\n\n\nHands-on: Datensätze speichern\n\n\n\nSpeichern Sie einen neuen Datensatz mit den vorverarbeiteten Daten.",
+    "title": "8  Daten importieren und vorverarbeiten",
+    "section": "8.11 Datensätze speichern: write.csv()",
+    "text": "8.11 Datensätze speichern: write.csv()\n\nwrite.csv(d_stroop_clean, file = \"data/dataset_stroop_clean.csv\", row.names = FALSE)\n\n\n\n\n\n\n\nHands-on: Datensätze speichern\n\n\n\nSpeichern Sie einen neuen Datensatz mit den vorverarbeiteten Daten.",
     "crumbs": [
       "Data wrangling",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
     ]
   },
   {
     "objectID": "datawrangling.html#data-wrangling-workflow-implementieren",
     "href": "datawrangling.html#data-wrangling-workflow-implementieren",
-    "title": "7  Daten importieren und vorverarbeiten",
-    "section": "7.12 Data wrangling workflow implementieren",
-    "text": "7.12 Data wrangling workflow implementieren\n\n\n\n\n\n\nHands-on: Data wrangling workflow\n\n\n\nErstellen Sie nun ein Projekt für das Random-Dot Experiment und führen Sie die gelernten data wrangling Schritte selbstständig durch.\n\n\n\nZu den gelernten Funktionen finden Sie hier Grafiken die evtl. helfen, sich die Funktions-Namen zu merken.",
+    "title": "8  Daten importieren und vorverarbeiten",
+    "section": "8.12 Data wrangling workflow implementieren",
+    "text": "8.12 Data wrangling workflow implementieren\n\n\n\n\n\n\nHands-on: Data wrangling workflow\n\n\n\nErstellen Sie nun ein Projekt für das Random-Dot Experiment und führen Sie die gelernten data wrangling Schritte selbstständig durch.\n\n\n\nZu den gelernten Funktionen finden Sie hier Grafiken die evtl. helfen, sich die Funktions-Namen zu merken.",
     "crumbs": [
       "Data wrangling",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
     ]
   },
   {

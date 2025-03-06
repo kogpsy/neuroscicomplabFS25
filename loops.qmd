@@ -1,0 +1,198 @@
+# Schleifen programmieren mit Python
+
+## Einführung
+
+Schleifen sind ein wesentliches Konzept in der Programmierung, das es ermöglicht, Code mehrfach auszuführen, ohne ihn wiederholt schreiben zu müssen. In Python gibt es zwei Hauptarten von Schleifen:
+
+-   `for`-Schleifen: Ideal für die Iteration über eine Sequenz.
+-   `while`-Schleifen: Läuft so lange, bis eine bestimmte Bedingung erfüllt ist.
+
+Um Python Codes zu testen/schreiben, gehen Sie auf: <https://www.online-python.com/>
+
+### `for`-Schleifen
+
+Die `for`-Schleife wird oft genutzt, um über eine Liste oder eine andere Sequenz zu iterieren.
+
+``` python
+früchte = ["Apfel", "Banane", "Kirsche"]
+for frucht in früchte:
+    print("Ich mag", frucht)
+```
+
+> *output:*
+>
+> *Ich mag Apfel Ich mag Banane Ich mag Kirsche*
+
+Man kann auch eine `for`-Schleife mit `range()` verwenden:
+
+``` python
+for i in range(5):  # Iteriert von 0 bis 4
+    print("Iteration Nummer:", i)
+```
+
+> *output:*
+>
+> *Iteration Nummer: 0 Iteration Nummer: 1 Iteration Nummer: 2 Iteration Nummer: 3 Iteration Nummer: 4*
+
+### `while`-Schleifen
+
+Eine `while`-Schleife wird benutzt, wenn die Anzahl der Iterationen nicht im Voraus bekannt ist, sondern von einer Bedingung abhängt.
+
+``` python
+zähler = 0
+while zähler < 3:
+    print("Dies ist Schleifeniteration:", zähler)
+    zähler = zähler + 1  # Erhöht den Zähler, um eine Endlosschleife zu vermeiden
+```
+
+> *output:*
+>
+> *Dies ist Schleifeniteration: 0*
+>
+> *Dies ist Schleifeniteration: 1*
+>
+> *Dies ist Schleifeniteration: 2*
+
+<br>
+
+::: callout-caution
+## Hands-on 1-3: `for`-Schleife erstellen
+
+1.  Geben Sie die Zahlen von 1 bis 10 mit einer `for`-Schleife aus.
+
+2.  Geben Sie "Python macht Spaß!" fünfmal mit einer `while`-Schleife aus.
+
+3.  Erstellen Sie eine Schleife, die nur gerade Zahlen von 1 bis 20 ausgibt.
+:::
+
+<br>
+
+## Flowcharts
+
+*Beispiel Flowchart:*
+
+``` python
+i = 1
+while i <= 100:
+    print(i)
+    if i == 39:
+        i = 61
+    else:
+        i = i + 1
+```
+
+![](imgs/flowchart-1.png){fig-align="center" width="50%"}
+
+<br>
+
+*Beispiel Flowchart:*
+
+``` python
+i = 1
+while i <= 100:
+    print(i)
+    if i == 39:
+        i = 61
+    else:
+        i = i + 1
+```
+
+![](imgs/flowchart-1.png){fig-align="center" width="50%"}
+
+::: callout-caution
+## Hands-on 4: Flowchart erstellen
+
+Erstellen Sie eine Flowchart für die `for`-Schleife in *Aufgabe 3*.
+
+Sie können diese auf <https://app.diagrams.net/> erstellen.
+:::
+
+::: callout-caution
+## Hands-on 5: Fortgeschrittene Übung: Donuts-Essen
+
+Erstellen Sie eine Flowchart für den folgenden Code:
+
+``` python
+donuts = 5
+while donuts > 0:
+    print("Ich esse einen Donut. Lecker!")
+    donuts = donuts - 1
+    if donuts == 1:
+        print("Oh nein! Nur noch ein Donut übrig!")
+    elif donuts == 0:
+        print("Keine Donuts mehr... Zeit, neue zu kaufen!")
+```
+:::
+
+## Wichtig: Endlosschleifen vermeiden
+
+Schleifen müssen immer eine Bedingung haben, die sie beendet. Sonst könnte folgendes passieren:
+
+``` python
+i = 0
+while i < 1:
+    i = i - 1
+    print(i)  # Diese Schleife läuft endlos!
+```
+
+Hier fehlt eine Bedingung, die `i` wieder größer macht, sodass die Schleife stoppt.
+
+## Fazit
+
+Schleifen sind ein mächtiges Werkzeug um wiederkehrende Aufgaben effizient zu lösen. **Schleifen werden fast überall benutzt**: Expiremente programmieren, Daten einlesen, Daten bearbeiten, Graphiken erstellen, usw.
+
+<br>
+
+::: {.callout-tip collapse="true"}
+## Hands-on Lösungen
+
+### Hands-on 1
+
+``` python
+for i in range(10):
+    print(i + 1)
+```
+
+Alternativ:
+
+``` python
+zahlen = [1,2,3,4,5,6,7,8,9,10]
+for z in zahlen:
+    print(z)
+```
+
+Oder:
+
+``` python
+zahlen = 1
+while zahlen <= 10:
+    print(zahlen)
+    zahlen = zahlen + 1
+```
+
+### Hands-on 2
+
+``` python
+i = 0
+while i < 5:
+    print("Python macht Spaß!")
+    i = i + 1
+```
+
+### Hands-on 3
+
+``` python
+n = 2
+while n <= 20:
+    print(n)
+    n = n + 2
+```
+
+### Hands-on 4
+
+![](imgs/flowchart-solution.png){fig-align="center"}
+
+### Hands-on 5
+
+![](imgs/donuts-solution.png){fig-align="center"}
+:::
