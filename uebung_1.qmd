@@ -6,7 +6,12 @@
 Führen Sie selbst und mit 2 weiteren Personen das Stroop und das Random Dot Experiment durch. Laden Sie anschliessend die 6 Datensätze auf Ilias hoch. Die beiden Experimente dauern zusammen ca. 30 Minuten (
 abhängig von den Versuchspersonen).
 
-__Wichtig:__ Die erhobenen Daten werden wir dann in den kommenden Sitzungen verwenden, achten Sie also auf gute Datenqualität.
+__Führen Sie das Experiment mit der Einstellung `Run` durch und nicht im `Pilot`-Mode!__
+
+
+__Wichtig:__ 
+
+Die erhobenen Daten werden wir dann in den kommenden Sitzungen verwenden, achten Sie also auf gute Datenqualität.
 
 ## Vorgehen
 
@@ -33,6 +38,11 @@ __Wichtig:__ Die erhobenen Daten werden wir dann in den kommenden Sitzungen verw
 - __Laden Sie die 6 Datensätze auf ILIAS hoch.__
     
     - Laden Sie die 6 `.csv`/`.xlsx`-Files mit den erhobenen Datensätzen auf Ilias unter `Übung 1` hoch.
+    
+__Die Datensätze finden Sie im Experimentordner (dort wo das `.psyexp`-File des Experiments gespeichert ist) einen Ordner `data`. 
+In diesem Ordner sind mehrere Dateien vorhanden.
+Sie müssen nur die `.csv`/`.xlsx`-Files pro Person hochladen, die anderen Files werden nicht benötigt.
+Die Datei muss einige KB gross sein, sonst hat etwas nicht geklappt (z.B. wenn die Datei nur 2 KB gross ist).__
 
 ## Abgabetermin
 
@@ -46,7 +56,9 @@ Bitte die Fehlermeldung im Fenster genau durchlesen. Dort finden Sie Hinweise da
 
 __Das Experiment startet nicht.__
 
-- Unter `Einstellungen` (Radsymbol) den Reiter `Basic` auswählen. Bei `Use PsychoPy version` die neuste PsychoPy Version auswählen.
+- Unter `Einstellungen` (Radsymbol) den Reiter `Basic` auswählen. Bei `Use PsychoPy version` die neuste PsychoPy Version `2024.2.4` auswählen.
+
+- Unter `Einstellungen` (Radsymbol) den Reiter `Input` auswählen. Bei `Keyboard backend` (statt `ioHub`) `PsychToolbox` auswählen.
 
 
 __Das Experiment startet zwar, der Bildschirm ist aber dann einfach für eine kurze Zeit grau und das Fenster schliesst sich wieder.__
