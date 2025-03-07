@@ -32,9 +32,7 @@ __Wichtig:__ Die erhobenen Daten werden wir dann in den kommenden Sitzungen verw
  
 - __Laden Sie die 6 Datensätze auf ILIAS hoch.__
     
-    - Zippen Sie bitte die 6 `.csv`-Datensätze vor dem Hochladen zu einem (!) Ordner.
-    
-    - Laden Sie den ZIP-Ordner auf Ilias unter `Übung 1` hoch.
+    - Laden Sie die 6 `.csv`/`.xlsx`-Files mit den erhobenen Datensätzen auf Ilias unter `Übung 1` hoch.
 
 ## Abgabetermin
 

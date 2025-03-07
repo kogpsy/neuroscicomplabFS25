@@ -268,7 +268,7 @@ __Wichtig:__
 if (condition):
     body
     
-ifelse (condition):
+elif (condition):
     body
     
 else:
