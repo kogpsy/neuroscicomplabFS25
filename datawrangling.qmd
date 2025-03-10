@@ -1,6 +1,6 @@
 # Daten importieren und vorverarbeiten
 
-In R gibt es sehr viele hilfreiche _Funktionen_ und _Packages_, die für die Vorverarbeitung und Analyse neurowissenschaftlicher Verhaltensdaten (oder extrahierten Daten aus bildgebenden Verfahren) verwendet werden können. Beim Arbeiten in _R_ empfiehlt es sich durchgehend in einem _R-Markdown_ Dokument (`.Rmd`) innerhalb eines _RStudio-Projects_ zu arbeiten, da so ein reproduzierbarer Workflow erstellt werden kann. Ein weiterer Vorteil ist zudem, dass Rohdaten __nicht__ verändert werden müssen. 
+In R gibt es sehr viele hilfreiche _Funktionen_ und _Packages_, die für die Vorverarbeitung und Analyse neurowissenschaftlicher Verhaltensdaten (oder extrahierten Daten aus bildgebenden Verfahren) verwendet werden können. Beim Arbeiten in _R_ empfiehlt es sich durchgehend in einem _R-Script_, _RNotebook_ oder _R-Markdown_ Dokument (`.Rmd`) innerhalb eines _RStudio-Projects_ zu arbeiten, da so ein reproduzierbarer Workflow erstellt werden kann. Ein weiterer Vorteil ist zudem, dass Rohdaten __nicht__ verändert werden müssen. 
 
 In diesem Kapitel finden Sie die wichtigesten data wrangling Funktionen des {tidyverse}-Packages:
 
