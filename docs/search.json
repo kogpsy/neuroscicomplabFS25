@@ -460,7 +460,7 @@
     "href": "datawrangling.html#set-up",
     "title": "8  Daten importieren und vorverarbeiten",
     "section": "8.2 Set up",
-    "text": "8.2 Set up\n\n\n\n\n\n\nHands-on: Vorbereitung\n\n\n\n\nÖffnen Sie RStudio.\nErstellen Sie ein neues RStudio-Project\n\nKlicken Sie dafür auf File &gt; New Project\nBenennen Sie das Project complab__fs25 und speichern Sie es an einem sinnvollen Ort auf Ihrem Computer. Wählen Sie, dass dafür ein neuer Ordner erstellt werden soll.\n\nErstellen Sie in diesem Projekt-Ordner einen Ordner namens data.\nKopieren Sie in den data-Ordner Ihre erhobenen Daten des Stroop Experiments. Falls Sie noch keine Daten erhoben haben, dann laden Sie hier einen Beispiels-Datensatz herunter und speichern Sie ihn im data-Ordner.\nErstellen Sie ein neues .Rmd-File (File &gt; New File &gt; R Markdown) und speichern Sie dieses unter intro_datawrangling im Projekt-Ordner.\n\n\n\n\n\n\n\n\n\nTipp: Namensgebung für Files und Variablen\n\n\n\nWenn Sie Filenamen auswählen, achten Sie darauf dass diese machine-readable sind:\n\nkeine Lücken (verwenden Sie stattdessen den camelCase, den snake_case oder -)\nkeine ä, ö, ü oder andere Sonderzeichen verwenden",
+    "text": "8.2 Set up\n\n\n\n\n\n\nHands-on: Vorbereitung\n\n\n\n\nÖffnen Sie RStudio.\nErstellen Sie ein neues RStudio-Project.\n\nKlicken Sie dafür auf File &gt; New Project\nBenennen Sie das Project complab_fs25 und speichern Sie es an einem sinnvollen Ort auf Ihrem Computer. Wählen Sie, dass dafür ein neuer Ordner erstellt werden soll.\n\nErstellen Sie in diesem Projekt-Ordner einen Ordner namens data.\nKopieren Sie in den data-Ordner Ihre erhobenen Daten des Stroop Experiments. Falls Sie noch keine Daten erhoben haben, dann laden Sie hier einen Beispiels-Datensatz herunter und speichern Sie ihn im data-Ordner.\nErstellen Sie ein neues RScript oder ein RNotebook (.Rmd-File: File &gt; New File &gt; RNotebook) und speichern Sie dieses unter intro_datawrangling im Projekt-Ordner.\n\n\n\n\n\n\n\n\n\nTipp: Namensgebung für Files und Variablen\n\n\n\nWenn Sie Filenamen auswählen, achten Sie darauf dass diese machine-readable sind:\n\nkeine Lücken (verwenden Sie stattdessen den camelCase, den snake_case oder -)\nkeine ä, ö, ü oder andere Sonderzeichen verwenden",
     "crumbs": [
       "Data wrangling",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Daten importieren und vorverarbeiten</span>"
@@ -610,6 +610,215 @@
     ]
   },
   {
+    "objectID": "data_visualization_1.html",
+    "href": "data_visualization_1.html",
+    "title": "9  Datenvisualisierung mit ggplot2",
+    "section": "",
+    "text": "9.1 Daten\nDie wichtigste Komponente einer Grafik sind die Daten. Bevor eine Grafik erstellt wird, müssen die Eigenschaften des Datensatzes bekannt sein.\n# Einlesen des Datensatzes\nd &lt;- read.csv(\"data/DatasaurusDozen.csv\") %&gt;%\n    mutate(condition = as.factor(condition)) # Variable condition zu Faktor konvertieren\n\n# Datensatz anschauen\nglimpse(d)\n\nRows: 1,846\nColumns: 3\n$ condition &lt;fct&gt; away, away, away, away, away, away, away, away, away, away, …\n$ value1    &lt;dbl&gt; 32.33111, 53.42146, 63.92020, 70.28951, 34.11883, 67.67072, …\n$ value2    &lt;dbl&gt; 61.411101, 26.186880, 30.832194, 82.533649, 45.734551, 37.11…",
+    "crumbs": [
+      "Datenvisualisieren",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Datenvisualisierung mit ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "data_visualization_1.html#daten",
+    "href": "data_visualization_1.html#daten",
+    "title": "9  Datenvisualisierung mit ggplot2",
+    "section": "",
+    "text": "Der verwendete Datensatz stammt von Matejka and Fitzmaurice (2017).\n\n\n\n9.1.1 Datenformat\nAm einfachsten ist das Plotten mit ggplot(), wenn die Daten im long-Format vorliegen. Das bedeutet:\n\nJede Variable die gemessen/erhoben wird, hat eine Spalte (z.B. Versuchspersonennummer, Reaktionszeit, Taste).\nJede Messung hat eine Zeile. (In unserem PsychoPy-Experiment entspricht dies einer Zeile pro Trial.)\n\nDie hier eingelesenen Daten sind schon im long-Format.\n\nFalls die Daten im wide-Format abgespeichert sind, lohnt es sich diese umzuformatieren z.B. mit pivot_longer().\n\n\n\n9.1.2 Variablen\nFür die Grafik ist es relevant, welches Skalenniveau die zu visualisierenden Variablen haben. Je nach Anzahl Variablen und den entsprechenden Skalenniveaus eignen sich andere Grafik-Formate. Eine häufige Schwierigkeit beim Visualisieren der Daten ist, dass die Daten nicht das für den gewählten Plot passenden Skalenniveaus haben.\n\n\n\nCC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=724035\n\n\n\n\n\n\n\n\nHands-on: Datensatz anschauen\n\n\n\nSchauen Sie sich den Datensatz an.\n\nWie viele unterschiedliche Variablen gibt es?\nWie heissen die Variablen?\nWelches Skalenniveau haben sie?\n\n\n\n\n\n9.1.3 Subsetting\nWenn nur ein gewisser Teil der Daten visualisiert werden soll, muss der Datensatz gefiltert werden. Der aktuelle Datensatz enthält beispielsweise verschiedene Bedingungen, jeweils mit Werten für Variable value1 und value2. Folgende 13 Bedingungen sind enthalten:\n\nunique(d$condition)\n\n [1] away       bullseye   circle     dino       dots       h_lines   \n [7] high_lines slant_down slant_up   star       v_lines    wide_lines\n[13] x_shape   \n13 Levels: away bullseye circle dino dots h_lines high_lines ... x_shape\n\n\nFürs erste entscheiden wir uns für die Bedingung away.\n\nd_away &lt;- d %&gt;%\n    filter(condition == \"away\")\n\nWir können für diese Bedingung zusätzlich summary statistics berechnen, hier Mittelwert und Standardabweichung.\n\nd_away_summary &lt;- d_away %&gt;%\n    summarise(mean_value1 = mean(value1),\n              sd_value1 = sd(value1),\n              mean_value2 = mean(value2),\n              sd_value2 = sd(value2))\n\nglimpse(d_away_summary)\n\nRows: 1\nColumns: 4\n$ mean_value1 &lt;dbl&gt; 54.2661\n$ sd_value1   &lt;dbl&gt; 16.76982\n$ mean_value2 &lt;dbl&gt; 47.83472\n$ sd_value2   &lt;dbl&gt; 26.93974\n\n\nDiese Werte geben einen Anhaltspunkt, in welchem Bereich sich die Werte bewegen werden.\n\n\n9.1.4 Plot\nIn den folgenden Beispielen werden die Daten der Bedingung away verwendet. Als erstes Argument wird der Funktion ggplot() der Datensatz übergeben (data = data_away).\n\nggplot(data = d_away)",
+    "crumbs": [
+      "Datenvisualisieren",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Datenvisualisierung mit ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "data_visualization_1.html#mapping",
+    "href": "data_visualization_1.html#mapping",
+    "title": "9  Datenvisualisierung mit ggplot2",
+    "section": "9.2 Mapping",
+    "text": "9.2 Mapping\nDas mapping beschreibt, welche Variable auf der X- und Y-Achse abgetragen werden sollen. Es wird also definiert, wie die Variablen auf die Formen (aesthetics) gemappt werden sollen. Am einfachsten wird dies zu Beginn in festgelegt (das mapping kann aber auch in der Funktion geom_ selbst definiert werden). Weitere Variablen könnten als Argumente z.B. unter group = ... oder color = ... eingefügt werden.\n\nggplot(data = d_away,\n       mapping = aes(x = value1,\n                     y = value2)) \n\n\n\n\n\n\n\n\nDie Grafik verfügt nun über Achsen, diese werden automatisch mit den Variablennamen beschriftet. Da noch keine Formen (geoms) hinzugefügt wurde ist die Grafik in der Mitte aber leer.",
+    "crumbs": [
+      "Datenvisualisieren",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Datenvisualisierung mit ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "data_visualization_1.html#geom-formen",
+    "href": "data_visualization_1.html#geom-formen",
+    "title": "9  Datenvisualisierung mit ggplot2",
+    "section": "9.3 Geom / Formen",
+    "text": "9.3 Geom / Formen\nAls dritte Komponente wird in ggplot() die Form mit geom_ hinzugefügt. Jede Form, die eingefügt wird, benötigt Angaben zum mapping. Falls kein mapping angegeben wird, wird dieses aus der ggplot()-Funktion in der ersten Zeile übernommen.\nEs stehen viele verschiedene Formen zur Auswahl. Beispielsweise werden mit geom_point() Punkte erstellt, mit geom_line() Linien, mit geom_boxplot Boxplots, usw. Bei der Wahl der passenden Form kommt es einerseits auf die Daten an. Sind die Daten z.B. Faktoren oder numerische Werte (siehe auch Skalenniveau oben)? Wie viele Variablen werden gleichzeitig in die Grafik eingebunden? Andererseits ist es wichtig, was mit der Grafik gezeigt werden soll: Unterschiede? Gemeinsamkeiten? Veränderungen über Zeit?\nGeome zur Visualisierung von Datenpunkten und Verläufen:\n\nPunkte / Scatterplots - geom_point()\nLinien - geom_line()\n\nGeome zur Visualisierung von zusammenfassenden Werten:\n\nHistogramme - geom_histogram()\nMittelwerte und Standardabweichungen - geom_pointrange()\nDichteplots - geom_density()\nBoxplots - geom_boxplot()\nViolinplots - geom_violin()\n\n\nEs gibt auch weitere, sehr informative Arten der Visualisierung, wie heat maps oder shift functions, auf die wir in dieser Veranstaltung nicht eingehen.\n\n\n\n\n\n\n\nHands-on: Geoms\n\n\n\nWelche geoms eignen sich für welches Skalenniveau und welche Variablenanzahl?\nTipps:\n\nSchauen Sie sich den Datensatz mit glimpse(), head() oder summary() an.\nSchauen Sie sich die verschiedenen Formen von Plots hier an. \n\n👉 `{ggplot2}-Cheatsheet zum Herunterladen\n\n\n\n9.3.1 Kombinieren von mehreren geoms in einer Grafik\nTeilweise werden in Visualisierungen mehrere geoms kombiniert. In vielen Fällen macht es beispielsweise Sinn, nicht nur die Rohwerte oder Werte für jedes Subjekt, sondern in derselben Grafik auch zusammenfassende Masse, z.B. einen Boxplot, zu visualisieren.\n\nWeiterführende Info zum Kombinieren von Plots finden Sie hier.\n\nVerwenden verschiedener geoms in einem Plot:\n\nggplot(data = d_away, \n       mapping = aes(x = condition,\n                     y = value2)) +\n    geom_boxplot(width = 0.3) +\n    geom_jitter(width = 0.1) \n\n\n\n\n\n\n\n\nKombiniert werden können aber nicht nur verschiedene Formen, sondern auch mehrere Datensätze. Dies kann in ggplot() einfach umgesetzt werden indem mehrere Geoms übereinandergelegt werden und nicht das mapping aus der ggplot()-Funktion genutzt wird. Stattdessen wird für jedes geom ein separater Datensatz und ein separates mapping spezifiziert.\n\nggplot(data = d_away, \n       mapping = aes(x = condition,\n                     y = value2)) +\n    geom_jitter(width = 0.1) + # verwendet Datensatz \"d_away\"\n    geom_point(data = d_away_summary, # verwendet Datensatz \"d_away_summary\"\n               aes(x = \"away\", y = mean_value1), # condition ist nicht im Datensatz enthalten, deshalb hier hardcoded\n               color = \"red\", # Punkt rot einfärben\n               size = 3) # Punkt vergrössern",
+    "crumbs": [
+      "Datenvisualisieren",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Datenvisualisierung mit ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "data_visualization_1.html#beschriftungen-und-themes",
+    "href": "data_visualization_1.html#beschriftungen-und-themes",
+    "title": "9  Datenvisualisierung mit ggplot2",
+    "section": "9.4 Beschriftungen und Themes",
+    "text": "9.4 Beschriftungen und Themes\nSchönere und informativere Plots lassen sich gestalten, wenn wir einen Titel hinzufügen, die Achsenbeschriftung anpassen und das theme verändern:\n\nggplot(data = d_away,\n       mapping = aes(x = value1,\n                     y = value2)) +\n    geom_point() +\n    labs(title = \"Ein etwas schönerer Plot\", \n         subtitle = \"Verteilung der Rohwerte\",\n        x = \"Wert 1  [a.u.]\",\n        y = \"Wert 2 [a.u.]\") +\n    theme_minimal()\n\n\n\n\n\n\n\n\n\nAuch theme_classic() oder theme_bw() ergeben schlichte aber schöne Plots.\n\n\n\n\n\n\n\nHands-on\n\n\n\nErstellen Sie eine Grafik.\n\nFügen Sie mit labs() passende Beschriftungen hinzu. Gibt es noch weitere, oben nicht verwendete Optionen?\nWechseln Sie das theme. Welches gefällt Ihnen am besten?\n\ntheme_bw()\ntheme_classic()\ntheme_dark()\n… (schreiben Sie theme_ und drücken Sie Tab, um weitere Vorschläge zu sehen.)",
+    "crumbs": [
+      "Datenvisualisieren",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Datenvisualisierung mit ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "data_visualization_1.html#daten-plotten-tipps-und-tricks",
+    "href": "data_visualization_1.html#daten-plotten-tipps-und-tricks",
+    "title": "9  Datenvisualisierung mit ggplot2",
+    "section": "9.5 Daten plotten: Tipps und Tricks",
+    "text": "9.5 Daten plotten: Tipps und Tricks\n\n\n\n\n\n\nHands-on: Informative Grafik erstellen\n\n\n\nIm Folgenden können Sie den Datensatz mit Grafiken erkunden.\nSie können entweder in Ihrem RScript / RNotebook weiterarbeiten oder Sie können ein GUI (graphical user interface) verwenden, dass für Sie den Code schreibt.\n\nWelche geom_s/Formen eignen sich gut für diesen Datensatz?\nWelche Abbildungen können alle 3 Variablen des Datensatzes berücksichtigen?\nWie kann man Bedingungen miteinander vergleichen?\nWie können Grösse und Farbe der geom_s bestimmt werden?\nWie passt man Schriftgrössen an?\nKönnen Sie eine Grafik speichern?\nLassen Sie sich den Code direkt ins RScript / RNotebook einfügen und verändern Sie den Code dort weiter.\n\n\n\n\n9.5.1 Daten plotten mit esquisser()\nUm in RStudio ein GUI für das Datenvisualisieren zu verwenden, kann das Package {esquisse} genutzt werden.\n\nInstallieren Sie das Package {esquisse} mit install.packages(\"esquisse\") in der Konsole oder über Tools &gt; Install packages...\nGeben Sie in Ihrer Konsole esquisse::esquisser() ein und wählen Sie dann unter Import Data den schon eingelesenen Datensatz DatasaurusDozen.csv aus.\n\n\nEin weiteres R-basiertes Visualisierungstool in welchem der Code per GUI erstellt wird, ist trelliscopejs\n\n\n\n9.5.2 Mehrere Plots in einer Grafik darstellen\nDies können Sie mit dem Package patchwork sehr einfach machen. Sie finden oben oder hier ein Beispiel.\n\nWenn Sie das Package {patchwork} zum ersten Mal nutzen, können Sie es in der Konsole mit install.packages(\"patchwork\") installieren.\n\n\n\n9.5.3 Grafik abspeichern\nEine Grafik lässt sich abspeichern unter dem Reiter Plots &gt; Export oder mit der Funktion ggsave().\n\n\n9.5.4 Inspiration\n\nGrafiken für verschiedene Datenarten: From Data to Viz\nSimple bis crazy Chartideen: R Charts: Ggplot\nFarben für Grafiken: R Charts: Colors, noch mehr Farben\n\n\n\n9.5.5 Weiterführende Ressourcen zur Datenvisualisierung mit ggplot()\n\nDokumentation von ggplot2\nKurzweilige, kompakte und sehr informative Informationen und Videos über das Erstellen von Grafiken in ggplot finden Sie hier: Website PsyTeachR: Data Skills for reproducible research\nHier ist der Start der PsyTeachR Videoliste von Lisa deBruine, dort finden sich auch hilfreiche Kurzvideos zu Themen von Daten einlesen bis zu statistischen Analysen. Beispielsweise zu Basic Plots, Common Plots und Plot Themes and Customization\nEinführung in R von Andrew Ellis und Boris Mayer\n\n\n\n\n\nMatejka, Justin, and George Fitzmaurice. 2017. “Same Stats, Different Graphs: Generating Datasets with Varied Appearance and Identical Statistics Through Simulated Annealing.” In Proceedings of the 2017 CHI Conference on Human Factors in Computing Systems, 1290–94. Denver Colorado USA: ACM. https://doi.org/10.1145/3025453.3025912.",
+    "crumbs": [
+      "Datenvisualisieren",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Datenvisualisierung mit ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "data_visualization_1.html#footnotes",
+    "href": "data_visualization_1.html#footnotes",
+    "title": "9  Datenvisualisierung mit ggplot2",
+    "section": "",
+    "text": "Für das Entzippen mit Windows machen Sie einen Rechtsklick auf den Ordner mit dem Reissverschluss und wählen Sie Entpacken nach und geben Sie den Ordner an, in dem Sie alle Ihre RProject-Ordner speichern. Für das Entzippen mit Mac speichern Sie den heruntergeladenen Ordner in den Ordner, in dem Sie alle Ihre RProject-Ordner speichern und Doppelklicken Sie danach auf den Ordner. Nur entzippte Ordner können einwandfrei verwendet werden!↩︎",
+    "crumbs": [
+      "Datenvisualisieren",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Datenvisualisierung mit ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "data_visualization_2.html",
+    "href": "data_visualization_2.html",
+    "title": "10  Grundlagen der Datenvisualisierung",
+    "section": "",
+    "text": "11 Diagnostik: Daten untersuchen\nDatensätze können sehr komplex sein, deshalb ist die Visualisierung der Daten ein hilfreicher erster Schritt. Mit Hilfe von Visualisierungen können Aussagen über die Qualität der Daten gemacht werden, z.B. über:\nDiagnostische Grafiken dienen dazu, rasch an Informationen zu können und Probleme in Datensätzen zu entdecken. Die Grafiken müssen daher nicht ästhetisch ansprechend oder für Aussenstehende verständlich sein. Im Sinne der Reproduzierbarkeit lohnt es sich aber, auch diese Visualisierungen gut zu dokumentieren.\nIm Folgenden schauen wir uns Beispiele für diagnostische Grafiken an.",
+    "crumbs": [
+      "Datenvisualisieren",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Grundlagen der Datenvisualisierung</span>"
+    ]
+  },
+  {
+    "objectID": "data_visualization_2.html#fehlende-werte",
+    "href": "data_visualization_2.html#fehlende-werte",
+    "title": "10  Grundlagen der Datenvisualisierung",
+    "section": "11.1 Fehlende Werte",
+    "text": "11.1 Fehlende Werte\nHierbei ist es wichtig, vor allem systematisch fehlende Datenpunkte zu entdecken: Fehlt bei einer Person die Hälfte der Antworten? Möchten wir diese ausschliessen?\nDiese können mit dem Package {naniar} relativ schnell sichtbar gemacht werden.\n\nnaniar::vis_miss(d)\n\n\n\n\n\n\n\n\n\nBevor Sie das Package verwenden können, müssen Sie dies erst herunterladen. Sie können dies unter dem Reiter Tools &gt; Install Packages ... tun oder in der Konsole mit install.packages(\"naniar\").\n\n\n\n\n\n\n\nHands-on: Missings\n\n\n\n\nWas sehen Sie in der Grafik? (Wie viele Datenpunkte fehlen? In welchen Variablen?)\n\nUm mehr über die fehlenden Werte zu erfahren, können wir uns die betroffenen Zeilen anschauen. Das kann direkt im Datensatz betrachtet werden oder indem eine zusätzliche Variable mit der naniar::add_label_missings()-Funktion erstellt wird, die angibt ob in dieser Zeile missings vorliegen:\n\nd_missings &lt;- d |&gt; naniar::add_label_missings() |&gt;\n    filter(any_missing == \"Missing\")\n\nhead(d_missings)\n\n# A tibble: 6 × 9\n  id           trial direction condition corrAns resp   corr    rt any_missing\n  &lt;fct&gt;        &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt;     &lt;fct&gt;   &lt;fct&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      \n1 sub-16853779     1 right     accuracy  right   right     1    NA Missing    \n2 sub-16853779     2 left      accuracy  left    left      1    NA Missing    \n3 sub-16853779     3 right     accuracy  right   left      0    NA Missing    \n4 sub-16853779     4 left      accuracy  left    right     0    NA Missing    \n5 sub-16853779     5 right     accuracy  right   right     1    NA Missing    \n6 sub-16853779     6 left      accuracy  left    left      1    NA Missing    \n\n\n\nWas könnte die Ursache für die Missings sein?\nWas ist zu tun?\n\n\n\n\n\n\n\n\n\nFehlende Werte\n\n\n\n\n\nJe nachdem wie die fehlenden Werte zustande gekommen sind, gehen wir anders vor. Ein Ansatz könnte sein, dass wir die Trials, die keine Reaktionszeiten enthalten rauslöschen:\n\nd &lt;- d |&gt;\n    filter(rt != \"NA\")\n\nnaniar::vis_miss(d)\n\n\n\n\n\n\n\n\nDrei wichtige Punkte:\n\nWir löschen die Datenpunkte nie aus den Rohdaten, sondern nur aus dem aktuell geladenen Datensatz, den wir für die Analysen verwenden. So können wir uns immer noch umentscheiden und verlieren nicht die Information, welche Daten gefehlt haben.\nDadurch, dass wir die Datenverarbeitung in reproduzierbarem Code geschrieben haben, konnten wir überprüfen, ob ein Fehler in unserer Datenverarbeitung zu den missings geführt hat und diesen evtl. korrigieren.\nEs macht nicht immer Sinn die Trials mit missing data zu löschen! Dies muss von Fall zu Fall entschieden werden. Wenn Versuchspersonen zum Beispiel teilweise zu lange brauchten um eine Aufgabe zu lösen, dann ist das eine wichtige Information, wird diese rausgelöscht, wird die Leistung der Versuchsperson systematisch überschätzt.\n\n\n\n\nWir berechnen nun für die kommenden Grafiken die Anzahl Trials pro Person, die accuracy, sowie die mittlere Reaktionszeit (wie im Kapitel Aggregierte Statistiken beschrieben).\nWir schliessen vorher alle Reaktionszeiten unter 100ms und über 10 Sekunden aus.\n\n# zu schnelle und zu langsame Antworten ausschliessen\nd &lt;- d |&gt;\n    filter(rt &gt; 0.09 & rt &lt; 15)\n\n# Daten gruppieren:  Anzahl Trials, Accuracy und mittlere Reaktionszeit berechnen\nacc_rt_individual &lt;- d |&gt;\n    group_by(id, condition) |&gt;\n    summarise(\n        N = n(),\n        ncorrect = sum(corr),\n        accuracy = mean(corr),\n        median_rt = median(rt)\n    )\n\nNachdem wir Trials ohne Antwort ausgeschlossen haben, interessiert es uns, wie viele Trials jede Versuchsperson gelöst hat:\n\n# Plot: Anzahl Trials pro Bedingung für jede Versuchsperson \nacc_rt_individual |&gt; \n    ggplot(aes(x = id, y = N)) +\n    geom_point() +\n    facet_wrap(~ condition) +\n    geom_hline(yintercept = 40) + # Horizontale Linie einfügen\n    theme_minimal()\n\n\n\n\n\n\n\n\nWir schliessen alle Personen aus, die weniger als 40 gültige Trials hatten\n\n# Datensatz mit allen Ids, welche zuwenig Trials hatten\nn_exclusions &lt;- acc_rt_individual |&gt;\n    filter(N &lt; 40) \n\n# Aus dem Hauptdatensatz diese Ids ausschliessen\nd &lt;- d |&gt;\n    filter(!id %in% n_exclusions$id) \n\n# Check\nd_acc_rt_individual &lt;- d |&gt;\n    group_by(id, condition) |&gt;\n    summarise(\n        N = n(),\n        ncorrect = sum(corr),\n        accuracy = mean(corr),\n        median_rt = median(rt)\n    )\n\n`summarise()` has grouped output by 'id'. You can override using the `.groups`\nargument.\n\nd_acc_rt_individual |&gt; \n    ggplot(aes(x = id, y = N)) +\n    geom_point() +\n    facet_wrap(~ condition) +\n    geom_hline(yintercept = 40) + # Horizontale Linie einfügen\n    theme_minimal()",
+    "crumbs": [
+      "Datenvisualisieren",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Grundlagen der Datenvisualisierung</span>"
+    ]
+  },
+  {
+    "objectID": "data_visualization_2.html#extreme-datenpunkte-ausreisser",
+    "href": "data_visualization_2.html#extreme-datenpunkte-ausreisser",
+    "title": "10  Grundlagen der Datenvisualisierung",
+    "section": "11.2 Extreme Datenpunkte (Ausreisser)",
+    "text": "11.2 Extreme Datenpunkte (Ausreisser)\nWir können Visualisierungen auch verwenden, um extreme Datenpunkte zu identifizieren. Dafür teilen wir hier die Accuracywerte in 3 Gruppen ein und plotten diese:\n\n# Trials nach accuracy einteilen\nd_acc_rt_individual_grouped &lt;- d_acc_rt_individual %&gt;% \n  mutate(\n    performance = case_when(\n      accuracy &gt; 0.75 ~ \"good\",\n      accuracy &lt; 0.4 ~ \"bad\",\n      TRUE ~ \"chance level\") %&gt;% \n      factor(levels = c(\"good\", \"chance level\", \"bad\")))\n\n# Outlier visualisieren\nd_acc_rt_individual_grouped %&gt;% \n    ggplot(aes(x = id, y = accuracy, color = performance, shape = performance)) +\n    geom_point(size = 2, alpha = 0.6) + \n    geom_point(data = filter(d_acc_rt_individual_grouped, performance != \"OK\"), \n               alpha = 0.9) + \n    facet_grid(~condition) +\n    scale_color_manual(values = c(\"gray40\", \"steelblue\", \"red\")) +\n    geom_hline(yintercept = 0.5, linetype='dotted', col = 'black')+\n    annotate(\"text\", x = \"sub-36817827\", y = 0.5, label = \"chance level\", vjust = -1, size = 3) +\n    theme_minimal(base_size = 12)\n\n\n\n\n\n\n\n\n\nDasselbe könnte man für die Reaktionszeiten machen. Informationen dazu, wie Ausreisser in Reaktionszeiten gefunden und visualisiert werden können, finden Sie hier.",
+    "crumbs": [
+      "Datenvisualisieren",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Grundlagen der Datenvisualisierung</span>"
+    ]
+  },
+  {
+    "objectID": "data_visualization_2.html#verlaufseffekte-ermüdung-und-lernen",
+    "href": "data_visualization_2.html#verlaufseffekte-ermüdung-und-lernen",
+    "title": "10  Grundlagen der Datenvisualisierung",
+    "section": "11.3 Verlaufseffekte: Ermüdung und Lernen",
+    "text": "11.3 Verlaufseffekte: Ermüdung und Lernen\nVerlaufseffekte können uns interessieren, weil wir starke Ermüdungs- oder Lerneffekte ausschliessen möchten. Sie könnten aber auch inhaltlich interessant sein.\nIn unserem Experiment möchten wir sicher sein, dass die Performanz sich über die Zeit hinweg nicht zu stark verändert. Hierzu können wir beispielsweise die accuracy in den beiden Blöcken plotten:\n\nd_acc_rt_trial &lt;- d |&gt;\n    group_by(condition, trial) |&gt;\n    summarise(\n        accuracy = mean(corr),\n        median_rt = median(rt)\n        )\n\nd_acc_rt_trial |&gt;\n    ggplot(aes(x = trial, y = accuracy, color = condition)) +\n    geom_point(size = 2, alpha = 0.8) +\n    geom_line() +\n    scale_color_manual(values = c(accuracy = \"tomato3\",\n                                  speed = \"skyblue3\")) +\n    facet_wrap(~ condition) +\n    theme_minimal(base_size = 12)\n\n\n\n\n\n\n\n\nOder wir können die Reaktionszeiten über die Zeit hinweg anschauen.\n\nd_acc_rt_trial |&gt;\n    ggplot(aes(x = trial, y = median_rt, color = condition)) +\n    geom_point(size = 2, alpha = 0.8) +\n    geom_line() +\n    scale_color_manual(values = c(accuracy = \"tomato3\",\n                                  speed = \"skyblue3\")) +\n    facet_wrap(~ condition) +\n    theme_minimal(base_size = 12)\n\n\n\n\n\n\n\n\nDas tun wir hier für 3 Versuchspersonen.\n\n# Plot: Reaktionszeit über die Trials hinweg (für 3 Versuchspersonen)\nd |&gt;\n    filter(id %in% c(\"sub-10209782\", \"sub-36817827\", \"sub-48177911\")) |&gt;\n    ggplot(aes(x = trial, y = rt, color = condition)) +\n    geom_smooth(method = \"lm\", se = FALSE) +\n    geom_point(alpha = 0.5) +\n    scale_color_manual(values = c(accuracy = \"tomato3\",\n                                 speed = \"skyblue3\")) +\n    facet_wrap(~ id) +\n    theme_minimal()",
+    "crumbs": [
+      "Datenvisualisieren",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Grundlagen der Datenvisualisierung</span>"
+    ]
+  },
+  {
+    "objectID": "data_visualization_2.html#aufgabenschwierigkeit-und-performanz-der-versuchspersonen",
+    "href": "data_visualization_2.html#aufgabenschwierigkeit-und-performanz-der-versuchspersonen",
+    "title": "10  Grundlagen der Datenvisualisierung",
+    "section": "11.4 Aufgabenschwierigkeit und Performanz der Versuchspersonen",
+    "text": "11.4 Aufgabenschwierigkeit und Performanz der Versuchspersonen\nBevor wir die Daten analysieren, möchten wir wissen, ob die Personen die Aufgabe einigermassen gut lösen konnten (und wollten). In unserem Experiment erwarten wir eine Genauigkeit (accuracy) über dem Rateniveau von 50%. Wir plotten hierfür die accuracy für jede Person und Bedingung.\n\n# Plot accuracy per person and condition\np1 &lt;- d_acc_rt_individual |&gt; \n  ggplot(aes(x = condition, y = accuracy, color = condition)) +\n    geom_jitter(size = 3, alpha = 0.4, \n                width = 0.2, height = 0) +\n    geom_boxplot(width = 0.1, alpha = 0, color = \"black\") +\n    scale_color_manual(values = c(accuracy = \"tomato2\",\n                                 speed = \"skyblue3\")) +\n    labs(x = \"Instruction\",\n         y = \"Proportion correct\",\n         title = \"Accuracy per Person and Condition\") +\n    theme_minimal(base_size = 12) +\n    theme(legend.position = \"none\")\n\np2 &lt;- d_acc_rt_individual |&gt; \n  ggplot(aes(x = condition, y = median_rt, color = condition)) +\n    geom_jitter(size = 3, alpha = 0.4, \n                width = 0.2, height = 0) +\n    geom_boxplot(width = 0.1, alpha = 0, color = \"black\") +\n    scale_color_manual(values = c(accuracy = \"tomato2\",\n                                 speed = \"skyblue3\")) +\n    labs(x = \"Instruction\",\n         y = \"Median Response Time [s]\",\n         title = \"Median Response Time per Person and Condition\") +\n    theme_minimal(base_size = 12) +\n    theme(legend.position = \"none\")\n\nlibrary(patchwork)\n\np1 + p2\n\n\n\n\n\n\n\n\nUnd wir interessieren uns, wie sich die accuracy zwischen den Bedingungen unterscheidet. Das zeigt uns, ob die Instruktion eine Wirkung hatte. Dafür fügen wir Linien ein, die die accuracy- Werte pro Versuchsperson verbindet:\n\np3 &lt;- d_acc_rt_individual |&gt; \n    ggplot(aes(x = condition, y = accuracy, color = condition, group = id)) +\n    geom_line(color = \"grey40\", alpha = 0.5) +\n    geom_jitter(size = 3, alpha = 0.8, \n                width = 0, height = 0) +\n    scale_color_manual(values = c(accuracy = \"tomato2\",\n                                 speed = \"skyblue3\")) +\n    labs(x = \"Instruction\",\n         y = \"Proportion correct\",\n         title = \"Accuracy per Person and Condition\") +\n    theme_minimal(base_size = 12) +\n    theme(legend.position = \"none\")\n\np4 &lt;- d_acc_rt_individual |&gt; \n    ggplot(aes(x = condition, y = median_rt, color = condition, group = id)) +\n    geom_line(color = \"grey40\", alpha = 0.5) +\n    geom_jitter(size = 3, alpha = 0.8, \n                width = 0, height = 0) +\n    scale_color_manual(values = c(accuracy = \"tomato2\",\n                                 speed = \"skyblue3\")) +\n    labs(x = \"Instruction\",\n         y = \"Median Response Time [s]\",\n         title = \"Median Response Time per Person and Condition\") +\n    theme_minimal(base_size = 12) +\n    theme(legend.position = \"none\")\n\np3 + p4\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHands-on: Datenqualität\n\n\n\nBesprechen Sie miteinander, was Sie nun über unsere Daten wissen.\n\nHaben die Versuchspersonen die Aufgaben lösen können?\nWar die Aufgabe zu einfach, zu schwierig?\nDenken Sie, die Personen waren motiviert?\nWelche Datensätze / Trials möchten wir ausschliessen? (Dies müsste eigentlich vor dem Anschauen der Daten entschieden werden, um zu verhindern, dass man Datenpunkte ausschliesst, welche die Hypothese nicht bestätigen.)\nWie gut eignen sich die Daten, um die Forschungsfrage zu beantworten?\nWas könnte bei einem nächsten Experiment besser gemacht werden?",
+    "crumbs": [
+      "Datenvisualisieren",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Grundlagen der Datenvisualisierung</span>"
+    ]
+  },
+  {
+    "objectID": "data_visualization_2.html#verteilung-der-rohdaten",
+    "href": "data_visualization_2.html#verteilung-der-rohdaten",
+    "title": "10  Grundlagen der Datenvisualisierung",
+    "section": "12.1 Verteilung der Rohdaten",
+    "text": "12.1 Verteilung der Rohdaten\nDaten von neurowissenschaftlichen Studien können wichtige Informationen enthalten, die ohne Grafiken übersehen werden können (Rousselet, Pernet, and Wilcox (2017)). Das Visualisieren kann Muster zum Vorschein bringen, die durch statistische Auswertungen nicht sichtbar sind. Die Wichtigkeit von Datenvisualisierung für das Entdecken von Mustern in den Daten zeigte Francis Anscombe 1973 mit dem Anscombe’s Quartet. Dies diente als Inspiration für das Erstellen des “künstlichen” Datensatzes DatasaurusDozen, welchen wir in der letzten Veranstaltung visualisiert haben. Verschiedene Rohwerte, können dieselben Mittelwerte, Standardabweichungen und Korrelationen ergeben. Nur wenn man die Rohwerte plottet erkennt man, wie unterschiedlich die Datenpunkte verteilt sind.\nDies wird ersichtlich, wenn wir die Mittelwerte und Standardabweichungen für jede Gruppe berechnen und plotten:\n\n# load DatasaurusDozen dataset\ndino_data &lt;- read.csv(\"data/DatasaurusDozen.csv\") %&gt;%\n    mutate(condition = as.factor(condition))\n\n# Plot mean and standard deviation for value 1 per condition \ndino_data |&gt;   \n    group_by(condition) |&gt;\n    summarise(mean_value1 = mean(value1),\n              sd_value1 = sd(value1)) |&gt;\n    ggplot(mapping = aes(x = mean_value1,\n                     y = condition)) +\n    geom_point() +\n    geom_errorbar(aes(xmin = mean_value1 - sd_value1, \n                      xmax = mean_value1 + sd_value1), \n                  width = 0.2) +\n    theme_minimal()\n\n\n\n\n\n\n\n\nUnd dann die Rohwerte visualisieren:\n\n# Plot raw values\ndino_data |&gt; \n    ggplot(aes(x = value1, y = value2)) +\n    geom_point(size = 1) +\n    facet_wrap(~condition) +\n    theme_minimal()\n\n\n\n\n\n\n\n\nHier sehen Sie das Ganze animiert:\n\n\n\nDatensatz und Visualisierung von Matejka and Fitzmaurice (2017)",
+    "crumbs": [
+      "Datenvisualisieren",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Grundlagen der Datenvisualisierung</span>"
+    ]
+  },
+  {
+    "objectID": "data_visualization_2.html#zentrale-tendenz-und-verteilungsmasse",
+    "href": "data_visualization_2.html#zentrale-tendenz-und-verteilungsmasse",
+    "title": "10  Grundlagen der Datenvisualisierung",
+    "section": "12.2 Zentrale Tendenz und Verteilungsmasse",
+    "text": "12.2 Zentrale Tendenz und Verteilungsmasse\nMasse der zentralen Tendenz sind beispielsweise der Mittelwert, der Median und Modus. Wenn wir uns dafür interessieren, wie sich die accuracy in Bezug auf alle Teilnehmenden verhält, schauen wir uns die zentrale Tendenz über alle Personen hinweg an. Es sollte nie nur die zentrale Tendenz, sondern immer auch ein passendes Verteilungsmass berichtet werden.\nWie oben schon gezeigt können wir dies z.B. mit Boxplots umsetzen Diese zeigen uns den Median und die Quartile sowie Ausreisser an. Eine andere Möglichkeit Verteilungen anzuzeigen sind die Violinplots. Hier wurden mit geom_jitter() auch die Mittelwerte der einzelnen Personen im Plot eingefügt.\n\n# Boxplot\np_boxplot &lt;- d_acc_rt_individual |&gt; \n  ggplot(aes(x = condition, y = accuracy, color = condition)) +\n    geom_jitter(alpha = 0.25, width = 0.2) +\n    geom_boxplot(alpha = 0, width = 0.2, color = \"black\") +\n    scale_fill_manual(values = c(accuracy = \"tomato3\",\n                                     speed = \"skyblue3\")) +\n    labs(title = \"Boxplot\",\n         x = \"Instruction\",\n         y = \"Proportion correct\") +\n    theme_minimal(base_size = 12) +\n    theme(legend.position = \"none\")\n\n# Violin Plot\np_violin &lt;- d_acc_rt_individual |&gt; \n  ggplot(aes(x = condition, y = accuracy, color = condition)) +\n    geom_jitter(alpha = 0.5, width = 0.2) +\n    geom_violin(alpha = 0, width = 0.2, color = \"black\") +\n    scale_fill_manual(values = c(accuracy = \"tomato3\",\n                                 speed = \"skyblue3\")) +\n    labs(title = \"Violin Plot\",\n         x = \"Instruction\",\n         y = \"Proportion correct\") +\n    theme_minimal(base_size = 12) +\n    theme(legend.position = \"none\")\n\np_boxplot + p_violin\n\n\n\n\n\n\n\n\nDas Package {ggridges} bietet die Möglichkeit die Verteilungen zu plotten. Mehr Informationen hierzu finden Sie hier in der Dokumentation.\n\nlibrary(ggridges)\np5 &lt;- d_acc_rt_individual |&gt; \n    ggplot(aes(x = accuracy, y = condition, fill = condition)) + geom_density_ridges2(scale = 0.5, alpha = 0.5) +\n    scale_fill_manual(values = c(accuracy = \"tomato3\",\n                                 speed = \"skyblue3\")) +\n    labs(title = \"Accuracy\",\n         x = \"Proportion corect\",\n         y = \"Instruction\") +\n    theme_minimal(base_size = 12) +\n    theme(legend.position = \"none\")\n\np6 &lt;- d_acc_rt_individual |&gt; \n    ggplot(aes(x = median_rt, y = condition, fill = condition)) + geom_density_ridges2(scale = 1, alpha = 0.5) +\n    scale_fill_manual(values = c(accuracy = \"tomato3\",\n                                 speed = \"skyblue3\")) +\n    labs(title = \"Median Response Time\",\n         x = \"Median Response Time [s]\",\n         y = \"Instruction\") +\n    theme_minimal(base_size = 12) +\n    theme(legend.position = \"none\")\n\np5 + p6",
+    "crumbs": [
+      "Datenvisualisieren",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Grundlagen der Datenvisualisierung</span>"
+    ]
+  },
+  {
+    "objectID": "data_visualization_2.html#aggregierte-statistiken",
+    "href": "data_visualization_2.html#aggregierte-statistiken",
+    "title": "10  Grundlagen der Datenvisualisierung",
+    "section": "12.3 Aggregierte Statistiken",
+    "text": "12.3 Aggregierte Statistiken\nWenn wir Mittelwerte und Standardfehler angeben möchten können wir dies wie folgt tun. Wichtig ist hier, dass wir within-subject Standardfehler berechnen. Genaueres zu den Unterschieden zwischen within- und between-subject Standardfehlern finden Sie hier. Wir verwenden das Package {Rmisc}. Achtung: Da dieses jedoch wegen der Namen der Funktionen oft Namens-Konflikte auslöst, laden wir Rmisc nicht mit der library()-Funktion, sondern stellen es einfach vor die benötigte Funktion, z.B. so Rmisc::summarySEwithin().\n\nd_acc_within &lt;- d |&gt;\n    Rmisc::summarySEwithin(measurevar = \"corr\",\n                               withinvars = \"condition\",\n                               idvar = \"id\",\n                               na.rm = FALSE,\n                               conf.interval = 0.95)\n\np7 &lt;- d_acc_within |&gt;\n    ggplot(aes(x = condition, y = corr, group = 1)) +\n    geom_line() +\n    geom_errorbar(width = .1, aes(ymin = corr-se, ymax = corr+se)) +\n    geom_point(size = 3) +\n    labs(title = \"Accuracy\",\n         x = \"Instruction\",\n         y = \"Accuracy\") +\n    theme_minimal(base_size = 12) +\n    theme(legend.position = \"none\")\n\n\nd_rt_within &lt;- d |&gt;\n    Rmisc::summarySEwithin(measurevar = \"rt\",\n                               withinvars = \"condition\",\n                               idvar = \"id\",\n                               na.rm = FALSE,\n                               conf.interval = 0.95)\n\np8 &lt;- d_rt_within |&gt;\n    ggplot(aes(x = condition, y = rt, group = 1)) +\n    geom_line() +\n    geom_errorbar(width = .1, aes(ymin = rt-se, ymax = rt+se)) +\n    geom_point(size = 3) +\n    labs(title = \"Median Response Time\",\n         x = \"Instruction\",\n         y = \"Median Response Time [s]\") +\n    theme_minimal(base_size = 12) +\n    theme(legend.position = \"none\")\n\np7 + p8\n\n\n\n\n\n\n\n\n\nHier finden Sie weitere Code-Beispiele für das Plotten von Verteilungsmassen.\nHier finden Sie Informationen, wie Reaktionszeiten zusammengefasst und visualisiert werden könnten.",
+    "crumbs": [
+      "Datenvisualisieren",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Grundlagen der Datenvisualisierung</span>"
+    ]
+  },
+  {
+    "objectID": "data_visualization_2.html#visualisieren-von-modellschätzungen",
+    "href": "data_visualization_2.html#visualisieren-von-modellschätzungen",
+    "title": "10  Grundlagen der Datenvisualisierung",
+    "section": "12.4 Visualisieren von Modellschätzungen",
+    "text": "12.4 Visualisieren von Modellschätzungen\nWenn für die statistische Analyse ein Modell geschätzt wurde, kann auch dies visualisiert werden. Auf diese Form der Visualisierung wird in diesem Kapitel aber nicht eingegangen.\n\nsjPlot: Package zum Plotten von Fixed Effects\nsee: Package zum Visualisieren von Statistischen Modellen",
+    "crumbs": [
+      "Datenvisualisieren",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Grundlagen der Datenvisualisierung</span>"
+    ]
+  },
+  {
+    "objectID": "data_visualization_2.html#beschriftungen",
+    "href": "data_visualization_2.html#beschriftungen",
+    "title": "10  Grundlagen der Datenvisualisierung",
+    "section": "13.1 Beschriftungen",
+    "text": "13.1 Beschriftungen\nDie genaue Beschriftung und deren Lesbarkeit ist für diese Form von Grafiken zentral. Achten Sie sich auf Folgendes:\n\nDie Achsenbeschriftungen enthalten die verwendete Variable in Klartext (nicht den R Variablennamen) und wenn zutreffend auch die Masseinheit (z.B. Response Time [ms]). Beschriftungen können Sie einfügen mit labs().\n\n\np_boxplot +\nlabs(title = \"Der Titel der Grafik\", \n     subtitle = \"Der Subtitel der Grafik\",\n     x = \"hier kommt Label x [Masseinheit]\", \n     y = \"hier kommt Label y [Masseinheit]\",\n     caption = \" Hier kommt eine Caption\")\n\nWarning: No shared levels found between `names(values)` of the manual scale and the\ndata's fill values.\n\n\n\n\n\n\n\n\n\n\nFarben / Formen usw. werden in einer Legende den Gruppen zugeordnet (Ausnahme: wenn Daten von einzelnen Personen geplottet werden, wird die Versuchspersonennummer nicht aufgeführt).\nMasse der zentralen Tendenz und Varianzmasse werden beschrieben (z.B. Standardfehler oder Standardabweichung?)",
+    "crumbs": [
+      "Datenvisualisieren",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Grundlagen der Datenvisualisierung</span>"
+    ]
+  },
+  {
+    "objectID": "data_visualization_2.html#merkmale-einer-guten-grafik",
+    "href": "data_visualization_2.html#merkmale-einer-guten-grafik",
+    "title": "10  Grundlagen der Datenvisualisierung",
+    "section": "13.2 5 Merkmale einer guten Grafik",
+    "text": "13.2 5 Merkmale einer guten Grafik\nEs gibt unzählige Optionen die eigenen Daten zu visualisieren. Folgende Prinzipien helfen beim Erstellen einer informativen Grafik, die zur Kommunikation der Ergebnisse dient.\n\nDie Punkte 3-5 wurden aus dem Buch “The Visual Display of Quantitative Information” von Edward Tufte, 1986 entnommen.\n\n\n1. Eine Frage beantworten\nJede Grafik sollte mindestens eine teilweise aber auch mehrere Fragen beantworten.\n👉 Welche Frage möchte ich beantworten? Welche Form der Visualisierung beantwortet diese Frage am besten?\nHierbei kann es hilfreich sein den “Arbeitstitel” der Grafik als Frage zu formulieren.\n\n\n2. Zielgruppe berücksichtigen\nBeim Erstellen der Grafik sollte beachtet werden, an wen sich die Grafik richtet. Für eine Präsentation müssen die Achsenbeschriftungen vergrössert und die Grafik simpel gehalten werden. In einem wissenschaftlichen Artikel kann die Grafik komplexer gestaltet werden, da die Lesenden sich mehr Zeit zum Anschauen nehmen können. Zudem sollten hier die Vorgaben des Journals berücksichtigt werden. Auch wichtig ist das Verwenden von “farbenblind-freundlichen” Palletten, rot und grün ist z.B. eine schlechte Wahl.\n👉 Für welchen Zweck / für wen erstelle ich die Grafik? Wie ist das Vorwissen des Zielpublikums?\n\nFür einen Fachartikel lohnt es sich, zu Beginn die Vorgaben der Fachzeitschrift zu berücksichtigen.\n\n\n\n3. Die Daten zeigen\nDas tönt simpel, wird aber oft nicht berücksichtigt. Bei einer Grafik geht es in erster Linie um die Daten. Es sollte die simpelste Form gewählt werden, welche die Informationen vermittelt. Oft braucht es keine ausgefallenen Grafikideen oder neuartigen Formate. Hierbei ist es wichtig, die Art der Daten zu berücksichtigen: Wie viele Variablen sind es? Sind diese kontinuierlich (z.B. Reaktionszeiten) oder diskret (z.B. Experimentalbedingungen)? Wie viele Dimensionen haben meine Daten? Mit zwei Achsen lassen sich zwei Dimensionen darstellen, zusätzlich können mit Farben und Formen noch weitere Dimensionen abgebildet werden (z.B. Millisekunden, Bedingung 1 und Bedingung 2). Es können Rohwerte geplottet werden oder summary statistics (z.B. Mittelwerte, Standardabweichungen)\n👉 Welche Art Grafik eignet sich für meine Frage und meine Daten? Schauen Sie z.B. hier nach oder nutzen Sie das esquisse-Package.\n\nBeispiele für verschiedenen Plots in R sind z.B. histogram, boxplot, violin plot, scatter plot / correlogram, jitter plot, raincloud plot, percentiles / shift functions, area chart, heat map.\n\n\n\n4. Optimieren des data-ink ratios\nDas Daten-Tinte-Verhältnis sollte so optimal wie möglich sein. Das bedeutet, das idealerweise jeder Strich, jeder Punkt, jedes Textfeld Information beinhaltet. Alles was keine Information transportiert oder nur wiederholt kann weggelassen werden.\n👉 Was kann ich weglassen?\n\nIn R kann zum Schluss des Plots + theme_minimal() hinzugefügt werden, dies entfernt u.a. den grauen Hintergrund. Das Grau des Hintergrunds ist Farbe (ink), welche keine Information transportiert, das Weglassen lässt die Grafik ruhiger wirken.\n\n\n\n5. Feedback einholen und revidieren\nDas Erstellen einer guten Grafik ist iterativ, das heisst, sie wird immer wieder überarbeitet, bis sie die Information möglichst einfach, genau aber klar kommuniziert. Hierbei ist Feedback oft unerlässlich.\n👉 Was denken andere über Ihre Grafik?\n\n\n\n\nMatejka, Justin, and George Fitzmaurice. 2017. “Same Stats, Different Graphs: Generating Datasets with Varied Appearance and Identical Statistics Through Simulated Annealing.” In Proceedings of the 2017 CHI Conference on Human Factors in Computing Systems, 1290–94. Denver Colorado USA: ACM. https://doi.org/10.1145/3025453.3025912.\n\n\nRousselet, Guillaume A., Cyril R. Pernet, and Rand R. Wilcox. 2017. “Beyond Differences in Means: Robust Graphical Methods to Compare Two Groups in Neuroscience.” European Journal of Neuroscience 46 (2): 1738–48. https://doi.org/10.1111/ejn.13610.",
+    "crumbs": [
+      "Datenvisualisieren",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Grundlagen der Datenvisualisierung</span>"
+    ]
+  },
+  {
+    "objectID": "data_visualization_2.html#footnotes",
+    "href": "data_visualization_2.html#footnotes",
+    "title": "10  Grundlagen der Datenvisualisierung",
+    "section": "",
+    "text": "Für das Entzippen mit Windows machen Sie einen Rechtsklick auf den Ordner mit dem Reissverschluss und wählen Sie Entpacken nach und geben Sie den Ordner an, in dem Sie alle Ihre RProject-Ordner speichern. Für das Entzippen mit Mac speichern Sie den heruntergeladenen Ordner in den Ordner, in dem Sie alle Ihre RProject-Ordner speichern und Doppelklicken Sie danach auf den Ordner. Nur entzippte Ordner können einwandfrei verwendet werden!↩︎",
+    "crumbs": [
+      "Datenvisualisieren",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Grundlagen der Datenvisualisierung</span>"
+    ]
+  },
+  {
     "objectID": "webrconsole.html",
     "href": "webrconsole.html",
     "title": "WebR Konsole",
@@ -623,12 +832,12 @@
   {
     "objectID": "license.html",
     "href": "license.html",
-    "title": "License",
+    "title": "License and Authorship",
     "section": "",
-    "text": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
+    "text": "This course material is written by Gerda Wyssen & Enea Weber…\n…and (sometimes heavily!) adapted from previous course material from\n\nAndrew Ellis\n\nComplab 2021\n\nComplab 2022\nComplab 2023\n\nDaniel Fitze\n\nComplab 2024\n\n\n\nThe course experiments and their descriptions were created by Rebekka Borer (Complab 2024-2025)\n We also thank all previous students who gave valuable feedback on the course and material!\nThis work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
     "crumbs": [
       "Anhang",
-      "License"
+      "License and Authorship"
     ]
   }
 ]

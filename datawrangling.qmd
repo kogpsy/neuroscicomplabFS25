@@ -41,17 +41,17 @@ Bevor mit einem Datensatz gearbeitet wird, empfiehlt es sich den Datensatz anzus
 
 1. Öffnen Sie RStudio.
 
-2. Erstellen Sie ein neues RStudio-Project 
+2. Erstellen Sie ein neues _RStudio-Project_. 
 
     - Klicken Sie dafür auf `File` > `New Project` 
     
-    - Benennen Sie das Project `complab__fs25` und speichern Sie es an einem sinnvollen Ort auf Ihrem Computer. Wählen Sie, dass dafür ein neuer Ordner erstellt werden soll.
+    - Benennen Sie das Project `complab_fs25` und speichern Sie es an einem sinnvollen Ort auf Ihrem Computer. Wählen Sie, dass dafür ein neuer Ordner erstellt werden soll.
     
 3. Erstellen Sie in diesem Projekt-Ordner einen Ordner namens `data`.
 
 4. Kopieren Sie in den `data`-Ordner Ihre erhobenen Daten des Stroop Experiments. Falls Sie noch keine Daten erhoben haben, dann laden Sie [hier](data/stroop_example.csv)  einen Beispiels-Datensatz herunter und speichern Sie ihn im `data`-Ordner.
 
-5. Erstellen Sie ein neues `.Rmd`-File (`File` > `New File` > `R Markdown`) und speichern Sie dieses unter `intro_datawrangling` im Projekt-Ordner.
+5. Erstellen Sie ein neues _RScript_ oder ein _RNotebook_ (`.Rmd`-File: `File` > `New File` > `RNotebook`) und speichern Sie dieses unter `intro_datawrangling` im Projekt-Ordner.
 :::
 
 :::callout-tip
@@ -360,8 +360,6 @@ write.csv(d_stroop_clean, file = "data/dataset_stroop_clean.csv", row.names = FA
 Speichern Sie einen neuen Datensatz mit den vorverarbeiteten Daten.
 
 :::
-
-
 
 
 <!-- ## Change the data format from *long* to *wide* and vice versa -->

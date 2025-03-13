@@ -47,8 +47,9 @@ book:
     - uebung_2.qmd
 
   - part: Datenvisualisieren
-    #chapters:
-    #-
+    chapters:
+    - data_visualization_1.qmd
+    - data_visualization_2.qmd
 
   - part: Datenanalyse
     #chapters:

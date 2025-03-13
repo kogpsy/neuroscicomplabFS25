@@ -1,3 +1,22 @@
-# License {.unnumbered}
+# License and Authorship {.unnumbered}
+
+This course material is written by Gerda Wyssen & Enea Weber...
+
+...and (sometimes heavily!) adapted from previous course material from
+
+- __Andrew Ellis__
+    - [Complab 2021](https://kogpsy.github.io/neuroscicomplab/)    
+    - [Complab 2022](https://kogpsy.github.io/neuroscicomplabFS22/)
+    - [Complab 2023](https://kogpsy.github.io/neuroscicomplabFS23/)
+    
+- __Daniel Fitze__
+    - [Complab 2024](https://kogpsy.github.io/neuroscicomplabFS24/)
+
+<br>
+
+The course experiments and their descriptions were created by __Rebekka Borer__ (Complab 2024-2025)
+
+<br>
+__We also thank all previous students who gave valuable feedback on the course and material!__
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.

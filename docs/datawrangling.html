@@ -248,8 +248,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Datenvisualisieren</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Datenvisualisieren</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_visualization_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Datenvisualisierung mit ggplot2</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_visualization_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Grundlagen der Datenvisualisierung</span></span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
@@ -277,7 +296,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./license.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">License</span></a>
+ <span class="menu-text">License and Authorship</span></a>
   </div>
 </li>
       </ul>
@@ -372,14 +391,14 @@ Hands-on: Vorbereitung
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li><p>Öffnen Sie RStudio.</p></li>
-<li><p>Erstellen Sie ein neues RStudio-Project</p>
+<li><p>Erstellen Sie ein neues <em>RStudio-Project</em>.</p>
 <ul>
 <li><p>Klicken Sie dafür auf <code>File</code> &gt; <code>New Project</code></p></li>
-<li><p>Benennen Sie das Project <code>complab__fs25</code> und speichern Sie es an einem sinnvollen Ort auf Ihrem Computer. Wählen Sie, dass dafür ein neuer Ordner erstellt werden soll.</p></li>
+<li><p>Benennen Sie das Project <code>complab_fs25</code> und speichern Sie es an einem sinnvollen Ort auf Ihrem Computer. Wählen Sie, dass dafür ein neuer Ordner erstellt werden soll.</p></li>
 </ul></li>
 <li><p>Erstellen Sie in diesem Projekt-Ordner einen Ordner namens <code>data</code>.</p></li>
 <li><p>Kopieren Sie in den <code>data</code>-Ordner Ihre erhobenen Daten des Stroop Experiments. Falls Sie noch keine Daten erhoben haben, dann laden Sie <a href="data/stroop_example.csv">hier</a> einen Beispiels-Datensatz herunter und speichern Sie ihn im <code>data</code>-Ordner.</p></li>
-<li><p>Erstellen Sie ein neues <code>.Rmd</code>-File (<code>File</code> &gt; <code>New File</code> &gt; <code>R Markdown</code>) und speichern Sie dieses unter <code>intro_datawrangling</code> im Projekt-Ordner.</p></li>
+<li><p>Erstellen Sie ein neues <em>RScript</em> oder ein <em>RNotebook</em> (<code>.Rmd</code>-File: <code>File</code> &gt; <code>New File</code> &gt; <code>RNotebook</code>) und speichern Sie dieses unter <code>intro_datawrangling</code> im Projekt-Ordner.</p></li>
 </ol>
 </div>
 </div>
