@@ -56,7 +56,9 @@ d |> slice_head(n = 10)
 
 <!-- Hier Info zu `across` einfügen/verweisen. -->
 
-# Diagnostik: Daten untersuchen
+## Diagnostik: Daten untersuchen
+
+
 
 Datensätze können sehr komplex sein, deshalb ist die Visualisierung der Daten ein hilfreicher erster Schritt. 
 Mit Hilfe von Visualisierungen können Aussagen über die Qualität der Daten gemacht werden, z.B. über:
@@ -73,7 +75,7 @@ Im Sinne der Reproduzierbarkeit lohnt es sich aber, auch diese Visualisierungen 
 
 Im Folgenden schauen wir uns Beispiele für diagnostische Grafiken an.
 
-## Fehlende Werte
+### Fehlende Werte
 
 Hierbei ist es wichtig, vor allem systematisch fehlende Datenpunkte zu entdecken: Fehlt bei einer Person die Hälfte der Antworten? Möchten wir diese ausschliessen?
 
@@ -106,7 +108,7 @@ head(d_missings)
 :::
 
 :::{.callout-tip collapse="true"}
-## Fehlende Werte
+### Fehlende Werte
 
 Je nachdem wie die fehlenden Werte zustande gekommen sind, gehen wir anders vor. Ein Ansatz könnte sein, dass wir die Trials, die keine Reaktionszeiten enthalten rauslöschen:
 
@@ -192,7 +194,7 @@ d_acc_rt_individual |>
     theme_minimal()
 ```
 
-## Extreme Datenpunkte (Ausreisser)
+### Extreme Datenpunkte (Ausreisser)
 
 Wir können Visualisierungen auch verwenden, um extreme Datenpunkte zu identifizieren. Dafür teilen wir hier die Accuracywerte in 3 Gruppen ein und plotten diese:
 
@@ -223,7 +225,7 @@ d_acc_rt_individual_grouped %>%
 <aside>Dasselbe könnte man für die Reaktionszeiten machen. Informationen dazu, wie Ausreisser in Reaktionszeiten gefunden und visualisiert werden können, finden Sie [hier](https://kogpsy.github.io/neuroscicomplab/07-mental-chronometry.html).</aside>
 
 
-## Verlaufseffekte: Ermüdung und Lernen
+### Verlaufseffekte: Ermüdung und Lernen
 
 Verlaufseffekte können uns interessieren, weil wir starke Ermüdungs- oder Lerneffekte ausschliessen möchten. Sie könnten aber auch inhaltlich interessant sein.
 
@@ -283,7 +285,7 @@ d |>
 ```
 
 
-## Aufgabenschwierigkeit und Performanz der Versuchspersonen
+### Aufgabenschwierigkeit und Performanz der Versuchspersonen
 
 Bevor wir die Daten analysieren, möchten wir wissen, ob die Personen die Aufgabe einigermassen gut lösen konnten (und wollten). 
 In unserem Experiment erwarten wir eine Genauigkeit (accuracy) über dem Rateniveau von 50%. Wir plotten hierfür die `accuracy` für jede Person und Bedingung.
@@ -376,7 +378,7 @@ Besprechen Sie miteinander, was Sie nun über unsere Daten wissen.
 
 :::
 
-# Analyse: Daten zusammenfassen und explorieren
+## Analyse: Daten zusammenfassen und explorieren
 
 Grafiken können einerseits eine Ergänzung zur statistischen Datenanalyse sein, wie auch die Resultate der Analysen (bspw. geschätzte Parameterwerte) visualisieren. 
 Sie haben den Vorteil, dass Informationen über Daten oder Analyseergebnisse gleichzeitig ersichtlich sind, sie können also vom Betrachtenden direkt verglichen werden.
@@ -395,7 +397,7 @@ Mit Hilfe von Visualisierungen können z.B. Aussagen können gemacht werden übe
 - Vergleiche und Unterschiede von Gruppen / Bedingungen
 
 
-## Verteilung der Rohdaten
+### Verteilung der Rohdaten
 
 Daten von neurowissenschaftlichen Studien können wichtige Informationen enthalten, die ohne Grafiken übersehen werden können (@rousselet_beyond_2017). 
 Das Visualisieren kann Muster zum Vorschein bringen, die durch statistische Auswertungen nicht sichtbar sind. 
@@ -446,7 +448,7 @@ Hier sehen Sie das Ganze animiert:
 
 ![Datensatz und Visualisierung von [@matejka_same_2017](https://www.autodesk.com/research/publications/same-stats-different-graphs)](https://damassets.autodesk.net/content/dam/autodesk/research/publications-assets/gifs/same-stats-different-graphs/DinoSequentialSmaller.gif)
 
-## Zentrale Tendenz und Verteilungsmasse
+### Zentrale Tendenz und Verteilungsmasse
 
 Masse der zentralen Tendenz sind beispielsweise der Mittelwert, der Median und Modus. 
 Wenn wir uns dafür interessieren, wie sich die *accuracy* in Bezug auf alle Teilnehmenden verhält, schauen wir uns die zentrale Tendenz über alle Personen hinweg an. Es sollte nie nur die zentrale Tendenz, sondern immer auch ein passendes Verteilungsmass berichtet werden.
@@ -517,7 +519,7 @@ p5 + p6
 ```
 
 
-## Aggregierte Statistiken 
+### Aggregierte Statistiken 
 
 Wenn wir Mittelwerte und Standardfehler angeben möchten können wir dies wie folgt tun. 
 Wichtig ist hier, dass wir _within-subject_ Standardfehler berechnen. 
@@ -570,7 +572,7 @@ p7 + p8
 
 - [Hier](https://kogpsy.github.io/neuroscicomplabFS22/pages/chapters/07_response_times_i.html#zusammenfassen-zentrale-tendenz-und-dispersion) finden Sie Informationen, wie Reaktionszeiten zusammengefasst und visualisiert werden könnten.
 
-## Visualisieren von Modellschätzungen
+### Visualisieren von Modellschätzungen
 
 Wenn für die statistische Analyse ein Modell geschätzt wurde, kann auch dies visualisiert werden. 
 Auf diese Form der Visualisierung wird in diesem Kapitel aber nicht eingegangen. 
@@ -580,12 +582,12 @@ Auf diese Form der Visualisierung wird in diesem Kapitel aber nicht eingegangen.
 - [see](https://dominiquemakowski.github.io/publication/ludecke2021see/ludecke2021see.pdf): Package zum Visualisieren von Statistischen Modellen
 
 
-# Kommunikation: Forschungsergebnisse visualisieren
+## Kommunikation: Forschungsergebnisse visualisieren
 
 Kommunikation der Ergebnisse findet vor allem in den wissenschaftlichen Artikeln, Postern oder Präsentationen statt. 
 Bei Visualisierungen die der Kommunkation dienen sind folgende Merkmale wichtig:
 
-## Beschriftungen
+### Beschriftungen
 
 Die genaue Beschriftung und deren Lesbarkeit ist für diese Form von Grafiken zentral. Achten Sie sich auf Folgendes: 
 
@@ -605,7 +607,7 @@ labs(title = "Der Titel der Grafik",
 - Masse der zentralen Tendenz und Varianzmasse werden beschrieben (z.B. Standardfehler oder Standardabweichung?)
 
 
-## 5 Merkmale einer guten Grafik
+### Fünf Merkmale einer guten Grafik
 
 Es gibt unzählige Optionen die eigenen Daten zu visualisieren. 
 Folgende Prinzipien helfen beim Erstellen einer informativen Grafik, die zur Kommunikation der Ergebnisse dient.
