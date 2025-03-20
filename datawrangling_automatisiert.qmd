@@ -1,0 +1,242 @@
+---
+title: "Automatisiertes Preprocessing"
+---
+
+::: callout-caution
+## Hands-on: Vorbereitung
+
+Für diesen Teil benötigen Sie ein *RProject* und die Daten, die Sie erhoben haben:
+
+-   Erstellen Sie ein *RProject* in *R*.
+
+-   Laden Sie den Ordner mit den [Rohdaten der beiden Experimente](data/raw.zip) herunter und entzippen Sie diesen.^[Für das Entzippen mit _Windows_ machen Sie einen Rechtsklick auf den Ordner mit dem Reissverschluss und wählen Sie Entpacken nach und geben Sie den Ordner an, in dem Sie alle Ihre _RProject_-Ordner speichern. Für das Entzippen mit _Mac_ speichern Sie den heruntergeladenen Ordner in den Ordner, in dem Sie alle Ihre _RProject_-Ordner speichern und Doppelklicken Sie danach auf den Ordner. __Nur entzippte Ordner können einwandfrei verwendet werden!__] Verschieben Sie den entzippten Ordner `raw` in Ihren `data`-Ordner (Achtung: nicht nur die einzelnen Files verschieben, sondern den ganzen Ordner).
+
+- Laden Sie den Beispielsdatensatz [`stroop_example2.csv`](data/stroop_example2.csv) herunter und speichern Sie diesen direkt im `data`-Ordner Ihres *RProjects*.
+
+-   Öffnen Sie ein neues RScript (`.R`) oder RMarkdown-File (`.Rmd`). In einem RMarkdown-File können Code und Text verbunden werden und die die Outputs des Codes (z.B. Grafiken) werden anzeigt.
+
+:::
+
+Die Daten stammen von unserem [Stroop Kursexperiment](stroop_experiment.qmd). 
+
+## Setup
+
+```{r}
+#| warnings: FALSE
+#| errors: FALSE
+#| output: FALSE
+# Package laden (bei jedem Öffnen von R zu Beginn des Skripts ausführen)
+library("tidyverse") 
+```
+
+## **Stroop-Experiment** data wrangling
+
+```{r}
+#| output: false
+# Daten vorverarbeiten
+data_stroop <- read_csv("data/stroop_example2.csv")
+glimpse(data_stroop)
+
+d_stroop <- read_csv("data/stroop_example2.csv") |>
+    filter(!is.na(trials_test.thisN)) |>
+    mutate(trial = trials_test.thisN + 1,
+           condition = case_when(congruent == 1 ~ "congruent",
+                                 congruent == 0 ~ "incongruent")) |>
+    select(id = participant, 
+           trial,
+           word, 
+           color,
+           congruent,
+           condition,
+           resp = keyResp_test_run.keys, 
+           corr = keyResp_test_run.corr, 
+           rt = keyResp_test_run.rt)
+```
+
+## Daten mit eigener [Funktion](https://kogpsy.github.io/neuroscicomplabFS24/pages/chapters/programmieren_2.html#funktionen) einlesen
+
+```{r}
+read_stroop <- function(path){
+    # Code kopiert von oben
+    d_stroop <- read_csv(path) |>
+    filter(!is.na(trials_test.thisN)) |>
+    mutate(trial = trials_test.thisN + 1,
+           condition = case_when(congruent == 1 ~ "congruent",
+                                 congruent == 0 ~ "incongruent")) |>
+    select(id = participant, 
+           trial,
+           word, 
+           color, 
+           congruent, 
+           condition,
+           resp = keyResp_test_run.keys, 
+           corr = keyResp_test_run.corr, 
+           rt = keyResp_test_run.rt)
+    # ---------------------
+    return(d_stroop)
+}
+
+d_stroop_fun <- read_stroop(path = "data/stroop_example2.csv")
+
+```
+
+<br>
+
+::: callout-caution
+## Hands-on 1: Eigene Funktion schreiben
+
+Schreiben Sie eine Funktion, die nur reaction times von \<0.5 wählt, und den Prozent von korrekten Antworten ausgibt.
+
+```{r}
+#| eval: false
+fast_correct <- function(data){
+    ___ # Code einfügen
+}
+
+fast_correct(d_stroop)
+```
+:::
+
+<br>
+
+## Einlesen Automatisieren
+
+Wir benötigen eine Liste aller Datenfiles. Die Funktion `list.files()` gibt einer Liste aller Dokumente in einem Ordner zurück. Mit dem Argument `pattern = ...` kann spezifiziert werden, welche Buchstaben(folgen) der Filenamen entahlten soll.
+
+```{r}
+list.files(path = 'data/raw')
+
+list.files(path = 'data/raw', pattern = 'stroop')
+```
+
+Um die Files einzulesen, reichen nur die Namen der Dateien nicht aus. Dazu benötigen wir die kompletten Pfade.
+
+```{r}
+files <- list.files(path = 'data/raw/', pattern = 'stroop') %>% 
+    paste('data/raw/', ., sep = '')
+```
+
+<aside>Hier wird die *Pipe* des `magritter`-*Packages* verwendet (`%>%`) statt die *Base-R Pipe* (`|>`). Mit `%>%` haben wir die Möglichkeit mit dem `.` zu bestimmen wo die weitergeleiteten Inhalte der Pipe eingefügt werden (nach `data/`). Informationen zu den Unterschieden der *Pipes* finden Sie [hier](https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/).</aside>
+
+### Alle Files von Hand einlesen
+
+Jedes Daten File wird einzeln eingelesen. Anschliessend müssen alle Files zusammengefügt werden. Diese Lösung ist einfach zu verstehen, ist bei vielen Dokumenten aber zu aufwändig.
+
+```{r}
+file1 <- files[1]
+file2 <- files[2]
+file3 <- files[3]
+
+d1 <- read_stroop(file1)
+d2 <- read_stroop(file2)
+d3 <- read_stroop(file3)
+
+d_hand <- bind_rows(d1, d2, d3)
+```
+
+### Alle Files mit `for`-Loop einlesen
+
+Das Einlesen kann mit einem for-Loop automatisiert werden. Der Loop iteriert über alle Daten Files. Als erstes muss ein leerer Data Frame `d_loop` erstellt werden. Bei jeder Iteration des Loops wird ein Daten File eingelesen und dem erstellten Data Frame `d_loop` angehängt.
+
+```{r}
+#| warning: false
+#| message: false
+d_loop <- tibble()
+
+for (file in files){
+    d_tmp <- read_stroop(file)
+    d_loop <- bind_rows(d_loop, d_tmp)
+}
+```
+
+### Alle Files mit der Funktion `map()` einlesen
+
+`map()` wendet eine Funktion auf alle Elemente eines Vektors an. Der Vektor `files` enthält die Pfade zu den Daten Files. Mit `map()` können wir also unsere selbst erstellte Funktion `read_stroop()` auf jeden Pfad anwenden. Im Anschluss müssen die Dataframes noch verbunden werden.
+
+```{r}
+#| warning: false
+#| message: false
+d_map1 <- files |>
+    map(read_stroop) %>%
+    bind_rows()
+```
+
+Die Funktion `map_dfr()` macht das gleiche wie `map()` fügt aber zusätzlich die einzelnen Data Frames automatisch zusammen.
+
+```{r}
+#| warning: false
+#| message: false
+d_map2 <- files |>
+    map_dfr(read_stroop)
+```
+
+<br>
+
+::: callout-caution
+## Hands-on 2: map Funktion anweden
+
+Benutzen Sie die Funktion `map()` um unsere Funktion `fast_correct()` gleichzeitig auf `d1`, `d2` und `d3` anzuwenden.
+
+TIPP: `map()` braucht als Argument eine Liste!
+:::
+
+<br>
+
+## Kompletter Stroop Code an einem Ort
+
+```{r}
+#| warning: false
+#| message: false
+read_stroop <- function(path){
+    d_stroop <- read_csv(path) |>
+    filter(!is.na(trials_test.thisN)) |>
+    mutate(trial = trials_test.thisN + 1,
+           condition = case_when(congruent == 1 ~ "congruent",
+                                 congruent == 0 ~ "incongruent")) |>
+    select(id = participant, 
+           trial,
+           word, 
+           color, 
+           congruent, 
+           condition,
+           resp = keyResp_test_run.keys, 
+           corr = keyResp_test_run.corr, 
+           rt = keyResp_test_run.rt)
+    d_stroop
+}
+
+d <- list.files(path = 'data/raw/', pattern = 'stroop') %>% 
+    paste('data/raw/', ., sep = '') |>
+    map_dfr(read_stroop)
+
+d |> write.csv(file = "data/clean/dataset_stroop_clean.csv", row.names = FALSE) # neuer Datensatz in anderen Ordner speichern um Verdoppelung zu vermeiden
+```
+
+<aside>Achten Sie darauf, den neu erstellten Datensatz nicht in den `raw`-Ordner zu speichern. Sonst wird er (weil er `stroop` im Namen hat) beim nächsten Ausführen der Funktion `read_stroop` ebenfalls eingelesen, was einen Fehler verursacht. </aside>
+
+::: {.callout-tip collapse="true"}
+## Hands-on Lösungen
+
+### Hands-on 1
+
+```{r}
+fast_correct <- function(data){
+  d <- data %>% 
+    filter(rt<0.5)
+  p <- mean(d$corr) * 100   
+  return(p)
+}
+
+fast_correct(d_stroop)
+```
+
+### Hands-on 2
+
+```{r}
+data_list <- list(d1, d2, d3)
+
+data_list |> 
+    map(fast_correct)
+
+```
+:::

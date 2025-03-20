@@ -1,0 +1,169 @@
+# Übung 3 {.unnumbered}
+
+- Ein File
+- glimpse um zu kontrollieren ob datensatz ok
+- ab #--- wird es dann gestrippt
+- Rmd kommt dann bei analyse
+
+## Auftrag
+
+__Teil A: Datapreprocessing-Pipeline __ Erstellen Sie eine automatisierte Datenverarbeitungs-Pipeline, die die Daten des Random Dot Experiments einlesen und vorverarbeiten. 
+
+__Teil B: Datenvisualisieren__ Erstellen Sie einen Plot der Random Dot Daten. Verwenden Sie dazu `ggplot()`. Alle Plots und der entsprechende Code werden in der Galerie auf der Kurshomepage anonym veröffentlicht.
+
+__Wichtig__: 
+
+- _Information zum Arbeiten in Kleingruppen:_
+
+    - Übungen dürfen alleine oder in Gruppen von max. 3 Personen erledigt werden. Alle Personen müssen die Übung auf Ilias hochladen, um die Übung zu bestehen.
+    - Die Files von Gruppenarbeiten müssen folgendermassen benannt werden, damit wir sehen, welche Übungsabgaben zusammengehören: Nennen Sie das File mit der Aufgabe und allen Initialen der Gruppe. Z.B. `uebung_1_GW_EW.R`. Geben Sie bei allen Files die Initialen in __derselben__ Reihenfolge an.
+    
+- _Arbeitsanweisung unter dem Unterkapitel *Vorgehen*:_
+
+    - Lesen Sie die Anweisungen genau durch und geben Sie die Dateien in diesem Format ab (z.B. Benennung der Dateien).
+    - Arbeiten Sie entlang der Arbeitsanweisung, um den Prozess zu vereinfachen.
+    
+
+## Vorgehen
+
+### Download und Setup
+
+- Laden Sie das _R-Project_ [uebung-3](../../downloadable_files/uebung_3.zip) herunter und entzippen Sie den Ordner. Im `data`-Ordner finden Sie die Einzeldateien vom Experiment.
+
+- Erstellen Sie ein neues `.R`-File und speichern Sie dieses unter `preprocessing_randomdot.Rmd` im Projekt-Ordner. Falls Sie in einer Gruppe arbeiten speichern Sie dieses mit den Initialen ab, z.B. preprocessing_randomdot_initialen_initialen_initialen.R`.
+
+### A. Datapreprocessing-Pipeline
+
+:::callout-tip
+## Tipp
+
+Am besten erstellen Sie zuerst für __einen__ Datensatz einen funktionierenden Vorverarbeitungsablauf. Dann erstellen Sie eine Funktion für diesen Ablauf. In einem letzten Schritt automatisieren Sie dann diesen Ablauf für alle Datensätze im Datenordner indem Sie eine Liste mit allen Filenamen erstellen. Sie können sich an dem [Automatisierungsbeispiel]() mit dem Stroop Datensatz orientieren.
+
+Das Einlesen kann eine Weile dauern, es sind sehr viele Datensätze.
+:::
+
+- __a. Packages laden__: Laden Sie das Package {tidyverse}.
+    
+- __b. Daten einlesen__ (`read.csv()`)
+
+- __c. Daten filtern__, so dass nur Experimenttrials im Datensatz sind, keine Übungsaufgaben. (`filter()`)
+
+- __d. Erstellen zwei neuer Variablen__ namens `trial` (diese Variable gibt die Trialnummer startend mit 1 an und `initials` (diese Variable gibt Ihre Initialen an) mit (`mutate()`). Falls Sie in einer Gruppe arbeiten, geben Sie mehrere Initialen in den Variablen `initals1`, `initials2` und `initials3` an.
+    
+- __e. Datensatz vereinfachen__: Der Datensatz soll in dieser Reihenfolge folgende Informationen/Variablennamen enthalten (`select()`): 
+
+        - Versuchspersonenidentifikation (`id`)
+        - Trialnummer (`trial`)
+        - Bewegungsrichtung der Punkte (`direction`)
+        - Instruktionsbedingung (`condition`)
+        - Korrekte Antwort für diesen Trial (`corrAns`)
+        - Antwort der Versuchsperson (`resp`), 
+        - war die Antwort der Versuchsperson korrekt? (`corr`)
+        - Antwortzeit der Versuchsperson (`rt`)
+        - Initialen der ausführenden Person (`initials`)
+
+- __f. Datensatz kontrollieren__:
+
+    - Löschen Sie nun alle Variablen in der RStudio Umgebung (`Environment`) mit dem Besen-Icon oben rechts und führen Sie den Code nochmals aus. Wenn alles funktioniert, fahren Sie weiter.
+    
+    - Ihr Datensatz sollte nun wie untenstehend aussehen.  __Benutzen Sie dazu in Ihrem Code den Sie abgeben zwingend die Funktion `glimpse()`__. (Ohne `glimpse()` ist Ihre Abgabe ungültig.)
+    
+```{r include=FALSE}
+library(tidyverse)
+```
+
+```{r echo=FALSE}
+d <- read.csv("data/dataset_rdk_clean.csv")
+glimpse(d)
+```
+- __Datensatz speichern__: Speichern Sie den neuen Datensatz (der jetzt __alle__ Datensätze vorverarbeitet und zusammengefügt enthält) als `.csv`-File namens `dataset_rdk_clean_initialen.csv`.
+    
+### B. Datenvisualisieren
+
+- Im Ordner finden Sie eine Datei namens `initialen_plot.R`. Öffnen Sie die die Datei _initialen_plot.R_. Der Inhalt dieser Datei muss gleich aussehen, wie im Beispiel unten. 
+    
+- Ändern Sie den Namen der Datei _initialen_plot.R_, indem Sie Ihre Initialen (oder mehrere: `initialen_initialen_initialen_plot.R`) einsetzen. Das File muss korrekt benannt werden für eine gültige Abgabe!
+
+- Der Code auf von Zeile 1 bis Zeile 8 darf __nicht verändert werden!__
+    
+- Fügen Sie den Code für Ihre Abbildung ab Zeile 9 ein. 
+    
+- Der eingefügte Code muss die Abbildung erstellen (vgl. Zeile 9-12) und anzeigen (vgl. Zeile 12).
+    
+```{r}
+#| echo: true
+#| eval: false
+
+# Code innerhalb der folgenden 2 Linien darf nicht verändert werden
+# ---------------------------------------------------------------------
+library(tidyverse)
+d = read_csv('data/dataset_stroop_clean.csv')
+# ---------------------------------------------------------------------
+
+# Beginnen Sie hier mit Ihrem Code:
+
+p = d |>
+    ggplot(...) +
+    ...
+p
+```
+
+- __Der Plot muss Folgendes beinhalten:__
+    - Beides, Rohdaten UND mind. 1 zusammenfassendes Mass(z.B. Mittelwert mit Standardabweichungen, Box-/Violinplot, etc.). TIPP: Mehrere Geoms können übereinander gelegt werden.
+    - Mind. 2 unterschiedliche Farben (schwarz und weiss ausgenommen).
+    - Beschriftungen: Titel, Subtitel, Achsenbeschriftungen, (optional: Captions)
+    - Der Subtitel beinhaltet die Frage, welche der Plot beantwortet.  
+    - Ein Theme verwenden.
+    - Optional: Facets verwenden.
+
+### Hochladen der Dateien auf Ilias 
+
+Laden Sie folgende Dateien unter `Übung 3` auf Ilias hoch:
+
+    - `dataset_rdk_clean_initialen.csv`-File
+
+
+:::{.callout-caution}
+## Wichtig
+Ihr Plot und der dazugehörige Code wird in der [Galerie](https://kogpsy.github.io/neuroscicomplabFS24/pages/chapters/gallery.html) anonym veröffentlich. Deshalb ist es wichtig, dass die oben aufgelisteten Voraussetzungen erfüllt sind. 
+:::
+
+<br>
+
+## Abgabetermin
+
+Der Abgabetermin für diese Übung ist der __18. April 2025__.
+
+
+
+
+
+
+<!-- ## Trouble shooting -->
+
+
+<!-- __Das Einlesen funktioniert nicht.__ -->
+
+<!-- Kontrollieren Sie bei der `read.csv()`-Funktion das `sep = ` Zeichen. Passt dieses zum Datensatz? -->
+
+<!-- Stimmt die Ordnerstruktur? Arbeiten Sie in einem _R-Project_, ist das `.Rmd`-File im _selben_ Ordner wie das `.Rproj`-File und haben Sie die Daten im `data`-Ordner gespeichert (ungezippt, also nur die Datenfiles)? -->
+
+<!-- __Die Datensätze können nicht alle eingelesen werden, obwohl ein einzelner Datensatz eingelesen werden kann.__ -->
+
+<!-- Bitte öffnen Sie die Dateien nur in R, nicht in Excel oder in einem anderen Programm, das kann die Formatierung ändern und Probleme beim Einlesen verursachen. Falls Sie die Daten schon geöffnet haben, laden Sie den Datensatz nochmals neu von der Website herunter und speichern Sie ihn im Datenordner. -->
+
+
+
+<!-- __Weitere Fehlermeldungen__ -->
+
+<!-- Lesen Sie die Fehlermeldung genau durch: Finden Sie Informationen zur Lösung des Fehlers? -->
+
+<!-- _Häufigste Fehlerquellen:_ -->
+
+<!-- - Tippfehler? -->
+
+<!-- - Ist der Code-Chunk ist richtig formattiert: Er muss mit ` ```{r}` beginnen und mit ` ``` ` enden. Stellen Sie sicher, dass eine Lücke zum nächsten Code-Chunk besteht. -->
+
+<!-- - Reihenfolgenfehler? Löschen Sie alle Variablen mit dem "Besen"-Symbol oben rechts und lassen Sie Ihren Code nochmals von Beginn an durch laufen. -->
+
+<!-- __Bei Problemen, fragen Sie bitte an der nächsten Veranstaltung nach.__ -->

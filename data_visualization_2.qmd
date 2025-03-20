@@ -23,7 +23,8 @@ Eine "gute" Grafik komprimiert die Information in den Daten so, dass Erkenntniss
 __Variante A: *RProject* selbst erstellen:__
 
 - Erstellen Sie ein _RProject_ in _R_.
-- Laden Sie den Datensatz [hier](data/dataset_rdk_clean.csv) herunter und speichern Sie diesen in dem Ordner `data` im Ordner Ihres _RProjects_.
+- Laden Sie den Datensatz `dataset_stroop_clean.csv` [hier](data/dataset_stroop_clean.csv) herunter und speichern Sie diesen in dem Ordner `data` im Ordner Ihres _RProjects_.
+- Laden Sie den Datensatz `DatasaurusDozen.csv` [hier](data/DatasaurusDozen.csv) herunter und speichern Sie diesen in dem Ordner `data` im Ordner Ihres _RProjects_.
 - Öffnen Sie ein neues RScript (`.R`) oder RMarkdown-File (`.Rmd`). In einem RMarkdown-File können Code und Text verbunden werden und die die Outputs des Codes (z.B. Grafiken) werden anzeigt.
 
 __Variante B: *RProject* herunterladen:__
@@ -32,7 +33,7 @@ _Dies ist nicht nötig, falls Sie den Ordner im Kapitel [Datenvisualisierung mit
 
 - Laden Sie [den _RProject_-Ordner](data/data-visualization.zip) herunter und entzippen Sie diesen.^[Für das Entzippen mit _Windows_ machen Sie einen Rechtsklick auf den Ordner mit dem Reissverschluss und wählen Sie Entpacken nach und geben Sie den Ordner an, in dem Sie alle Ihre _RProject_-Ordner speichern. Für das Entzippen mit _Mac_ speichern Sie den heruntergeladenen Ordner in den Ordner, in dem Sie alle Ihre _RProject_-Ordner speichern und Doppelklicken Sie danach auf den Ordner. __Nur entzippte Ordner können einwandfrei verwendet werden!__]
 
-Die Daten stammen von unserem [Random Dot Experiment](https://kogpsy.github.io/neuroscicomplabFS25/random_dot_experiment.qmd). 
+Die Daten stammen von unserem [Stroop Kursexperiment](stroop_experiment.qmd). 
 
 Im Projekt wird mit einem _RNotebook_ gearbetet: So kann Code und Text verbunden werden, und Code-Outputs z.B. Grafiken können _inline_ angezeigt werden, zudem ermöglicht dieses Vorgehen reproduzierbare Grafiken.
 Sie können in das _RNotebook_ den untenstehenden Code kopieren und modifizieren, um die Datenvisualisierungen nachzuvollziehen und damit zu üben.
@@ -47,7 +48,7 @@ library(tidyverse)
 library(patchwork)
 
 # Daten einlesen und Textvariablen zu Faktoren umwandeln
-d <- read_csv("data/dataset_rdk_clean.csv") |>
+d <- read_csv("data/dataset_stroop_clean.csv") |>
     mutate(across(where(is.character), as.factor))
 
 # Datensatz anschauen
@@ -57,8 +58,6 @@ d |> slice_head(n = 10)
 <!-- Hier Info zu `across` einfügen/verweisen. -->
 
 ## Diagnostik: Daten untersuchen
-
-
 
 Datensätze können sehr komplex sein, deshalb ist die Visualisierung der Daten ein hilfreicher erster Schritt. 
 Mit Hilfe von Visualisierungen können Aussagen über die Qualität der Daten gemacht werden, z.B. über:
@@ -79,7 +78,7 @@ Im Folgenden schauen wir uns Beispiele für diagnostische Grafiken an.
 
 Hierbei ist es wichtig, vor allem systematisch fehlende Datenpunkte zu entdecken: Fehlt bei einer Person die Hälfte der Antworten? Möchten wir diese ausschliessen?
 
-Diese können mit dem Package {naniar} relativ schnell sichtbar gemacht werden. 
+Diese können mit dem Package {naniar} relativ schnell sichtbar gemacht werden. Es gibt keine _missings_ in unserem Fall.
 
 ```{r}
 naniar::vis_miss(d)
@@ -87,59 +86,31 @@ naniar::vis_miss(d)
 
 <aside>Bevor Sie das Package verwenden können, müssen Sie dies erst herunterladen. Sie können dies unter dem Reiter `Tools` > `Install Packages ...` tun oder in der Konsole mit `install.packages("naniar")`. </aside>
 
-:::{.callout-caution}
-## Hands-on: Missings
+:::callout-tip
+### Werte löschen
 
-- Was sehen Sie in der Grafik? (Wie viele Datenpunkte fehlen? In welchen Variablen?)
+Falls wir z.B. Zeilen mit fehlenden Werten hätten, könnten wir uns entschliessen diese Messungen zu löschen. Wichtig hierbei ist:
 
-Um mehr über die fehlenden Werte zu erfahren, können wir uns die betroffenen Zeilen anschauen. Das kann direkt im Datensatz betrachtet werden oder indem eine zusätzliche Variable mit der `naniar::add_label_missings()`-Funktion erstellt wird, die angibt ob in dieser Zeile missings vorliegen:
+- Datenpunkte werden __nie__ aus den Rohdaten gelöscht, sondern nur aus dem aktuell geladenen Datensatz, welcher für die Analysen verwendet und neu abgespeichert wurde. So können wir uns immer noch umentscheiden und verlieren nicht die Information, welche Daten gefehlt haben.
 
-```{r}
-d_missings <- d |> naniar::add_label_missings() |>
-    filter(any_missing == "Missing")
-
-head(d_missings)
-```
-
-- Was könnte die Ursache für die Missings sein?
-
-- Was ist zu tun?
-
-:::
-
-:::{.callout-tip collapse="true"}
-### Fehlende Werte
-
-Je nachdem wie die fehlenden Werte zustande gekommen sind, gehen wir anders vor. Ein Ansatz könnte sein, dass wir die Trials, die keine Reaktionszeiten enthalten rauslöschen:
-
-```{r}
-d <- d |>
-    filter(rt != "NA")
-
-naniar::vis_miss(d)
-```
-
-Drei wichtige Punkte: 
-
-- Wir löschen die Datenpunkte __nie__ aus den Rohdaten, sondern nur aus dem aktuell geladenen Datensatz, den wir für die Analysen verwenden. So können wir uns immer noch umentscheiden und verlieren nicht die Information, welche Daten gefehlt haben.
-
-- Dadurch, dass wir die Datenverarbeitung in reproduzierbarem Code geschrieben haben, konnten wir überprüfen, ob ein Fehler in unserer Datenverarbeitung zu den missings geführt hat und diesen evtl. korrigieren.
+- Dadurch, dass die Datenverarbeitung in _R_ mit reproduzierbarem Code geschrieben ist, können wir immer überprüfen, ob ein Fehler in unserer Datenverarbeitung zu den missings geführt hat und diesen evtl. korrigieren.
 
 - Es macht nicht immer Sinn die Trials mit missing data zu löschen! Dies muss von Fall zu Fall entschieden werden. Wenn Versuchspersonen zum Beispiel teilweise zu lange brauchten um eine Aufgabe zu lösen, dann ist das eine wichtige Information, wird diese rausgelöscht, wird die Leistung der Versuchsperson systematisch überschätzt.
 :::
 
-Wir berechnen nun für die kommenden Grafiken die Anzahl Trials pro Person, die *accuracy*, sowie die mittlere Reaktionszeit (wie im Kapitel [Aggregierte Statistiken](https://kogpsy.github.io/neuroscicomplabFS23/pages/chapters/summarizing-data.html) beschrieben).
+Für die Analyse schliessen wir alle Reaktionszeiten unter 100ms und über 10 Sekunden aus.
 
-Wir schliessen vorher alle Reaktionszeiten unter 100ms und über 10 Sekunden aus.
+```{r}
+# zu schnelle und zu langsame Antworten ausschliessen
+d <- d |>
+    filter(rt > 0.099 & rt < 8)
+```
+
+Wir berechnen nun für die kommenden Grafiken die Anzahl Trials pro Person, die *accuracy*, sowie die mittlere Reaktionszeit für die Bedingungen `congruent` und `incongruent` (wie im Kapitel [Aggregierte Statistiken](https://kogpsy.github.io/neuroscicomplabFS23/pages/chapters/summarizing-data.html) beschrieben).
 
 ```{r}
 #| message: false
 #| warning: false
-
-# zu schnelle und zu langsame Antworten ausschliessen
-d <- d |>
-    filter(rt > 0.09 & rt < 15)
-
 # Daten gruppieren:  Anzahl Trials, Accuracy und mittlere Reaktionszeit berechnen
 acc_rt_individual <- d |>
     group_by(id, condition) |>
@@ -149,6 +120,7 @@ acc_rt_individual <- d |>
         accuracy = mean(corr),
         median_rt = median(rt)
     )
+acc_rt_individual
 ```
 
 Nachdem wir Trials ohne Antwort ausgeschlossen haben, interessiert es uns, wie viele Trials jede Versuchsperson gelöst hat:
@@ -165,9 +137,11 @@ acc_rt_individual |>
     theme_minimal()
 ```
 
-Wir schliessen alle Personen aus, die weniger als 40 gültige Trials hatten
+Wir schliessen alle Personen aus, die weniger als 40 gültige Trials hatten (in unserem Beispiel nicht nötig).
 
 ```{r}
+#| message: false
+#| warning: false
 # Datensatz mit allen Ids, welche zuwenig Trials hatten
 n_exclusions <- acc_rt_individual |>
     filter(N < 40) 
@@ -204,9 +178,9 @@ d_acc_rt_individual_grouped <- d_acc_rt_individual %>%
   mutate(
     performance = case_when(
       accuracy > 0.75 ~ "good",
-      accuracy < 0.4 ~ "bad",
-      TRUE ~ "chance level") %>% 
-      factor(levels = c("good", "chance level", "bad")))
+      accuracy < 0.40 ~ "bad",
+      TRUE ~ "ok") %>% 
+      factor(levels = c("good", "ok", "bad")))
 
 # Outlier visualisieren
 d_acc_rt_individual_grouped %>% 
@@ -216,20 +190,20 @@ d_acc_rt_individual_grouped %>%
                alpha = 0.9) + 
     facet_grid(~condition) +
     scale_color_manual(values = c("gray40", "steelblue", "red")) +
-    geom_hline(yintercept = 0.5, linetype='dotted', col = 'black')+
-    annotate("text", x = "sub-36817827", y = 0.5, label = "chance level", vjust = -1, size = 3) +
+    geom_hline(yintercept = 0.33, linetype='dotted', col = 'black')+
+    annotate("text", x = "sub-100", y = 0.33, label = "chance level", vjust = -1, size = 3) +
     theme_minimal(base_size = 12)
 ```
 
 
 <aside>Dasselbe könnte man für die Reaktionszeiten machen. Informationen dazu, wie Ausreisser in Reaktionszeiten gefunden und visualisiert werden können, finden Sie [hier](https://kogpsy.github.io/neuroscicomplab/07-mental-chronometry.html).</aside>
 
-
 ### Verlaufseffekte: Ermüdung und Lernen
 
-Verlaufseffekte können uns interessieren, weil wir starke Ermüdungs- oder Lerneffekte ausschliessen möchten. Sie könnten aber auch inhaltlich interessant sein.
+Verlaufseffekte sind relevant, wenn man z.B. Ermüdungs- oder Lerneffekte ausschliessen möchte. Sie könnten aber auch inhaltlich interessant sein, z.B. in einem Trainingskontext, wenn man sich dafür interessiert, wie viele Trials nötig sind, damit sich jemand in einer Aufgabe verbessert.
 
-In unserem Experiment möchten wir sicher sein, dass die Performanz sich über die Zeit hinweg nicht zu stark verändert. Hierzu können wir beispielsweise die *accuracy* in den beiden Blöcken plotten:
+In unserem Experiment möchten wir sicher sein, dass die Performanz sich über die Zeit hinweg nicht zu stark verändert. 
+Hierzu können wir beispielsweise die *accuracy* plotten:
 
 ```{r}
 #| message: false
@@ -251,7 +225,7 @@ d_acc_rt_trial |>
     theme_minimal(base_size = 12)
 ```
 
-Oder wir können die Reaktionszeiten über die Zeit hinweg anschauen. 
+Oder wir können uns die Reaktionszeiten über die Zeit hinweg anschauen. 
 
 ```{r}
 #| message: false
@@ -260,8 +234,8 @@ d_acc_rt_trial |>
     ggplot(aes(x = trial, y = median_rt, color = condition)) +
     geom_point(size = 2, alpha = 0.8) +
     geom_line() +
-    scale_color_manual(values = c(accuracy = "tomato3",
-                                  speed = "skyblue3")) +
+    scale_color_manual(values = c(congruent = "skyblue3",
+                                 incongruent = "tomato3")) +
     facet_wrap(~ condition) +
     theme_minimal(base_size = 12)
 ```
@@ -274,12 +248,12 @@ Das tun wir hier für 3 Versuchspersonen.
 #| warning: false
 # Plot: Reaktionszeit über die Trials hinweg (für 3 Versuchspersonen)
 d |>
-    filter(id %in% c("sub-10209782", "sub-36817827", "sub-48177911")) |>
+    filter(id %in% c("sub-001", "sub-100", "sub-150")) |>
     ggplot(aes(x = trial, y = rt, color = condition)) +
     geom_smooth(method = "lm", se = FALSE) +
     geom_point(alpha = 0.5) +
-    scale_color_manual(values = c(accuracy = "tomato3",
-                                 speed = "skyblue3")) +
+    scale_color_manual(values = c(congruent = "skyblue3",
+                                 incongruent = "tomato3")) +
     facet_wrap(~ id) +
     theme_minimal()
 ```
@@ -288,7 +262,7 @@ d |>
 ### Aufgabenschwierigkeit und Performanz der Versuchspersonen
 
 Bevor wir die Daten analysieren, möchten wir wissen, ob die Personen die Aufgabe einigermassen gut lösen konnten (und wollten). 
-In unserem Experiment erwarten wir eine Genauigkeit (accuracy) über dem Rateniveau von 50%. Wir plotten hierfür die `accuracy` für jede Person und Bedingung.
+In unserem Experiment erwarten wir eine Genauigkeit (accuracy) über dem Rateniveau von 33%. Wir plotten hierfür die `accuracy` für jede Person und Bedingung.
 
 ```{r}
 #| message: false
@@ -299,11 +273,12 @@ p1 <- d_acc_rt_individual |>
     geom_jitter(size = 3, alpha = 0.4, 
                 width = 0.2, height = 0) +
     geom_boxplot(width = 0.1, alpha = 0, color = "black") +
-    scale_color_manual(values = c(accuracy = "tomato2",
-                                 speed = "skyblue3")) +
-    labs(x = "Instruction",
+    scale_color_manual(values = c(congruent = "skyblue3",
+                                 incongruent = "tomato3")) +
+    labs(x = "Congruency",
          y = "Proportion correct",
-         title = "Accuracy per Person and Condition") +
+         title = "Accuracy",
+         subtitle = "per Person and Condition") +
     theme_minimal(base_size = 12) +
     theme(legend.position = "none")
 
@@ -312,11 +287,12 @@ p2 <- d_acc_rt_individual |>
     geom_jitter(size = 3, alpha = 0.4, 
                 width = 0.2, height = 0) +
     geom_boxplot(width = 0.1, alpha = 0, color = "black") +
-    scale_color_manual(values = c(accuracy = "tomato2",
-                                 speed = "skyblue3")) +
-    labs(x = "Instruction",
+    scale_color_manual(values = c(congruent = "skyblue3",
+                                 incongruent = "tomato3")) +
+    labs(x = "Congruency",
          y = "Median Response Time [s]",
-         title = "Median Response Time per Person and Condition") +
+         title = "Median Response Time",
+         subtitle = "per Person and Condition") +
     theme_minimal(base_size = 12) +
     theme(legend.position = "none")
 
@@ -335,11 +311,12 @@ p3 <- d_acc_rt_individual |>
     geom_line(color = "grey40", alpha = 0.5) +
     geom_jitter(size = 3, alpha = 0.8, 
                 width = 0, height = 0) +
-    scale_color_manual(values = c(accuracy = "tomato2",
-                                 speed = "skyblue3")) +
-    labs(x = "Instruction",
+    scale_color_manual(values = c(congruent = "skyblue3",
+                                 incongruent = "tomato3")) +
+    labs(x = "Congruency",
          y = "Proportion correct",
-         title = "Accuracy per Person and Condition") +
+         title = "Accuracy",
+         subtitle = "per Person and Condition") +
     theme_minimal(base_size = 12) +
     theme(legend.position = "none")
 
@@ -348,11 +325,12 @@ p4 <- d_acc_rt_individual |>
     geom_line(color = "grey40", alpha = 0.5) +
     geom_jitter(size = 3, alpha = 0.8, 
                 width = 0, height = 0) +
-    scale_color_manual(values = c(accuracy = "tomato2",
-                                 speed = "skyblue3")) +
-    labs(x = "Instruction",
+    scale_color_manual(values = c(congruent = "skyblue3",
+                                 incongruent = "tomato3")) +
+    labs(x = "Congruency",
          y = "Median Response Time [s]",
-         title = "Median Response Time per Person and Condition") +
+         title = "Median Response Time",
+         subtitle = "per Person and Condition") +
     theme_minimal(base_size = 12) +
     theme(legend.position = "none")
 
@@ -370,7 +348,7 @@ Besprechen Sie miteinander, was Sie nun über unsere Daten wissen.
 
 - Denken Sie, die Personen waren motiviert?
 
-- Welche Datensätze / Trials möchten wir ausschliessen? (Dies müsste eigentlich **vor** dem Anschauen der Daten entschieden werden, um zu verhindern, dass man Datenpunkte ausschliesst, welche die Hypothese nicht bestätigen.)
+- Welche Datensätze / Trials möchten wir ausschliessen? (Achtung: Dies müsste eigentlich **vor** dem Anschauen der Daten entschieden werden, um zu verhindern, dass man Datenpunkte ausschliesst, welche die Hypothese nicht bestätigen.)
 
 - Wie gut eignen sich die Daten, um die Forschungsfrage zu beantworten?
 
@@ -463,10 +441,10 @@ p_boxplot <- d_acc_rt_individual |>
   ggplot(aes(x = condition, y = accuracy, color = condition)) +
     geom_jitter(alpha = 0.25, width = 0.2) +
     geom_boxplot(alpha = 0, width = 0.2, color = "black") +
-    scale_fill_manual(values = c(accuracy = "tomato3",
-                                     speed = "skyblue3")) +
+    scale_fill_manual(values = c(congruent = "skyblue3",
+                                 incongruent = "tomato3")) +
     labs(title = "Boxplot",
-         x = "Instruction",
+         x = "Congruency",
          y = "Proportion correct") +
     theme_minimal(base_size = 12) +
     theme(legend.position = "none")
@@ -476,10 +454,10 @@ p_violin <- d_acc_rt_individual |>
   ggplot(aes(x = condition, y = accuracy, color = condition)) +
     geom_jitter(alpha = 0.5, width = 0.2) +
     geom_violin(alpha = 0, width = 0.2, color = "black") +
-    scale_fill_manual(values = c(accuracy = "tomato3",
-                                 speed = "skyblue3")) +
+    scale_fill_manual(values = c(congruent = "skyblue3",
+                                 incongruent = "tomato3")) +
     labs(title = "Violin Plot",
-         x = "Instruction",
+         x = "Congruency",
          y = "Proportion correct") +
     theme_minimal(base_size = 12) +
     theme(legend.position = "none")
@@ -497,21 +475,21 @@ Mehr Informationen hierzu finden Sie [hier](https://cran.r-project.org/web/packa
 library(ggridges)
 p5 <- d_acc_rt_individual |> 
     ggplot(aes(x = accuracy, y = condition, fill = condition)) + geom_density_ridges2(scale = 0.5, alpha = 0.5) +
-    scale_fill_manual(values = c(accuracy = "tomato3",
-                                 speed = "skyblue3")) +
+    scale_fill_manual(values = c(congruent = "skyblue3",
+                                 incongruent = "tomato3")) +
     labs(title = "Accuracy",
          x = "Proportion corect",
-         y = "Instruction") +
+         y = "Congruency") +
     theme_minimal(base_size = 12) +
     theme(legend.position = "none")
 
 p6 <- d_acc_rt_individual |> 
     ggplot(aes(x = median_rt, y = condition, fill = condition)) + geom_density_ridges2(scale = 1, alpha = 0.5) +
-    scale_fill_manual(values = c(accuracy = "tomato3",
-                                 speed = "skyblue3")) +
+    scale_fill_manual(values = c(congruent = "skyblue3",
+                                 incongruent = "tomato3")) +
     labs(title = "Median Response Time",
          x = "Median Response Time [s]",
-         y = "Instruction") +
+         y = "Congruency") +
     theme_minimal(base_size = 12) +
     theme(legend.position = "none")
 
@@ -540,7 +518,7 @@ p7 <- d_acc_within |>
     geom_errorbar(width = .1, aes(ymin = corr-se, ymax = corr+se)) +
     geom_point(size = 3) +
     labs(title = "Accuracy",
-         x = "Instruction",
+         x = "Congruency",
          y = "Accuracy") +
     theme_minimal(base_size = 12) +
     theme(legend.position = "none")
@@ -559,7 +537,7 @@ p8 <- d_rt_within |>
     geom_errorbar(width = .1, aes(ymin = rt-se, ymax = rt+se)) +
     geom_point(size = 3) +
     labs(title = "Median Response Time",
-         x = "Instruction",
+         x = "Congruency",
          y = "Median Response Time [s]") +
     theme_minimal(base_size = 12) +
     theme(legend.position = "none")

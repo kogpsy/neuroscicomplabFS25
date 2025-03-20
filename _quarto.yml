@@ -44,16 +44,18 @@ book:
   - part: Data wrangling
     chapters:
     - datawrangling.qmd
+    - datawrangling_automatisiert.qmd
     - uebung_2.qmd
 
   - part: Datenvisualisieren
     chapters:
     - data_visualization_1.qmd
     - data_visualization_2.qmd
+ #   - uebung_3.qmd
 
   - part: Datenanalyse
     #chapters:
-    #-
+    #- uebung_4.qmd
 
   - part: Datenmodellierung
     #chapters:
@@ -91,8 +93,8 @@ filters:
   - webr
 
 execute:
-  cache: false
-  freeze: auto # re-render only when source changes
+  cache: true
+  freeze: false # re-render only when source changes
   execute-dir: project
 
 bibliography: bibliography.bib

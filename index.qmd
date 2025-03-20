@@ -91,7 +91,7 @@ Es gibt fünf Übungen.
 - Die Ergebnisse der Übungen müssen in den entsprechenden Ordner auf ILIAS hochgeladen werden. Je nach Umfang der Übung wird die Zeit bis zur Abgabe unterschiedlich ausfallen. Sie wird jedoch immer mindestens zwei Wochen betragen.
 - Ausser _Übung 2_ müssen alle Übungen abgegeben und als bestanden bewertet werden. Wird eine ungenügende Übungen abgegeben erhalten Sie eine zweite Frist für die Abgabe oder einen Zusatzauftrag. 
 - Übungen dürfen alleine oder in Gruppen von max. 3 Personen erledigt werden. Alle Personen müssen die Übung abgeben.
-Damit wir sehen, welche Übungsabgaben zusammengehören: Nennen Sie das File mit der Aufgabe und allen Initialen der Gruppe. Z.B. uebung_1_GW_EW.csv
+Damit wir sehen, welche Übungsabgaben zusammengehören: Nennen Sie das File mit der Aufgabe und allen Initialen der Gruppe. Z.B. `uebung_3_GW_EW.R`
 - Alle Übungen müssen bestanden werden. Ob die Übung bestanden wurde, sehen Sie auf Ilias. Bei Nicht-Bestehen muss die Übung nochmals abgeben werden oder eine Zusatzaufgabe erledigt werden.
 
 

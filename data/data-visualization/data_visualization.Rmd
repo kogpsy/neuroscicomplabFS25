@@ -1,0 +1,25 @@
+---
+title: "Daten visualisieren"
+output: html_document
+date: "`r Sys.Date()`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+# Package laden
+library(tidyverse)
+library(naniar)
+library(patchwork)
+
+# Datensätze einlesen und Textvariablen zu Faktoren umwandeln
+d <- read_csv("data/dataset_rdk_clean.csv") |>
+    mutate(across(where(is.character), as.factor))
+
+# Datensatz anschauen
+d |>
+    slice_head(n = 10)
+```
