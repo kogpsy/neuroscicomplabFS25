@@ -22,10 +22,9 @@ In diesem Kurs werden wir einige Stationen dieses Forschungsprozesses gemeinsam 
 
 1. Wählen Sie in 2-4er Gruppen eines der untenstehenden Paper (Open Access) aus:
 
-- @quon_musical_2021
-- [Quon et al. (2021): Musical components important for the Mozart K448 effect in epilepsy](https://www.nature.com/articles/s41598-021-95922-7)
-- [Richter et al. (2021): Listening to speech with a guinea pig-to-human brain-to-brain interface](https://www.nature.com/articles/s41598-021-90823-1)
-- [Zhang et al. (2021): Longitudinal effects of meditation on brain resting-state functional connectivity](https://www.nature.com/articles/s41598-021-90729-y)
+- @quon_musical_2021: [Quon et al. (2021): Musical components important for the Mozart K448 effect in epilepsy](https://www.nature.com/articles/s41598-021-95922-7)
+- @richter_listening_2021: [Richter et al. (2021): Listening to speech with a guinea pig-to-human brain-to-brain interface](https://www.nature.com/articles/s41598-021-90823-1)
+- @zhang_longitudinal_2021: [Zhang et al. (2021): Longitudinal effects of meditation on brain resting-state functional connectivity](https://www.nature.com/articles/s41598-021-90729-y)
 
 2. Schreiben Sie zuerst in einem Satz oben auf Ihr Blatt auf, was die Fragestellung des Papers ist.
 

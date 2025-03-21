@@ -1,10 +1,5 @@
 # Übung 3 {.unnumbered}
 
-- Ein File
-- glimpse um zu kontrollieren ob datensatz ok
-- ab #--- wird es dann gestrippt
-- Rmd kommt dann bei analyse
-
 ## Auftrag
 
 __Teil A: Datapreprocessing-Pipeline __ Erstellen Sie eine automatisierte Datenverarbeitungs-Pipeline, die die Daten des Random Dot Experiments einlesen und vorverarbeiten. 
@@ -28,9 +23,9 @@ __Wichtig__:
 
 ### Download und Setup
 
-- Laden Sie das _R-Project_ [uebung-3](../../downloadable_files/uebung_3.zip) herunter und entzippen Sie den Ordner. Im `data`-Ordner finden Sie die Einzeldateien vom Experiment.
+- Laden Sie das _R-Project_ [uebung-3](data/uebung_3.zip) herunter und entzippen Sie den Ordner. Im `data`-Ordner finden Sie die Einzeldateien vom Experiment.
 
-- Erstellen Sie ein neues `.R`-File und speichern Sie dieses unter `preprocessing_randomdot.Rmd` im Projekt-Ordner. Falls Sie in einer Gruppe arbeiten speichern Sie dieses mit den Initialen ab, z.B. preprocessing_randomdot_initialen_initialen_initialen.R`.
+- __Achtung__: Sie müssen nur die Daten des _Random Dot Experiments_ einlesen, vorverarbeiten und visualisieren. Die Daten des _Stroop Experiments_ wurden in der Veranstaltung bearbeitet.
 
 ### A. Datapreprocessing-Pipeline
 
@@ -41,6 +36,8 @@ Am besten erstellen Sie zuerst für __einen__ Datensatz einen funktionierenden V
 
 Das Einlesen kann eine Weile dauern, es sind sehr viele Datensätze.
 :::
+
+- Erstellen Sie ein neues `.R`-File und speichern Sie dieses unter `preprocessing_randomdot.Rmd` im Projekt-Ordner. Falls Sie in einer Gruppe arbeiten speichern Sie dieses mit den Initialen ab, z.B. `preprocessing_randomdot_initialen_initialen_initialen.R`.
 
 - __a. Packages laden__: Laden Sie das Package {tidyverse}.
     
@@ -61,11 +58,20 @@ Das Einlesen kann eine Weile dauern, es sind sehr viele Datensätze.
         - war die Antwort der Versuchsperson korrekt? (`corr`)
         - Antwortzeit der Versuchsperson (`rt`)
         - Initialen der ausführenden Person (`initials`)
+        
+- __f. Automatisieren__
 
-- __f. Datensatz kontrollieren__:
+    - Erstellen Sie nun eine Funktion, die dies für alle _Random Dot_ Datensätze ausführt und einen aggregierten Datensatz erstellt.
+    
+- __g. Erstellter Datensatz kontrollieren__:
 
     - Löschen Sie nun alle Variablen in der RStudio Umgebung (`Environment`) mit dem Besen-Icon oben rechts und führen Sie den Code nochmals aus. Wenn alles funktioniert, fahren Sie weiter.
     
+
+- __h. Datensatz speichern__: Speichern Sie den neuen Datensatz (der jetzt __alle__ Datensätze vorverarbeitet und zusammengefügt enthält) als `.csv`-File namens `dataset_rdk_clean_initialen.csv`.
+
+- __i. Gespeicherten Datensatz kontrollieren__:
+
     - Ihr Datensatz sollte nun wie untenstehend aussehen.  __Benutzen Sie dazu in Ihrem Code den Sie abgeben zwingend die Funktion `glimpse()`__. (Ohne `glimpse()` ist Ihre Abgabe ungültig.)
     
 ```{r include=FALSE}
@@ -73,10 +79,10 @@ library(tidyverse)
 ```
 
 ```{r echo=FALSE}
-d <- read.csv("data/dataset_rdk_clean.csv")
+d <- read.csv("data/dataset_random_dot_clean.csv")
 glimpse(d)
 ```
-- __Datensatz speichern__: Speichern Sie den neuen Datensatz (der jetzt __alle__ Datensätze vorverarbeitet und zusammengefügt enthält) als `.csv`-File namens `dataset_rdk_clean_initialen.csv`.
+
     
 ### B. Datenvisualisieren
 

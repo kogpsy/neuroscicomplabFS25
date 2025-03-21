@@ -1,8 +1,7 @@
 /.quarto/
 
-pages/chapters/*_cache/
-pages/chapters/*_files/
-playground/
+*_cache/
+*_files/
 
 .Rproj.user
 .Rhistory

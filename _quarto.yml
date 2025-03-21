@@ -51,7 +51,7 @@ book:
     chapters:
     - data_visualization_1.qmd
     - data_visualization_2.qmd
- #   - uebung_3.qmd
+    - uebung_3.qmd
 
   - part: Datenanalyse
     #chapters:

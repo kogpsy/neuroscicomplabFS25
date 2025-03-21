@@ -98,7 +98,7 @@ Falls wir z.B. Zeilen mit fehlenden Werten hätten, könnten wir uns entschliess
 - Es macht nicht immer Sinn die Trials mit missing data zu löschen! Dies muss von Fall zu Fall entschieden werden. Wenn Versuchspersonen zum Beispiel teilweise zu lange brauchten um eine Aufgabe zu lösen, dann ist das eine wichtige Information, wird diese rausgelöscht, wird die Leistung der Versuchsperson systematisch überschätzt.
 :::
 
-Für die Analyse schliessen wir alle Reaktionszeiten unter 100ms und über 10 Sekunden aus.
+Für die Analyse schliessen wir alle Reaktionszeiten unter 100ms und über 8 Sekunden aus.
 
 ```{r}
 # zu schnelle und zu langsame Antworten ausschliessen
@@ -219,8 +219,8 @@ d_acc_rt_trial |>
     ggplot(aes(x = trial, y = accuracy, color = condition)) +
     geom_point(size = 2, alpha = 0.8) +
     geom_line() +
-    scale_color_manual(values = c(accuracy = "tomato3",
-                                  speed = "skyblue3")) +
+    scale_color_manual(values = c(congruent = "skyblue3",
+                                 incongruent = "tomato3")) +
     facet_wrap(~ condition) +
     theme_minimal(base_size = 12)
 ```
