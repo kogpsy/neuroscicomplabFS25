@@ -23,7 +23,7 @@ __Wichtig__:
 
 ### Download und Setup
 
-- Laden Sie das _R-Project_ [uebung-3](data/uebung_3.zip) herunter und entzippen Sie den Ordner. Im `data`-Ordner finden Sie die Einzeldateien vom Experiment.
+- Laden Sie das _R-Project_ [uebung-3](data/uebung-3.zip) herunter und entzippen Sie den Ordner. Im `data`-Ordner finden Sie die Einzeldateien vom Experiment.
 
 - __Achtung__: Sie müssen nur die Daten des _Random Dot Experiments_ einlesen, vorverarbeiten und visualisieren. Die Daten des _Stroop Experiments_ wurden in der Veranstaltung bearbeitet.
 
