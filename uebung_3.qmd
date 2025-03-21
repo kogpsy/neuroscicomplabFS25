@@ -144,7 +144,7 @@ p
 Laden Sie folgende Dateien unter `Übung 3` auf Ilias hoch:
 
 - `dataset_random_dot_clean_initialen.csv`-File
-- `preprocessing_randomdot_initialen_initialen_initialen.R`
+- `preprocessing_random_dot_initialen_initialen_initialen.R`
 - `initialen_initialen_initialen_plot.R`
 - `.jpg` oder `.png` (oder anderes Bildformat) Ihres Plots
 
