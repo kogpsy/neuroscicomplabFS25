@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./webrconsole.html" rel="next">
+<link href="./gallery.html" rel="next">
 <link href="./data_visualization_2.html" rel="prev">
 <link href="./imgs/logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -280,6 +280,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Übung 3</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./gallery.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Galerie</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -357,6 +363,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Q&amp;A am 11. April 2025
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Bis am 7. April können Sie auf Ilias Fragen oder Themen hochladen, die noch einmal behandelt werden sollen.</p>
+<p><em>Beispiele:</em></p>
+<ul>
+<li><p><em>Wie könnnen einzelne Personen mit zu tiefen Accuracy-Werten aus dem Datensatz herausgefiltert werden?</em></p></li>
+<li><p><em>Können wir noch einmal ein Anwendungsbeispiel mit der Funktion <code>map_dfr()</code> durcharbeiten?</em></p></li>
+<li><p><em>Wie ändere ich am besten die Farben je nach Condition in einem Plot?</em></p></li>
+</ul>
+</div>
+</div>
 <section id="auftrag" class="level2">
 <h2 class="anchored" data-anchor-id="auftrag">Auftrag</h2>
 <p><strong>Teil A: Datapreprocessing-Pipeline </strong> Erstellen Sie eine automatisierte Datenverarbeitungs-Pipeline, die die Daten des Random Dot Experiments einlesen und vorverarbeiten.</p>
@@ -401,7 +426,7 @@ Tipp
 </div>
 </div>
 <ul>
-<li><p>Erstellen Sie ein neues <code>.R</code>-File und speichern Sie dieses unter <code>preprocessing_randomdot.Rmd</code> im Projekt-Ordner. Falls Sie in einer Gruppe arbeiten speichern Sie dieses mit den Initialen ab, z.B. <code>preprocessing_randomdot_initialen_initialen_initialen.R</code>.</p></li>
+<li><p>Erstellen Sie ein neues <code>.R</code>-File und speichern Sie dieses unter <code>preprocessing_random_dot.R</code> im Projekt-Ordner. Sie können auch ein <em>RNotebook</em> erstellen! Falls Sie in einer Gruppe arbeiten speichern Sie dieses mit den Initialen ab, z.B. <code>preprocessing_random_dot_initialen_initialen_initialen.R</code>.</p></li>
 <li><p><strong>a. Packages laden</strong>: Laden Sie das Package {tidyverse}.</p></li>
 <li><p><strong>b. Daten einlesen</strong> (<code>read.csv()</code>)</p></li>
 <li><p><strong>c.&nbsp;Daten filtern</strong>, so dass nur Experimenttrials im Datensatz sind, keine Übungsaufgaben. (<code>filter()</code>)</p></li>
@@ -424,7 +449,7 @@ Tipp
 <ul>
 <li>Löschen Sie nun alle Variablen in der RStudio Umgebung (<code>Environment</code>) mit dem Besen-Icon oben rechts und führen Sie den Code nochmals aus. Wenn alles funktioniert, fahren Sie weiter.</li>
 </ul></li>
-<li><p><strong>h. Datensatz speichern</strong>: Speichern Sie den neuen Datensatz (der jetzt <strong>alle</strong> Datensätze vorverarbeitet und zusammengefügt enthält) als <code>.csv</code>-File namens <code>dataset_rdk_clean_initialen.csv</code>.</p></li>
+<li><p><strong>h. Datensatz speichern</strong>: Speichern Sie den neuen Datensatz (der jetzt <strong>alle</strong> Datensätze vorverarbeitet und zusammengefügt enthält) als <code>.csv</code>-File namens <code>dataset_random_dot_clean_initialen.csv</code> in Ihren <code>data</code>-Ordner.</p></li>
 <li><p><strong>i. Gespeicherten Datensatz kontrollieren</strong>:</p>
 <ul>
 <li>Ihr Datensatz sollte nun wie untenstehend aussehen. <strong>Benutzen Sie dazu in Ihrem Code den Sie abgeben zwingend die Funktion <code>glimpse()</code></strong>. (Ohne <code>glimpse()</code> ist Ihre Abgabe ungültig.)</li>
@@ -458,7 +483,7 @@ $ rt        &lt;dbl&gt; 49.83123, 49.61717, 49.31203, 49.57549, 50.58607, 49.558
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code innerhalb der folgenden 2 Linien darf nicht verändert werden</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------------------------------------------------</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">'data/dataset_stroop_clean.csv'</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">'data/dataset_random_dot_clean.csv'</span>)</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------------------------------------------------</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Beginnen Sie hier mit Ihrem Code:</span></span>
@@ -484,7 +509,12 @@ $ rt        &lt;dbl&gt; 49.83123, 49.61717, 49.31203, 49.57549, 50.58607, 49.558
 <section id="hochladen-der-dateien-auf-ilias" class="level3">
 <h3 class="anchored" data-anchor-id="hochladen-der-dateien-auf-ilias">Hochladen der Dateien auf Ilias</h3>
 <p>Laden Sie folgende Dateien unter <code>Übung 3</code> auf Ilias hoch:</p>
-<pre><code>- `dataset_rdk_clean_initialen.csv`-File</code></pre>
+<ul>
+<li><code>dataset_random_dot_clean_initialen.csv</code>-File</li>
+<li><code>preprocessing_randomdot_initialen_initialen_initialen.R</code></li>
+<li><code>initialen_initialen_initialen_plot.R</code></li>
+<li><code>.jpg</code> oder <code>.png</code> (oder anderes Bildformat) Ihres Plots</li>
+</ul>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -495,7 +525,7 @@ Wichtig
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Ihr Plot und der dazugehörige Code wird in der <a href="https://kogpsy.github.io/neuroscicomplabFS24/pages/chapters/gallery.html">Galerie</a> anonym veröffentlich. Deshalb ist es wichtig, dass die oben aufgelisteten Voraussetzungen erfüllt sind.</p>
+<p>Ihr Plot und der dazugehörige Code wird in der <a href="./gallery.html">Galerie</a> anonym veröffentlich. Deshalb ist es wichtig, dass die oben aufgelisteten Voraussetzungen erfüllt sind.</p>
 </div>
 </div>
 <p><br></p>
@@ -1510,8 +1540,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./webrconsole.html" class="pagination-link" aria-label="WebR Konsole">
-        <span class="nav-page-text">WebR Konsole</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./gallery.html" class="pagination-link" aria-label="Galerie">
+        <span class="nav-page-text">Galerie</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

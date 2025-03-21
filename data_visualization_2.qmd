@@ -86,18 +86,6 @@ naniar::vis_miss(d)
 
 <aside>Bevor Sie das Package verwenden können, müssen Sie dies erst herunterladen. Sie können dies unter dem Reiter `Tools` > `Install Packages ...` tun oder in der Konsole mit `install.packages("naniar")`. </aside>
 
-:::callout-tip
-### Werte löschen
-
-Falls wir z.B. Zeilen mit fehlenden Werten hätten, könnten wir uns entschliessen diese Messungen zu löschen. Wichtig hierbei ist:
-
-- Datenpunkte werden __nie__ aus den Rohdaten gelöscht, sondern nur aus dem aktuell geladenen Datensatz, welcher für die Analysen verwendet und neu abgespeichert wurde. So können wir uns immer noch umentscheiden und verlieren nicht die Information, welche Daten gefehlt haben.
-
-- Dadurch, dass die Datenverarbeitung in _R_ mit reproduzierbarem Code geschrieben ist, können wir immer überprüfen, ob ein Fehler in unserer Datenverarbeitung zu den missings geführt hat und diesen evtl. korrigieren.
-
-- Es macht nicht immer Sinn die Trials mit missing data zu löschen! Dies muss von Fall zu Fall entschieden werden. Wenn Versuchspersonen zum Beispiel teilweise zu lange brauchten um eine Aufgabe zu lösen, dann ist das eine wichtige Information, wird diese rausgelöscht, wird die Leistung der Versuchsperson systematisch überschätzt.
-:::
-
 Für die Analyse schliessen wir alle Reaktionszeiten unter 100ms und über 8 Sekunden aus.
 
 ```{r}
@@ -137,7 +125,10 @@ acc_rt_individual |>
     theme_minimal()
 ```
 
-Wir schliessen alle Personen aus, die weniger als 40 gültige Trials hatten (in unserem Beispiel nicht nötig).
+Wir könnten alle Personen ausschliessen, die weniger als 40 gültige Trials hatten (in unserem Beispiel nicht nötig, da alle genügend Trials haben).
+
+::: {.callout-tip collapse="true"}
+## Code: Daten ausschliessen
 
 ```{r}
 #| message: false
@@ -167,6 +158,7 @@ d_acc_rt_individual |>
     geom_hline(yintercept = 40) + # Horizontale Linie einfügen
     theme_minimal()
 ```
+:::
 
 ### Extreme Datenpunkte (Ausreisser)
 
@@ -197,6 +189,39 @@ d_acc_rt_individual_grouped %>%
 
 
 <aside>Dasselbe könnte man für die Reaktionszeiten machen. Informationen dazu, wie Ausreisser in Reaktionszeiten gefunden und visualisiert werden können, finden Sie [hier](https://kogpsy.github.io/neuroscicomplab/07-mental-chronometry.html).</aside>
+
+
+### Werte löschen
+
+Es können einzelne Trials oder auch die gesamten Daten einer Versuchsperson ausgeschlossen werden, weil z.B. die Accuracy zu tief war, fehlende Werte bestanden, etc.
+
+Hierbei ist wichtig:
+
+- Datenpunkte werden __nie__ aus den Rohdaten gelöscht, sondern nur aus dem aktuell geladenen Datensatz, welcher für die Analysen verwendet und neu abgespeichert wurde. So können wir uns immer noch umentscheiden und verlieren nicht die Information, welche Daten gefehlt haben.
+
+- Dadurch, dass die Datenverarbeitung in _R_ mit reproduzierbarem Code geschrieben ist, können wir immer überprüfen, ob ein Fehler in unserer Datenverarbeitung zu den missings geführt hat und diesen evtl. korrigieren.
+
+- Es macht nicht immer Sinn die Trials mit missing data zu löschen! Dies muss von Fall zu Fall entschieden werden. Wenn Versuchspersonen zum Beispiel teilweise zu lange brauchten um eine Aufgabe zu lösen, dann ist das eine wichtige Information, wird diese rausgelöscht, wird die Leistung der Versuchsperson systematisch überschätzt.
+
+
+In unserem Beispiel macht es Sinn, die drei Versuchspersonen, die extrem tiefe Accuracy hatten (wahrscheinlich weil sie die Aufgabe falsch verstanden hatten) vor den Analysen aus dem Datensatz auszuschliessen.Zuerst schauen wir uns an, welche Versuchspersonen sehr tiefe `accuracy`-Werte hatten:
+
+```{r}
+acc_rt_individual |>
+    filter(accuracy < 0.33) # 0.33 ist das chance level
+```
+
+Dann schliessen wir diese 3 Personen aus. Hierbei empfiehlt es sich, den Code so zu kommentieren, dass man später direkt sieht, weshalb eine Person ausgeschlossen wurde.
+
+```{r}
+# Aussschluss dieser Personen
+d <- d |>
+    filter(id != "sub-009") |> # Ausschluss wegen zu tiefer Accuracy (< 0.33)
+    filter(id != "sub-180") |> # Ausschluss wegen zu tiefer Accuracy (< 0.33)
+    filter(id != "sub-201") # Ausschluss wegen zu tiefer Accuracy (< 0.33)
+```
+
+
 
 ### Verlaufseffekte: Ermüdung und Lernen
 

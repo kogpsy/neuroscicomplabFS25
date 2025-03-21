@@ -52,6 +52,7 @@ book:
     - data_visualization_1.qmd
     - data_visualization_2.qmd
     - uebung_3.qmd
+    - gallery.qmd
 
   - part: Datenanalyse
     #chapters:

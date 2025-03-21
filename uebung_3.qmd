@@ -1,5 +1,20 @@
 # Übung 3 {.unnumbered}
 
+:::callout-tip
+## Q&A am 11. April 2025
+
+Bis am 7. April können Sie auf Ilias Fragen oder Themen hochladen, die noch einmal behandelt werden sollen. 
+
+_Beispiele:_
+
+- _Wie könnnen einzelne Personen mit zu tiefen Accuracy-Werten aus dem Datensatz herausgefiltert werden?_
+
+- _Können wir noch einmal ein Anwendungsbeispiel mit der Funktion `map_dfr()` durcharbeiten?_
+
+- _Wie ändere ich am besten die Farben je nach Condition in einem Plot?_
+
+:::
+
 ## Auftrag
 
 __Teil A: Datapreprocessing-Pipeline __ Erstellen Sie eine automatisierte Datenverarbeitungs-Pipeline, die die Daten des Random Dot Experiments einlesen und vorverarbeiten. 
@@ -37,7 +52,7 @@ Am besten erstellen Sie zuerst für __einen__ Datensatz einen funktionierenden V
 Das Einlesen kann eine Weile dauern, es sind sehr viele Datensätze.
 :::
 
-- Erstellen Sie ein neues `.R`-File und speichern Sie dieses unter `preprocessing_randomdot.Rmd` im Projekt-Ordner. Falls Sie in einer Gruppe arbeiten speichern Sie dieses mit den Initialen ab, z.B. `preprocessing_randomdot_initialen_initialen_initialen.R`.
+- Erstellen Sie ein neues `.R`-File und speichern Sie dieses unter `preprocessing_random_dot.R` im Projekt-Ordner. Sie können auch ein _RNotebook_ erstellen! Falls Sie in einer Gruppe arbeiten speichern Sie dieses mit den Initialen ab, z.B. `preprocessing_random_dot_initialen_initialen_initialen.R`.
 
 - __a. Packages laden__: Laden Sie das Package {tidyverse}.
     
@@ -68,7 +83,9 @@ Das Einlesen kann eine Weile dauern, es sind sehr viele Datensätze.
     - Löschen Sie nun alle Variablen in der RStudio Umgebung (`Environment`) mit dem Besen-Icon oben rechts und führen Sie den Code nochmals aus. Wenn alles funktioniert, fahren Sie weiter.
     
 
-- __h. Datensatz speichern__: Speichern Sie den neuen Datensatz (der jetzt __alle__ Datensätze vorverarbeitet und zusammengefügt enthält) als `.csv`-File namens `dataset_rdk_clean_initialen.csv`.
+- __h. Datensatz speichern__: Speichern Sie den neuen Datensatz (der jetzt __alle__ Datensätze vorverarbeitet und zusammengefügt enthält) als `.csv`-File namens `dataset_random_dot_clean_initialen.csv` in Ihren `data`-Ordner.
+
+
 
 - __i. Gespeicherten Datensatz kontrollieren__:
 
@@ -79,7 +96,7 @@ library(tidyverse)
 ```
 
 ```{r echo=FALSE}
-d <- read.csv("data/dataset_random_dot_clean.csv")
+d <- read.csv("data/dataset_random_dot_clean.csv") # oder mit Initialen
 glimpse(d)
 ```
 
@@ -103,7 +120,7 @@ glimpse(d)
 # Code innerhalb der folgenden 2 Linien darf nicht verändert werden
 # ---------------------------------------------------------------------
 library(tidyverse)
-d = read_csv('data/dataset_stroop_clean.csv')
+d = read_csv('data/dataset_random_dot_clean.csv')
 # ---------------------------------------------------------------------
 
 # Beginnen Sie hier mit Ihrem Code:
@@ -126,12 +143,15 @@ p
 
 Laden Sie folgende Dateien unter `Übung 3` auf Ilias hoch:
 
-    - `dataset_rdk_clean_initialen.csv`-File
+- `dataset_random_dot_clean_initialen.csv`-File
+- `preprocessing_randomdot_initialen_initialen_initialen.R`
+- `initialen_initialen_initialen_plot.R`
+- `.jpg` oder `.png` (oder anderes Bildformat) Ihres Plots
 
 
 :::{.callout-caution}
 ## Wichtig
-Ihr Plot und der dazugehörige Code wird in der [Galerie](https://kogpsy.github.io/neuroscicomplabFS24/pages/chapters/gallery.html) anonym veröffentlich. Deshalb ist es wichtig, dass die oben aufgelisteten Voraussetzungen erfüllt sind. 
+Ihr Plot und der dazugehörige Code wird in der [Galerie](gallery.qmd) anonym veröffentlich. Deshalb ist es wichtig, dass die oben aufgelisteten Voraussetzungen erfüllt sind. 
 :::
 
 <br>
