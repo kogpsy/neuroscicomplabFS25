@@ -83,8 +83,10 @@ Das Einlesen kann eine Weile dauern, es sind sehr viele Datensätze.
     - Löschen Sie nun alle Variablen in der RStudio Umgebung (`Environment`) mit dem Besen-Icon oben rechts und führen Sie den Code nochmals aus. Wenn alles funktioniert, fahren Sie weiter.
     
 
-- __h. Datensatz speichern__: Speichern Sie den neuen Datensatz (der jetzt __alle__ Datensätze vorverarbeitet und zusammengefügt enthält) als `.csv`-File namens `dataset_random_dot_clean_initialen.csv` in Ihren `data`-Ordner.
+- __h. Datensatz speichern__: 
 
+    - __Datensatz für Ilias:__ Speichern Sie den neuen Datensatz (der jetzt __alle__ Datensätze vorverarbeitet und zusammengefügt enthält) als `.csv`-File namens `dataset_random_dot_clean_initialen.csv` in Ihren `data`-Ordner.
+    - __Datensatz fürs Visualisieren:__ Speichern Sie den Datensatz als `dataset_random_dot_clean.csv` im `data`-Ordner ab.
 
 
 - __i. Gespeicherten Datensatz kontrollieren__:

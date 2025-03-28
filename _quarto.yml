@@ -96,7 +96,7 @@ filters:
   - webr
 
 execute:
-  cache: true
+  cache: false
   freeze: false # re-render only when source changes
   execute-dir: project
 
