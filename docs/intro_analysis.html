@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>License and Authorship – Neurowissenschaft Computerlab</title>
+<title>12&nbsp; Datengenerierende Prozesse – Neurowissenschaft Computerlab</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,7 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./webrconsole.html" rel="prev">
+<link href="./parameterestimates.html" rel="next">
+<link href="./gallery.html" rel="prev">
 <link href="./imgs/logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -114,7 +149,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./webrconsole.html">Anhang</a></li><li class="breadcrumb-item"><a href="./license.html">License and Authorship</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_analysis.html">Datenanalyse</a></li><li class="breadcrumb-item"><a href="./intro_analysis.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Datengenerierende Prozesse</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -293,7 +328,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro_analysis.html" class="sidebar-item-text sidebar-link">
+  <a href="./intro_analysis.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Datengenerierende Prozesse</span></span></a>
   </div>
 </li>
@@ -332,7 +367,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./license.html" class="sidebar-item-text sidebar-link active">
+  <a href="./license.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">License and Authorship</span></a>
   </div>
 </li>
@@ -343,20 +378,32 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#herausforderungen-in-der-analyse-von-neurowissenschaftlichen-daten" id="toc-herausforderungen-in-der-analyse-von-neurowissenschaftlichen-daten" class="nav-link active" data-scroll-target="#herausforderungen-in-der-analyse-von-neurowissenschaftlichen-daten"><span class="header-section-number">12.1</span> Herausforderungen in der Analyse von neurowissenschaftlichen Daten</a></li>
+  <li><a href="#vorbereitung" id="toc-vorbereitung" class="nav-link" data-scroll-target="#vorbereitung"><span class="header-section-number">12.2</span> Vorbereitung</a></li>
+  <li><a href="#datengenerierende-prozesse" id="toc-datengenerierende-prozesse" class="nav-link" data-scroll-target="#datengenerierende-prozesse"><span class="header-section-number">12.3</span> Datengenerierende Prozesse</a>
+  <ul class="collapse">
+  <li><a href="#directed-acyclic-graphs-dags" id="toc-directed-acyclic-graphs-dags" class="nav-link" data-scroll-target="#directed-acyclic-graphs-dags"><span class="header-section-number">12.3.1</span> Directed Acyclic Graphs (DAGs)</a></li>
+  </ul></li>
+  <li><a href="#datensimulation" id="toc-datensimulation" class="nav-link" data-scroll-target="#datensimulation"><span class="header-section-number">12.4</span> Datensimulation</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
+<main class="content page-columns page-full column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./webrconsole.html">Anhang</a></li><li class="breadcrumb-item"><a href="./license.html">License and Authorship</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_analysis.html">Datenanalyse</a></li><li class="breadcrumb-item"><a href="./intro_analysis.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Datengenerierende Prozesse</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">License and Authorship</h1>
+<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Datengenerierende Prozesse</span></h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-right">
+<div class="quarto-title-meta column-body">
 
     
   
@@ -368,27 +415,261 @@ window.Quarto = {
 </header>
 
 
-<p>This course material is written by Gerda Wyssen &amp; Enea Weber…</p>
-<p>…and (sometimes heavily!) adapted from previous course material from</p>
+<p>In der Forschung und Diagnostik interessieren uns oft Eigenschaften eines Prozesses oder einer Person, welche wir nicht direkt messen können. Testverfahren und Experimente werden angewendet, um diese latenten Variablen messbar zu machen. Mit statistischen Verfahren wird dann versucht aus den gemessenen Daten Informationen über die nicht direkt messbare Eigenschaft zu erhalten.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<section id="herausforderungen-in-der-analyse-von-neurowissenschaftlichen-daten" class="level2 page-columns page-full" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="herausforderungen-in-der-analyse-von-neurowissenschaftlichen-daten"><span class="header-section-number">12.1</span> Herausforderungen in der Analyse von neurowissenschaftlichen Daten</h2>
+<p>Neurowissenschaftliche Datensätze bringen oft folgende Herausforderungen in der Datenanalyse mit sich:</p>
 <ul>
-<li><strong>Andrew Ellis</strong>
+<li><p>Kleine Stichprobengrössen (z.B. aufgrund teurer Datenerhebung oder Patientengruppen die schwieriger zu rekrutieren sind).</p></li>
+<li><p>Heterogenität / Rauschen (z.B. weil der zu untersuchende Prozess schwierig zu isolieren ist, weil Personen sich sehr unterschiedlich verhalten)</p></li>
+<li><p>Teure Datenerhebung und damit hoher Druck Resultate zu generieren sowie oft keine Möglichkeit das Experiment zu wiederholen (wichtig daher die gute Planung der Analyse sowie Vermeidung von inkonklusive Resultaten)</p></li>
+<li><p>Vorgehen bei nicht-signifikanten/nicht-konklusiven Ergebnissen (Research waste, publication bias/file drawer effect)</p></li>
+</ul>
+<aside>
+Im Artikel <em>Power failure: why small sample size undermines the reliability of neuroscience</em> von Button et al.&nbsp;<a href="https://www.nature.com/articles/nrn3475">2013</a> finden Sie einen Artikel über die Problematik von kleinen Stichprobengrössen in Neuroscience
+</aside>
+<p>Ziel ist es, trotz diesen Umständen, <strong>möglichst viel</strong> Information aus den vorhandenen Daten zu gewinnen. Hierbei spielt die Analysemethode eine wichtige Rolle.</p>
+<section id="absence-of-evidence-oder-evidence-of-absence" class="level4">
+<h4 class="anchored" data-anchor-id="absence-of-evidence-oder-evidence-of-absence"><em>Absence of evidence</em> oder <em>Evidence of absence</em>?</h4>
+<p>Bei Nullhypothesen-Signifikanztests (NHST) wird eine binäre Entscheidung getroffen: Der Hypothesentest kann entweder ein signifikantes oder ein nicht signifikantes Ergebnis haben. Kann kein Effekt gefunden werden besteht die Notwendigkeit zu unterscheiden zwischen den zwei Möglichkeiten: - <em>Absence of evidence</em>: Es ist unklar ob es einen Effekt gibt oder nicht. Die Ergebnisse des Verfahrens sind <em>inkonklusiv</em>. - <em>Evidence of absence</em>: Es ist klar, dass es keinen Effekt gibt. Die Daten zeigen dies deutlich.</p>
+<p>Zum Unterscheiden dieser zwei Fälle eignen sich die typischen NHSTs oft weniger, gerade wenn die Power nicht sehr hoch war. Bayesianische Statistik (z.B. bei begrenzten Datensätzen) sowie frequentistische Äquivalenztests (zwei entgegengesetzte NHSTs zum Testen von Nullunterschieden) sind Ansätze, um zwischen <em>absence of evidence</em> und <em>evidence of absence</em> zu unterscheiden.</p>
+<p>Wir werden uns in den folgenden Veranstaltungen deshalb damit auseinandersetzen,</p>
 <ul>
-<li><a href="https://kogpsy.github.io/neuroscicomplab/">Complab 2021</a><br>
-</li>
-<li><a href="https://kogpsy.github.io/neuroscicomplabFS22/">Complab 2022</a></li>
-<li><a href="https://kogpsy.github.io/neuroscicomplabFS23/">Complab 2023</a></li>
-</ul></li>
-<li><strong>Daniel Fitze</strong>
+<li><p>welche Annahmen hinter statistischen Verfahren stecken.</p></li>
+<li><p>welche Fragen mit Bayesianischer Statistik beantwortet werden können.</p></li>
+<li><p>wie Nullunterschiede statistisch getestet werden können.</p></li>
+</ul>
+</section>
+</section>
+<section id="vorbereitung" class="level2 page-columns page-full" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="vorbereitung"><span class="header-section-number">12.2</span> Vorbereitung</h2>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hands-on: Reaktivierung Statistikwissen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>1. Besprechen Sie in kleinen Gruppen folgende Fragen:</strong></p>
 <ul>
-<li><a href="https://kogpsy.github.io/neuroscicomplabFS24/">Complab 2024</a></li>
+<li><p>Was ist eine <em>Null-</em>, was eine <em>Alternativhypothese</em>?</p></li>
+<li><p>Was bedeutet die Distanz zwischen den beiden Mittelwerten?</p></li>
+<li><p>Was ist statistische <em>Power</em>?</p></li>
+<li><p>Welche Rolle spielt die Stichprobengrösse?</p></li>
+<li><p>Was ist ein <em>p-Wert</em>?</p></li>
+<li><p>Was sind <em>Typ I</em> und <em>Typ II</em> Fehler?</p></li>
+<li><p>Welche Fragen können Sie mit einem <em>Nullhypothesen- Signifikanztest (NHST)</em> beantworten?</p></li>
+</ul>
+<p><strong>2. Können Sie die Begrifflichkeiten in dieser Grafik einordnen?</strong></p>
+<p><img src="imgs/reactivationstatistics.png" class="img-fluid"></p>
+<ol start="3" type="1">
+<li>Überlegen Sie sich, was Null- und Alternativhypothese in unseren beiden Kursexperimenten (<em>Stroop</em> und <em>Random Dot</em>) sein können.</li>
+</ol>
+<p><em>[10 Minuten]</em></p>
+</div>
+</div>
+<aside>
+Sie können zur Beantwortung dieser Fragen z.B. die <a href="https://rpsychologist.com/d3/nhst/">Interaktive Visualisierung “Understanding Statistical Power and Significance Testing”</a> nutzen.
+</aside>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Projekt und Daten herunterladen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="data/dataset_stroop_clean.csv">Hier</a> finden Sie die Daten zum herunterladen.</p>
+<p>Lesen Sie anschliessend die Daten ein:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Daten einlesen</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>d_stroop <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/dataset_stroop_clean.csv"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.character), as.factor)) <span class="sc">|&gt;</span> <span class="co"># zu Faktoren machen</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(rt <span class="sc">&lt;</span> <span class="dv">4</span> <span class="sc">&amp;</span> rt <span class="sc">&gt;=</span> <span class="fl">0.1</span>) <span class="sc">|&gt;</span> <span class="co"># nur Antworten zwischen 100 und 4000ms einbeziehen</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(corr <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="co"># nur korrekte Antworten einbeziehen</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">na.omit</span>() <span class="co"># Messungen mit missings weglassen</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="datengenerierende-prozesse" class="level2 page-columns page-full" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="datengenerierende-prozesse"><span class="header-section-number">12.3</span> Datengenerierende Prozesse</h2>
+<p>Nach dem Data Cleaning und Preprocessing geht es darum, welche Informationen die Daten über den zu untersuchenden Prozess beinhalten. Anhand der Daten sollen also Rückschlüsse auf den <em>datengenerierenden Prozess</em>, der zu diesen Daten geführt hat gezogen werden.</p>
+<p>Bei jeder Datenanalyse müssen zahlreiche Annahmen getroffen werden. Um diese explizit zu machen und auch die Datenanalyse zu planen, hilft oft eine grafische Darstellung. Directed Acyclic Graphs (DAGs) sind eine Variante hierfür.</p>
+<section id="directed-acyclic-graphs-dags" class="level3 page-columns page-full" data-number="12.3.1">
+<h3 data-number="12.3.1" class="anchored" data-anchor-id="directed-acyclic-graphs-dags"><span class="header-section-number">12.3.1</span> Directed Acyclic Graphs (DAGs)</h3>
+<p>Ein DAG (<em>directed acyclic graph</em>) eignet sich für die Darstellung komplexer Zusammenhänge in Daten und Prozessen. Mit einem DAG kann veranschaulicht werden, welche Variablen einander beeinflussen. Die Kreise (<em>nodes</em>) werden für einzelne Elemente verwendet und die Pfeile (<em>arrows</em> oder <em>edges</em>) beschreiben die Beziehung zwischen den Elementen. Die Darstellung beschreibt einen Prozess also mit gerichteten (<em>directed</em>) und nicht zyklischen (<em>acyclic</em>) Beziehungen.</p>
+<p><em>Wir können beispielsweise annehmen, dass die Farbe-Wort-Kongruenz im Stroop Task beeinflusst, wie schnell die Aufgabe gelöst werden kann.</em></p>
+<p>Ein DAG kann mit folgenden Schritten erstellt werden:</p>
+<section id="beobachtete-variable-bestimmen" class="level4">
+<h4 class="anchored" data-anchor-id="beobachtete-variable-bestimmen">1. Beobachtete Variable bestimmen</h4>
+<p>Die beobachtete Variable nennen wir hier <span class="math inline">\(y\)</span>. Der Kreis ist grau eingefärbt, weil die Werte in dieser Variable gemessen wurden bzw. bekannt sind.</p>
+<p><em>In unserem Beispiel haben wir die Reaktionszeit gemessen. Im Datensatz enthält die Variable <code>rt</code> die Information, wie schnell eine Person in jedem Trial geantwortet hat.</em></p>
+</section>
+<section id="verteilung-bestimmen" class="level4 page-columns page-full">
+<h4 class="anchored" data-anchor-id="verteilung-bestimmen">2. Verteilung bestimmen</h4>
+<p>Es muss festgelegt werden, welche Verteilung die Daten <span class="math inline">\(y\)</span> am besten beschreibt. Eine Verteilung ist immer <strong>nur eine Annäherung</strong>. Die gemessenen Daten entsprechen dieser Annahme eigentlich nie perfekt. Es geht darum eine Verteilung zu finden die <em>gut genug</em> zu den Daten passt. Jede Verteilung hat Parameter, die geschätzt werden können. Es gibt Verteilungen, welche durch einen Parameter definiert werden, andere brauchen mehrere Parameter.</p>
+<p>Eine sehr häufig verwendete Verteilung in statistischen Analysen ist die Normalverteilung. Die Annahme einer Normalverteilung ermöglicht es uns, mit nur 2 Parametern die Daten in der Variable zu beschreiben: Dem Mittelwert (<span class="math inline">\(\mu\)</span>) und der Standardabweichung (<span class="math inline">\(\sigma\)</span>). Natürlich ist das nur eine Annäherung, aber meistens eine genügend Gute!</p>
+<aside>
+Hier im <a href="https://ben18785.shinyapps.io/distribution-zoo/">Distribution Zoo</a> werden Verteilungen, zugrundeliegende Daten sowie Code und Formeln zusammengefasst.
+</aside>
+<p><img src="imgs/dag_normal.png" class="img-fluid"></p>
+<p><em>Um die Verteilung unserer Datenpunkte zu bestimmen bzw. zu überprüfen können die Daten in <em>R</em> geplottet werden, z.B. mit <code>geom_histogram()</code>. Das Argument <code>binwidth =</code> bestimmt, wie breit ein Balken wird (hier 50 ms).</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>d_stroop <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> rt)) <span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">colour=</span><span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"white"</span>, </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">binwidth =</span> <span class="fl">0.05</span>, </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="intro_analysis_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><em>Diese Verteilung könnte beispielsweise mit einer Normalverteilung beschrieben werden. Der Mittelwert und die Standardabweichung können wir mit <em>R</em> berechnen:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># clean dataset first</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">=</span> <span class="fu">mean</span>(d_stroop<span class="sc">$</span>rt)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>mu</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7465929</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">=</span> <span class="fu">sd</span>(d_stroop<span class="sc">$</span>rt)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>sigma</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3455337</code></pre>
+</div>
+</div>
+<p>Um zu schauen, wie gut diese Normalverteilung mit den Parametern <span class="math inline">\(\mu\)</span> = 0.7465929 und <span class="math inline">\(\sigma\)</span> = 0.3455337 unsere Daten beschreibt, können wir die Daten und simulierte Daten mit der angenommenenen Verteilung übereinander plotten:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>d_stroop <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> rt)) <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">colour=</span><span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"white"</span>, </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">binwidth =</span> <span class="fl">0.05</span>, </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(rt), mu, sigma)),</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                   <span class="at">binwidth =</span> <span class="fl">0.05</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                   <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="intro_analysis_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Wir können auch <code>density</code>-Plots dafür nutzen:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>d_stroop <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> rt)) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="at">colour=</span><span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(rt), mu, sigma)),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill=</span><span class="st">"grey"</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="intro_analysis_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hands-on: Verteilungen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Welche Daten stammen aus unseren Daten, welche entsprechen der Normalverteilung <span class="math inline">\(N(0.747, 0.346)\)</span> ?</p></li>
+<li><p>Wie gut passt die Annahme der Normalverteilung für unsere Reaktionszeitdaten? Wo passt sie gut? Wo nicht?</p></li>
+<li><p>Finden Sie auf <a href="https://ben18785.shinyapps.io/distribution-zoo/">Distribution Zoo</a> eine passendere Verteilung?</p></li>
+<li><p>Prüfen Sie Ihre Verteilung, indem Sie unten an den obigen Plot diese Verteilung mit gewählten Parametern folgenden Code einfügen.</p>
+<ul>
+<li><p>Wählen Sie dazu eine Verteilung und passende Parameter auf Distribution Zoo aus.</p></li>
+<li><p>Schauen Sie unter dem Reiter <code>Code</code> mit welcher Funktion die Daten in <code>R</code> generiert werden können. Wählen Sie <code>Language: R</code> und <code>Property: random sample of size n</code> aus.</p></li>
+<li><p>Kopieren Sie die Funktion und ersetzen Sie <code>rnorm(1:length(rt), mu, sigma)</code> in unserem R-Code für das Histogram oder den Density-Plot mit Ihrer neuen Funktion. Das <code>n</code> müssen Sie wieder <code>1:length(rt)</code> nennen.</p></li>
 </ul></li>
 </ul>
-<p><br></p>
-<p>The course experiments and their descriptions were created by <strong>Rebekka Borer</strong> (Complab 2024-2025)</p>
-<p><br> <strong>We also thank all previous students who gave valuable feedback on the course and material!</strong></p>
-<p><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.</p>
+<p><em>[10 Minuten]</em></p>
+</div>
+</div>
+<p>Bei Reaktionszeiten ist die Verteilung gar nicht so einfach anzupassen: <a href="https://lindeloev.shinyapps.io/shiny-rt">Hier</a> finden Sie “besser” geeignete Verteilungen, sowie die Möglichkeit für einen vorgegebenen Datensatz oder Ihre eigenen Daten Parameterwerte anzupassen.</p>
+</section>
+<section id="weitere-einflussfaktoren" class="level4">
+<h4 class="anchored" data-anchor-id="weitere-einflussfaktoren">3. Weitere Einflussfaktoren</h4>
+<p>In einem DAG können auch weitere Informationen, zum Beispiel Bedingungen sowie Messwiederholungen, hinzugefügt werden.</p>
+<p><em><span class="math inline">\(\mu\)</span> kann sich zum Beispiel in Abhängigkeit der Bedingung (<code>condition</code>) verändern, also je nachdem ob die angezeigte Farbe kongruent war oder nicht.</em></p>
+<p>Wenn wir nun den Einfluss der Bedingung untersuchen möchten, könnten wir uns fragen, wie stark diese eine Veränderung im Wert <span class="math inline">\(\mu\)</span> bewirkt. Genau dies tun wir z.B. bei Mittelwertsvergleichen wie z.B. bei <em>t</em>-Tests.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hands-on: DAG zeichnen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Wie würde ein DAG für die <code>accuracy</code> (Korrektheit) der Stroop-Daten aussehen?</p>
+<p>Gehen Sie wie folgt vor:</p>
+<ul>
+<li><p>Was ist bekannt/wurde gemessen?</p></li>
+<li><p>Welche Verteilung beschreibt die Daten gut?</p></li>
+<li><p>Welche Parameter müssen geschätzt werden?</p></li>
+</ul>
+<p><em>[5 Minuten]</em></p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="datensimulation" class="level2 page-columns page-full" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="datensimulation"><span class="header-section-number">12.4</span> Datensimulation</h2>
+<p>Sich Gedanken zum datengenerierenden Prozess zu machen (wie beispielsweise mit einem aufgezeichneten Modell) hilft nicht nur in der Planung der Datenanalyse, sondern ermöglicht u.a. auch das Simulieren von Daten.</p>
+<p><strong>Mögliche Schritte in der Datensimulation</strong> <img src="imgs/datasimulations.png" class="img-fluid"></p>
+<aside>
+<a href="https://shiny.psy.gla.ac.uk/debruine/fauxapp/">Shiny-App für Datensimulation</a>
+</aside>
+<p>Datensimulation ist nützlich für:</p>
+<ul>
+<li><p>Die Vorbereitung von Präregistrationen und Registered Reports</p></li>
+<li><p>Testen/Debugging von Analysekripten (weil die <em>ground truth</em> bekannt ist)</p></li>
+<li><p>Power für komplexe Modelle schätzen</p></li>
+<li><p>Erstellen von reproduzierbaren Beispielsdatensätzen (für Demos, Lehre, oder wenn echte Datensätze nicht veröffentlicht werden können)</p></li>
+<li><p>Prior distribution checks in der Bayesianischen Statistik</p></li>
+<li><p>Verstehen von Modellen und Statistik</p></li>
+</ul>
+<aside>
+<a href="https://debruine.github.io/talks/EMPSEB-fake-it-2023">Weitere Infos</a> zu Datensimulation
+</aside>
+<p>Um Hypothesen zu testen, müssen selbstverständlich <strong>nicht simulierte</strong> Daten erhoben werden! <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Uns kann beispielsweise die Aufmerksamkeitsleistung interessieren, welche wir mit einem Testverfahren für Aufmerksamkeit zu messen versuchen. Eine Neurowissenschaftlerin, welche sich für den Prozess von Aufmerksamkeit interessiert, würde versuchen die Aufmerksamkeitsleistung von vielen Leuten unter verschiedenen Bedingungen zu messen um zu untersuchen, durch was Aufmerksamkeit beeinflusst wird. Ein klinischer Neuropsychologe hingegen hätte vielleicht das Ziel festzustellen, ob die Aufmerksamkeitsleistung einer Person von der Norm abweicht, beispielsweise weil sie durch einen Unfall eine Kopfverletzung erlitten hat. Beide messen Daten und beide ziehen aus den gemessenen Daten Rückschlüsse auf eine unterliegende Eigenschaft eines Prozesses oder einer Person.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://www.science.org/content/article/dutch-university-sacks-social-psychologist-over-faked-data">https://www.science.org/content/article/dutch-university-sacks-social-psychologist-over-faked-data</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
 </main> <!-- /main -->
 <script>
@@ -1372,13 +1653,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation column-page-right">
+<nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="./webrconsole.html" class="pagination-link" aria-label="WebR Konsole">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">WebR Konsole</span>
+      <a href="./gallery.html" class="pagination-link" aria-label="Galerie">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Galerie</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./parameterestimates.html" class="pagination-link" aria-label="Parameterschätzung: Einführung in die Bayesianische Statistik">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Parameterschätzung: Einführung in die Bayesianische Statistik</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

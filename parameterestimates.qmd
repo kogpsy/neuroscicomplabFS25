@@ -1,0 +1,177 @@
+# Parameterschätzung: Einführung in die Bayesianische Statistik
+
+Nach dem Data Cleaning und Preprocessing geht es darum, welche Informationen die Daten über den zu untersuchenden Prozess beinhalten.
+Anhand der Daten sollen also Rückschlüsse auf den Prozess der zu diesen Daten geführt hat geschlossen werden. 
+Dies wird mit folgenden Schritten gemacht
+
+1. __Parameterschätzung__: Bei der Parameterschätzung wird ein Wert des datengenerierenden Prozesses geschätzt. Sie erlaubt das Quantifizieren eines Parameters, also eines Werts, der wahrscheinlich den Daten zugrundeliegt. Beispiel: Die Schätzung eines Mittelwerts (Parameter) einer Normalverteilung.
+
+2. __Hypothesentests__: Hypothesentests vergleichen zwei statistische Modelle. Sie erlauben eine Entscheidung, z.B. ob ein signifikanter Unterschied vorhanden ist oder nicht? Um diese Entscheidung zu treffen muss eine "Fehlerwahrscheinlichkeit" bestimmt werden. (Wie sicher will ich sein?)
+
+## Frequentistische und Bayesianische Parameterschätzung
+
+In der Frequentistischen Statistik wird angenommen, dass ein Parameter einen wahren (aber unbekannten) Wert hat. 
+Die frequentistische Parameterschätzung ergibt eine Punktschätzung: Der geschätzte Parameter hat damit genau __einen__ Wert und keine Wahrscheinlichkeitsverteilung. 
+Daher dürfen keine Aussagen über eine Wahrscheinlichkeitsverteilung des Parameters bzw. die Wahrscheinlichkeit eines Parameterswerts gemacht werden. Nur Ereignisse die wiederholt werden können eine Wahrscheinlichkeit (eine Häufigkeitsverteilung) haben.
+
+In der Bayesianischen Statistik hingegen wird für jeden möglichen Parameterwert geschätzt, wie wahrscheinlich dieser einzelne Wert ist in Anbetracht der Vorannahmen (Priors) und der Daten. 
+Das bedeutet, wir erhalten für jeden dieser Werte gleichzeitig auch eine Wahrscheinlichkeit mit der dieser zutrifft.
+Die Zusammenfassung aller geschätzten Werte und deren Wahrscheinlichkeiten wird in der _Posterior-Verteilung_ zusammengefasst. 
+Die Posterior Wahrscheinlichkeit beschreibt unser _degree of belief_, also unser aktuelles Wissen darüber, wie wahrscheinlich dieser Parameterwert wirklich hinter den Daten steckt. 
+
+:::callout-caution
+
+## Hands-on: Frequentistisch oder Bayesianisch?
+
+Ordnen Sie die untenstehenden Aussagen dem frequentistischen bzw. dem baysianischen Ansatz zu:
+
+- "Der Mittelwert liegt mit 95%-iger Wahrscheinlichkeit zwischen 0.75 und 0.85 Sekunden."
+
+- "Wenn das Experiment 100 Mal wiederholt wird, ist der wahre Mittelwert in 95% der Konfidenzintervalle enthalten."
+
+:::
+
+Wir schauen uns die unterschiedlichen Ansätze der Parameterschätzung im Folgenden an einem Beispiel an. Wir haben bei einer Person z.B. beobachtet, dass sie in 15 von 20 Trials korrekt geantwortet hat.
+
+```{r}
+correct <- 15 # Anzahl korrekter Antworten
+trials <- 20 # Anzahl Trials insgesamt
+```
+
+### Maximum-Likelihood Schätzung
+
+$\theta$ ist der Parameterwert unter dem die beobachteten Daten am wahrscheinlichsten entstanden sind. Die beste Punktschätzung des Parameters $\theta$, die wir machen können, wenn wir nur die Daten betrachten, und kein weiteres Vorwissen berücksichtigen, ist die Maximum-Likelihood Schätzung. 
+
+Möchten wir also z.B. schätzen mit welcher Wahrscheinlichkeit die Person beim nächsten Trial eine richtige Antwort gibt, können wir dies aus den bisherigen Trials berechnen:
+
+$$\theta = correct / all $$ 
+
+Wenn die Person in insgesamt 20 Trials 15 Mal richtig geantwortet hat, wäre die Schätzung
+
+$\theta = 15 / 20 = 0.75$
+
+```{r}
+theta <- correct / trials
+theta
+```
+Wir erhalten eine Punktschätzung (__einen__ Wert), die uns angibt mit welcher Wahrscheinlichkeit die Person beim nächsten Trial richtig antworten wird, nämlich 0.75 bzw. sie wird in 3/4 der Fälle richtig antworten.
+
+Wenn man ganz viele Male diese Spiele wiederholen würde, dann würde man diese Messung am wahrscheinlichsten reproduzieren können, wenn man für $\theta$ den Wert `r theta` einsetzt. 
+
+Der grosse Nachteil einer Punktschätzung ist es, dass wir keine  Wahrscheinlichkeitsverteilung erhalten. 
+Es gäbe auch noch viele andere Parameterwerte, die dieses Ergebnis von 15 korrekten Antworten in 20 Trials hervorbringen könnten, z.B. $\theta = 0.73$ oder $\theta = 0.78$.
+Diese werden bei der Punktschätzung nicht beachtet. 
+
+Um das zu veranschaulichen plotten wir die Wahrscheinlichkeit von 15 korrekten Antworten in 20 Trials für alle Werte welche $\theta$ annehmen könnte. Diese Werte liegen zwischen 0 und 1, da wir von einer Wahrscheinlichkeit sprechen.
+
+```{r message = FALSE, warning = FALSE}
+library(tidyverse)
+```
+
+```{r echo=TRUE}
+tibble(x = seq(from = 0, to = 1, by = .01)) |>
+    mutate(density = dbinom(15, 20, x)) |>
+    ggplot(aes(x = x, ymin = 0, ymax = density)) +
+    geom_ribbon(alpha = 0.2, fill = "steelblue") +
+    geom_vline(xintercept = theta, linetype = 2, linewidth = 1.2) +
+    scale_y_continuous(NULL, breaks = NULL) +
+    coord_cartesian(xlim = c(0, 1)) +
+    labs(x = expression(paste("Geschätzter Wert von ", theta))) +
+    theme_minimal()
+```
+Die Punktschätzung von $\theta$ wird mit der schwarzen gestrichelten Linie dargestellt. Die hellblaue Fläche zeigt, wie wahrscheinlich die einzelnen Werte jeweils sind (hier abgebildet sehen Sie _relative_ Wahrscheinlichkeiten).
+
+:::callout-caution
+
+## Hands-on: Punktschätzung 
+
+Diskutieren Sie in kleinen Gruppen, wie sinnvoll es ist sich hier auf einen Wert festzulegen:
+
+- Wie genau denken Sie bildet die Punktschätzung die Realität ab?
+
+- Wie viel wahrscheinlicher ist das berechnete $\theta = 0.75$ im Vergleich zu $\theta = 0.70$?
+
+- Was kann das Schätzen der Wahrscheinlichkeit für alle Parameterwerte für einen Mehrwert bringen?
+
+- Wo kann eine Punktschätzung einen Mehrwert haben?
+:::
+
+### Posterior-Schätzung in der Bayesianischen Statistik
+
+In der Bayesianischen Statistik wird die Wahrscheinkeitslehre angewandt, um die Wahrscheinlichkeit von Parameterwerten zu berechnen. Im Gegensatz zu der Frequentistischen Statistik wird nicht nur ein "wahrer Wert" geschätzt, sondern eine Verteilung. 
+Es wird also für jeden möglichen Parameterwert eine Wahrscheinlichkeit geschätzt. 
+
+Der Posterior wird über alle möglichen Parameterwerte integriert, was eine grösse Stärke der Bayesian Statistik ist. 
+So wird nicht nur der wahrscheinlichste Parameterwert berücksichtigt wie bei der Punktschätzung, sondern durch das Einbeziehen der ganzen Parameterverteilung können auch Nebenoptima und "fast" genauso wahrscheinliche Werte einbezogen werden.
+
+Um die Wahrscheinlichkeit von Parametern zu berechnen wird in der Bayesianischen Statistik das Bayes Theorem verwendet. 
+
+::: {.callout-note appearance="simple"}
+
+### Bayes Theorem
+
+Das Bayes Theorem gibt die Formel für eine bedingte Wahrscheinlichkeit $P(A|B)$ an. 
+
+$$ P(A|B) = \frac{P(B|A)⋅P(A)}{P(B)} $$
+
+Das kann gelesen werden als: "Die Wahrscheinlichkeit eines Ereignisses A unter der Bedingung, dass ein Ereignis B wahr ist, ist gleich der a priori Wahrscheinlichkeit, dass A wahr ist, multipliziert mit der Wahrscheinlichkeit, dass B eintritt, wenn A wahr ist. Dividiert wird das Ganze durch die Wahrscheinlichkeit, dass B eintritt, egal ob A wahr oder falsch ist."
+:::
+
+Das bedeutet, um eine Bayesianische Parameterschätzung zu machen, müssen wir Vorwissen integrieren. Dies tun wir in Form einer Prior-Verteilung. 
+Ein simple Variante ist, den Prior ist so zu wählen, dass er allen möglichen Werten dieselbe Wahrscheinlichkeit zuschreibt (wie in der Grafik unten). Diese Verteilung wird _uniform_ genannt. Ein uniformer Prior ist aber selten empfehlenswert, da er zu breit ist.
+
+__Parameterschätzung__
+
+![](imgs/theta_posterior.png)
+
+<!-- | Ansatz | Parameterschätzung | Hypothesentests | Statistische Kennzahlen | -->
+<!-- |------|------|------|------| -->
+<!-- | Frequentistisch | wahrer Wert wird geschätzt | Wahrscheinlichkeit der Daten zu berechnen, unter der Annahme dass die Nullhypothese wahr ist | p-Werte, Konfidenzintervall | -->
+<!-- | Ba -->
+
+
+:::callout-caution
+
+## Hands-on: Bayesianische Parameterschätzung in JASP
+
+Aktivieren Sie in JASP das Modul _Learn Bayes_. Wählen Sie unter `Learn Bayes` > `Binomial Estimation` mit der Einstellung `Enter Sequence`.
+
+__1. Modell: Stellen Sie sich vor, sie untersuchen eine Person, welche behauptet, extrasensorische Fähigkeiten zu besitzen. Diese Person behauptet, dass sie bevor eine Münze aufgeworfen wurde vorhersagen kann, auf welcher Seite die Münze landet: Kopf oder Zahl).__
+
+- Wie werden die Daten verteilt sein? Welchen Parameter schätzen wir? Wie sieht das DAG aus?
+
+- Wie würden Sie die Behauptung der Person überprüfen?
+
+
+__2. Daten erheben: Sie werfen die Münze 10 mal und die Person macht x korrekte Vorhersagen.__
+
+- Glauben Sie, dass die Person über extra-sensorische Fähigkeiten verfügt? Sind Sie skeptisch? 
+
+- Unter den Dropdown Menus `Model, Prior and Posterior Distributions` und `Plots` gibt es verschiedene Checkboxes. Versuchen Sie herauszufinden, was diese bewirken.
+
+
+__3. Vorwissen / Prior definieren.__
+
+- Wie können Sie Ihr Vorwissen in die Analyse einbeziehen? Wie verbinden Sie Ihr Vorwissen mit den beobachteten Daten? 
+- Welcher Prior bedeutet was (vgl. Bild unten)? 
+- Passen Sie Ihren Prior für $\theta$ in JASP an.
+
+__Beta Verteilungen__
+
+![](imgs/betadistributions.png)
+
+:::
+
+
+### Wrap-up
+
+Zusammenfassend kann gesagt werden:
+
+- In der _frequentistischen Statistik_ wird angenommen, dass der Parameter einen _wahren Wert_ hat, den wir aber nicht kennen. Wir erhalten als Resultat eine Punktschätzung für den Parameter und können keine Aussage über die Wahrscheinlichkeit dieses einen geschätzten Parameterwerts machen. Der 95%-CI (__confidence interval__) sagt aus, dass bei Wiederholung des Experiments der "wahre" Parameterwert in 95% der Konfidenzintervalle enthalten sein wird. 
+
+- In der _bayesianischen Statistik_ wird angenommen, dass der Parameter eine Wahrscheinlichkeitsverteilung hat, die wir schätzen können. Es muss zusätzlich eine Priorverteilung festgelegt werden. Wir erhalten eine Posterior Verteilung für die Parameterwerte und können eine Aussage über Wahrscheinlichkeit eines Parameterwerts oder eines Modelles machen. Der 95%-CI (__credible interval__) enthält zu 95% den "wahren" Parameterwert.
+
+<aside>"Wahr" bedeutet hier, den Parameterwert der (angenommen ein passendes Modell wurde verwendet) zu diesen Daten geführt hat.</aside>
+
+
+

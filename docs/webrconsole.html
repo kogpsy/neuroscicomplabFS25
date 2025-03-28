@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./license.html" rel="next">
-<link href="./gallery.html" rel="prev">
+<link href="./hypothesistests.html" rel="prev">
 <link href="./imgs/logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -312,7 +312,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"","id":1,"options":{"dpi":72,"comment":"","fig-height":5,"classes":"","editor-max-height":"","message":"true","out-width":"700px","read-only":"false","out-height":"","output":"true","results":"markup","editor-quick-suggestions":"false","context":"interactive","warning":"true","fig-cap":"","editor-font-scale":1,"autorun":"false","fig-width":7,"label":"unnamed-chunk-1"}}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"","options":{"fig-height":5,"fig-cap":"","comment":"","editor-quick-suggestions":"false","read-only":"false","editor-max-height":"","context":"interactive","dpi":72,"results":"markup","label":"unnamed-chunk-1","warning":"true","editor-font-scale":1,"autorun":"false","output":"true","out-width":"700px","classes":"","message":"true","fig-width":7,"out-height":""}}];
 
 </script>
 <script type="module">
@@ -1149,6 +1149,35 @@ globalThis.qwebrExecuteCode = async function (
 
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="./styles/global.css">
 <link rel="stylesheet" href="include/webex.css">
@@ -1332,8 +1361,33 @@ globalThis.qwebrExecuteCode = async function (
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Datenanalyse</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Datenanalyse</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Datengenerierende Prozesse</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./parameterestimates.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Parameterschätzung: Einführung in die Bayesianische Statistik</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hypothesistests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Hypothesentests: Bayesianischer <span class="math inline">\(t\)</span>-Test und Äquivalenztests (TOSTs)</span></span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
@@ -2657,8 +2711,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-page-right">
   <div class="nav-page nav-page-previous">
-      <a href="./gallery.html" class="pagination-link" aria-label="Galerie">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Galerie</span>
+      <a href="./hypothesistests.html" class="pagination-link" aria-label="Hypothesentests: Bayesianischer $t$-Test und Äquivalenztests (TOSTs)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Hypothesentests: Bayesianischer <span class="math inline">\(t\)</span>-Test und Äquivalenztests (TOSTs)</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

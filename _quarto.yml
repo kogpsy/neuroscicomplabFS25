@@ -55,8 +55,10 @@ book:
     - gallery.qmd
 
   - part: Datenanalyse
-    #chapters:
-    #- uebung_4.qmd
+    chapters:
+    - intro_analysis.qmd
+    - parameterestimates.qmd
+    - hypothesistests.qmd
 
   - part: Datenmodellierung
     #chapters:

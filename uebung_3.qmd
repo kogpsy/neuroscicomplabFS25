@@ -76,7 +76,7 @@ Das Einlesen kann eine Weile dauern, es sind sehr viele Datensätze.
         
 - __f. Automatisieren__
 
-    - Erstellen Sie nun eine Funktion, die dies für alle _Random Dot_ Datensätze ausführt und einen aggregierten Datensatz erstellt.
+    - Erstellen Sie nun eine Funktion, die dies für alle _Random Dot_ Datensätze ausführt und einen aggregierten Datensatz erstellt. [Hier](datawrangling_automatisiert.qmd) finden Sie ein Anwendungsbeispiel dazu.
     
 - __g. Erstellter Datensatz kontrollieren__:
 

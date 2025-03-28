@@ -1,0 +1,184 @@
+# Hypothesentests: Bayesianischer $t$-Test und Äquivalenztests (TOSTs)
+
+In den Neurowissenschaften ist es wichtig zu wissen, welche experimentellen Manipulationen einen Effekt haben. Genauso wichtig ist es jedoch zu wissen, welche Manipulationen keinen Effekt haben. Diese Frage zu beantworten ist jedoch mit traditionellen statistischen Ansätzen schwierig. Nicht signifikante Ergebnisse sind schwer zu interpretieren: Unterstützen sie die Nullhypothese (__evidence of absence__) oder sind sie einfach nicht informativ (__absence of evidence__)?
+
+Zwei Ansätze zur Beantwortung dieser Frage werden im Folgenden, anhand des Beispiels von $t$-Tests, vorgestellt:
+
+- Bayes Factors für Null- und Alternativhypothese
+- Äquivalenztests (TOST Verfahren)
+
+
+## Bayesianische Hypothesentests
+
+### Modellvergleich
+
+Beim Modellvergleich interessiert welches Modell die Daten besser erklärt. Die Bayes'sche Regel kann verwendet werden, um die Wahrscheinlichkeit zweier Modelle  $\mathcal{M1}$ und $\mathcal{M2}$ zu berechnen (gemittelt über alle möglichen Parameterwerte innerhalb des Modells):
+
+$$ 
+p(\mathcal{M}_1 | y) = \frac{P(y | \mathcal{M}_1) p(\mathcal{M}_1)}{p(y)} 
+$$
+
+und
+
+$$ 
+p(\mathcal{M}_2 | y) = \frac{P(y | \mathcal{M}_2) p(\mathcal{M}_2)}{p(y)} 
+$$
+
+
+Hierfür kann das Verhältnis der beiden Wahrscheinlichkeiten (_Posterior Odds__) berechnet werden: $p(\mathcal{M}_1 | y) / p(\mathcal{M}_2 | y)$, was gekürzt folgende Formel ergibt: 
+
+$$
+\underbrace{\frac{p(\mathcal{M}_1 | y)} {p(\mathcal{M}_2 | y)}}_\text{Posterior odds} = \underbrace{\frac{P(y | \mathcal{M}_1)}{P(y | \mathcal{M}_2)}}_\text{Ratio of marginal likelihoods} \cdot \underbrace{ \frac{p(\mathcal{M}_1)}{p(\mathcal{M}_2)}}_\text{Prior odds}
+$$
+
+Auf der linken Seite steht das Verhältnis der _a-posteriori Wahrscheinlichkeiten_ der beiden Modelle, auf der rechten Seite das Verhältnis der _Marginal Likelihoods_ der beiden Modelle, multipliziert mit den _a-priori Wahrscheinlichkeiten_ jedes Modells. 
+
+Die __Marginal Likelihoods__ (auch bekannt als Modell-Evidenz) zeigen, wie gut jedes Modell die Daten erklärt. Diese geben darüber Auskunft, wie wahrscheinlich die Daten sind, wenn wir alle möglichen Parameterwerte berücksichtigen. Die Marginal Likelihoods sind also die Wahrscheinlichkeit der Daten, gemittelt über alle möglichen Parameterwerte.
+
+### Bayes Factors
+
+Die **Posterior Odds** sagen uns, welches Modell wir a-priori und a-posteriori für wahrscheinlicher halten. Da unsere a-priori Überzeugungen aber subjektiv sein können, sind wir eigentlich nur an dem Verhältnis der marginalen Likelihoods interessiert. Wir können annehmen, dass a-priori die beiden Modelle gleichwahrscheinlich sind; das heisst, wir setzen die Prior Odds auf 1 setzen. So erhalten wir den __Bayes Factor__:
+
+$$
+\frac{P(y | \mathcal{M}_1)}{P(y | \mathcal{M}_2)}
+$$
+
+Wenn $P(y | \mathcal{M}_1)$ grösser ist als $P(y | \mathcal{M}_2)$, dann ist der Bayes Factor grösser als 1. Falls $P(y | \mathcal{M}_1)$ kleiner ist als $P(y | \mathcal{M}_2)$, dann ist der Bayes Factor kleiner als 1. Der **Bayes Factor** gibt also direkt an, welches Modell die Daten besser erklärt.
+
+Wenn wir zwei Modelle $\mathcal{M}_1$ und $\mathcal{M}_2$ vergleichen, wird der **Bayes Factor** oftmals so geschrieben:
+
+$$ BF_{12} = \frac{P(y | \mathcal{M}_1)}{P(y | \mathcal{M}_2)}$$
+
+
+$BF_{12}$ ist also der Bayes Factor für $\mathcal{M}_1$ und gibt an um wieviel $\mathcal{M}_1$ die Daten besser "erklärt".
+
+
+Als Beispiel, wenn wir ein $BF_{12} = 5$ erhalten, bedeutet dies, dass die Daten 5 Mal wahrscheinlicher unter Modell 1 als unter Modell 2 aufgetreten sind. Umgekehrt, wenn $BF_{12} = 0.2$, dann sind die Daten 5 Mal wahrscheinlicher unter Modell 2 aufgetreten.
+
+Wenn wir $BF_{12} = 0.2$ erhalten, ist es einfacher, Zähler und Nenner zu vertauschen:
+
+$$ BF_{21} = \frac{P(y | \mathcal{M}_2)}{P(y | \mathcal{M}_1)}$$
+
+
+Die folgenden [Interpretationen](https://www.statology.org/bayes-factor/) von Bayes Factors werden manchmal verwendet, obwohl es nicht wirklich notwendig ist, diese zu klassifizieren. Bayes Factors sind ein kontinuierliches Mass für Evidenz.
+
+Zusammenfassend kann gesagt werden:
+
+>Der Bayes Factor ist ein Verhältnis zweier konkurrierender statistischer Modelle, die durch ihre Evidenz dargestellt werden, und wird verwendet, um die Unterstützung für ein Modell gegenüber dem anderen zu quantifizieren. Die fraglichen Modelle können einen gemeinsamen Satz von Parametern haben, z. B. eine Nullhypothese und eine Alternative, dies ist jedoch nicht erforderlich. Zum Beispiel könnte es sich auch um ein nichtlineares Modell im Vergleich zu seiner linearen Näherung handeln. [Wikipedia](https://en.wikipedia.org/wiki/Bayes_factor)
+
+Bayes Factors sind eine alternative Methode, um Evidenz zu quantifizieren. Alternativ zu p-Werten bieten Bayes Factors Evidenz __für__ oder __gegen__ eine Hypothese. 
+
+<aside>$p$-Werte sind schwierig zu erklären, auch für erfahrene Forschende, wie dieses [Video](https://fivethirtyeight.com/features/not-even-scientists-can-easily-explain-p-values/) zeigt.</aside>
+
+### Bayesianischer $t$-Test
+
+Wir führen oft Modellvergleiche zwischen einer Nullhypothese $\mathcal{H}_0$ und einer alternativen Hypothese $\mathcal{H}_1$ durch (Die Begriffe "Modell" und "Hypothese" werden synonym verwendet). Eine Nullhypothese bedeutet, dass wir den Wert des Parameters auf einen bestimmten Wert festlegen, z.B. $\theta = 0.5$. Die alternative Hypothese bedeutet, dass wir den Wert des Parameters nicht festlegen, sondern eine a-priori Verteilung annehmen. Im Gegensatz zu NHST muss die Alternativhypothese spezifiziert werden. Mit anderen Worten, die Parameter müssen eine a-priori Verteilung erhalten.
+
+In JASP werden Bayes Factors (BF) so berichtet:
+
+$$ BF_{10} = \frac{P(y | \mathcal{H}_1)}{P(y | \mathcal{H}_0)}$$
+
+Dies ist ein BF für eine ungerichtete Alternative $\mathcal{H}_1$ gegen die Nullhypothese $\mathcal{H}_0$. Wenn wir einen gerichteten Test durchführen, dann wird der BF entweder so ($>0$):
+
+$$ BF_{+0} = \frac{P(y | \mathcal{H}_+)}{P(y | \mathcal{H}_0)}$$
+
+oder so ($<0$) berichtet.
+$$ BF_{-0} = \frac{P(y | \mathcal{H}_-)}{P(y | \mathcal{H}_0)}$$
+
+
+Wenn wir nun einen BF für die Nullhypothese wollen, können wir einfach den Kehrwert von $BF_{10}$ nehmen:
+
+$$ BF_{01} = \frac{1}{BF_{10}}$$
+
+
+:::callout-caution
+## Hands-on: Bayesiansicher $t$-Test in JASP
+
+- Laden Sie [hier](../../downloadable_files/data_stroop_wide.csv) den Stroop Datensatz herunter. Der Datensatz wurde für diese Zwecke ins `wide`-Format angepasst, das R-Skript dafür können Sie sich [hier](../../downloadable_files/generate_dataset_jasp.R) ansehen.
+
+- Laden Sie den Datensatz in JASP und schauen Sie ihn an.
+
+- Wie könnte die Forschungsfrage lauten? Was ist die Null- und Alternativhypothese?
+
+- Führen Sie einen `Bayesian Paired Sample $t$-Test aus.
+
+- Explorieren Sie die Resultate und welche Optionen Sie für weitere Einstellungen haben.
+
+- Welche Bayes Factors finden Sie für die Nullhypothese? Und für die Alternativhypothese?
+
+:::
+
+:::callout-note
+## Weiterführende Informationen zu Bayesianischem Hypothesentesten
+
+- Vertiefende Informationen, inkl. Herleitung, zu Bayesianischen Hypothesentest finden Sie [hier](https://kogpsy.github.io/neuroscicomplabFS23/pages/chapters/bayesian-statistics-3.html).
+
+- [Hier](https://rpsychologist.com/d3/bayes/) finden Sie eine interaktive Visualisierung.
+
+- [`brms`](https://www.rdocumentation.org/packages/brms/versions/2.21.0) ist ein _R-Package_, welches sich für Bayesianische Multilevel-Modelle eignet, da JASP relativ rasch an die Grenzen stösst für komplexere Modelle.
+:::
+
+
+## Äquivalenztests
+
+Ein nicht signifikanter Nullhypothesensignifikanztest (NHST) bedeutet nicht, dass kein Unterschied zwischen Gruppen/Bedingungen besteht, nur dass keiner gefunden werden konnte. Statt also aussschliesslich einen NHST durchzuführen und gegen _Null_ zu testen, können Äquivalenztests, wie das “Two One-Sided Tests” (TOST) Verfahren durchgeführt werden. Dabei werden zwei einseitige $t$-Tests ausgeführt, um zu testen, ob der Mittelwertsunterschied innerhalb eines gewissen Rahmens liegt. Dieser Rahmen muss von den Forschenden festgelegt werden und bezeichnet die kleinstmöglichste interessierende Effekt: _Smallest Effect Size of Interest_ (SESOI). Mit dem TOST-Verfahren wird festgestellt, ob der gefundene Unterschied überraschend gering ist, wenn ein Effekt mindestens so gross wie der definierte SESOI tatsächlich existiert. [Lakens, Scheel & Isager, 2018](https://journals.sagepub.com/doi/10.1177/2515245918770963). 
+
+### Festlegen des SESOIs
+
+Der SESOI wird durch eine untere (_lower bound_ $\Delta$L) und obere Grenze (_upper bound_ $\Delta$U). 
+
+Es gibt keine vorgegebenen Regeln für das Festlegen von SESOIs. Sie müssen von den Forschenden (__vor__ der Datenanalyse) passend für Fragestellung und Feld festgelegt werden. Dafür gibt es folgende Ansätze:
+
+- Subjektive Ansätze:
+
+    - Benchmarks (z.B. Standardisierte Effektgrössen wie $d$ = 0.5)
+    
+    - vorherige Studien
+
+    - begründet in vorhandenen Ressourcen für die Studie
+    
+- Objektive Ansätze:
+
+    - theoretische Begründungen (z.B. just-noticeable difference, JND)
+    
+    - basierend auf quantifizierbaren theoretischen Vorhersagen (z.B. durch computational models)
+
+
+### TOST-Verfahren
+
+Nach dem Festlegen des SESOIs werden __zwei__ einseitige $t$-Tests durchgeführt:
+
+- Test, ob Unterschied signifikant höher als untere Grenze ($\Delta$L)
+- Test, ob Unterschied signifikant tiefere als obere Grenze ($\Delta$U)
+
+Wenn beide signifikant ausfallen sind die Gruppen/Bedingungen äquivalent. Es muss nicht für zweifaches Testen korrigiert werden, weil beide Tests signifikant sein müssen, um Äquivalenz anzunehmen. Statt $p$-Werte können auch Konfidenzintervalle verwendet werden: Wenn das 90% Konfidenzintervall innerhalb des SESOIs liegt wird Äquivalenz angenommen. Das Konfidenzintervall muss festgelegt werden, es könnte auch z.B. 95%, 87% oder 99% sein (oder eine andere Zahl), es muss daher vor dem Test gewählt werden.
+
+
+:::callout-caution
+## Hands-on: Äquivalenztests in JASP
+
+- Definieren Sie einen SESOI für den Unterschied der Reaktionszeiten zwischen der kongruenten und inkongruenten Bedingung im Stroop Task. Was ist $\Delta$L, was ist $\Delta$U?
+
+- Aktivieren Sie in JASP das Modul __Equivalence T-Tests__
+
+- Sie können wieder dieselben Daten wie vorhin verwenden.
+
+- Wählen Sie die beiden Variablen zum Vergleich aus.
+
+- Geben Sie bei `Equivalence Region` Ihren SESOI ein.
+
+- Explorieren Sie die Resultate und welche Optionen Sie für weitere Einstellungen haben.
+
+:::
+
+:::callout-note
+## Weiterführende Informationen zu Äquivalenztests
+
+- Vertiefende Informationen finden Sie [in diesem Paper](https://journals.sagepub.com/doi/10.1177/2515245918770963).
+
+- [Hier](https://rpsychologist.com/d3/equivalence/) finden Sie eine interaktive Visualisierung.
+
+- [Equivalence-Testing in JASP](https://jasp-stats.org/2020/06/02/frequentist-and-bayesian-equivalence-testing-in-jasp/)
+
+- In _Jamovi_ können Äquivalenztest mit dem Modul _TOSTER_ durchgeführt werden ([weitere Informationen](https://daniellakens.blogspot.com/2017/03/equivalence-testing-in-jamovi.html))
+:::

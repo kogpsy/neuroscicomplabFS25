@@ -1,0 +1,259 @@
+# Datengenerierende Prozesse
+
+In der Forschung und Diagnostik interessieren uns oft Eigenschaften eines Prozesses oder einer Person, welche wir nicht direkt messen können.
+Testverfahren und Experimente werden angewendet, um diese latenten Variablen messbar zu machen. 
+Mit statistischen Verfahren wird dann versucht aus den gemessenen Daten Informationen über die nicht direkt messbare Eigenschaft zu erhalten.^[Uns kann beispielsweise die Aufmerksamkeitsleistung interessieren, welche wir mit einem Testverfahren für Aufmerksamkeit zu messen versuchen. Eine Neurowissenschaftlerin, welche sich für den Prozess von Aufmerksamkeit interessiert, würde versuchen die Aufmerksamkeitsleistung von vielen Leuten unter verschiedenen Bedingungen zu messen um zu untersuchen, durch was Aufmerksamkeit beeinflusst wird.  Ein klinischer Neuropsychologe hingegen hätte vielleicht das Ziel festzustellen, ob die Aufmerksamkeitsleistung einer Person von der Norm abweicht, beispielsweise weil sie durch einen Unfall eine Kopfverletzung erlitten hat. Beide messen Daten und beide ziehen aus den gemessenen Daten Rückschlüsse auf eine unterliegende Eigenschaft eines Prozesses oder einer Person.]
+
+## Herausforderungen in der Analyse von neurowissenschaftlichen Daten
+
+Neurowissenschaftliche Datensätze bringen oft folgende Herausforderungen in der Datenanalyse mit sich:
+
+- Kleine Stichprobengrössen (z.B. aufgrund teurer Datenerhebung oder Patientengruppen die schwieriger zu rekrutieren sind).
+
+- Heterogenität / Rauschen (z.B. weil der zu untersuchende Prozess schwierig zu isolieren ist, weil Personen sich sehr unterschiedlich verhalten)
+
+- Teure Datenerhebung und damit hoher Druck Resultate zu generieren sowie oft keine Möglichkeit das Experiment zu wiederholen  (wichtig daher die gute Planung der Analyse sowie Vermeidung von inkonklusive Resultaten)
+
+- Vorgehen bei nicht-signifikanten/nicht-konklusiven Ergebnissen (Research waste, publication bias/file drawer effect)
+
+<aside>Im Artikel _Power failure: why small sample size undermines the reliability of neuroscience_ von Button et al. [2013](https://www.nature.com/articles/nrn3475) finden Sie einen Artikel über die Problematik von kleinen Stichprobengrössen in Neuroscience</aside>
+
+Ziel ist es, trotz diesen Umständen, __möglichst viel__ Information aus den vorhandenen Daten zu gewinnen.
+Hierbei spielt die Analysemethode eine wichtige Rolle.
+
+#### *Absence of evidence* oder *Evidence of absence*?
+Bei Nullhypothesen-Signifikanztests (NHST) wird eine binäre Entscheidung getroffen: Der Hypothesentest kann entweder ein signifikantes oder ein nicht signifikantes Ergebnis haben. 
+Kann kein Effekt gefunden werden besteht die Notwendigkeit zu unterscheiden zwischen den zwei Möglichkeiten:
+- _Absence of evidence_: Es ist unklar ob es einen Effekt gibt oder nicht. Die Ergebnisse des Verfahrens sind _inkonklusiv_.
+- _Evidence of absence_: Es ist klar, dass es keinen Effekt gibt. Die Daten zeigen dies deutlich.
+
+Zum Unterscheiden dieser zwei Fälle eignen sich die typischen NHSTs oft weniger, gerade wenn die Power nicht sehr hoch war.
+Bayesianische Statistik (z.B. bei begrenzten Datensätzen) sowie frequentistische Äquivalenztests (zwei entgegengesetzte NHSTs zum Testen von Nullunterschieden) sind Ansätze, um zwischen _absence of evidence_ und _evidence of absence_ zu unterscheiden.
+
+Wir werden uns in den folgenden Veranstaltungen deshalb damit auseinandersetzen,
+
+- welche Annahmen hinter statistischen Verfahren stecken.
+
+- welche Fragen mit Bayesianischer Statistik beantwortet werden können.
+
+- wie Nullunterschiede statistisch getestet werden können.
+
+
+## Vorbereitung
+
+:::callout-caution
+## Hands-on: Reaktivierung Statistikwissen
+
+__1. Besprechen Sie in kleinen Gruppen folgende Fragen:__
+
+- Was ist eine _Null-_, was eine _Alternativhypothese_?
+
+- Was bedeutet die Distanz zwischen den beiden Mittelwerten?
+
+- Was ist statistische _Power_?
+
+- Welche Rolle spielt die Stichprobengrösse?
+
+- Was ist ein _p-Wert_?
+
+- Was sind _Typ I_ und _Typ II_ Fehler?
+
+- Welche Fragen können Sie mit einem _Nullhypothesen- Signifikanztest (NHST)_ beantworten?
+
+
+__2. Können Sie die Begrifflichkeiten in dieser Grafik einordnen?__
+
+![](imgs/reactivationstatistics.png)
+
+3. Überlegen Sie sich, was Null- und Alternativhypothese in unseren beiden Kursexperimenten (_Stroop_ und _Random Dot_) sein können.
+
+_[10 Minuten]_
+
+:::
+
+<aside>Sie können zur Beantwortung dieser Fragen z.B. die [Interaktive Visualisierung "Understanding Statistical Power and Significance Testing"](https://rpsychologist.com/d3/nhst/) nutzen.</aside>
+
+::: {.callout-note appearance="simple"}
+
+### Projekt und Daten herunterladen
+
+[Hier](data/dataset_stroop_clean.csv) finden Sie die Daten zum herunterladen.
+
+Lesen Sie anschliessend die Daten ein:
+
+```{r message = FALSE, warning = FALSE}
+## Daten einlesen
+library(tidyverse)
+d_stroop <- read_csv("data/dataset_stroop_clean.csv") |>
+    mutate(across(where(is.character), as.factor)) |> # zu Faktoren machen
+    filter(rt < 4 & rt >= 0.1) |> # nur Antworten zwischen 100 und 4000ms einbeziehen
+    filter(corr == 1) |> # nur korrekte Antworten einbeziehen
+    na.omit() # Messungen mit missings weglassen
+```
+:::
+
+## Datengenerierende Prozesse
+
+Nach dem Data Cleaning und Preprocessing geht es darum, welche Informationen die Daten über den zu untersuchenden Prozess beinhalten. 
+Anhand der Daten sollen also Rückschlüsse auf den _datengenerierenden Prozess_, der zu diesen Daten geführt hat gezogen werden. 
+
+Bei jeder Datenanalyse müssen zahlreiche Annahmen getroffen werden. 
+Um diese explizit zu machen und auch die Datenanalyse zu planen, hilft oft eine grafische Darstellung. 
+Directed Acyclic Graphs (DAGs) sind eine Variante hierfür.
+
+### Directed Acyclic Graphs (DAGs)
+
+Ein DAG (_directed acyclic graph_) eignet sich für die Darstellung komplexer Zusammenhänge in Daten und Prozessen. 
+Mit einem DAG kann veranschaulicht werden, welche Variablen einander beeinflussen. 
+Die Kreise (_nodes_) werden für einzelne Elemente verwendet und die Pfeile (_arrows_ oder _edges_) beschreiben die Beziehung zwischen den Elementen. Die Darstellung beschreibt einen Prozess also mit gerichteten (_directed_) und nicht zyklischen (_acyclic_) Beziehungen.
+
+_Wir können beispielsweise annehmen, dass die Farbe-Wort-Kongruenz im Stroop Task beeinflusst, wie schnell die Aufgabe gelöst werden kann._
+
+Ein DAG kann mit folgenden Schritten erstellt werden:
+
+#### 1. Beobachtete Variable bestimmen
+
+Die beobachtete Variable nennen wir hier $y$. Der Kreis ist grau eingefärbt, weil die Werte in dieser Variable gemessen wurden bzw. bekannt sind.
+
+_In unserem Beispiel haben wir die Reaktionszeit gemessen. Im Datensatz enthält die Variable `rt` die Information, wie schnell eine Person in jedem Trial geantwortet hat._
+
+#### 2. Verteilung bestimmen
+
+Es muss festgelegt werden, welche Verteilung die Daten $y$ am besten beschreibt. Eine Verteilung ist immer __nur eine Annäherung__. 
+Die gemessenen Daten entsprechen dieser Annahme eigentlich nie perfekt. 
+Es geht darum eine Verteilung zu finden die _gut genug_ zu den Daten passt. 
+Jede Verteilung hat Parameter, die geschätzt werden können. 
+Es gibt Verteilungen, welche durch einen Parameter definiert werden, andere brauchen mehrere Parameter.
+
+Eine sehr häufig verwendete Verteilung in statistischen Analysen ist die Normalverteilung. 
+Die Annahme einer Normalverteilung ermöglicht es uns, mit nur 2 Parametern die Daten in der Variable  zu beschreiben: Dem Mittelwert ($\mu$) und der Standardabweichung ($\sigma$).
+Natürlich ist das nur eine Annäherung, aber meistens eine genügend Gute! 
+
+<aside>Hier im [Distribution Zoo](https://ben18785.shinyapps.io/distribution-zoo/) werden Verteilungen, zugrundeliegende Daten sowie Code und Formeln zusammengefasst.</aside>
+
+![](imgs/dag_normal.png)
+
+*Um die Verteilung unserer Datenpunkte zu bestimmen bzw. zu überprüfen können die Daten in _R_ geplottet werden, z.B. mit `geom_histogram()`. Das Argument `binwidth =` bestimmt, wie breit ein Balken wird (hier 50 ms).*
+
+```{r}
+d_stroop |>
+    ggplot(aes(x = rt)) +
+    geom_histogram(colour="black", fill = "white", 
+                   binwidth = 0.05, 
+                   alpha = 0.5) +
+    theme_minimal()
+```
+*Diese Verteilung könnte beispielsweise mit einer Normalverteilung beschrieben werden. Der Mittelwert und die Standardabweichung können wir mit _R_ berechnen:*
+
+```{r}
+# clean dataset first
+mu = mean(d_stroop$rt)
+mu
+
+sigma = sd(d_stroop$rt)
+sigma
+```
+Um zu schauen, wie gut diese Normalverteilung mit den Parametern $\mu$ = `r mu` und $\sigma$ = `r sigma` unsere Daten beschreibt, können wir die Daten und simulierte Daten mit der angenommenenen Verteilung übereinander plotten:
+
+
+```{r}
+d_stroop |>
+    ggplot(aes(x = rt)) +
+    geom_histogram(colour="black", fill = "white", 
+                   binwidth = 0.05, 
+                   alpha = 0.5) +
+    geom_histogram(aes(x = rnorm(1:length(rt), mu, sigma)),
+                   binwidth = 0.05,
+                   alpha = 0.2) +
+    theme_minimal()
+```
+
+Wir können auch `density`-Plots dafür nutzen:
+
+```{r}
+d_stroop |>
+    ggplot(aes(x = rt)) +
+    geom_density(colour="black", fill = "white") +
+    geom_density(aes(x = rnorm(1:length(rt), mu, sigma)),
+                 fill="grey",
+                 alpha = 0.2) +
+    theme_minimal()
+```
+
+:::callout-caution
+
+## Hands-on: Verteilungen
+
+- Welche Daten stammen aus unseren Daten, welche entsprechen der Normalverteilung $N(0.747, 0.346)$ ?
+
+- Wie gut passt die Annahme der Normalverteilung für unsere Reaktionszeitdaten? Wo passt sie gut? Wo nicht?
+
+- Finden Sie auf [Distribution Zoo](https://ben18785.shinyapps.io/distribution-zoo/) eine passendere Verteilung?
+
+- Prüfen Sie Ihre Verteilung, indem Sie unten an den obigen Plot diese Verteilung mit gewählten Parametern folgenden Code einfügen.
+
+    - Wählen Sie dazu eine Verteilung und passende Parameter auf Distribution Zoo aus.
+    
+    - Schauen Sie unter dem Reiter `Code` mit welcher Funktion die Daten in `R` generiert werden können. Wählen Sie `Language: R` und `Property: random sample of size n` aus. 
+    
+    - Kopieren Sie die Funktion und ersetzen Sie `rnorm(1:length(rt), mu, sigma)` in unserem R-Code für das Histogram oder den Density-Plot mit Ihrer neuen Funktion. Das `n` müssen Sie wieder `1:length(rt)` nennen.
+    
+_[10 Minuten]_
+:::
+
+Bei Reaktionszeiten ist die Verteilung gar nicht so einfach anzupassen: [Hier](https://lindeloev.shinyapps.io/shiny-rt) finden Sie "besser" geeignete Verteilungen, sowie die Möglichkeit für einen vorgegebenen Datensatz oder Ihre eigenen Daten Parameterwerte anzupassen.
+
+#### 3. Weitere Einflussfaktoren
+
+In einem DAG können auch weitere Informationen, zum Beispiel Bedingungen sowie Messwiederholungen, hinzugefügt werden. 
+
+_$\mu$ kann sich zum Beispiel in Abhängigkeit der Bedingung (`condition`) verändern, also je nachdem ob die angezeigte Farbe kongruent war oder nicht._
+
+Wenn wir nun den Einfluss der Bedingung untersuchen möchten, könnten wir uns fragen, wie stark diese eine Veränderung im Wert $\mu$ bewirkt. Genau dies tun wir z.B. bei Mittelwertsvergleichen wie z.B. bei _t_-Tests.
+
+:::callout-caution
+
+## Hands-on: DAG zeichnen
+
+Wie würde ein DAG für die `accuracy` (Korrektheit) der Stroop-Daten aussehen?
+
+Gehen Sie wie folgt vor:
+
+- Was ist bekannt/wurde gemessen? 
+
+- Welche Verteilung beschreibt die Daten gut?
+
+- Welche Parameter müssen geschätzt werden?
+
+_[5 Minuten]_
+:::
+
+## Datensimulation
+
+Sich Gedanken zum datengenerierenden Prozess zu machen (wie beispielsweise mit einem aufgezeichneten Modell) hilft nicht nur in der Planung der Datenanalyse, sondern ermöglicht u.a. auch das Simulieren von Daten.
+
+
+__Mögliche Schritte in der Datensimulation__
+![](imgs/datasimulations.png)
+
+<aside>[Shiny-App für Datensimulation](
+https://shiny.psy.gla.ac.uk/debruine/fauxapp/)</aside>
+
+Datensimulation ist nützlich für:
+
+- Die Vorbereitung von Präregistrationen und Registered Reports
+
+- Testen/Debugging von Analysekripten (weil die _ground truth_ bekannt ist)
+
+- Power für komplexe Modelle schätzen
+
+- Erstellen von reproduzierbaren Beispielsdatensätzen (für Demos, Lehre, oder wenn echte Datensätze nicht veröffentlicht werden können)
+
+- Prior distribution checks in der Bayesianischen Statistik
+
+- Verstehen von Modellen und Statistik
+
+<aside>[Weitere Infos](https://debruine.github.io/talks/EMPSEB-fake-it-2023) zu Datensimulation</aside>
+
+
+Um Hypothesen zu testen, müssen selbstverständlich __nicht simulierte__ Daten erhoben werden! ^[[https://www.science.org/content/article/dutch-university-sacks-social-psychologist-over-faked-data](https://www.science.org/content/article/dutch-university-sacks-social-psychologist-over-faked-data)]

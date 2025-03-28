@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>License and Authorship – Neurowissenschaft Computerlab</title>
+<title>14&nbsp; Hypothesentests: Bayesianischer t-Test und Äquivalenztests (TOSTs) – Neurowissenschaft Computerlab</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./webrconsole.html" rel="prev">
+<link href="./webrconsole.html" rel="next">
+<link href="./parameterestimates.html" rel="prev">
 <link href="./imgs/logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -114,7 +115,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./webrconsole.html">Anhang</a></li><li class="breadcrumb-item"><a href="./license.html">License and Authorship</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_analysis.html">Datenanalyse</a></li><li class="breadcrumb-item"><a href="./hypothesistests.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Hypothesentests: Bayesianischer <span class="math inline">\(t\)</span>-Test und Äquivalenztests (TOSTs)</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -305,7 +306,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hypothesistests.html" class="sidebar-item-text sidebar-link">
+  <a href="./hypothesistests.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Hypothesentests: Bayesianischer <span class="math inline">\(t\)</span>-Test und Äquivalenztests (TOSTs)</span></span></a>
   </div>
 </li>
@@ -332,7 +333,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./license.html" class="sidebar-item-text sidebar-link active">
+  <a href="./license.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">License and Authorship</span></a>
   </div>
 </li>
@@ -343,20 +344,36 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#bayesianische-hypothesentests" id="toc-bayesianische-hypothesentests" class="nav-link active" data-scroll-target="#bayesianische-hypothesentests"><span class="header-section-number">14.1</span> Bayesianische Hypothesentests</a>
+  <ul class="collapse">
+  <li><a href="#modellvergleich" id="toc-modellvergleich" class="nav-link" data-scroll-target="#modellvergleich"><span class="header-section-number">14.1.1</span> Modellvergleich</a></li>
+  <li><a href="#bayes-factors" id="toc-bayes-factors" class="nav-link" data-scroll-target="#bayes-factors"><span class="header-section-number">14.1.2</span> Bayes Factors</a></li>
+  <li><a href="#bayesianischer-t-test" id="toc-bayesianischer-t-test" class="nav-link" data-scroll-target="#bayesianischer-t-test"><span class="header-section-number">14.1.3</span> Bayesianischer <span class="math inline">\(t\)</span>-Test</a></li>
+  </ul></li>
+  <li><a href="#äquivalenztests" id="toc-äquivalenztests" class="nav-link" data-scroll-target="#äquivalenztests"><span class="header-section-number">14.2</span> Äquivalenztests</a>
+  <ul class="collapse">
+  <li><a href="#festlegen-des-sesois" id="toc-festlegen-des-sesois" class="nav-link" data-scroll-target="#festlegen-des-sesois"><span class="header-section-number">14.2.1</span> Festlegen des SESOIs</a></li>
+  <li><a href="#tost-verfahren" id="toc-tost-verfahren" class="nav-link" data-scroll-target="#tost-verfahren"><span class="header-section-number">14.2.2</span> TOST-Verfahren</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
+<main class="content page-columns page-full column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./webrconsole.html">Anhang</a></li><li class="breadcrumb-item"><a href="./license.html">License and Authorship</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_analysis.html">Datenanalyse</a></li><li class="breadcrumb-item"><a href="./hypothesistests.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Hypothesentests: Bayesianischer <span class="math inline">\(t\)</span>-Test und Äquivalenztests (TOSTs)</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">License and Authorship</h1>
+<h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Hypothesentests: Bayesianischer <span class="math inline">\(t\)</span>-Test und Äquivalenztests (TOSTs)</span></h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-right">
+<div class="quarto-title-meta column-body">
 
     
   
@@ -368,27 +385,174 @@ window.Quarto = {
 </header>
 
 
-<p>This course material is written by Gerda Wyssen &amp; Enea Weber…</p>
-<p>…and (sometimes heavily!) adapted from previous course material from</p>
+<p>In den Neurowissenschaften ist es wichtig zu wissen, welche experimentellen Manipulationen einen Effekt haben. Genauso wichtig ist es jedoch zu wissen, welche Manipulationen keinen Effekt haben. Diese Frage zu beantworten ist jedoch mit traditionellen statistischen Ansätzen schwierig. Nicht signifikante Ergebnisse sind schwer zu interpretieren: Unterstützen sie die Nullhypothese (<strong>evidence of absence</strong>) oder sind sie einfach nicht informativ (<strong>absence of evidence</strong>)?</p>
+<p>Zwei Ansätze zur Beantwortung dieser Frage werden im Folgenden, anhand des Beispiels von <span class="math inline">\(t\)</span>-Tests, vorgestellt:</p>
 <ul>
-<li><strong>Andrew Ellis</strong>
+<li>Bayes Factors für Null- und Alternativhypothese</li>
+<li>Äquivalenztests (TOST Verfahren)</li>
+</ul>
+<section id="bayesianische-hypothesentests" class="level2 page-columns page-full" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="bayesianische-hypothesentests"><span class="header-section-number">14.1</span> Bayesianische Hypothesentests</h2>
+<section id="modellvergleich" class="level3" data-number="14.1.1">
+<h3 data-number="14.1.1" class="anchored" data-anchor-id="modellvergleich"><span class="header-section-number">14.1.1</span> Modellvergleich</h3>
+<p>Beim Modellvergleich interessiert welches Modell die Daten besser erklärt. Die Bayes’sche Regel kann verwendet werden, um die Wahrscheinlichkeit zweier Modelle <span class="math inline">\(\mathcal{M1}\)</span> und <span class="math inline">\(\mathcal{M2}\)</span> zu berechnen (gemittelt über alle möglichen Parameterwerte innerhalb des Modells):</p>
+<p><span class="math display">\[
+p(\mathcal{M}_1 | y) = \frac{P(y | \mathcal{M}_1) p(\mathcal{M}_1)}{p(y)}
+\]</span></p>
+<p>und</p>
+<p><span class="math display">\[
+p(\mathcal{M}_2 | y) = \frac{P(y | \mathcal{M}_2) p(\mathcal{M}_2)}{p(y)}
+\]</span></p>
+<p>Hierfür kann das Verhältnis der beiden Wahrscheinlichkeiten (_Posterior Odds__) berechnet werden: <span class="math inline">\(p(\mathcal{M}_1 | y) / p(\mathcal{M}_2 | y)\)</span>, was gekürzt folgende Formel ergibt:</p>
+<p><span class="math display">\[
+\underbrace{\frac{p(\mathcal{M}_1 | y)} {p(\mathcal{M}_2 | y)}}_\text{Posterior odds} = \underbrace{\frac{P(y | \mathcal{M}_1)}{P(y | \mathcal{M}_2)}}_\text{Ratio of marginal likelihoods} \cdot \underbrace{ \frac{p(\mathcal{M}_1)}{p(\mathcal{M}_2)}}_\text{Prior odds}
+\]</span></p>
+<p>Auf der linken Seite steht das Verhältnis der <em>a-posteriori Wahrscheinlichkeiten</em> der beiden Modelle, auf der rechten Seite das Verhältnis der <em>Marginal Likelihoods</em> der beiden Modelle, multipliziert mit den <em>a-priori Wahrscheinlichkeiten</em> jedes Modells.</p>
+<p>Die <strong>Marginal Likelihoods</strong> (auch bekannt als Modell-Evidenz) zeigen, wie gut jedes Modell die Daten erklärt. Diese geben darüber Auskunft, wie wahrscheinlich die Daten sind, wenn wir alle möglichen Parameterwerte berücksichtigen. Die Marginal Likelihoods sind also die Wahrscheinlichkeit der Daten, gemittelt über alle möglichen Parameterwerte.</p>
+</section>
+<section id="bayes-factors" class="level3 page-columns page-full" data-number="14.1.2">
+<h3 data-number="14.1.2" class="anchored" data-anchor-id="bayes-factors"><span class="header-section-number">14.1.2</span> Bayes Factors</h3>
+<p>Die <strong>Posterior Odds</strong> sagen uns, welches Modell wir a-priori und a-posteriori für wahrscheinlicher halten. Da unsere a-priori Überzeugungen aber subjektiv sein können, sind wir eigentlich nur an dem Verhältnis der marginalen Likelihoods interessiert. Wir können annehmen, dass a-priori die beiden Modelle gleichwahrscheinlich sind; das heisst, wir setzen die Prior Odds auf 1 setzen. So erhalten wir den <strong>Bayes Factor</strong>:</p>
+<p><span class="math display">\[
+\frac{P(y | \mathcal{M}_1)}{P(y | \mathcal{M}_2)}
+\]</span></p>
+<p>Wenn <span class="math inline">\(P(y | \mathcal{M}_1)\)</span> grösser ist als <span class="math inline">\(P(y | \mathcal{M}_2)\)</span>, dann ist der Bayes Factor grösser als 1. Falls <span class="math inline">\(P(y | \mathcal{M}_1)\)</span> kleiner ist als <span class="math inline">\(P(y | \mathcal{M}_2)\)</span>, dann ist der Bayes Factor kleiner als 1. Der <strong>Bayes Factor</strong> gibt also direkt an, welches Modell die Daten besser erklärt.</p>
+<p>Wenn wir zwei Modelle <span class="math inline">\(\mathcal{M}_1\)</span> und <span class="math inline">\(\mathcal{M}_2\)</span> vergleichen, wird der <strong>Bayes Factor</strong> oftmals so geschrieben:</p>
+<p><span class="math display">\[ BF_{12} = \frac{P(y | \mathcal{M}_1)}{P(y | \mathcal{M}_2)}\]</span></p>
+<p><span class="math inline">\(BF_{12}\)</span> ist also der Bayes Factor für <span class="math inline">\(\mathcal{M}_1\)</span> und gibt an um wieviel <span class="math inline">\(\mathcal{M}_1\)</span> die Daten besser “erklärt”.</p>
+<p>Als Beispiel, wenn wir ein <span class="math inline">\(BF_{12} = 5\)</span> erhalten, bedeutet dies, dass die Daten 5 Mal wahrscheinlicher unter Modell 1 als unter Modell 2 aufgetreten sind. Umgekehrt, wenn <span class="math inline">\(BF_{12} = 0.2\)</span>, dann sind die Daten 5 Mal wahrscheinlicher unter Modell 2 aufgetreten.</p>
+<p>Wenn wir <span class="math inline">\(BF_{12} = 0.2\)</span> erhalten, ist es einfacher, Zähler und Nenner zu vertauschen:</p>
+<p><span class="math display">\[ BF_{21} = \frac{P(y | \mathcal{M}_2)}{P(y | \mathcal{M}_1)}\]</span></p>
+<p>Die folgenden <a href="https://www.statology.org/bayes-factor/">Interpretationen</a> von Bayes Factors werden manchmal verwendet, obwohl es nicht wirklich notwendig ist, diese zu klassifizieren. Bayes Factors sind ein kontinuierliches Mass für Evidenz.</p>
+<p>Zusammenfassend kann gesagt werden:</p>
+<blockquote class="blockquote">
+<p>Der Bayes Factor ist ein Verhältnis zweier konkurrierender statistischer Modelle, die durch ihre Evidenz dargestellt werden, und wird verwendet, um die Unterstützung für ein Modell gegenüber dem anderen zu quantifizieren. Die fraglichen Modelle können einen gemeinsamen Satz von Parametern haben, z. B. eine Nullhypothese und eine Alternative, dies ist jedoch nicht erforderlich. Zum Beispiel könnte es sich auch um ein nichtlineares Modell im Vergleich zu seiner linearen Näherung handeln. <a href="https://en.wikipedia.org/wiki/Bayes_factor">Wikipedia</a></p>
+</blockquote>
+<p>Bayes Factors sind eine alternative Methode, um Evidenz zu quantifizieren. Alternativ zu p-Werten bieten Bayes Factors Evidenz <strong>für</strong> oder <strong>gegen</strong> eine Hypothese.</p>
+<aside>
+<span class="math inline">\(p\)</span>-Werte sind schwierig zu erklären, auch für erfahrene Forschende, wie dieses <a href="https://fivethirtyeight.com/features/not-even-scientists-can-easily-explain-p-values/">Video</a> zeigt.
+</aside>
+</section>
+<section id="bayesianischer-t-test" class="level3" data-number="14.1.3">
+<h3 data-number="14.1.3" class="anchored" data-anchor-id="bayesianischer-t-test"><span class="header-section-number">14.1.3</span> Bayesianischer <span class="math inline">\(t\)</span>-Test</h3>
+<p>Wir führen oft Modellvergleiche zwischen einer Nullhypothese <span class="math inline">\(\mathcal{H}_0\)</span> und einer alternativen Hypothese <span class="math inline">\(\mathcal{H}_1\)</span> durch (Die Begriffe “Modell” und “Hypothese” werden synonym verwendet). Eine Nullhypothese bedeutet, dass wir den Wert des Parameters auf einen bestimmten Wert festlegen, z.B. <span class="math inline">\(\theta = 0.5\)</span>. Die alternative Hypothese bedeutet, dass wir den Wert des Parameters nicht festlegen, sondern eine a-priori Verteilung annehmen. Im Gegensatz zu NHST muss die Alternativhypothese spezifiziert werden. Mit anderen Worten, die Parameter müssen eine a-priori Verteilung erhalten.</p>
+<p>In JASP werden Bayes Factors (BF) so berichtet:</p>
+<p><span class="math display">\[ BF_{10} = \frac{P(y | \mathcal{H}_1)}{P(y | \mathcal{H}_0)}\]</span></p>
+<p>Dies ist ein BF für eine ungerichtete Alternative <span class="math inline">\(\mathcal{H}_1\)</span> gegen die Nullhypothese <span class="math inline">\(\mathcal{H}_0\)</span>. Wenn wir einen gerichteten Test durchführen, dann wird der BF entweder so (<span class="math inline">\(&gt;0\)</span>):</p>
+<p><span class="math display">\[ BF_{+0} = \frac{P(y | \mathcal{H}_+)}{P(y | \mathcal{H}_0)}\]</span></p>
+<p>oder so (<span class="math inline">\(&lt;0\)</span>) berichtet. <span class="math display">\[ BF_{-0} = \frac{P(y | \mathcal{H}_-)}{P(y | \mathcal{H}_0)}\]</span></p>
+<p>Wenn wir nun einen BF für die Nullhypothese wollen, können wir einfach den Kehrwert von <span class="math inline">\(BF_{10}\)</span> nehmen:</p>
+<p><span class="math display">\[ BF_{01} = \frac{1}{BF_{10}}\]</span></p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hands-on: Bayesiansicher <span class="math inline">\(t\)</span>-Test in JASP
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ul>
-<li><a href="https://kogpsy.github.io/neuroscicomplab/">Complab 2021</a><br>
-</li>
-<li><a href="https://kogpsy.github.io/neuroscicomplabFS22/">Complab 2022</a></li>
-<li><a href="https://kogpsy.github.io/neuroscicomplabFS23/">Complab 2023</a></li>
+<li><p>Laden Sie <a href="../../downloadable_files/data_stroop_wide.csv">hier</a> den Stroop Datensatz herunter. Der Datensatz wurde für diese Zwecke ins <code>wide</code>-Format angepasst, das R-Skript dafür können Sie sich <a href="../../downloadable_files/generate_dataset_jasp.R">hier</a> ansehen.</p></li>
+<li><p>Laden Sie den Datensatz in JASP und schauen Sie ihn an.</p></li>
+<li><p>Wie könnte die Forschungsfrage lauten? Was ist die Null- und Alternativhypothese?</p></li>
+<li><p>Führen Sie einen `Bayesian Paired Sample <span class="math inline">\(t\)</span>-Test aus.</p></li>
+<li><p>Explorieren Sie die Resultate und welche Optionen Sie für weitere Einstellungen haben.</p></li>
+<li><p>Welche Bayes Factors finden Sie für die Nullhypothese? Und für die Alternativhypothese?</p></li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Weiterführende Informationen zu Bayesianischem Hypothesentesten
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Vertiefende Informationen, inkl. Herleitung, zu Bayesianischen Hypothesentest finden Sie <a href="https://kogpsy.github.io/neuroscicomplabFS23/pages/chapters/bayesian-statistics-3.html">hier</a>.</p></li>
+<li><p><a href="https://rpsychologist.com/d3/bayes/">Hier</a> finden Sie eine interaktive Visualisierung.</p></li>
+<li><p><a href="https://www.rdocumentation.org/packages/brms/versions/2.21.0"><code>brms</code></a> ist ein <em>R-Package</em>, welches sich für Bayesianische Multilevel-Modelle eignet, da JASP relativ rasch an die Grenzen stösst für komplexere Modelle.</p></li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="äquivalenztests" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="äquivalenztests"><span class="header-section-number">14.2</span> Äquivalenztests</h2>
+<p>Ein nicht signifikanter Nullhypothesensignifikanztest (NHST) bedeutet nicht, dass kein Unterschied zwischen Gruppen/Bedingungen besteht, nur dass keiner gefunden werden konnte. Statt also aussschliesslich einen NHST durchzuführen und gegen <em>Null</em> zu testen, können Äquivalenztests, wie das “Two One-Sided Tests” (TOST) Verfahren durchgeführt werden. Dabei werden zwei einseitige <span class="math inline">\(t\)</span>-Tests ausgeführt, um zu testen, ob der Mittelwertsunterschied innerhalb eines gewissen Rahmens liegt. Dieser Rahmen muss von den Forschenden festgelegt werden und bezeichnet die kleinstmöglichste interessierende Effekt: <em>Smallest Effect Size of Interest</em> (SESOI). Mit dem TOST-Verfahren wird festgestellt, ob der gefundene Unterschied überraschend gering ist, wenn ein Effekt mindestens so gross wie der definierte SESOI tatsächlich existiert. <a href="https://journals.sagepub.com/doi/10.1177/2515245918770963">Lakens, Scheel &amp; Isager, 2018</a>.</p>
+<section id="festlegen-des-sesois" class="level3" data-number="14.2.1">
+<h3 data-number="14.2.1" class="anchored" data-anchor-id="festlegen-des-sesois"><span class="header-section-number">14.2.1</span> Festlegen des SESOIs</h3>
+<p>Der SESOI wird durch eine untere (<em>lower bound</em> <span class="math inline">\(\Delta\)</span>L) und obere Grenze (<em>upper bound</em> <span class="math inline">\(\Delta\)</span>U).</p>
+<p>Es gibt keine vorgegebenen Regeln für das Festlegen von SESOIs. Sie müssen von den Forschenden (<strong>vor</strong> der Datenanalyse) passend für Fragestellung und Feld festgelegt werden. Dafür gibt es folgende Ansätze:</p>
+<ul>
+<li><p>Subjektive Ansätze:</p>
+<ul>
+<li><p>Benchmarks (z.B. Standardisierte Effektgrössen wie <span class="math inline">\(d\)</span> = 0.5)</p></li>
+<li><p>vorherige Studien</p></li>
+<li><p>begründet in vorhandenen Ressourcen für die Studie</p></li>
 </ul></li>
-<li><strong>Daniel Fitze</strong>
+<li><p>Objektive Ansätze:</p>
 <ul>
-<li><a href="https://kogpsy.github.io/neuroscicomplabFS24/">Complab 2024</a></li>
+<li><p>theoretische Begründungen (z.B. just-noticeable difference, JND)</p></li>
+<li><p>basierend auf quantifizierbaren theoretischen Vorhersagen (z.B. durch computational models)</p></li>
 </ul></li>
 </ul>
-<p><br></p>
-<p>The course experiments and their descriptions were created by <strong>Rebekka Borer</strong> (Complab 2024-2025)</p>
-<p><br> <strong>We also thank all previous students who gave valuable feedback on the course and material!</strong></p>
-<p><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.</p>
+</section>
+<section id="tost-verfahren" class="level3" data-number="14.2.2">
+<h3 data-number="14.2.2" class="anchored" data-anchor-id="tost-verfahren"><span class="header-section-number">14.2.2</span> TOST-Verfahren</h3>
+<p>Nach dem Festlegen des SESOIs werden <strong>zwei</strong> einseitige <span class="math inline">\(t\)</span>-Tests durchgeführt:</p>
+<ul>
+<li>Test, ob Unterschied signifikant höher als untere Grenze (<span class="math inline">\(\Delta\)</span>L)</li>
+<li>Test, ob Unterschied signifikant tiefere als obere Grenze (<span class="math inline">\(\Delta\)</span>U)</li>
+</ul>
+<p>Wenn beide signifikant ausfallen sind die Gruppen/Bedingungen äquivalent. Es muss nicht für zweifaches Testen korrigiert werden, weil beide Tests signifikant sein müssen, um Äquivalenz anzunehmen. Statt <span class="math inline">\(p\)</span>-Werte können auch Konfidenzintervalle verwendet werden: Wenn das 90% Konfidenzintervall innerhalb des SESOIs liegt wird Äquivalenz angenommen. Das Konfidenzintervall muss festgelegt werden, es könnte auch z.B. 95%, 87% oder 99% sein (oder eine andere Zahl), es muss daher vor dem Test gewählt werden.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hands-on: Äquivalenztests in JASP
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Definieren Sie einen SESOI für den Unterschied der Reaktionszeiten zwischen der kongruenten und inkongruenten Bedingung im Stroop Task. Was ist <span class="math inline">\(\Delta\)</span>L, was ist <span class="math inline">\(\Delta\)</span>U?</p></li>
+<li><p>Aktivieren Sie in JASP das Modul <strong>Equivalence T-Tests</strong></p></li>
+<li><p>Sie können wieder dieselben Daten wie vorhin verwenden.</p></li>
+<li><p>Wählen Sie die beiden Variablen zum Vergleich aus.</p></li>
+<li><p>Geben Sie bei <code>Equivalence Region</code> Ihren SESOI ein.</p></li>
+<li><p>Explorieren Sie die Resultate und welche Optionen Sie für weitere Einstellungen haben.</p></li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Weiterführende Informationen zu Äquivalenztests
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Vertiefende Informationen finden Sie <a href="https://journals.sagepub.com/doi/10.1177/2515245918770963">in diesem Paper</a>.</p></li>
+<li><p><a href="https://rpsychologist.com/d3/equivalence/">Hier</a> finden Sie eine interaktive Visualisierung.</p></li>
+<li><p><a href="https://jasp-stats.org/2020/06/02/frequentist-and-bayesian-equivalence-testing-in-jasp/">Equivalence-Testing in JASP</a></p></li>
+<li><p>In <em>Jamovi</em> können Äquivalenztest mit dem Modul <em>TOSTER</em> durchgeführt werden (<a href="https://daniellakens.blogspot.com/2017/03/equivalence-testing-in-jamovi.html">weitere Informationen</a>)</p></li>
+</ul>
+</div>
+</div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script>
@@ -1372,13 +1536,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation column-page-right">
+<nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="./webrconsole.html" class="pagination-link" aria-label="WebR Konsole">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">WebR Konsole</span>
+      <a href="./parameterestimates.html" class="pagination-link" aria-label="Parameterschätzung: Einführung in die Bayesianische Statistik">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Parameterschätzung: Einführung in die Bayesianische Statistik</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./webrconsole.html" class="pagination-link" aria-label="WebR Konsole">
+        <span class="nav-page-text">WebR Konsole</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
