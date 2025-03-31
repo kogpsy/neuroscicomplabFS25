@@ -2,7 +2,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Neurowissenschaft Computerlab",
+    "title": "Neurowissenschaft im Computerlab",
     "section": "",
     "text": "Herzlich Willkommen\nHier finden Sie das Wichtigste zum Kurs FS2025.",
     "crumbs": [
@@ -12,7 +12,7 @@
   {
     "objectID": "index.html#ilias",
     "href": "index.html#ilias",
-    "title": "Neurowissenschaft Computerlab",
+    "title": "Neurowissenschaft im Computerlab",
     "section": "Ilias",
     "text": "Ilias\nUnter diesen Links finden Sie die Iliasgruppen:\nILIAS-Gruppe Freitag 08.15-10.00 👉 468703-FS2025-0\nILIAS-Gruppe Freitag 10.15-12.00 👉 468703-FS2025-1",
     "crumbs": [
@@ -22,7 +22,7 @@
   {
     "objectID": "index.html#kursvoraussetzungen",
     "href": "index.html#kursvoraussetzungen",
-    "title": "Neurowissenschaft Computerlab",
+    "title": "Neurowissenschaft im Computerlab",
     "section": "Kursvoraussetzungen",
     "text": "Kursvoraussetzungen\nWir werden mit der Programmiersprache R und zu einem kleinen Teil mit Python arbeiten. Sie benötigen in der Veranstaltung deshalb einen eigenen Laptop (Tablets sind nicht geeignet!) mit ca. 20 GB freiem Speicherplatz und mit einer installierten (aktuellen) Version von R und RStudio (Link zum Download von R und RStudio).\nR Kenntnisse (gemäss Statistik I-IV in Psychologie) werden vorausgesetzt. Zur Auffrischung dient folgender Link (https://methodenlehre.github.io/einfuehrung-in-R/) oder für Fortgeschrittene die Bücher „Advanced R” und „R for Data Scientists” von Hadley Wickham.\nZusätzlich dient Übung 2 zur Auffrischung der Vorkenntnisse auf die im späteren Verlauf des Kurses aufgebaut wird.\nBitte installieren Sie bis zum 2. Kurstermine folgende Software:\n\nNeue Versionen von R und RStudio\nPsychoPy\nJASP",
     "crumbs": [
@@ -32,7 +32,7 @@
   {
     "objectID": "index.html#leistungsnachweise",
     "href": "index.html#leistungsnachweise",
-    "title": "Neurowissenschaft Computerlab",
+    "title": "Neurowissenschaft im Computerlab",
     "section": "Leistungsnachweise",
     "text": "Leistungsnachweise\nDer Kurs entspricht 5 ETCS. Dafür müssen 3 Bereiche erfüllt werden:\n\nAnwesenheit im Kurs\nbestandene Übungen\nbestandenes Abschlussquiz\n\nAlle Leistungsnachweise werden in den Veranstaltungen angekündigt. Die Termine für die Leistungsnachweise finden Sie unter Termine der Leistungsnachweise.\n\nAnwesenheit\nDie Anwesenheit im Kurs wird vorausgesetzt, an 2 Terminen darf gefehlt werden.\nDas Online-Skript erlaubt das Nacharbeiten des wichtigsten Stoffes im Eigenstudium, wir können jedoch nicht für die Vollständigkeit garantieren. Hilfestellung beim Programmieren und Verstehen der Inhalte erhalten Sie während der Kurszeiten. Aus zeitlichen Gründen können wir keine ausführliche Beantwortung von Fragen zum Kursinhalt per E-Mail anbieten. Bitte stellen Sie Ihre Fragen in der Veranstaltung - auch Ihre Mitstudierenden werden davon profitieren, oft haben mehrere Personen dieselbe Frage.\n\n\nÜbungen\nEs gibt fünf Übungen.\n\nDie Übungen werden auf der Website aufgeschaltet und in der Veranstaltung erklärt.\nDie Ergebnisse der Übungen müssen in den entsprechenden Ordner auf ILIAS hochgeladen werden. Je nach Umfang der Übung wird die Zeit bis zur Abgabe unterschiedlich ausfallen. Sie wird jedoch immer mindestens zwei Wochen betragen.\nAusser Übung 2 müssen alle Übungen abgegeben und als bestanden bewertet werden. Wird eine ungenügende Übungen abgegeben erhalten Sie eine zweite Frist für die Abgabe oder einen Zusatzauftrag.\nÜbungen dürfen alleine oder in Gruppen von max. 3 Personen erledigt werden. Alle Personen müssen die Übung abgeben. Damit wir sehen, welche Übungsabgaben zusammengehören: Nennen Sie das File mit der Aufgabe und allen Initialen der Gruppe. Z.B. uebung_3_GW_EW.R\nAlle Übungen müssen bestanden werden. Ob die Übung bestanden wurde, sehen Sie auf Ilias. Bei Nicht-Bestehen muss die Übung nochmals abgeben werden oder eine Zusatzaufgabe erledigt werden.\n\nVerwenden von LLMs für Übungen: Sie dürfen LLMs gerne als Tool nutzen, um die Übung zu bearbeiten. Es liegt in Ihrer Verantwortung, den Output von LLMs vor der Abgabe gründlich zu prüfen. Halten Sie sich an Folgendes:\n\nLLMs geben Code aus. Aber sogar wenn dieser problemlos ausgeführt werden kann, muss genau überprüft werden, ob der Code das Richtige tut. Dieses Überprüfen kann unter Umständen genau so lange dauern, wie das Lesen und Verstehen der Dokumentation.\nDas Überprüfen von Code erfordert gewisse Grundkenntnisse. Das Verwenden von LLMs ersetzt kein Lernaufwand.1\nDas direkte Verwenden von Code ohne kompetente Prüfung ist in der Forschung unethisch!\nEs dürfen keine sensiblen Daten eingegeben werden bzw. auch keine Datensätze die nicht öffentlich sind.\n\n\n\nAbschlussquiz\nDas Abschlussquiz wird gegen Ende des Semesters auf Ilias freigeschaltet und dient dazu das Gelernte zu prüfen und so Feedback zu geben, wie gut man die Lerninhalte erinnert. Sie haben die Möglichkeit das Quiz mehrmals zu wiederholen.",
     "crumbs": [
@@ -42,7 +42,7 @@
   {
     "objectID": "index.html#datacamp",
     "href": "index.html#datacamp",
-    "title": "Neurowissenschaft Computerlab",
+    "title": "Neurowissenschaft im Computerlab",
     "section": "DataCamp",
     "text": "DataCamp\nDataCamp ist eine Online-Lernplattform, welche sich auf Data Science und Datenanalyse konzentriert. Es bietet interaktive Kurse, Tutorials und Projekte in verschiedenen Programmiersprachen wie Python, R und SQL auf unterschiedlichen Niveaus an; sowohl für Anfänger als auch für Fortgeschrittene gibt es ein breites Angebot.\nIm Rahmen dieser Lehrveranstaltung können alle Teilnehmenden sich unter folgendem Link mit ihrer Uni Bern E-Mail Adresse (*students.unibe.ch) registrieren und die Kurse kostenlos nutzen:\n👉🏼 Einladungslink DataCamp Registration (zuerst muss ein DataCamp Zugang erstellt werden.)\nWir werden jeweils die empfohlenen Datacamp Kurse verlinken. Sie haben mit dem Link Zugriff auf alle Datacamp-Kurse bis Ende FS25.\n👉🏼 Zur Auffrischung von R-Kenntnissen eignet sich dieser Kurs: Introduction to R\n👉🏼 Als Einführung in Python eignet sich folgender Kurs: Introduction to Python",
     "crumbs": [
@@ -52,7 +52,7 @@
   {
     "objectID": "index.html#footnotes",
     "href": "index.html#footnotes",
-    "title": "Neurowissenschaft Computerlab",
+    "title": "Neurowissenschaft im Computerlab",
     "section": "",
     "text": "↩︎",
     "crumbs": [
@@ -999,7 +999,7 @@
     "href": "license.html",
     "title": "License and Authorship",
     "section": "",
-    "text": "This course material is written by Gerda Wyssen & Enea Weber…\n…and (sometimes heavily!) adapted from previous course material from\n\nAndrew Ellis\n\nComplab 2021\n\nComplab 2022\nComplab 2023\n\nDaniel Fitze\n\nComplab 2024\n\n\n\nThe course experiments and their descriptions were created by Rebekka Borer (Complab 2024-2025)\n We also thank all previous students who gave valuable feedback on the course and material!\nThis work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
+    "text": "This course material is written by Gerda Wyssen, Enea Weber…\n…and (heavily!) adapted from previous course material from\n\nAndrew Ellis\n\nComplab 2021\n\nComplab 2022\nComplab 2023\n\nDaniel Fitze\n\nComplab 2024\n\n\n\nThe course experiments and their descriptions were created by Rebekka Borer (Complab 2024-2025)\n\nWe also thank all current and previous students who gave valuable feedback on the course and material!\nThis work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
     "crumbs": [
       "Anhang",
       "License and Authorship"

@@ -3,10 +3,10 @@ project:
   output-dir: docs
 
 book:
-  title: Neurowissenschaft Computerlab
-  subtitle: Frühlingssemester 2025, Universität Bern
- # author: Gerda Wyssen & Enea Weber
- # date: Februar 15, 2025
+  title: Neurowissenschaft im Computerlab
+  subtitle: Kurs FS 2025, Bachelor Neurowissenschaften, Universität Bern
+  author: Gerda Wyssen, Enea Weber, Daniel Fitze, and Andrew Ellis
+  date: "Feb 15 2025"
   edition: 1
   reader-mode: false
   cover-image: imgs/logo.png
@@ -95,9 +95,9 @@ format:
 filters:
   - webr
 
-execute:
-  cache: false
-  freeze: false # re-render only when source changes
-  execute-dir: project
+# execute:
+#   cache: false
+#   freeze: false # re-render only when source changes
+# #  execute-dir: project
 
 bibliography: bibliography.bib
