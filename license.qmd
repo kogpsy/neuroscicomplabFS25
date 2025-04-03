@@ -1,8 +1,8 @@
 # License and Authorship {.unnumbered}
 
-This course material is written by Gerda Wyssen, Enea Weber...
+The 2025 course material is written or adapted from previous versions by Gerda Wyssen and Enea Weber.
 
-...and (heavily!) adapted from previous course material from
+Some content relies heavily on or is copied from previous instructors' course material:
 
 - __Andrew Ellis__
     - [Complab 2021](https://kogpsy.github.io/neuroscicomplab/)    
@@ -14,7 +14,11 @@ This course material is written by Gerda Wyssen, Enea Weber...
 
 <br>
 
-The course experiments and their descriptions were created by __Rebekka Borer__ (Complab 2024-2025)
+The complab course was initially conceptualized by Andrew Ellis. 
+
+<br>
+
+The course experiments (Complab 2024-2025) and their descriptions were created by __Rebekka Borer__.
 
 <br>
 
