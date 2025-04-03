@@ -66,13 +66,17 @@ Um das zu veranschaulichen plotten wir die Wahrscheinlichkeit von 15 korrekten A
 
 ```{r message = FALSE, warning = FALSE}
 library(tidyverse)
-```
 
-```{r echo=TRUE}
-tibble(x = seq(from = 0, to = 1, by = .01)) |>
-    mutate(density = dbinom(15, 20, x)) |>
+# seed setzen für reproduzierbare ergebnisse
+set.seed(42) 
+
+# daten generieren
+d <- tibble(x = seq(from = 0, to = 1, by = .01)) |>
+    mutate(density = dbinom(15, 20, x))
+
+d |>
     ggplot(aes(x = x, ymin = 0, ymax = density)) +
-    geom_ribbon(alpha = 0.2, fill = "steelblue") +
+    geom_ribbon(alpha = 0.5, fill = "steelblue") +
     geom_vline(xintercept = theta, linetype = 2, linewidth = 1.2) +
     scale_y_continuous(NULL, breaks = NULL) +
     coord_cartesian(xlim = c(0, 1)) +
@@ -98,13 +102,19 @@ Diskutieren Sie in kleinen Gruppen, wie sinnvoll es ist sich hier auf einen Wert
 
 ### Posterior-Schätzung in der Bayesianischen Statistik
 
-In der Bayesianischen Statistik wird die Wahrscheinkeitslehre angewandt, um die Wahrscheinlichkeit von Parameterwerten zu berechnen. Im Gegensatz zu der Frequentistischen Statistik wird nicht nur ein "wahrer Wert" geschätzt, sondern eine Verteilung. 
-Es wird also für jeden möglichen Parameterwert eine Wahrscheinlichkeit geschätzt. 
+In der Bayesianischen Statistik wird die Wahrscheinkeitslehre angewandt, um die Wahrscheinlichkeit von Parameterwerten zu berechnen.
+Es wird für jeden möglichen Parameterwert die Wahrscheinlichkeit geschätzt mit der dieser Parameterwert die Daten generiert hat. 
+Im Gegensatz zu der Frequentistischen Statistik wird hier also nicht eine Punktschätzung vorgenommen (ein "wahrer Wert" geschätzt), sondern es wird ein Verteilung geschätzt.
 
-Der Posterior wird über alle möglichen Parameterwerte integriert, was eine grösse Stärke der Bayesian Statistik ist. 
-So wird nicht nur der wahrscheinlichste Parameterwert berücksichtigt wie bei der Punktschätzung, sondern durch das Einbeziehen der ganzen Parameterverteilung können auch Nebenoptima und "fast" genauso wahrscheinliche Werte einbezogen werden.
+:::callout-info
+Die Posterior-Verteilung beschreibt, wie wahrscheinlich verschiedene Werte eines unbekannten Parameters sind – basierend auf Vorwissen (Prior) und den beobachteten Daten. 
+:::
 
-Um die Wahrscheinlichkeit von Parametern zu berechnen wird in der Bayesianischen Statistik das Bayes Theorem verwendet. 
+Dass der Posterior über _alle_ möglichen Parameterwerte integriert wird, ist eine grösse Stärke der Bayesianischen Statistik. 
+So wird der ganze Möglichkeitsraum beschrieben. 
+Es wird nicht nur der wahrscheinlichste Parameterwert berücksichtigt wie bei der Punktschätzung, sondern durch das Einbeziehen der ganzen Parameterverteilung können auch Nebenoptima und "fast" genauso wahrscheinliche Werte einbezogen werden.
+
+Um die Posterior-Verteilung, also die Wahrscheinlichkeit aller Parameterwerte, zu berechnen wird in der Bayesianischen Statistik das Bayes Theorem verwendet. 
 
 ::: {.callout-note appearance="simple"}
 
@@ -114,21 +124,16 @@ Das Bayes Theorem gibt die Formel für eine bedingte Wahrscheinlichkeit $P(A|B)$
 
 $$ P(A|B) = \frac{P(B|A)⋅P(A)}{P(B)} $$
 
-Das kann gelesen werden als: "Die Wahrscheinlichkeit eines Ereignisses A unter der Bedingung, dass ein Ereignis B wahr ist, ist gleich der a priori Wahrscheinlichkeit, dass A wahr ist, multipliziert mit der Wahrscheinlichkeit, dass B eintritt, wenn A wahr ist. Dividiert wird das Ganze durch die Wahrscheinlichkeit, dass B eintritt, egal ob A wahr oder falsch ist."
+Das kann gelesen werden als: "Die Wahrscheinlichkeit eines Ereignisses $A$ unter der Bedingung, dass ein Ereignis $B$ wahr ist, ist gleich der a priori Wahrscheinlichkeit, dass $A$ wahr ist, multipliziert mit der Wahrscheinlichkeit, dass $B$ eintritt, wenn $A$ wahr ist. 
+Dividiert wird das Ganze durch die Wahrscheinlichkeit, dass $B$ eintritt, egal ob $A$ wahr oder falsch ist."
 :::
 
 Das bedeutet, um eine Bayesianische Parameterschätzung zu machen, müssen wir Vorwissen integrieren. Dies tun wir in Form einer Prior-Verteilung. 
-Ein simple Variante ist, den Prior ist so zu wählen, dass er allen möglichen Werten dieselbe Wahrscheinlichkeit zuschreibt (wie in der Grafik unten). Diese Verteilung wird _uniform_ genannt. Ein uniformer Prior ist aber selten empfehlenswert, da er zu breit ist.
+Ein simple Variante ist, den Prior ist so zu wählen, dass er allen möglichen Werten dieselbe Wahrscheinlichkeit zuschreibt (wie in der Grafik unten). Diese Verteilung wird _uniform_ genannt. Ein uniformer Prior ist aber selten empfehlenswert, da er zu breit und uniformativ ist.
 
 __Parameterschätzung__
 
 ![](imgs/theta_posterior.png)
-
-<!-- | Ansatz | Parameterschätzung | Hypothesentests | Statistische Kennzahlen | -->
-<!-- |------|------|------|------| -->
-<!-- | Frequentistisch | wahrer Wert wird geschätzt | Wahrscheinlichkeit der Daten zu berechnen, unter der Annahme dass die Nullhypothese wahr ist | p-Werte, Konfidenzintervall | -->
-<!-- | Ba -->
-
 
 :::callout-caution
 
@@ -143,7 +148,7 @@ __1. Modell: Stellen Sie sich vor, sie untersuchen eine Person, welche behauptet
 - Wie würden Sie die Behauptung der Person überprüfen?
 
 
-__2. Daten erheben: Sie werfen die Münze 10 mal und die Person macht x korrekte Vorhersagen.__
+__2. Daten erheben: Sie werfen die Münze 20 mal und die Person macht x korrekte Vorhersagen.__
 
 - Glauben Sie, dass die Person über extra-sensorische Fähigkeiten verfügt? Sind Sie skeptisch? 
 
@@ -162,6 +167,197 @@ __Beta Verteilungen__
 
 :::
 
+## Zusammenfassen von Posteriors
+
+Der Vorteil einer Posterior-Verteilung im Vergleich zu einer Punktschätzung ist es, dass wir damit Aussagen zu der Wahrscheinlichkeit eines Parameterwertes machen können.
+Da Posterior-Verteilungen oft komplex sind, fassen wir sie mit Hilfe von Kennzahlen zusammen. 
+
+Typische Zusammenfassungen sind Mittelwert, Median, Modus und Intervalle (Credible Intervals).
+Hier einige Beispiele, zu möglichen Aussagen:
+
+- _A._ $\theta$ liegt am wahrscheinlichsten bei $X$. (Mittelwert, Median, Modus)
+
+- _B._ Die Wahrscheinlichkeit, dass $\theta$ mindestens $X$ ist, liegt bei $P_x$.
+
+- _C._ Die Wahrscheinlichkeit, dass $\theta$ kleiner als $X$ ist, liegt bei $P_x$.
+
+- _D._ Die Wahrscheinlichkeit, dass $\theta$ zwischen $X_{tiefer}$ und $X_{höher}$ liegt ist $P_x$.
+
+- _E._ $\theta$ liegt mit einer Wahrscheinlichkeit von 95% zwischen $X_{tiefer}$ und $X_{höher}$. 
+
+- _F._ $\theta$ liegt mit einer Wahrscheinlichkeit von 20% ausserhalb des Bereichs zwischen $X_{tiefer}$ und $X_{höher}$.
+
+![](imgs/posteriorsummary.jpg)
+
+```{r}
+#| include: false
+#| eval: false
+
+library(patchwork)
+library(dplyr)
+
+# Simulate distribution of theta values
+set.seed(42)
+n = 20
+successes <- rbinom(100, n, prob = 0.5)
+theta_hat <- successes / n
+
+d <- tibble(theta_hat)
+dens <- density(theta_hat)
+theta_mode <- dens$x[which.max(dens$y)]
+density_xy <- tibble(x = dens$x, y = dens$y)
+
+# Plot A: wahrscheinlichster Wert
+p1 <- ggplot(d, aes(x = theta_hat)) +
+    geom_density(fill = "white", color = "black", size = 1) +
+    geom_vline(aes(xintercept = mean(theta_hat)), color = "blue", linetype = "dashed", size = 1) +
+    geom_vline(aes(xintercept = median(theta_hat)), color = "darkred", linetype = "dashed", size = 1) +
+    geom_vline(aes(xintercept = dens$x[which.max(dens$y)]), color = "yellow4", linetype = "dashed", size = 1) +
+    annotate("text", x = 0.6, y = 0.7, label = "Mittelwert", color = "blue") +
+    annotate("text", x = 0.6, y = 0.4, label = "Median", color = "darkred") +
+    annotate("text", x = 0.6, y = 0.1, label = "Mode", color = "yellow4") +
+    xlim(0, 1) +
+    scale_y_continuous(NULL, breaks = NULL) +
+    labs(title = "A. Wahrscheinlichster Wert für θ",
+         x = expression(hat(theta))) +
+    theme_classic()
+
+# Plot B: Theta mindestens Cutoff
+cutoff_b <- 0.64
+shade_b <- density_xy |> filter(x >= cutoff_b)
+prob_b <- mean(theta_hat > cutoff_b)
+
+p2 <- ggplot() +
+    geom_area(data = shade_b, aes(x = x, y = y), fill = "steelblue", alpha = 0.5) +
+    geom_line(data = density_xy, aes(x = x, y = y), color = "black", size = 1) +
+    geom_vline(xintercept = cutoff_b, color = "red", linetype = "dashed", size = 1) +
+    annotate("text", x = cutoff_b+0.11, y = 0.5, 
+             label = paste0("P(θ >= ", cutoff_b, ") = ", round(prob_b, 2)), hjust = -0.1) +
+    xlim(0, 1) +
+    scale_y_continuous(NULL, breaks = NULL) +
+    labs(title = "B. θ mindestens so hoch wie Cutoff-Wert", 
+         x = expression(hat(theta))) +
+    theme_classic()
+
+# Plot C: Theta unter Cutoff
+cutoff_c <- 0.3
+shade_c <- density_xy |> filter(x < cutoff_c)
+prob_c <- mean(theta_hat > cutoff_c)
+
+p3 <- ggplot() +
+    geom_area(data = shade_c, aes(x = x, y = y), fill = "steelblue", alpha = 0.5) +
+    geom_line(data = density_xy, aes(x = x, y = y), color = "black", size = 1) +
+    geom_vline(xintercept = cutoff_c, color = "red", linetype = "dashed", size = 1) +
+    annotate("text", x = 0.48, y = 0.13, 
+             label = paste0("P(θ < ", cutoff_c, ") = ", round(prob_c, 2)), 
+             hjust = 1.1) +
+    xlim(0, 1) +
+    scale_y_continuous(NULL, breaks = NULL) +
+    labs(title = "C. θ kleiner als Cutoff-Wert",
+         x = expression(hat(theta))) +
+    theme_classic()
+
+# Plot D: Wahrscheinlichkeit von theta zwischen zwei Werten
+lower <- 0.25
+upper <- 0.75
+prob_d <- mean(theta_hat > lower & theta_hat < upper)
+shade_d <- density_xy |> filter(x >= lower & x <= upper)
+
+p4 <- ggplot() +
+    geom_area(data = shade_d, aes(x = x, y = y), fill = "steelblue", alpha = 0.5) +
+    geom_line(data = density_xy, aes(x = x, y = y), color = "black", size = 1) +
+    geom_vline(xintercept = c(lower, upper), color = "red", linetype = "dashed", size = 1) +
+    annotate("text", x = 0.5, y = 0.03, 
+             label = paste0("P(", round(lower, 2), " < θ < ", round(upper, 2), ") = ", round(prob_d, 2)),
+             vjust = -1) +
+    xlim(0, 1) +
+    scale_y_continuous(NULL, breaks = NULL) +
+    labs(title = "D. θ innerhalb zwei Cutoffs", 
+         x = expression(hat(theta))) +
+    theme_classic()
+
+
+# Plot E: 95% credible interval
+ci_95 <- quantile(theta_hat, probs = c(0.025, 0.975))
+shade_e <- density_xy |> filter(x >= ci_95[1] & x <= ci_95[2])
+
+p5 <- ggplot() +
+    geom_area(data = shade_e, aes(x = x, y = y), fill = "steelblue", alpha = 0.5) +
+    geom_line(data = density_xy, aes(x = x, y = y), color = "black", size = 1) +
+    geom_vline(xintercept = ci_95, color = "red", linetype = "dashed", size = 1) +
+    annotate("text", x = ci_95[1], y = 0.02, label = "2.5%", hjust = 1.2) +
+    annotate("text", x = ci_95[2], y = 0.02, label = "97.5%", hjust = -0.2) +
+    xlim(0, 1) +
+    scale_y_continuous(NULL, breaks = NULL) +
+    labs(title = "E. θ innerhalb von 95%-Intervall", 
+         x = expression(hat(theta))) +
+    theme_classic()
+
+# Plot F: Untere und obere 10%
+ci_10 <- quantile(theta_hat, probs = c(0.1, 0.9))
+shade_f1 <- density_xy %>% filter(x < ci_10[1])
+shade_f2 <- density_xy %>% filter(x > ci_10[2])
+
+p6 <- ggplot() +
+    geom_area(data = shade_f1, aes(x = x, y = y), fill = "steelblue", alpha = 0.5) +
+    geom_area(data = shade_f2, aes(x = x, y = y), fill = "steelblue", alpha = 0.5) +
+    geom_line(data = density_xy, aes(x = x, y = y), color = "black", size = 1) +
+    geom_vline(xintercept = ci_10, color = "red", linetype = "dashed", size = 1) +
+    annotate("text", x = mean(ci_10), y = 0.03, label = "80%", vjust = -1) +
+    xlim(0, 1) +
+    annotate("text", x = 0.27, y = 0.03, label = "10%", vjust = -1) +
+    xlim(0, 1) +
+    annotate("text", x = 0.72, y = 0.03, label = "10%", vjust = -1) +
+    xlim(0, 1) +
+    scale_y_continuous(NULL, breaks = NULL) +
+    labs(title = "F. θ ausserhalb von 80%-Intervall", 
+         x = expression(hat(theta))) +
+    theme_classic()
+
+# 2x3 grid
+(p1 | p2 ) / (p3 | p4) / (p5 | p6)
+#ggsave(dpi = 300, filename = "imgs/posteriorsummary.jpg", width = 12, height = 10)
+
+```
+
+<aside> Gute Möglichkeiten zum Zusammenfassen von Posterior-Verteilungen bieten die Plot-Funktionen _R-Packages_ [{brms}](https://paulbuerkner.com/brms/), [{tidybayes}](https://mjskay.github.io/tidybayes/) und [{bayesplot}](https://mc-stan.org/bayesplot/). </aside>
+
+:::callout-caution
+## Hands-on: Credible interval vs. confidence interval
+__Credible interval__ ist ein bayesianisches Konzept, das sich vom __confidence interval__ (Konfidenzintervall) in der frequentistischen Statistik unterscheidet. Ein __credible interval__ ist ein Intervall, das eine bestimmte Wahrscheinlichkeit enthält, dass der wahre Parameter innerhalb dieses Intervalls liegt. Dies sollte nicht mit dem Konfidenzintervall verwechselt werden. Können Sie sich daran erinnern, wie ein Konfidenzintervall definiert ist? Was ist der Unterschied zwischen einem Konfidenzintervall und einem credible interval?
+:::
+
+## Entscheidung
+
+Anhand der Posterior-Verteilung eines Parameters kann eine Entscheidung getroffen werden.
+Wichtig ist hierbei, dass diese Kriterien vor dem Betrachten der Posterior-Verteilungen festgesetzt werden (analog zu den Hypothesen und Signifikanzniveaus bei frequentistischen Verfahren).
+Beispiele für Entscheidungskriterien sind:
+
+<aside> Im besten Fall werden (unabhängig ob frequentistisch oder bayesianisch analysiert wird) die Hypothesen, Analysen, Entscheidungskriterien, etc. vor der Datenanalyse festgelegt, z.B. durch das Erstellen einer Präregistration! </aside>
+
+- _Wenn 95% der geschätzen Parameterwerte über einem bestimmten Cut-off liegen, ist der Unterschied bedeutsam._
+
+- _Ist der geschätzte Parameterwert mehr als 2 Einheiten von 0 verschieden, so wird auf einen Unterschied geschlossen._
+
+aber auch:
+
+- _Unterscheiden sich die Posterior-Verteilungen zweier Parameterschätzungen nicht zu mehr als 10% wird darauf geschlossen, dass kein Unterschied besteht._
+
+- _Weicht der geschätzte Parameterwert weniger als 2 Einheiten von 0 ab, gibt es keinen Unterschied._
+
+Hier zeigt sich der Vorteil der Bayesianischen Parameterschätzung: Wir können durch das Zusammenfassen der Posterior-Verteilung direkt _evidence of absence_ testen.
+
+
+
+:::callout-caution
+## Hands-on: Entscheidungen aufgrund von Posterior-Verteilungen
+
+Wie könnten Entscheidungen aussehen bezüglich unserer _Stroop_ oder _Random-Dot_ Daten?
+
+Erstellen Sie je ein Entscheidungskriterium, für das Erkennen eines Effekts und für die Abwesenheit eines Effekts.
+
+:::
+
 
 ### Wrap-up
 
@@ -169,9 +365,17 @@ Zusammenfassend kann gesagt werden:
 
 - In der _frequentistischen Statistik_ wird angenommen, dass der Parameter einen _wahren Wert_ hat, den wir aber nicht kennen. Wir erhalten als Resultat eine Punktschätzung für den Parameter und können keine Aussage über die Wahrscheinlichkeit dieses einen geschätzten Parameterwerts machen. Der 95%-CI (__confidence interval__) sagt aus, dass bei Wiederholung des Experiments der "wahre" Parameterwert in 95% der Konfidenzintervalle enthalten sein wird. 
 
-- In der _bayesianischen Statistik_ wird angenommen, dass der Parameter eine Wahrscheinlichkeitsverteilung hat, die wir schätzen können. Es muss zusätzlich eine Priorverteilung festgelegt werden. Wir erhalten eine Posterior Verteilung für die Parameterwerte und können eine Aussage über Wahrscheinlichkeit eines Parameterwerts oder eines Modelles machen. Der 95%-CI (__credible interval__) enthält zu 95% den "wahren" Parameterwert.
+- In der _bayesianischen Statistik_ wird angenommen, dass der Parameter eine Wahrscheinlichkeitsverteilung hat, die wir schätzen können. Es muss zusätzlich eine Priorverteilung festgelegt werden. Wir erhalten eine Posterior Verteilung für die Parameterwerte und können eine Aussage über Wahrscheinlichkeit eines Parameterwerts oder eines Modelles machen. Der 95%-CrI (__credible interval__) enthält zu 95% den "wahren" Parameterwert.
 
 <aside>"Wahr" bedeutet hier, den Parameterwert der (angenommen ein passendes Modell wurde verwendet) zu diesen Daten geführt hat.</aside>
+
+:::callout-note
+In der Bayesianischen Statistik erhalten wir nach der Anwendung des Satzes von Bayes die sogenannte Posterior-Verteilung. Sie beschreibt, wie wahrscheinlich verschiedene Werte eines unbekannten Parameters sind – basierend auf unserem Vorwissen (Prior) und den beobachteten Daten. 
+:::
+
+### Weiterführende Informationen
+
+- Kruschke, J.K., Liddell, T.M. The Bayesian New Statistics: Hypothesis testing, estimation, meta-analysis, and power analysis from a Bayesian perspective. Psychonomic Bulletin & Review 25, 178–206 (2018). <https://doi.org/10.3758/s13423-016-1221-4>
 
 
 

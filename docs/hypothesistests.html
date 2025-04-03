@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./webrconsole.html" rel="next">
+<link href="./uebung_4.html" rel="next">
 <link href="./parameterestimates.html" rel="prev">
 <link href="./imgs/logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -310,6 +310,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Hypothesentests: Bayesianischer <span class="math inline">\(t\)</span>-Test und Äquivalenztests (TOSTs)</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./uebung_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Übung 4</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -403,7 +409,7 @@ p(\mathcal{M}_1 | y) = \frac{P(y | \mathcal{M}_1) p(\mathcal{M}_1)}{p(y)}
 <p><span class="math display">\[
 p(\mathcal{M}_2 | y) = \frac{P(y | \mathcal{M}_2) p(\mathcal{M}_2)}{p(y)}
 \]</span></p>
-<p>Hierfür kann das Verhältnis der beiden Wahrscheinlichkeiten (_Posterior Odds__) berechnet werden: <span class="math inline">\(p(\mathcal{M}_1 | y) / p(\mathcal{M}_2 | y)\)</span>, was gekürzt folgende Formel ergibt:</p>
+<p>Hierfür kann das Verhältnis der beiden Wahrscheinlichkeiten (<em>Posterior Odds</em>) berechnet werden: <span class="math inline">\(p(\mathcal{M}_1 | y) / p(\mathcal{M}_2 | y)\)</span>, was gekürzt folgende Formel ergibt:</p>
 <p><span class="math display">\[
 \underbrace{\frac{p(\mathcal{M}_1 | y)} {p(\mathcal{M}_2 | y)}}_\text{Posterior odds} = \underbrace{\frac{P(y | \mathcal{M}_1)}{P(y | \mathcal{M}_2)}}_\text{Ratio of marginal likelihoods} \cdot \underbrace{ \frac{p(\mathcal{M}_1)}{p(\mathcal{M}_2)}}_\text{Prior odds}
 \]</span></p>
@@ -454,11 +460,17 @@ Hands-on: Bayesiansicher <span class="math inline">\(t\)</span>-Test in JASP
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li><p>Laden Sie <a href="../../downloadable_files/data_stroop_wide.csv">hier</a> den Stroop Datensatz herunter. Der Datensatz wurde für diese Zwecke ins <code>wide</code>-Format angepasst, das R-Skript dafür können Sie sich <a href="../../downloadable_files/generate_dataset_jasp.R">hier</a> ansehen.</p></li>
-<li><p>Laden Sie den Datensatz in JASP und schauen Sie ihn an.</p></li>
+<li><p>Laden Sie <a href="data/data_stroop_wide.csv">hier</a> den Stroop Datensatz herunter. Der Datensatz wurde für diese Zwecke ins <code>wide</code>-Format angepasst.</p></li>
+<li><p>Laden Sie den Datensatz in <em>JASP</em> und schauen Sie ihn an.</p></li>
 <li><p>Wie könnte die Forschungsfrage lauten? Was ist die Null- und Alternativhypothese?</p></li>
-<li><p>Führen Sie einen `Bayesian Paired Sample <span class="math inline">\(t\)</span>-Test aus.</p></li>
-<li><p>Explorieren Sie die Resultate und welche Optionen Sie für weitere Einstellungen haben.</p></li>
+<li><p>Führen Sie einen <code>Bayesian Paired Sample $t$-Test</code> aus.</p></li>
+<li><p>Explorieren Sie die Resultate und welche Optionen Sie für weitere Einstellungen haben.</p>
+<ul>
+<li>Wo kann der Prior angepasst werden?</li>
+<li>Wo können Hypothesen spezifiziert werden?</li>
+<li>Wo können Sie den Posterior anschauen?</li>
+<li>Welche Visualisierungsmöglichkeiten haben Sie?</li>
+</ul></li>
 <li><p>Welche Bayes Factors finden Sie für die Nullhypothese? Und für die Alternativhypothese?</p></li>
 </ul>
 </div>
@@ -482,13 +494,20 @@ Weiterführende Informationen zu Bayesianischem Hypothesentesten
 </div>
 </section>
 </section>
-<section id="äquivalenztests" class="level2" data-number="14.2">
+<section id="äquivalenztests" class="level2 page-columns page-full" data-number="14.2">
 <h2 data-number="14.2" class="anchored" data-anchor-id="äquivalenztests"><span class="header-section-number">14.2</span> Äquivalenztests</h2>
-<p>Ein nicht signifikanter Nullhypothesensignifikanztest (NHST) bedeutet nicht, dass kein Unterschied zwischen Gruppen/Bedingungen besteht, nur dass keiner gefunden werden konnte. Statt also aussschliesslich einen NHST durchzuführen und gegen <em>Null</em> zu testen, können Äquivalenztests, wie das “Two One-Sided Tests” (TOST) Verfahren durchgeführt werden. Dabei werden zwei einseitige <span class="math inline">\(t\)</span>-Tests ausgeführt, um zu testen, ob der Mittelwertsunterschied innerhalb eines gewissen Rahmens liegt. Dieser Rahmen muss von den Forschenden festgelegt werden und bezeichnet die kleinstmöglichste interessierende Effekt: <em>Smallest Effect Size of Interest</em> (SESOI). Mit dem TOST-Verfahren wird festgestellt, ob der gefundene Unterschied überraschend gering ist, wenn ein Effekt mindestens so gross wie der definierte SESOI tatsächlich existiert. <a href="https://journals.sagepub.com/doi/10.1177/2515245918770963">Lakens, Scheel &amp; Isager, 2018</a>.</p>
-<section id="festlegen-des-sesois" class="level3" data-number="14.2.1">
+<p>Ein nicht signifikanter Nullhypothesensignifikanztest (NHST) bedeutet nicht zwingend, dass kein Unterschied zwischen Gruppen/Bedingungen besteht, nur dass keiner gefunden werden konnte. Bei einer Power von 80% ist beträgt die Wahrscheinlichkeit die Nullhypothese fälschlicherweise nicht abzulehnen 20%!</p>
+<p>Statt aussschliesslich einen NHST durchzuführen und gegen die <em>Nullhypothese</em> zu testen, können Äquivalenztests, z.B. das “Two One-Sided Tests” (TOST) Verfahren durchgeführt werden. Dabei werden zwei einseitige <span class="math inline">\(t\)</span>-Tests ausgeführt, um zu testen, ob der Mittelwertsunterschied innerhalb eines gewissen Rahmens liegt.</p>
+<p>Dieser Rahmen muss von den Forschenden festgelegt werden und bezeichnet die kleinstmöglichste interessierende Effekt: <em>Smallest Effect Size of Interest</em> (SESOI). Mit dem TOST-Verfahren wird festgestellt, ob der gefundene Unterschied überraschend gering ist, wenn ein Effekt mindestens so gross wie der definierte SESOI tatsächlich existiert. <a href="https://journals.sagepub.com/doi/10.1177/2515245918770963">(Lakens, Scheel &amp; Isager, 2018)</a>.</p>
+<aside>
+<a href="https://rpsychologist.com/d3/equivalence/">Hier</a> finden Sie eine interaktive Visualisierung des Äquivalenztests.
+</aside>
+<section id="festlegen-des-sesois" class="level3 page-columns page-full" data-number="14.2.1">
 <h3 data-number="14.2.1" class="anchored" data-anchor-id="festlegen-des-sesois"><span class="header-section-number">14.2.1</span> Festlegen des SESOIs</h3>
-<p>Der SESOI wird durch eine untere (<em>lower bound</em> <span class="math inline">\(\Delta\)</span>L) und obere Grenze (<em>upper bound</em> <span class="math inline">\(\Delta\)</span>U).</p>
-<p>Es gibt keine vorgegebenen Regeln für das Festlegen von SESOIs. Sie müssen von den Forschenden (<strong>vor</strong> der Datenanalyse) passend für Fragestellung und Feld festgelegt werden. Dafür gibt es folgende Ansätze:</p>
+<p>Der SESOI wird durch eine untere (<em>lower bound</em> <span class="math inline">\(\Delta\)</span>L) und obere Grenze (<em>upper bound</em> <span class="math inline">\(\Delta\)</span>U). Es gibt keine vorgegebenen Regeln für das Festlegen von SESOIs. Sie müssen von den Forschenden (<strong>vor</strong> der Datenanalyse) passend für Fragestellung und Feld festgelegt werden. Dafür gibt es folgende Ansätze:</p>
+<aside>
+Mehr dazu finden Sie hier <a href="https://journals.sagepub.com/doi/10.1177/2515245918770963">Lakens et al.&nbsp;2018</a>
+</aside>
 <ul>
 <li><p>Subjektive Ansätze:</p>
 <ul>
@@ -510,7 +529,8 @@ Weiterführende Informationen zu Bayesianischem Hypothesentesten
 <li>Test, ob Unterschied signifikant höher als untere Grenze (<span class="math inline">\(\Delta\)</span>L)</li>
 <li>Test, ob Unterschied signifikant tiefere als obere Grenze (<span class="math inline">\(\Delta\)</span>U)</li>
 </ul>
-<p>Wenn beide signifikant ausfallen sind die Gruppen/Bedingungen äquivalent. Es muss nicht für zweifaches Testen korrigiert werden, weil beide Tests signifikant sein müssen, um Äquivalenz anzunehmen. Statt <span class="math inline">\(p\)</span>-Werte können auch Konfidenzintervalle verwendet werden: Wenn das 90% Konfidenzintervall innerhalb des SESOIs liegt wird Äquivalenz angenommen. Das Konfidenzintervall muss festgelegt werden, es könnte auch z.B. 95%, 87% oder 99% sein (oder eine andere Zahl), es muss daher vor dem Test gewählt werden.</p>
+<p>Wenn beide signifikant ausfallen sind die Gruppen/Bedingungen äquivalent. Es muss nicht für zweifaches Testen korrigiert werden, weil beide Tests signifikant sein müssen, um Äquivalenz anzunehmen.</p>
+<p>Anstelle von <span class="math inline">\(p\)</span>-Werten können auch Konfidenzintervalle verwendet werden: Wenn das 90% Konfidenzintervall innerhalb des SESOIs liegt wird Äquivalenz angenommen. Das Konfidenzintervall muss festgelegt werden, es könnte auch z.B. 95%, 87% oder 99% sein (oder eine andere Zahl). Es muss daher zwingend vor dem Test gewählt werden.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -522,11 +542,11 @@ Hands-on: Äquivalenztests in JASP
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li><p>Definieren Sie einen SESOI für den Unterschied der Reaktionszeiten zwischen der kongruenten und inkongruenten Bedingung im Stroop Task. Was ist <span class="math inline">\(\Delta\)</span>L, was ist <span class="math inline">\(\Delta\)</span>U?</p></li>
-<li><p>Aktivieren Sie in JASP das Modul <strong>Equivalence T-Tests</strong></p></li>
+<li><p>Definieren Sie einen <em>SESOI</em> für den Unterschied der Reaktionszeiten zwischen der kongruenten und inkongruenten Bedingung im <em>Stroop Task</em>. Was ist <span class="math inline">\(\Delta\)</span>L, was ist <span class="math inline">\(\Delta\)</span>U?</p></li>
+<li><p>Aktivieren Sie in JASP das Modul <strong>Equivalence T-Tests</strong>.</p></li>
 <li><p>Sie können wieder dieselben Daten wie vorhin verwenden.</p></li>
-<li><p>Wählen Sie die beiden Variablen zum Vergleich aus.</p></li>
-<li><p>Geben Sie bei <code>Equivalence Region</code> Ihren SESOI ein.</p></li>
+<li><p>Wählen Sie die passenden Variablen zum Vergleich aus.</p></li>
+<li><p>Geben Sie bei <code>Equivalence Region</code> Ihren SESOI ein (in Rohwerten oder standardisiert).</p></li>
 <li><p>Explorieren Sie die Resultate und welche Optionen Sie für weitere Einstellungen haben.</p></li>
 </ul>
 </div>
@@ -1543,8 +1563,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./webrconsole.html" class="pagination-link" aria-label="WebR Konsole">
-        <span class="nav-page-text">WebR Konsole</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./uebung_4.html" class="pagination-link" aria-label="Übung 4">
+        <span class="nav-page-text">Übung 4</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>13&nbsp; Parameterschätzung: Einführung in die Bayesianische Statistik – Neurowissenschaft im Computerlab</title>
+<title>Übung 4 – Neurowissenschaft im Computerlab</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -64,8 +30,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./hypothesistests.html" rel="next">
-<link href="./intro_analysis.html" rel="prev">
+<link href="./webrconsole.html" rel="next">
+<link href="./hypothesistests.html" rel="prev">
 <link href="./imgs/logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -149,7 +115,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_analysis.html">Datenanalyse</a></li><li class="breadcrumb-item"><a href="./parameterestimates.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Parameterschätzung: Einführung in die Bayesianische Statistik</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_analysis.html">Datenanalyse</a></li><li class="breadcrumb-item"><a href="./uebung_4.html">Übung 4</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -334,7 +300,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./parameterestimates.html" class="sidebar-item-text sidebar-link active">
+  <a href="./parameterestimates.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Parameterschätzung: Einführung in die Bayesianische Statistik</span></span></a>
   </div>
 </li>
@@ -346,7 +312,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./uebung_4.html" class="sidebar-item-text sidebar-link">
+  <a href="./uebung_4.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Übung 4</span></a>
   </div>
 </li>
@@ -389,26 +355,25 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#frequentistische-und-bayesianische-parameterschätzung" id="toc-frequentistische-und-bayesianische-parameterschätzung" class="nav-link active" data-scroll-target="#frequentistische-und-bayesianische-parameterschätzung"><span class="header-section-number">13.1</span> Frequentistische und Bayesianische Parameterschätzung</a>
+  <li><a href="#auftrag" id="toc-auftrag" class="nav-link active" data-scroll-target="#auftrag">Auftrag</a></li>
+  <li><a href="#vorgehen" id="toc-vorgehen" class="nav-link" data-scroll-target="#vorgehen">Vorgehen</a>
   <ul class="collapse">
-  <li><a href="#maximum-likelihood-schätzung" id="toc-maximum-likelihood-schätzung" class="nav-link" data-scroll-target="#maximum-likelihood-schätzung"><span class="header-section-number">13.1.1</span> Maximum-Likelihood Schätzung</a></li>
-  <li><a href="#posterior-schätzung-in-der-bayesianischen-statistik" id="toc-posterior-schätzung-in-der-bayesianischen-statistik" class="nav-link" data-scroll-target="#posterior-schätzung-in-der-bayesianischen-statistik"><span class="header-section-number">13.1.2</span> Posterior-Schätzung in der Bayesianischen Statistik</a></li>
+  <li><a href="#download-und-setup" id="toc-download-und-setup" class="nav-link" data-scroll-target="#download-und-setup">Download und Setup</a></li>
+  <li><a href="#teil-poster-präregistration" id="toc-teil-poster-präregistration" class="nav-link" data-scroll-target="#teil-poster-präregistration">1. Teil: Poster (Präregistration)</a></li>
+  <li><a href="#teil-datenanalyse-in-jasp" id="toc-teil-datenanalyse-in-jasp" class="nav-link" data-scroll-target="#teil-datenanalyse-in-jasp">2. Teil: Datenanalyse in <em>JASP</em></a></li>
+  <li><a href="#teil-poster-ergebnisse" id="toc-teil-poster-ergebnisse" class="nav-link" data-scroll-target="#teil-poster-ergebnisse">3. Teil: Poster (Ergebnisse)</a></li>
+  <li><a href="#hochladen-der-dateien-auf-ilias" id="toc-hochladen-der-dateien-auf-ilias" class="nav-link" data-scroll-target="#hochladen-der-dateien-auf-ilias">Hochladen der Dateien auf Ilias</a></li>
   </ul></li>
-  <li><a href="#zusammenfassen-von-posteriors" id="toc-zusammenfassen-von-posteriors" class="nav-link" data-scroll-target="#zusammenfassen-von-posteriors"><span class="header-section-number">13.2</span> Zusammenfassen von Posteriors</a></li>
-  <li><a href="#entscheidung" id="toc-entscheidung" class="nav-link" data-scroll-target="#entscheidung"><span class="header-section-number">13.3</span> Entscheidung</a>
-  <ul class="collapse">
-  <li><a href="#wrap-up" id="toc-wrap-up" class="nav-link" data-scroll-target="#wrap-up"><span class="header-section-number">13.3.1</span> Wrap-up</a></li>
-  <li><a href="#weiterführende-informationen" id="toc-weiterführende-informationen" class="nav-link" data-scroll-target="#weiterführende-informationen"><span class="header-section-number">13.3.2</span> Weiterführende Informationen</a></li>
-  </ul></li>
+  <li><a href="#abgabetermin" id="toc-abgabetermin" class="nav-link" data-scroll-target="#abgabetermin">Abgabetermin</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full column-body" id="quarto-document-content">
+<main class="content column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_analysis.html">Datenanalyse</a></li><li class="breadcrumb-item"><a href="./parameterestimates.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Parameterschätzung: Einführung in die Bayesianische Statistik</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_analysis.html">Datenanalyse</a></li><li class="breadcrumb-item"><a href="./uebung_4.html">Übung 4</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Parameterschätzung: Einführung in die Bayesianische Statistik</span></h1>
+<h1 class="title">Übung 4</h1>
 </div>
 
 
@@ -425,253 +390,142 @@ window.Quarto = {
 </header>
 
 
-<p>Nach dem Data Cleaning und Preprocessing geht es darum, welche Informationen die Daten über den zu untersuchenden Prozess beinhalten. Anhand der Daten sollen also Rückschlüsse auf den Prozess der zu diesen Daten geführt hat geschlossen werden. Dies wird mit folgenden Schritten gemacht</p>
-<ol type="1">
-<li><p><strong>Parameterschätzung</strong>: Bei der Parameterschätzung wird ein Wert des datengenerierenden Prozesses geschätzt. Sie erlaubt das Quantifizieren eines Parameters, also eines Werts, der wahrscheinlich den Daten zugrundeliegt. Beispiel: Die Schätzung eines Mittelwerts (Parameter) einer Normalverteilung.</p></li>
-<li><p><strong>Hypothesentests</strong>: Hypothesentests vergleichen zwei statistische Modelle. Sie erlauben eine Entscheidung, z.B. ob ein signifikanter Unterschied vorhanden ist oder nicht? Um diese Entscheidung zu treffen muss eine “Fehlerwahrscheinlichkeit” bestimmt werden. (Wie sicher will ich sein?)</p></li>
-</ol>
-<section id="frequentistische-und-bayesianische-parameterschätzung" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="frequentistische-und-bayesianische-parameterschätzung"><span class="header-section-number">13.1</span> Frequentistische und Bayesianische Parameterschätzung</h2>
-<p>In der Frequentistischen Statistik wird angenommen, dass ein Parameter einen wahren (aber unbekannten) Wert hat. Die frequentistische Parameterschätzung ergibt eine Punktschätzung: Der geschätzte Parameter hat damit genau <strong>einen</strong> Wert und keine Wahrscheinlichkeitsverteilung. Daher dürfen keine Aussagen über eine Wahrscheinlichkeitsverteilung des Parameters bzw. die Wahrscheinlichkeit eines Parameterswerts gemacht werden. Nur Ereignisse die wiederholt werden können eine Wahrscheinlichkeit (eine Häufigkeitsverteilung) haben.</p>
-<p>In der Bayesianischen Statistik hingegen wird für jeden möglichen Parameterwert geschätzt, wie wahrscheinlich dieser einzelne Wert ist in Anbetracht der Vorannahmen (Priors) und der Daten. Das bedeutet, wir erhalten für jeden dieser Werte gleichzeitig auch eine Wahrscheinlichkeit mit der dieser zutrifft. Die Zusammenfassung aller geschätzten Werte und deren Wahrscheinlichkeiten wird in der <em>Posterior-Verteilung</em> zusammengefasst. Die Posterior Wahrscheinlichkeit beschreibt unser <em>degree of belief</em>, also unser aktuelles Wissen darüber, wie wahrscheinlich dieser Parameterwert wirklich hinter den Daten steckt.</p>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Hands-on: Frequentistisch oder Bayesianisch?
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Ordnen Sie die untenstehenden Aussagen dem frequentistischen bzw. dem baysianischen Ansatz zu:</p>
+<section id="auftrag" class="level2">
+<h2 class="anchored" data-anchor-id="auftrag">Auftrag</h2>
+<p><strong>Datenanalyse </strong></p>
 <ul>
-<li><p>“Der Mittelwert liegt mit 95%-iger Wahrscheinlichkeit zwischen 0.75 und 0.85 Sekunden.”</p></li>
-<li><p>“Wenn das Experiment 100 Mal wiederholt wird, ist der wahre Mittelwert in 95% der Konfidenzintervalle enthalten.”</p></li>
+<li><p><em>optional: Datenvorverarbeiten in <em>R</em> (z.B. Filtern für bestimmte Gruppen/Fälle, nur wenn Bedarf)</em></p></li>
+<li><p>Analysieren der Daten des <em>Random-Dot Experiments</em></p></li>
 </ul>
-</div>
-</div>
-<p>Wir schauen uns die unterschiedlichen Ansätze der Parameterschätzung im Folgenden an einem Beispiel an. Wir haben bei einer Person z.B. beobachtet, dass sie in 15 von 20 Trials korrekt geantwortet hat.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>correct <span class="ot">&lt;-</span> <span class="dv">15</span> <span class="co"># Anzahl korrekter Antworten</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>trials <span class="ot">&lt;-</span> <span class="dv">20</span> <span class="co"># Anzahl Trials insgesamt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="maximum-likelihood-schätzung" class="level3" data-number="13.1.1">
-<h3 data-number="13.1.1" class="anchored" data-anchor-id="maximum-likelihood-schätzung"><span class="header-section-number">13.1.1</span> Maximum-Likelihood Schätzung</h3>
-<p><span class="math inline">\(\theta\)</span> ist der Parameterwert unter dem die beobachteten Daten am wahrscheinlichsten entstanden sind. Die beste Punktschätzung des Parameters <span class="math inline">\(\theta\)</span>, die wir machen können, wenn wir nur die Daten betrachten, und kein weiteres Vorwissen berücksichtigen, ist die Maximum-Likelihood Schätzung.</p>
-<p>Möchten wir also z.B. schätzen mit welcher Wahrscheinlichkeit die Person beim nächsten Trial eine richtige Antwort gibt, können wir dies aus den bisherigen Trials berechnen:</p>
-<p><span class="math display">\[\theta = correct / all \]</span></p>
-<p>Wenn die Person in insgesamt 20 Trials 15 Mal richtig geantwortet hat, wäre die Schätzung</p>
-<p><span class="math inline">\(\theta = 15 / 20 = 0.75\)</span></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> correct <span class="sc">/</span> trials</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>theta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.75</code></pre>
-</div>
-</div>
-<p>Wir erhalten eine Punktschätzung (<strong>einen</strong> Wert), die uns angibt mit welcher Wahrscheinlichkeit die Person beim nächsten Trial richtig antworten wird, nämlich 0.75 bzw. sie wird in 3/4 der Fälle richtig antworten.</p>
-<p>Wenn man ganz viele Male diese Spiele wiederholen würde, dann würde man diese Messung am wahrscheinlichsten reproduzieren können, wenn man für <span class="math inline">\(\theta\)</span> den Wert 0.75 einsetzt.</p>
-<p>Der grosse Nachteil einer Punktschätzung ist es, dass wir keine Wahrscheinlichkeitsverteilung erhalten. Es gäbe auch noch viele andere Parameterwerte, die dieses Ergebnis von 15 korrekten Antworten in 20 Trials hervorbringen könnten, z.B. <span class="math inline">\(\theta = 0.73\)</span> oder <span class="math inline">\(\theta = 0.78\)</span>. Diese werden bei der Punktschätzung nicht beachtet.</p>
-<p>Um das zu veranschaulichen plotten wir die Wahrscheinlichkeit von 15 korrekten Antworten in 20 Trials für alle Werte welche <span class="math inline">\(\theta\)</span> annehmen könnte. Diese Werte liegen zwischen 0 und 1, da wir von einer Wahrscheinlichkeit sprechen.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># seed setzen für reproduzierbare ergebnisse</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>) </span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># daten generieren</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">1</span>, <span class="at">by =</span> .<span class="dv">01</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">density =</span> <span class="fu">dbinom</span>(<span class="dv">15</span>, <span class="dv">20</span>, x))</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>d <span class="sc">|&gt;</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">ymin =</span> <span class="dv">0</span>, <span class="at">ymax =</span> density)) <span class="sc">+</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_ribbon</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> theta, <span class="at">linetype =</span> <span class="dv">2</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="cn">NULL</span>, <span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">"Geschätzter Wert von "</span>, theta))) <span class="sc">+</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="parameterestimates_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Die Punktschätzung von <span class="math inline">\(\theta\)</span> wird mit der schwarzen gestrichelten Linie dargestellt. Die hellblaue Fläche zeigt, wie wahrscheinlich die einzelnen Werte jeweils sind (hier abgebildet sehen Sie <em>relative</em> Wahrscheinlichkeiten).</p>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Hands-on: Punktschätzung
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Diskutieren Sie in kleinen Gruppen, wie sinnvoll es ist sich hier auf einen Wert festzulegen:</p>
+<p><strong>Data Report in Form eines Posters erstellen</strong></p>
 <ul>
-<li><p>Wie genau denken Sie bildet die Punktschätzung die Realität ab?</p></li>
-<li><p>Wie viel wahrscheinlicher ist das berechnete <span class="math inline">\(\theta = 0.75\)</span> im Vergleich zu <span class="math inline">\(\theta = 0.70\)</span>?</p></li>
-<li><p>Was kann das Schätzen der Wahrscheinlichkeit für alle Parameterwerte für einen Mehrwert bringen?</p></li>
-<li><p>Wo kann eine Punktschätzung einen Mehrwert haben?</p></li>
+<li>Poster erstellen</li>
 </ul>
-</div>
-</div>
+<p><strong>Wichtig</strong>:</p>
+<ul>
+<li><p><em>Information zum Arbeiten in Kleingruppen:</em></p>
+<ul>
+<li>Übungen dürfen alleine oder in Gruppen von max. 3 Personen erledigt werden. Alle Personen müssen die Übung auf Ilias hochladen, um die Übung zu bestehen.</li>
+<li>Die Files von Gruppenarbeiten müssen folgendermassen benannt werden, damit wir sehen, welche Übungsabgaben zusammengehören: Nennen Sie das File mit der Aufgabe und allen Initialen der Gruppe. Z.B. <code>analyse_GW_EW.jasp</code>. Geben Sie bei allen Files die Initialen in <strong>derselben</strong> Reihenfolge an.</li>
+</ul></li>
+<li><p><em>Arbeitsanweisung unter dem Unterkapitel <em>Vorgehen</em>:</em></p>
+<ul>
+<li>Lesen Sie die Anweisungen genau durch und geben Sie die Dateien in diesem Format ab (z.B. Benennung der Dateien).</li>
+<li>Arbeiten Sie entlang der Arbeitsanweisung, um den Prozess zu vereinfachen.</li>
+</ul></li>
+<li><p><em>Es wird eine kleine Poster-Session geben, bei der die Poster angeschaut werden können.</em></p>
+<ul>
+<li><p>Verkleinern Sie die Schriftgrösse nicht zu sehr. Die Poster werden auf A3-Format von uns ausgedruckt. Bei zu kleiner Schrift wird das schwierig.</p></li>
+<li><p>Das Poster darf in Deutsch oder Englisch geschrieben sein.</p></li>
+</ul></li>
+</ul>
 </section>
-<section id="posterior-schätzung-in-der-bayesianischen-statistik" class="level3" data-number="13.1.2">
-<h3 data-number="13.1.2" class="anchored" data-anchor-id="posterior-schätzung-in-der-bayesianischen-statistik"><span class="header-section-number">13.1.2</span> Posterior-Schätzung in der Bayesianischen Statistik</h3>
-<p>In der Bayesianischen Statistik wird die Wahrscheinkeitslehre angewandt, um die Wahrscheinlichkeit von Parameterwerten zu berechnen. Es wird für jeden möglichen Parameterwert die Wahrscheinlichkeit geschätzt mit der dieser Parameterwert die Daten generiert hat. Im Gegensatz zu der Frequentistischen Statistik wird hier also nicht eine Punktschätzung vorgenommen (ein “wahrer Wert” geschätzt), sondern es wird ein Verteilung geschätzt.</p>
-<div class="callout-info">
-<p>Die Posterior-Verteilung beschreibt, wie wahrscheinlich verschiedene Werte eines unbekannten Parameters sind – basierend auf Vorwissen (Prior) und den beobachteten Daten.</p>
-</div>
-<p>Dass der Posterior über <em>alle</em> möglichen Parameterwerte integriert wird, ist eine grösse Stärke der Bayesianischen Statistik. So wird der ganze Möglichkeitsraum beschrieben. Es wird nicht nur der wahrscheinlichste Parameterwert berücksichtigt wie bei der Punktschätzung, sondern durch das Einbeziehen der ganzen Parameterverteilung können auch Nebenoptima und “fast” genauso wahrscheinliche Werte einbezogen werden.</p>
-<p>Um die Posterior-Verteilung, also die Wahrscheinlichkeit aller Parameterwerte, zu berechnen wird in der Bayesianischen Statistik das Bayes Theorem verwendet.</p>
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Bayes Theorem
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Das Bayes Theorem gibt die Formel für eine bedingte Wahrscheinlichkeit <span class="math inline">\(P(A|B)\)</span> an.</p>
-<p><span class="math display">\[ P(A|B) = \frac{P(B|A)⋅P(A)}{P(B)} \]</span></p>
-<p>Das kann gelesen werden als: “Die Wahrscheinlichkeit eines Ereignisses <span class="math inline">\(A\)</span> unter der Bedingung, dass ein Ereignis <span class="math inline">\(B\)</span> wahr ist, ist gleich der a priori Wahrscheinlichkeit, dass <span class="math inline">\(A\)</span> wahr ist, multipliziert mit der Wahrscheinlichkeit, dass <span class="math inline">\(B\)</span> eintritt, wenn <span class="math inline">\(A\)</span> wahr ist. Dividiert wird das Ganze durch die Wahrscheinlichkeit, dass <span class="math inline">\(B\)</span> eintritt, egal ob <span class="math inline">\(A\)</span> wahr oder falsch ist.”</p>
-</div>
-</div>
-<p>Das bedeutet, um eine Bayesianische Parameterschätzung zu machen, müssen wir Vorwissen integrieren. Dies tun wir in Form einer Prior-Verteilung. Ein simple Variante ist, den Prior ist so zu wählen, dass er allen möglichen Werten dieselbe Wahrscheinlichkeit zuschreibt (wie in der Grafik unten). Diese Verteilung wird <em>uniform</em> genannt. Ein uniformer Prior ist aber selten empfehlenswert, da er zu breit und uniformativ ist.</p>
-<p><strong>Parameterschätzung</strong></p>
-<p><img src="imgs/theta_posterior.png" class="img-fluid"></p>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Hands-on: Bayesianische Parameterschätzung in JASP
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Aktivieren Sie in JASP das Modul <em>Learn Bayes</em>. Wählen Sie unter <code>Learn Bayes</code> &gt; <code>Binomial Estimation</code> mit der Einstellung <code>Enter Sequence</code>.</p>
-<p><strong>1. Modell: Stellen Sie sich vor, sie untersuchen eine Person, welche behauptet, extrasensorische Fähigkeiten zu besitzen. Diese Person behauptet, dass sie bevor eine Münze aufgeworfen wurde vorhersagen kann, auf welcher Seite die Münze landet: Kopf oder Zahl).</strong></p>
+<section id="vorgehen" class="level2">
+<h2 class="anchored" data-anchor-id="vorgehen">Vorgehen</h2>
+<section id="download-und-setup" class="level3">
+<h3 class="anchored" data-anchor-id="download-und-setup">Download und Setup</h3>
 <ul>
-<li><p>Wie werden die Daten verteilt sein? Welchen Parameter schätzen wir? Wie sieht das DAG aus?</p></li>
-<li><p>Wie würden Sie die Behauptung der Person überprüfen?</p></li>
-</ul>
-<p><strong>2. Daten erheben: Sie werfen die Münze 20 mal und die Person macht x korrekte Vorhersagen.</strong></p>
+<li><p>Laden Sie die Daten und die Postervorlage hier <a href="data/uebung-4.zip">uebung-4</a> herunter und entzippen Sie den Ordner. Der Ordner enthält 2 Datensätze mit vorverarbeiteten Daten des <em>Random-Dot Experiments</em>:</p>
 <ul>
-<li><p>Glauben Sie, dass die Person über extra-sensorische Fähigkeiten verfügt? Sind Sie skeptisch?</p></li>
-<li><p>Unter den Dropdown Menus <code>Model, Prior and Posterior Distributions</code> und <code>Plots</code> gibt es verschiedene Checkboxes. Versuchen Sie herauszufinden, was diese bewirken.</p></li>
+<li><code>data_random_dot_wide.csv</code>: Daten im <em>wide</em>-Format, geeignet für JASP-Analysen</li>
+<li><code>data_random_dot_long.csv</code>: Daten im <em>long</em>-Format, geeignet für R- oder JASP-Visualisierung (unter <code>Descriptives</code>) (optional)</li>
+</ul></li>
 </ul>
-<p><strong>3. Vorwissen / Prior definieren.</strong></p>
+<p>Er enthält eine <code>id</code>-Variable und Variablen(paare):</p>
 <ul>
-<li>Wie können Sie Ihr Vorwissen in die Analyse einbeziehen? Wie verbinden Sie Ihr Vorwissen mit den beobachteten Daten?</li>
-<li>Welcher Prior bedeutet was (vgl. Bild unten)?</li>
-<li>Passen Sie Ihren Prior für <span class="math inline">\(\theta\)</span> in JASP an.</li>
+<li><p>Versuchspersonenidentifikation (<code>id</code>)</p></li>
+<li><p><code>rt_speed</code> und <code>rt_accuracy</code>: Mittelwerte der <strong>Reaktionszeiten</strong> für die Instruktion <code>speed</code>(so schnell wie möglich antworten) und <code>accuracy</code> (so richtig wie möglich antworten) pro Versuchsperson</p></li>
+<li><p><code>corr_speed</code> und <code>corr_accuracy</code>: Mittelwerte der <strong>korrekten Antworten</strong> für die Instruktion <code>speed</code>(so schnell wie möglich antworten) und <code>accuracy</code> (so richtig wie möglich antworten) pro Versuchsperson</p></li>
+<li><p><code>rt_speed_left</code> und <code>rt_speed_right</code>: Mittelwerte der <strong>Reaktionszeiten</strong> für die Instruktion <code>speed</code>(so schnell wie möglich antworten), bei Bewegung der Punkte nach links (<code>left</code>) oder gegen rechts (<code>right</code>) pro Versuchsperson</p></li>
+<li><p><code>rt_accuracy_left</code> und <code>rt_accuracy_right</code>: Mittelwerte der <strong>Reaktionszeiten</strong> für die Instruktion <code>accuracy</code>(so richtig wie möglich antworten) bei Bewegung der Punkte nach links (<code>left</code>) oder gegen rechts (<code>right</code>) pro Versuchsperson</p></li>
+<li><p><code>corr_speed_left</code> und <code>corr_speed_right</code>: Mittelwerte der <strong>korrekten Antworten</strong> für die Instruktion <code>speed</code>(so schnell wie möglich antworten), bei Bewegung der Punkte nach links (<code>left</code>) oder gegen rechts (<code>right</code>) pro Versuchsperson</p></li>
+<li><p><code>corr_accuracy_left</code> und <code>corr_accuracy_right</code>: Mittelwerte der <strong>korrekten Antworten</strong> für die Instruktion <code>accuracy</code>(so richtig wie möglich antworten), bei Bewegung der Punkte nach links (<code>left</code>) oder gegen rechts (<code>right</code>) pro Versuchsperson</p></li>
 </ul>
-<p><strong>Beta Verteilungen</strong></p>
-<p><img src="imgs/betadistributions.png" class="img-fluid"></p>
-</div>
-</div>
+<p><em>Info zu den Ausschlüssen</em>: Von den eingelesenen Datensätzen wurde 1 Datensatz ausgeschlossen wegen zuwenig Trials (&lt;40) und 41 Personen wegen zu tiefer Accuracy (&lt; 55%).</p>
+</section>
+<section id="teil-poster-präregistration" class="level3">
+<h3 class="anchored" data-anchor-id="teil-poster-präregistration">1. Teil: Poster (Präregistration)</h3>
+<p>Wählen Sie eine Fragestellung und ein Variablenpaar aus.</p>
+<ul>
+<li><p><strong>a. Einführung/Introduction</strong>: Beschreiben Sie</p>
+<ul>
+<li>Ihre Fragestellung/Forschungsfrage</li>
+<li>Relevanz</li>
+<li>Hypothesen (Nullhypothese, Alternativhypothese)</li>
+<li>fügen Sie mind. 1 Referenz ein</li>
+</ul></li>
+<li><p><strong>b. Methode/Methods</strong>: Beschreiben Sie</p>
+<ul>
+<li>das Sample (N, Alter)</li>
+<li>das Experimentalparadigma / den Task</li>
+<li>den Ablauf (evtl. eine Flowchart/ein Stimulusbild etc. einfügen)</li>
+<li>UV(n)</li>
+<li>AV(n)</li>
+<li>das Analyseverfahren</li>
+</ul></li>
+</ul>
+<p>Wählen Sie dafür eines dieser Analyseverfahren in <em>JASP</em> aus:</p>
+<pre><code>- Bayesianischer t-Test für abhängige Stichproben (Paired Samples T-Test)
+- Bayesiansicher t-Test für unabhängige Stichproben (Independent Samples T-Test)
+- Äquivalenztest für abhängige Stichproben (Equivalence Paired Samples T-Test)
+- Äquivalenztest für unabhängige Stichproben (Equivalence Independent Samples T-Test)</code></pre>
+<p>Geben Sie auch an:</p>
+<pre><code>- für Äquivalenztests: Equivalence Region (2 boundaries, raw/cohens-d?)
+- für Bayesianische Tests: gewählter Prior (Standard ist ok)</code></pre>
+</section>
+<section id="teil-datenanalyse-in-jasp" class="level3">
+<h3 class="anchored" data-anchor-id="teil-datenanalyse-in-jasp">2. Teil: Datenanalyse in <em>JASP</em></h3>
+<ul>
+<li><p><strong>a.</strong> Lesen Sie für die Analysen das <code>wide</code>-Datenfile in <em>JASP</em> ein</p></li>
+<li><p><strong>b.</strong> Schauen Sie sich die Deskriptivstatistik an</p>
+<ul>
+<li>Tipp: Mit den Daten im <code>long</code> Format können Sie in Jasp <code>Descriptives &gt; Raincloud Plots</code> oder in <em>R</em> den <code>esquisser()</code> verwenden.</li>
+</ul></li>
+<li><p><strong>c.</strong> Wählen Sie den geplanten Test.</p>
+<ul>
+<li>Bayesianischer t-Test für abhängige Stichproben (Paired Samples T-Test)</li>
+<li>Bayesiansicher t-Test für unabhängige Stichproben (Independent Samples T-Test)</li>
+<li>Äquivalenztest für abhängige Stichproben (Equivalence Paired Samples T-Test)</li>
+<li>Äquivalenztest für unabhängige Stichproben (Equivalence Independent Samples T-Test)</li>
+</ul></li>
+<li><p><strong>d.</strong> Wählen Sie das geplante Variablenpaar und führen Sie den Test aus.</p></li>
+</ul>
+</section>
+<section id="teil-poster-ergebnisse" class="level3">
+<h3 class="anchored" data-anchor-id="teil-poster-ergebnisse">3. Teil: Poster (Ergebnisse)</h3>
+<ul>
+<li><p><strong>a. Resultate/Results:</strong> Berichten Sie die Resultate</p>
+<ul>
+<li>für Äquivalenztests: Statistic, t, df, CI90%</li>
+<li>für Bayesianische Tests: BF10, BF01, Median, CI95%</li>
+<li>Fügen Sie mind. 1 Plot ein (aus JASP, R, Esquisser)</li>
+<li>Fügen Sie evtl. eine Tabelle ein</li>
+<li>Beschreiben Sie Ihre Resultate in mind. 2 Punkten</li>
+</ul></li>
+<li><p><strong>b. Diskussion/Discussion:</strong></p>
+<ul>
+<li>Welche Schlussfolgerungen können Sie aus Ihrer Analyse ziehen?</li>
+<li>Welche Schlussfolgerungen können Sie aus Ihrer Analyse nicht ziehen? / Welche Limitation(en) hat Ihre Analyse?<br>
+</li>
+<li>Welche Implikation haben Ihre Resultate?</li>
+</ul></li>
+</ul>
+</section>
+<section id="hochladen-der-dateien-auf-ilias" class="level3">
+<h3 class="anchored" data-anchor-id="hochladen-der-dateien-auf-ilias">Hochladen der Dateien auf Ilias</h3>
+<p>Laden Sie folgende Dateien unter <code>Übung 4</code> auf Ilias hoch:</p>
+<ul>
+<li><code>.jasp</code>-File</li>
+<li>Poster (<code>.pdf</code>)</li>
+</ul>
+<p><br></p>
 </section>
 </section>
-<section id="zusammenfassen-von-posteriors" class="level2 page-columns page-full" data-number="13.2">
-<h2 data-number="13.2" class="anchored" data-anchor-id="zusammenfassen-von-posteriors"><span class="header-section-number">13.2</span> Zusammenfassen von Posteriors</h2>
-<p>Der Vorteil einer Posterior-Verteilung im Vergleich zu einer Punktschätzung ist es, dass wir damit Aussagen zu der Wahrscheinlichkeit eines Parameterwertes machen können. Da Posterior-Verteilungen oft komplex sind, fassen wir sie mit Hilfe von Kennzahlen zusammen.</p>
-<p>Typische Zusammenfassungen sind Mittelwert, Median, Modus und Intervalle (Credible Intervals). Hier einige Beispiele, zu möglichen Aussagen:</p>
-<ul>
-<li><p><em>A.</em> <span class="math inline">\(\theta\)</span> liegt am wahrscheinlichsten bei <span class="math inline">\(X\)</span>. (Mittelwert, Median, Modus)</p></li>
-<li><p><em>B.</em> Die Wahrscheinlichkeit, dass <span class="math inline">\(\theta\)</span> mindestens <span class="math inline">\(X\)</span> ist, liegt bei <span class="math inline">\(P_x\)</span>.</p></li>
-<li><p><em>C.</em> Die Wahrscheinlichkeit, dass <span class="math inline">\(\theta\)</span> kleiner als <span class="math inline">\(X\)</span> ist, liegt bei <span class="math inline">\(P_x\)</span>.</p></li>
-<li><p><em>D.</em> Die Wahrscheinlichkeit, dass <span class="math inline">\(\theta\)</span> zwischen <span class="math inline">\(X_{tiefer}\)</span> und <span class="math inline">\(X_{höher}\)</span> liegt ist <span class="math inline">\(P_x\)</span>.</p></li>
-<li><p><em>E.</em> <span class="math inline">\(\theta\)</span> liegt mit einer Wahrscheinlichkeit von 95% zwischen <span class="math inline">\(X_{tiefer}\)</span> und <span class="math inline">\(X_{höher}\)</span>.</p></li>
-<li><p><em>F.</em> <span class="math inline">\(\theta\)</span> liegt mit einer Wahrscheinlichkeit von 20% ausserhalb des Bereichs zwischen <span class="math inline">\(X_{tiefer}\)</span> und <span class="math inline">\(X_{höher}\)</span>.</p></li>
-</ul>
-<p><img src="imgs/posteriorsummary.jpg" class="img-fluid"></p>
-<aside>
-Gute Möglichkeiten zum Zusammenfassen von Posterior-Verteilungen bieten die Plot-Funktionen <em>R-Packages</em> <a href="https://paulbuerkner.com/brms/">{brms}</a>, <a href="https://mjskay.github.io/tidybayes/">{tidybayes}</a> und <a href="https://mc-stan.org/bayesplot/">{bayesplot}</a>.
-</aside>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Hands-on: Credible interval vs.&nbsp;confidence interval
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Credible interval</strong> ist ein bayesianisches Konzept, das sich vom <strong>confidence interval</strong> (Konfidenzintervall) in der frequentistischen Statistik unterscheidet. Ein <strong>credible interval</strong> ist ein Intervall, das eine bestimmte Wahrscheinlichkeit enthält, dass der wahre Parameter innerhalb dieses Intervalls liegt. Dies sollte nicht mit dem Konfidenzintervall verwechselt werden. Können Sie sich daran erinnern, wie ein Konfidenzintervall definiert ist? Was ist der Unterschied zwischen einem Konfidenzintervall und einem credible interval?</p>
-</div>
-</div>
-</section>
-<section id="entscheidung" class="level2 page-columns page-full" data-number="13.3">
-<h2 data-number="13.3" class="anchored" data-anchor-id="entscheidung"><span class="header-section-number">13.3</span> Entscheidung</h2>
-<p>Anhand der Posterior-Verteilung eines Parameters kann eine Entscheidung getroffen werden. Wichtig ist hierbei, dass diese Kriterien vor dem Betrachten der Posterior-Verteilungen festgesetzt werden (analog zu den Hypothesen und Signifikanzniveaus bei frequentistischen Verfahren). Beispiele für Entscheidungskriterien sind:</p>
-<aside>
-Im besten Fall werden (unabhängig ob frequentistisch oder bayesianisch analysiert wird) die Hypothesen, Analysen, Entscheidungskriterien, etc. vor der Datenanalyse festgelegt, z.B. durch das Erstellen einer Präregistration!
-</aside>
-<ul>
-<li><p><em>Wenn 95% der geschätzen Parameterwerte über einem bestimmten Cut-off liegen, ist der Unterschied bedeutsam.</em></p></li>
-<li><p><em>Ist der geschätzte Parameterwert mehr als 2 Einheiten von 0 verschieden, so wird auf einen Unterschied geschlossen.</em></p></li>
-</ul>
-<p>aber auch:</p>
-<ul>
-<li><p><em>Unterscheiden sich die Posterior-Verteilungen zweier Parameterschätzungen nicht zu mehr als 10% wird darauf geschlossen, dass kein Unterschied besteht.</em></p></li>
-<li><p><em>Weicht der geschätzte Parameterwert weniger als 2 Einheiten von 0 ab, gibt es keinen Unterschied.</em></p></li>
-</ul>
-<p>Hier zeigt sich der Vorteil der Bayesianischen Parameterschätzung: Wir können durch das Zusammenfassen der Posterior-Verteilung direkt <em>evidence of absence</em> testen.</p>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Hands-on: Entscheidungen aufgrund von Posterior-Verteilungen
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Wie könnten Entscheidungen aussehen bezüglich unserer <em>Stroop</em> oder <em>Random-Dot</em> Daten?</p>
-<p>Erstellen Sie je ein Entscheidungskriterium, für das Erkennen eines Effekts und für die Abwesenheit eines Effekts.</p>
-</div>
-</div>
-<section id="wrap-up" class="level3 page-columns page-full" data-number="13.3.1">
-<h3 data-number="13.3.1" class="anchored" data-anchor-id="wrap-up"><span class="header-section-number">13.3.1</span> Wrap-up</h3>
-<p>Zusammenfassend kann gesagt werden:</p>
-<ul>
-<li><p>In der <em>frequentistischen Statistik</em> wird angenommen, dass der Parameter einen <em>wahren Wert</em> hat, den wir aber nicht kennen. Wir erhalten als Resultat eine Punktschätzung für den Parameter und können keine Aussage über die Wahrscheinlichkeit dieses einen geschätzten Parameterwerts machen. Der 95%-CI (<strong>confidence interval</strong>) sagt aus, dass bei Wiederholung des Experiments der “wahre” Parameterwert in 95% der Konfidenzintervalle enthalten sein wird.</p></li>
-<li><p>In der <em>bayesianischen Statistik</em> wird angenommen, dass der Parameter eine Wahrscheinlichkeitsverteilung hat, die wir schätzen können. Es muss zusätzlich eine Priorverteilung festgelegt werden. Wir erhalten eine Posterior Verteilung für die Parameterwerte und können eine Aussage über Wahrscheinlichkeit eines Parameterwerts oder eines Modelles machen. Der 95%-CrI (<strong>credible interval</strong>) enthält zu 95% den “wahren” Parameterwert.</p></li>
-</ul>
-<aside>
-“Wahr” bedeutet hier, den Parameterwert der (angenommen ein passendes Modell wurde verwendet) zu diesen Daten geführt hat.
-</aside>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>In der Bayesianischen Statistik erhalten wir nach der Anwendung des Satzes von Bayes die sogenannte Posterior-Verteilung. Sie beschreibt, wie wahrscheinlich verschiedene Werte eines unbekannten Parameters sind – basierend auf unserem Vorwissen (Prior) und den beobachteten Daten.</p>
-</div>
-</div>
-</section>
-<section id="weiterführende-informationen" class="level3" data-number="13.3.2">
-<h3 data-number="13.3.2" class="anchored" data-anchor-id="weiterführende-informationen"><span class="header-section-number">13.3.2</span> Weiterführende Informationen</h3>
-<ul>
-<li>Kruschke, J.K., Liddell, T.M. The Bayesian New Statistics: Hypothesis testing, estimation, meta-analysis, and power analysis from a Bayesian perspective. Psychonomic Bulletin &amp; Review 25, 178–206 (2018). <a href="https://doi.org/10.3758/s13423-016-1221-4" class="uri">https://doi.org/10.3758/s13423-016-1221-4</a></li>
-</ul>
+<section id="abgabetermin" class="level2">
+<h2 class="anchored" data-anchor-id="abgabetermin">Abgabetermin</h2>
+<p>Der Abgabetermin für diese Übung ist der <strong>08. Mai 2025</strong>.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1658,13 +1512,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="./intro_analysis.html" class="pagination-link" aria-label="Datengenerierende Prozesse">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Datengenerierende Prozesse</span></span>
+      <a href="./hypothesistests.html" class="pagination-link" aria-label="Hypothesentests: Bayesianischer $t$-Test und Äquivalenztests (TOSTs)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Hypothesentests: Bayesianischer <span class="math inline">\(t\)</span>-Test und Äquivalenztests (TOSTs)</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./hypothesistests.html" class="pagination-link" aria-label="Hypothesentests: Bayesianischer $t$-Test und Äquivalenztests (TOSTs)">
-        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Hypothesentests: Bayesianischer <span class="math inline">\(t\)</span>-Test und Äquivalenztests (TOSTs)</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./webrconsole.html" class="pagination-link" aria-label="WebR Konsole">
+        <span class="nav-page-text">WebR Konsole</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

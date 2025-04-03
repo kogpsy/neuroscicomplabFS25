@@ -59,6 +59,7 @@ book:
     - intro_analysis.qmd
     - parameterestimates.qmd
     - hypothesistests.qmd
+    - uebung_4.qmd
 
   - part: Datenmodellierung
     #chapters:

@@ -25,7 +25,7 @@ p(\mathcal{M}_2 | y) = \frac{P(y | \mathcal{M}_2) p(\mathcal{M}_2)}{p(y)}
 $$
 
 
-Hierfür kann das Verhältnis der beiden Wahrscheinlichkeiten (_Posterior Odds__) berechnet werden: $p(\mathcal{M}_1 | y) / p(\mathcal{M}_2 | y)$, was gekürzt folgende Formel ergibt: 
+Hierfür kann das Verhältnis der beiden Wahrscheinlichkeiten (*Posterior Odds*) berechnet werden: $p(\mathcal{M}_1 | y) / p(\mathcal{M}_2 | y)$, was gekürzt folgende Formel ergibt: 
 
 $$
 \underbrace{\frac{p(\mathcal{M}_1 | y)} {p(\mathcal{M}_2 | y)}}_\text{Posterior odds} = \underbrace{\frac{P(y | \mathcal{M}_1)}{P(y | \mathcal{M}_2)}}_\text{Ratio of marginal likelihoods} \cdot \underbrace{ \frac{p(\mathcal{M}_1)}{p(\mathcal{M}_2)}}_\text{Prior odds}
@@ -94,15 +94,20 @@ $$ BF_{01} = \frac{1}{BF_{10}}$$
 :::callout-caution
 ## Hands-on: Bayesiansicher $t$-Test in JASP
 
-- Laden Sie [hier](../../downloadable_files/data_stroop_wide.csv) den Stroop Datensatz herunter. Der Datensatz wurde für diese Zwecke ins `wide`-Format angepasst, das R-Skript dafür können Sie sich [hier](../../downloadable_files/generate_dataset_jasp.R) ansehen.
+- Laden Sie [hier](data/data_stroop_wide.csv) den Stroop Datensatz herunter. Der Datensatz wurde für diese Zwecke ins `wide`-Format angepasst. 
 
-- Laden Sie den Datensatz in JASP und schauen Sie ihn an.
+- Laden Sie den Datensatz in _JASP_ und schauen Sie ihn an.
 
 - Wie könnte die Forschungsfrage lauten? Was ist die Null- und Alternativhypothese?
 
-- Führen Sie einen `Bayesian Paired Sample $t$-Test aus.
+- Führen Sie einen `Bayesian Paired Sample $t$-Test` aus.
 
 - Explorieren Sie die Resultate und welche Optionen Sie für weitere Einstellungen haben.
+
+    - Wo kann der Prior angepasst werden? 
+    - Wo können Hypothesen spezifiziert werden?
+    - Wo können Sie den Posterior anschauen?
+    - Welche Visualisierungsmöglichkeiten haben Sie?
 
 - Welche Bayes Factors finden Sie für die Nullhypothese? Und für die Alternativhypothese?
 
@@ -121,13 +126,23 @@ $$ BF_{01} = \frac{1}{BF_{10}}$$
 
 ## Äquivalenztests
 
-Ein nicht signifikanter Nullhypothesensignifikanztest (NHST) bedeutet nicht, dass kein Unterschied zwischen Gruppen/Bedingungen besteht, nur dass keiner gefunden werden konnte. Statt also aussschliesslich einen NHST durchzuführen und gegen _Null_ zu testen, können Äquivalenztests, wie das “Two One-Sided Tests” (TOST) Verfahren durchgeführt werden. Dabei werden zwei einseitige $t$-Tests ausgeführt, um zu testen, ob der Mittelwertsunterschied innerhalb eines gewissen Rahmens liegt. Dieser Rahmen muss von den Forschenden festgelegt werden und bezeichnet die kleinstmöglichste interessierende Effekt: _Smallest Effect Size of Interest_ (SESOI). Mit dem TOST-Verfahren wird festgestellt, ob der gefundene Unterschied überraschend gering ist, wenn ein Effekt mindestens so gross wie der definierte SESOI tatsächlich existiert. [Lakens, Scheel & Isager, 2018](https://journals.sagepub.com/doi/10.1177/2515245918770963). 
+Ein nicht signifikanter Nullhypothesensignifikanztest (NHST) bedeutet nicht zwingend, dass kein Unterschied zwischen Gruppen/Bedingungen besteht, nur dass keiner gefunden werden konnte. 
+Bei einer Power von 80% ist beträgt die Wahrscheinlichkeit die Nullhypothese fälschlicherweise nicht abzulehnen 20%!
+
+Statt aussschliesslich einen NHST durchzuführen und gegen die _Nullhypothese_ zu testen, können Äquivalenztests, z.B. das “Two One-Sided Tests” (TOST) Verfahren durchgeführt werden. 
+Dabei werden zwei einseitige $t$-Tests ausgeführt, um zu testen, ob der Mittelwertsunterschied innerhalb eines gewissen Rahmens liegt. 
+
+Dieser Rahmen muss von den Forschenden festgelegt werden und bezeichnet die kleinstmöglichste interessierende Effekt: _Smallest Effect Size of Interest_ (SESOI). 
+Mit dem TOST-Verfahren wird festgestellt, ob der gefundene Unterschied überraschend gering ist, wenn ein Effekt mindestens so gross wie der definierte SESOI tatsächlich existiert. [(Lakens, Scheel & Isager, 2018)](https://journals.sagepub.com/doi/10.1177/2515245918770963). 
+
+<aside> [Hier](https://rpsychologist.com/d3/equivalence/) finden Sie eine interaktive Visualisierung des Äquivalenztests. </aside>
 
 ### Festlegen des SESOIs
 
 Der SESOI wird durch eine untere (_lower bound_ $\Delta$L) und obere Grenze (_upper bound_ $\Delta$U). 
-
 Es gibt keine vorgegebenen Regeln für das Festlegen von SESOIs. Sie müssen von den Forschenden (__vor__ der Datenanalyse) passend für Fragestellung und Feld festgelegt werden. Dafür gibt es folgende Ansätze:
+
+<aside> Mehr dazu finden Sie hier [Lakens et al. 2018](https://journals.sagepub.com/doi/10.1177/2515245918770963)</aside>
 
 - Subjektive Ansätze:
 
@@ -151,23 +166,29 @@ Nach dem Festlegen des SESOIs werden __zwei__ einseitige $t$-Tests durchgeführt
 - Test, ob Unterschied signifikant höher als untere Grenze ($\Delta$L)
 - Test, ob Unterschied signifikant tiefere als obere Grenze ($\Delta$U)
 
-Wenn beide signifikant ausfallen sind die Gruppen/Bedingungen äquivalent. Es muss nicht für zweifaches Testen korrigiert werden, weil beide Tests signifikant sein müssen, um Äquivalenz anzunehmen. Statt $p$-Werte können auch Konfidenzintervalle verwendet werden: Wenn das 90% Konfidenzintervall innerhalb des SESOIs liegt wird Äquivalenz angenommen. Das Konfidenzintervall muss festgelegt werden, es könnte auch z.B. 95%, 87% oder 99% sein (oder eine andere Zahl), es muss daher vor dem Test gewählt werden.
+Wenn beide signifikant ausfallen sind die Gruppen/Bedingungen äquivalent. 
+Es muss nicht für zweifaches Testen korrigiert werden, weil beide Tests signifikant sein müssen, um Äquivalenz anzunehmen. 
+
+Anstelle von $p$-Werten können auch Konfidenzintervalle verwendet werden: Wenn das 90% Konfidenzintervall innerhalb des SESOIs liegt wird Äquivalenz angenommen. 
+Das Konfidenzintervall muss festgelegt werden, es könnte auch z.B. 95%, 87% oder 99% sein (oder eine andere Zahl). 
+Es muss daher zwingend vor dem Test gewählt werden.
 
 
 :::callout-caution
 ## Hands-on: Äquivalenztests in JASP
 
-- Definieren Sie einen SESOI für den Unterschied der Reaktionszeiten zwischen der kongruenten und inkongruenten Bedingung im Stroop Task. Was ist $\Delta$L, was ist $\Delta$U?
+- Definieren Sie einen _SESOI_ für den Unterschied der Reaktionszeiten zwischen der kongruenten und inkongruenten Bedingung im _Stroop Task_. Was ist $\Delta$L, was ist $\Delta$U?
 
-- Aktivieren Sie in JASP das Modul __Equivalence T-Tests__
+- Aktivieren Sie in JASP das Modul __Equivalence T-Tests__.
 
 - Sie können wieder dieselben Daten wie vorhin verwenden.
 
-- Wählen Sie die beiden Variablen zum Vergleich aus.
+- Wählen Sie die passenden Variablen zum Vergleich aus.
 
-- Geben Sie bei `Equivalence Region` Ihren SESOI ein.
+- Geben Sie bei `Equivalence Region` Ihren SESOI ein (in Rohwerten oder standardisiert).
 
 - Explorieren Sie die Resultate und welche Optionen Sie für weitere Einstellungen haben.
+
 
 :::
 

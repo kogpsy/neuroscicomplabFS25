@@ -1,0 +1,143 @@
+# Übung 4 {.unnumbered}
+
+## Auftrag
+
+__Datenanalyse __ 
+
+- _optional: Datenvorverarbeiten in *R* (z.B. Filtern für bestimmte Gruppen/Fälle, nur wenn Bedarf)_
+
+- Analysieren der Daten des _Random-Dot Experiments_
+
+__Data Report in Form eines Posters erstellen__
+
+- Poster erstellen 
+
+__Wichtig__: 
+
+- _Information zum Arbeiten in Kleingruppen:_
+
+    - Übungen dürfen alleine oder in Gruppen von max. 3 Personen erledigt werden. Alle Personen müssen die Übung auf Ilias hochladen, um die Übung zu bestehen.
+    - Die Files von Gruppenarbeiten müssen folgendermassen benannt werden, damit wir sehen, welche Übungsabgaben zusammengehören: Nennen Sie das File mit der Aufgabe und allen Initialen der Gruppe. Z.B. `analyse_GW_EW.jasp`. Geben Sie bei allen Files die Initialen in __derselben__ Reihenfolge an.
+    
+- _Arbeitsanweisung unter dem Unterkapitel *Vorgehen*:_
+
+    - Lesen Sie die Anweisungen genau durch und geben Sie die Dateien in diesem Format ab (z.B. Benennung der Dateien).
+    - Arbeiten Sie entlang der Arbeitsanweisung, um den Prozess zu vereinfachen.
+    
+- _Es wird eine kleine Poster-Session geben, bei der die Poster angeschaut werden können._
+
+    - Verkleinern Sie die Schriftgrösse nicht zu sehr. Die Poster werden auf A3-Format von uns ausgedruckt. Bei zu kleiner Schrift wird das schwierig.
+    
+    - Das Poster darf in Deutsch oder Englisch geschrieben sein.
+
+
+## Vorgehen
+
+### Download und Setup
+
+- Laden Sie die Daten und die Postervorlage hier [uebung-4](data/uebung-4.zip) herunter und entzippen Sie den Ordner. Der Ordner enthält 2 Datensätze mit vorverarbeiteten Daten des _Random-Dot Experiments_:
+
+    - `data_random_dot_wide.csv`: Daten im _wide_-Format, geeignet für JASP-Analysen
+    - `data_random_dot_long.csv`: Daten im _long_-Format, geeignet für R- oder JASP-Visualisierung (unter `Descriptives`) (optional)
+
+Er enthält eine `id`-Variable und Variablen(paare):
+
+- Versuchspersonenidentifikation (`id`)
+
+- `rt_speed` und `rt_accuracy`: Mittelwerte der __Reaktionszeiten__ für die Instruktion `speed`(so schnell wie möglich antworten) und `accuracy` (so richtig wie möglich antworten) pro Versuchsperson 
+
+- `corr_speed` und `corr_accuracy`: Mittelwerte der __korrekten Antworten__ für die Instruktion `speed`(so schnell wie möglich antworten) und `accuracy` (so richtig wie möglich antworten) pro Versuchsperson 
+
+- `rt_speed_left` und `rt_speed_right`: Mittelwerte der __Reaktionszeiten__ für die Instruktion `speed`(so schnell wie möglich antworten), bei Bewegung der Punkte nach links (`left`) oder gegen rechts (`right`) pro Versuchsperson 
+
+- `rt_accuracy_left` und `rt_accuracy_right`: Mittelwerte der __Reaktionszeiten__ für die Instruktion `accuracy`(so richtig wie möglich antworten) bei Bewegung der Punkte nach links (`left`) oder gegen rechts (`right`) pro Versuchsperson
+
+- `corr_speed_left` und `corr_speed_right`: Mittelwerte der __korrekten Antworten__ für die Instruktion `speed`(so schnell wie möglich antworten), bei Bewegung der Punkte nach links (`left`) oder gegen rechts (`right`) pro Versuchsperson 
+
+- `corr_accuracy_left` und `corr_accuracy_right`: Mittelwerte der __korrekten Antworten__ für die Instruktion `accuracy`(so richtig wie möglich antworten), bei Bewegung der Punkte nach links (`left`) oder gegen rechts (`right`) pro Versuchsperson 
+
+_Info zu den Ausschlüssen_: Von den eingelesenen Datensätzen wurde 1 Datensatz ausgeschlossen wegen zuwenig Trials (<40) und 41 Personen wegen zu tiefer Accuracy (< 55%).
+
+### 1. Teil: Poster (Präregistration)
+
+Wählen Sie eine Fragestellung und ein Variablenpaar aus.
+
+- __a. Einführung/Introduction__: Beschreiben Sie
+
+    - Ihre Fragestellung/Forschungsfrage
+    - Relevanz
+    - Hypothesen (Nullhypothese, Alternativhypothese)
+    - fügen Sie mind. 1 Referenz ein
+    
+
+- __b. Methode/Methods__: Beschreiben Sie
+    - das Sample (N, Alter)
+    - das Experimentalparadigma / den Task
+    - den Ablauf (evtl. eine Flowchart/ein Stimulusbild etc. einfügen)
+    - UV(n)
+    - AV(n)
+    - das Analyseverfahren
+    
+Wählen Sie dafür eines dieser Analyseverfahren in _JASP_ aus:
+    
+    - Bayesianischer t-Test für abhängige Stichproben (Paired Samples T-Test)
+    - Bayesiansicher t-Test für unabhängige Stichproben (Independent Samples T-Test)
+    - Äquivalenztest für abhängige Stichproben (Equivalence Paired Samples T-Test)
+    - Äquivalenztest für unabhängige Stichproben (Equivalence Independent Samples T-Test)
+    
+Geben Sie auch an:
+
+    - für Äquivalenztests: Equivalence Region (2 boundaries, raw/cohens-d?)
+    - für Bayesianische Tests: gewählter Prior (Standard ist ok)
+
+    
+### 2. Teil: Datenanalyse in _JASP_
+    
+- __a.__ Lesen Sie für die Analysen das `wide`-Datenfile in _JASP_ ein
+
+- __b.__ Schauen Sie sich die Deskriptivstatistik an
+    
+    - Tipp: Mit den Daten im `long` Format können Sie in Jasp `Descriptives > Raincloud Plots` oder in _R_ den `esquisser()` verwenden.
+
+- __c.__ Wählen Sie den geplanten Test.
+
+    - Bayesianischer t-Test für abhängige Stichproben (Paired Samples T-Test)
+    - Bayesiansicher t-Test für unabhängige Stichproben (Independent Samples T-Test)
+    - Äquivalenztest für abhängige Stichproben (Equivalence Paired Samples T-Test)
+    - Äquivalenztest für unabhängige Stichproben (Equivalence Independent Samples T-Test)
+
+
+- __d.__ Wählen Sie das geplante Variablenpaar und führen Sie den Test aus.
+
+### 3. Teil: Poster (Ergebnisse)
+
+- __a. Resultate/Results:__ Berichten Sie die Resultate
+
+    - für Äquivalenztests: Statistic, t, df, CI90%
+    - für Bayesianische Tests: BF10, BF01, Median, CI95%
+    - Fügen Sie mind. 1 Plot ein (aus JASP, R, Esquisser)
+    - Fügen Sie evtl. eine Tabelle ein
+    - Beschreiben Sie Ihre Resultate in mind. 2 Punkten
+
+- __b. Diskussion/Discussion:__ 
+
+    - Welche Schlussfolgerungen können Sie aus Ihrer Analyse ziehen? 
+    - Welche Schlussfolgerungen können Sie aus Ihrer Analyse nicht ziehen? / Welche Limitation(en) hat Ihre Analyse?     
+    - Welche Implikation haben Ihre Resultate?
+
+
+### Hochladen der Dateien auf Ilias 
+
+Laden Sie folgende Dateien unter `Übung 4` auf Ilias hoch:
+
+- `.jasp`-File
+- Poster (`.pdf`)
+
+<br>
+
+## Abgabetermin
+
+Der Abgabetermin für diese Übung ist der __08. Mai 2025__.
+
+
+

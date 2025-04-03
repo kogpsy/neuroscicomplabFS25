@@ -662,3 +662,7 @@ Das Erstellen einer guten Grafik ist iterativ, das heisst, sie wird immer wieder
 
 
 
+<!-- “As soon as you have collected your data, before you compute any statistics, look at your data…if you assess hypotheses without examining your data, you risk publishing nonsense” (Wilkinson and the APA Task Force on Statistical Inference, 1999, p. 597). -->
+<!-- https://jasp-stats.org/2020/04/21/the-visual-modeling-module/ -->
+
+
