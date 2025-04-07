@@ -35,6 +35,25 @@ __Wichtig__:
 
 ### Download und Setup
 
+:::callout-caution
+## Datensatz Update 07.04.2025
+
+Der Datensatz wurde nochmals vorverarbeitet und hochgeladen.
+
+__Informationen zu den Aussschlusskriterien und Ausschlüssen:__
+
+- Alle Trials mit Reaktionszeiten unter 100ms und über 12 Sekunden wurden ausgeschlossen.
+- Alle Personen mit weniger als 50 gültigen Trials (von 60) pro Bedingung wurden ausgeschlossen. (= 3 Personen)
+- Alle Personen mit einer Accuracy von weniger als 55% wurden ausgeschlossen. (= 39 Personen)
+
+__Falls Sie den Datensatz vor dem 07.04.2025 heruntergeladen haben, können Sie ihn hier nochmals herunterladen (oder via zip-Ordner).__
+
+- [wide Format](data/data_random_dot_wide.csv)
+        
+- [long Format](data/data_random_dot_long.csv)
+
+:::
+
 - Laden Sie die Daten und die Postervorlage hier [uebung-4](data/uebung-4.zip) herunter und entzippen Sie den Ordner. Der Ordner enthält 2 Datensätze mit vorverarbeiteten Daten des _Random-Dot Experiments_:
 
     - `data_random_dot_wide.csv`: Daten im _wide_-Format, geeignet für JASP-Analysen
@@ -56,7 +75,6 @@ Er enthält eine `id`-Variable und Variablen(paare):
 
 - `corr_accuracy_left` und `corr_accuracy_right`: Mittelwerte der __korrekten Antworten__ für die Instruktion `accuracy`(so richtig wie möglich antworten), bei Bewegung der Punkte nach links (`left`) oder gegen rechts (`right`) pro Versuchsperson 
 
-_Info zu den Ausschlüssen_: Von den eingelesenen Datensätzen wurde 1 Datensatz ausgeschlossen wegen zuwenig Trials (<40) und 41 Personen wegen zu tiefer Accuracy (< 55%).
 
 ### 1. Teil: Poster (Präregistration)
 

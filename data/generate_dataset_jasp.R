@@ -38,7 +38,8 @@ write.csv(d_stroop_wide, "data/data_stroop_wide.csv", row.names = FALSE)
 # ---------------------------------------------------------------------
 # read in & filter data
 d_rdk<- read.csv("data/dataset_random_dot_clean.csv") |>
-    filter(rt > 0.1 & rt < 6)
+    filter(rt > 0.1 & rt < 12) |>
+    mutate(id = as.factor(id))
 
 ## Preprocessing
 
@@ -61,12 +62,12 @@ acc_rt_individual |>
     ggplot(aes(x = id, y = N)) +
     geom_point() +
     facet_wrap(~ condition) +
-    geom_hline(yintercept = 40) +
+    geom_hline(yintercept = 50) +
     theme_minimal()
 
 # Datensatz mit allen Ids, welche zuwenig Trials hatten
 n_exclusions <- acc_rt_individual |>
-    filter(N < 40)
+    filter(N < 50)
 
 # Aus dem Hauptdatensatz diese Ids ausschliessen
 d_rdk <- d_rdk |>
@@ -86,7 +87,7 @@ d_acc_rt_individual |>
     ggplot(aes(x = id, y = N)) +
     geom_point() +
     facet_wrap(~ condition) +
-    geom_hline(yintercept = 40) + # Horizontale Linie einfügen
+    geom_hline(yintercept = 50) + # Horizontale Linie einfügen
     theme_minimal()
 #
 # Trials nach accuracy einteilen
@@ -251,3 +252,4 @@ d_rdk_wide <- merge(d_rdk_wide_condition, d_rdk_wide_direction,
 
 # save new file
 write.csv(d_rdk_wide, "data/data_random_dot_wide.csv", row.names = FALSE)
+

@@ -1,27 +1,18 @@
 # License and Authorship {.unnumbered}
 
-The 2025 course material is written or adapted from previous versions by Gerda Wyssen and Enea Weber.
 
-Some content relies heavily on or is copied from previous instructors' course material:
+The complab course was initially conceptualized and written by Andrew Ellis (2021-2023), extended by Gerda Wyssen (2021-2025), Daniel Fitze (2024), and Enea Weber (2025). The course experiments (Complab 2024-2025) and their descriptions were created by Rebekka Borer.
 
-- __Andrew Ellis__
-    - [Complab 2021](https://kogpsy.github.io/neuroscicomplab/)    
-    - [Complab 2022](https://kogpsy.github.io/neuroscicomplabFS22/)
-    - [Complab 2023](https://kogpsy.github.io/neuroscicomplabFS23/)
-    
-- __Daniel Fitze__
-    - [Complab 2024](https://kogpsy.github.io/neuroscicomplabFS24/)
+Previous course material:
 
-<br>
+- [Complab 2021](https://kogpsy.github.io/neuroscicomplab/)    
+- [Complab 2022](https://kogpsy.github.io/neuroscicomplabFS22/)
+- [Complab 2023](https://kogpsy.github.io/neuroscicomplabFS23/)
+- [Complab 2024](https://kogpsy.github.io/neuroscicomplabFS24/)
 
-The complab course was initially conceptualized by Andrew Ellis. 
+__We thank all current and previous students who gave valuable feedback on the course and material!__
 
-<br>
+Cite as: Wyssen, G., Ellis, A., Weber, E., Fitze, D. (2025). Neurowissenschaft im Computerlab. Skript FS 2025. <https://kogpsy.github.io/neuroscicomplabFS25>.
 
-The course experiments (Complab 2024-2025) and their descriptions were created by __Rebekka Borer__.
 
-<br>
-
-__We also thank all current and previous students who gave valuable feedback on the course and material!__
-
-<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
