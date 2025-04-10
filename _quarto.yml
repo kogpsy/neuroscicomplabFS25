@@ -61,6 +61,12 @@ book:
     - hypothesistests.qmd
     - uebung_4.qmd
 
+  - part: Open Science
+    chapters:
+    - opensci.qmd
+    - goodpractices_data.qmd
+    - rmarkdown.qmd
+
   - part: Datenmodellierung
     #chapters:
     #-
@@ -69,7 +75,6 @@ book:
     chapters:
     - webrconsole.qmd
     - license.qmd
-
 
 number-depth: 3
 format:

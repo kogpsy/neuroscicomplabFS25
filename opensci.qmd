@@ -1,0 +1,108 @@
+# Getting Started: Open Science and Good Practices
+
+## Was ist das Problem ?
+
+-   Reproduzierbarkeitskrise in der Psychologie (und anderen Fachbereichen)
+
+-   Ein Forschungsteam versuchte, 100 psychologische Studien zu replizieren – nur etwa 39 % zeigten denselben Effekt (<https://osf.io/ezcuj/>)
+
+-   Hauptgründe: P-Hacking und mangelnde Transparenz
+
+![source: www.nature.com](imgs/noaccess.png){fig-align="center" width=50% height=50%}
+
+## Open Science
+
+### FAIR Principles
+
+FAIR ist ein Satz von Leitprinzipien, die Daten nützlicher machen sollen – nicht nur für andere, sondern auch für das eigene zukünftige Ich. FAIR steht für Findable (auffindbar), Accessible (zugänglich), Interoperable (interoperabel) und Reusable (wiederverwendbar).
+
+| Prinzip | Was es bedeutet | Beispiel |
+|------------------|----------------------------------|--------------------|
+| **F – Findable (Auffindbar)** | Daten sollen sowohl für Menschen als auch für Computer leicht auffindbar sein. Sie brauchen eine eindeutige Kennung und klare Metadaten (Informationen über die Daten). | Laden Sie Ihren Datensatz in ein öffentliches Repositorium (z. B. OSF, Zenodo) mit DOI und einem aussagekräftigen Titel hoch. |
+| **A – Accessible (Zugänglich)** | Sobald Daten gefunden wurden, sollen sie über standardisierte Wege abrufbar sein – mit klaren Zugriffsbedingungen. | Auch wenn der Zugriff eingeschränkt ist, sollten die Metadaten öffentlich sein und der Zugang erklärt werden. |
+| **I – Interoperable (Interoperabel)** | Daten sollen in standardisierten Formaten und Begriffen strukturiert sein, damit sie mit anderen Daten und Tools zusammenarbeiten können. | Verwenden Sie CSV statt proprietärer Formate und sprechende Variablennamen (z. B. „alter“ statt „a_g3“). |
+| **R – Reusable (Wiederverwendbar)** | Daten sollen ausreichend dokumentiert sein, damit andere sie korrekt interpretieren und wiederverwenden können. | Fügen Sie eine README-Datei mit Beschreibung der Variablen hinzu und verwenden Sie eine offene Lizenz wie CC-BY. |
+
+source: <https://www.go-fair.org/fair-principles/>
+
+![source: FOSTER Open Science Training Handbook (https://github.com/Open-Science-Training-Handbook)](imgs/fair.png){fig-align="center" width=50% height=50%}
+
+### Reproduzierbarkeit in der Praxis: rMarkdown
+
+::: callout-caution
+## Hands-on: rMarkdown selber erstellen
+
+Für diesen Teil benötigen Sie ein *RProject* und die Daten, die Sie erhoben haben:
+
+-   Erstellen Sie ein *R Markdown file* in *R*.
+
+-   Speichern Sie dieses file in den selben Ordner als Ihr R Projekt.
+
+-   Geben Sie einen Titel und Datum ein.
+
+-   Kopieren Sie Ihren Code aus Übung 3 und unterteilen Sie ihn in verschiedene code chunks.
+
+-   Kommentieren Sie jeden chunk und erstellen Sie eine *Outline*.
+
+-   Klicken Sie auf *Knit to HTML.*
+
+-   Ändern Sie die Chunk Optionen "include" und "echo", und klicken Sie wieder auf *Knit to HTML.* Was bewirkt das? ([https://rmarkdown.rstudio.com/lesson-3.html](#0))
+:::
+
+Mehr Infos hier: <https://rmarkdown.rstudio.com/index.html>
+
+![source: https://imgflip.com/i/1v1jxs](imgs/share.png){fig-align="center" width=50% height=50%} 
+
+## Versionskontrolle & Zusammenarbeit mit Git
+
+Hatten Sie schon einmal eine Datei mit einem Namen wie: final_final_v4_REAL?
+
+- Git verfolgt jede Änderung, die Sie an Dateien vornehmen – wie eine Zeitmaschine für Ihr Projekt.
+
+- Es ist eine Cloud-Plattform, um Projekte zu speichern, zu teilen und gemeinsam daran zu arbeiten.
+
+::: callout-caution
+## Hands-on: Git vs Google Drive/Docs
+
+- Gehen Sie zur Dokumentation von [GitHub](https://docs.github.com/en/get-started/start-your-journey/about-github-and-git) oder [GitLab](https://docs.gitlab.com/topics/git/get_started/)
+
+- Diskutieren Sie: Was sind Unterschiede zwischen Git und Google Drive oder anderen "klassischen" Cloud-Plattformen?
+:::
+
+## Preregistration
+
+### Was ist Preregistration ?
+
+-   Ein Dokument, das Ihr Forschungsdesign und Ihre Analyse im Voraus festlegt – also bevor Sie das Projekt tatsächlich beginnen (z. B. bevor Sie mit der Datenerhebung starten)
+
+-   Es hilft dabei, Ihre Wissenschaft transparenter und vertrauenswürdiger zu machen
+
+-   Es schützt vor P-Hacking und kognitiven Verzerrungen
+
+Für weitere Informationen: <https://help.osf.io/article/330-welcome-to-registrations>
+
+::: callout-caution
+## Hands-on: Preregistration selber machen
+
+-   Gehen Sie auf <https://aspredicted.org/>
+
+-   Kreuzen Sie *Just trying it out* an
+
+-   Klicken Sie auf *Create a new pre-registration*
+
+-   Geben Sie Ihre Unibe-Email ein und *Continue*
+
+-   Warten Sie, bis Sie einen Link bekommen und klicken Sie diesen Link
+
+-   Klicken Sie noch einmal auf *I am just trying things out*
+
+-   Erstellen Sie eine Preregistrierung für Ihr Stroop oder Random-Dot Experiment.
+:::
+
+
+
+#### Extra Ressourcen:
+
+-   [Good practices for scientific computing](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005510)
+
+-   [Building reproducible analytical pipelines with R](https://raps-with-r.dev/)

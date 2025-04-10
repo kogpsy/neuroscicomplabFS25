@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Übung 3 – Neurowissenschaft im Computerlab</title>
+<title>15&nbsp; Getting Started: Open Science and Good Practices – Neurowissenschaft im Computerlab</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -64,8 +30,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./gallery.html" rel="next">
-<link href="./data_visualization_2.html" rel="prev">
+<link href="./goodpractices_data.html" rel="next">
+<link href="./uebung_4.html" rel="prev">
 <link href="./imgs/logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -149,7 +115,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data_visualization_1.html">Datenvisualisieren</a></li><li class="breadcrumb-item"><a href="./uebung_3.html">Übung 3</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./opensci.html">Open Science</a></li><li class="breadcrumb-item"><a href="./opensci.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Getting Started: Open Science and Good Practices</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -305,7 +271,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./uebung_3.html" class="sidebar-item-text sidebar-link active">
+  <a href="./uebung_3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Übung 3</span></a>
   </div>
 </li>
@@ -363,7 +329,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./opensci.html" class="sidebar-item-text sidebar-link">
+  <a href="./opensci.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Getting Started: Open Science and Good Practices</span></span></a>
   </div>
 </li>
@@ -418,24 +384,26 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#auftrag" id="toc-auftrag" class="nav-link active" data-scroll-target="#auftrag">Auftrag</a></li>
-  <li><a href="#vorgehen" id="toc-vorgehen" class="nav-link" data-scroll-target="#vorgehen">Vorgehen</a>
+  <li><a href="#was-ist-das-problem" id="toc-was-ist-das-problem" class="nav-link active" data-scroll-target="#was-ist-das-problem"><span class="header-section-number">15.1</span> Was ist das Problem ?</a></li>
+  <li><a href="#open-science" id="toc-open-science" class="nav-link" data-scroll-target="#open-science"><span class="header-section-number">15.2</span> Open Science</a>
   <ul class="collapse">
-  <li><a href="#download-und-setup" id="toc-download-und-setup" class="nav-link" data-scroll-target="#download-und-setup">Download und Setup</a></li>
-  <li><a href="#a.-datapreprocessing-pipeline" id="toc-a.-datapreprocessing-pipeline" class="nav-link" data-scroll-target="#a.-datapreprocessing-pipeline">A. Datapreprocessing-Pipeline</a></li>
-  <li><a href="#b.-datenvisualisieren" id="toc-b.-datenvisualisieren" class="nav-link" data-scroll-target="#b.-datenvisualisieren">B. Datenvisualisieren</a></li>
-  <li><a href="#hochladen-der-dateien-auf-ilias" id="toc-hochladen-der-dateien-auf-ilias" class="nav-link" data-scroll-target="#hochladen-der-dateien-auf-ilias">Hochladen der Dateien auf Ilias</a></li>
+  <li><a href="#fair-principles" id="toc-fair-principles" class="nav-link" data-scroll-target="#fair-principles"><span class="header-section-number">15.2.1</span> FAIR Principles</a></li>
+  <li><a href="#reproduzierbarkeit-in-der-praxis-rmarkdown" id="toc-reproduzierbarkeit-in-der-praxis-rmarkdown" class="nav-link" data-scroll-target="#reproduzierbarkeit-in-der-praxis-rmarkdown"><span class="header-section-number">15.2.2</span> Reproduzierbarkeit in der Praxis: rMarkdown</a></li>
   </ul></li>
-  <li><a href="#abgabetermin" id="toc-abgabetermin" class="nav-link" data-scroll-target="#abgabetermin">Abgabetermin</a></li>
+  <li><a href="#versionskontrolle-zusammenarbeit-mit-git" id="toc-versionskontrolle-zusammenarbeit-mit-git" class="nav-link" data-scroll-target="#versionskontrolle-zusammenarbeit-mit-git"><span class="header-section-number">15.3</span> Versionskontrolle &amp; Zusammenarbeit mit Git</a></li>
+  <li><a href="#preregistration" id="toc-preregistration" class="nav-link" data-scroll-target="#preregistration"><span class="header-section-number">15.4</span> Preregistration</a>
+  <ul class="collapse">
+  <li><a href="#was-ist-preregistration" id="toc-was-ist-preregistration" class="nav-link" data-scroll-target="#was-ist-preregistration"><span class="header-section-number">15.4.1</span> Was ist Preregistration ?</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data_visualization_1.html">Datenvisualisieren</a></li><li class="breadcrumb-item"><a href="./uebung_3.html">Übung 3</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./opensci.html">Open Science</a></li><li class="breadcrumb-item"><a href="./opensci.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Getting Started: Open Science and Good Practices</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Übung 3</h1>
+<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Getting Started: Open Science and Good Practices</span></h1>
 </div>
 
 
@@ -452,161 +420,108 @@ window.Quarto = {
 </header>
 
 
-<div class="callout callout-style-default callout-tip callout-titled">
+<section id="was-ist-das-problem" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="was-ist-das-problem"><span class="header-section-number">15.1</span> Was ist das Problem ?</h2>
+<ul>
+<li><p>Reproduzierbarkeitskrise in der Psychologie (und anderen Fachbereichen)</p></li>
+<li><p>Ein Forschungsteam versuchte, 100 psychologische Studien zu replizieren – nur etwa 39 % zeigten denselben Effekt (<a href="https://osf.io/ezcuj/" class="uri">https://osf.io/ezcuj/</a>)</p></li>
+<li><p>Hauptgründe: P-Hacking und mangelnde Transparenz</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="imgs/noaccess.png" style="width:50.0%;height:50.0%" class="figure-img"></p>
+<figcaption>source: www.nature.com</figcaption>
+</figure>
+</div>
+</section>
+<section id="open-science" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="open-science"><span class="header-section-number">15.2</span> Open Science</h2>
+<section id="fair-principles" class="level3" data-number="15.2.1">
+<h3 data-number="15.2.1" class="anchored" data-anchor-id="fair-principles"><span class="header-section-number">15.2.1</span> FAIR Principles</h3>
+<p>FAIR ist ein Satz von Leitprinzipien, die Daten nützlicher machen sollen – nicht nur für andere, sondern auch für das eigene zukünftige Ich. FAIR steht für Findable (auffindbar), Accessible (zugänglich), Interoperable (interoperabel) und Reusable (wiederverwendbar).</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 47%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prinzip</th>
+<th>Was es bedeutet</th>
+<th>Beispiel</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>F – Findable (Auffindbar)</strong></td>
+<td>Daten sollen sowohl für Menschen als auch für Computer leicht auffindbar sein. Sie brauchen eine eindeutige Kennung und klare Metadaten (Informationen über die Daten).</td>
+<td>Laden Sie Ihren Datensatz in ein öffentliches Repositorium (z. B. OSF, Zenodo) mit DOI und einem aussagekräftigen Titel hoch.</td>
+</tr>
+<tr class="even">
+<td><strong>A – Accessible (Zugänglich)</strong></td>
+<td>Sobald Daten gefunden wurden, sollen sie über standardisierte Wege abrufbar sein – mit klaren Zugriffsbedingungen.</td>
+<td>Auch wenn der Zugriff eingeschränkt ist, sollten die Metadaten öffentlich sein und der Zugang erklärt werden.</td>
+</tr>
+<tr class="odd">
+<td><strong>I – Interoperable (Interoperabel)</strong></td>
+<td>Daten sollen in standardisierten Formaten und Begriffen strukturiert sein, damit sie mit anderen Daten und Tools zusammenarbeiten können.</td>
+<td>Verwenden Sie CSV statt proprietärer Formate und sprechende Variablennamen (z. B. „alter“ statt „a_g3“).</td>
+</tr>
+<tr class="even">
+<td><strong>R – Reusable (Wiederverwendbar)</strong></td>
+<td>Daten sollen ausreichend dokumentiert sein, damit andere sie korrekt interpretieren und wiederverwenden können.</td>
+<td>Fügen Sie eine README-Datei mit Beschreibung der Variablen hinzu und verwenden Sie eine offene Lizenz wie CC-BY.</td>
+</tr>
+</tbody>
+</table>
+<p>source: <a href="https://www.go-fair.org/fair-principles/" class="uri">https://www.go-fair.org/fair-principles/</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="imgs/fair.png" style="width:50.0%;height:50.0%" class="figure-img"></p>
+<figcaption>source: FOSTER Open Science Training Handbook (https://github.com/Open-Science-Training-Handbook)</figcaption>
+</figure>
+</div>
+</section>
+<section id="reproduzierbarkeit-in-der-praxis-rmarkdown" class="level3" data-number="15.2.2">
+<h3 data-number="15.2.2" class="anchored" data-anchor-id="reproduzierbarkeit-in-der-praxis-rmarkdown"><span class="header-section-number">15.2.2</span> Reproduzierbarkeit in der Praxis: rMarkdown</h3>
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Q&amp;A am 11. April 2025
+Hands-on: rMarkdown selber erstellen
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Bis am 7. April können Sie auf Ilias Fragen oder Themen hochladen, die noch einmal behandelt werden sollen.</p>
-<p><em>Beispiele:</em></p>
+<p>Für diesen Teil benötigen Sie ein <em>RProject</em> und die Daten, die Sie erhoben haben:</p>
 <ul>
-<li><p><em>Wie könnnen einzelne Personen mit zu tiefen Accuracy-Werten aus dem Datensatz herausgefiltert werden?</em></p></li>
-<li><p><em>Können wir noch einmal ein Anwendungsbeispiel mit der Funktion <code>map_dfr()</code> durcharbeiten?</em></p></li>
-<li><p><em>Wie ändere ich am besten die Farben je nach Condition in einem Plot?</em></p></li>
+<li><p>Erstellen Sie ein <em>R Markdown file</em> in <em>R</em>.</p></li>
+<li><p>Speichern Sie dieses file in den selben Ordner als Ihr R Projekt.</p></li>
+<li><p>Geben Sie einen Titel und Datum ein.</p></li>
+<li><p>Kopieren Sie Ihren Code aus Übung 3 und unterteilen Sie ihn in verschiedene code chunks.</p></li>
+<li><p>Kommentieren Sie jeden chunk und erstellen Sie eine <em>Outline</em>.</p></li>
+<li><p>Klicken Sie auf <em>Knit to HTML.</em></p></li>
+<li><p>Ändern Sie die Chunk Optionen “include” und “echo”, und klicken Sie wieder auf <em>Knit to HTML.</em> Was bewirkt das? (<a href="#0">https://rmarkdown.rstudio.com/lesson-3.html</a>)</p></li>
 </ul>
 </div>
 </div>
-<section id="auftrag" class="level2">
-<h2 class="anchored" data-anchor-id="auftrag">Auftrag</h2>
-<p><strong>Teil A: Datapreprocessing-Pipeline </strong> Erstellen Sie eine automatisierte Datenverarbeitungs-Pipeline, die die Daten des Random Dot Experiments einlesen und vorverarbeiten.</p>
-<p><strong>Teil B: Datenvisualisieren</strong> Erstellen Sie einen Plot der Random Dot Daten. Verwenden Sie dazu <code>ggplot()</code>. Alle Plots und der entsprechende Code werden in der Galerie auf der Kurshomepage anonym veröffentlicht.</p>
-<p><strong>Wichtig</strong>:</p>
-<ul>
-<li><p><em>Information zum Arbeiten in Kleingruppen:</em></p>
-<ul>
-<li>Übungen dürfen alleine oder in Gruppen von max. 3 Personen erledigt werden. Alle Personen müssen die Übung auf Ilias hochladen, um die Übung zu bestehen.</li>
-<li>Die Files von Gruppenarbeiten müssen folgendermassen benannt werden, damit wir sehen, welche Übungsabgaben zusammengehören: Nennen Sie das File mit der Aufgabe und allen Initialen der Gruppe. Z.B. <code>uebung_1_GW_EW.R</code>. Geben Sie bei allen Files die Initialen in <strong>derselben</strong> Reihenfolge an.</li>
-</ul></li>
-<li><p><em>Arbeitsanweisung unter dem Unterkapitel <em>Vorgehen</em>:</em></p>
-<ul>
-<li>Lesen Sie die Anweisungen genau durch und geben Sie die Dateien in diesem Format ab (z.B. Benennung der Dateien).</li>
-<li>Arbeiten Sie entlang der Arbeitsanweisung, um den Prozess zu vereinfachen.</li>
-</ul></li>
-</ul>
-</section>
-<section id="vorgehen" class="level2">
-<h2 class="anchored" data-anchor-id="vorgehen">Vorgehen</h2>
-<section id="download-und-setup" class="level3">
-<h3 class="anchored" data-anchor-id="download-und-setup">Download und Setup</h3>
-<ul>
-<li><p>Laden Sie das <em>R-Project</em> <a href="data/uebung-3.zip">uebung-3</a> herunter und entzippen Sie den Ordner. Im <code>data</code>-Ordner finden Sie die Einzeldateien vom Experiment.</p></li>
-<li><p><strong>Achtung</strong>: Sie müssen nur die Daten des <em>Random Dot Experiments</em> einlesen, vorverarbeiten und visualisieren. Die Daten des <em>Stroop Experiments</em> wurden in der Veranstaltung bearbeitet.</p></li>
-</ul>
-</section>
-<section id="a.-datapreprocessing-pipeline" class="level3">
-<h3 class="anchored" data-anchor-id="a.-datapreprocessing-pipeline">A. Datapreprocessing-Pipeline</h3>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tipp
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Am besten erstellen Sie zuerst für <strong>einen</strong> Datensatz einen funktionierenden Vorverarbeitungsablauf. Dann erstellen Sie eine Funktion für diesen Ablauf. In einem letzten Schritt automatisieren Sie dann diesen Ablauf für alle Datensätze im Datenordner indem Sie eine Liste mit allen Filenamen erstellen. Sie können sich an dem <a href="">Automatisierungsbeispiel</a> mit dem Stroop Datensatz orientieren.</p>
-<p>Das Einlesen kann eine Weile dauern, es sind sehr viele Datensätze.</p>
-</div>
-</div>
-<ul>
-<li><p>Erstellen Sie ein neues <code>.R</code>-File und speichern Sie dieses unter <code>preprocessing_random_dot.R</code> im Projekt-Ordner. Sie können auch ein <em>RNotebook</em> erstellen! Falls Sie in einer Gruppe arbeiten speichern Sie dieses mit den Initialen ab, z.B. <code>preprocessing_random_dot_initialen_initialen_initialen.R</code>.</p></li>
-<li><p><strong>a. Packages laden</strong>: Laden Sie das Package {tidyverse}.</p></li>
-<li><p><strong>b. Daten einlesen</strong> (<code>read.csv()</code>)</p></li>
-<li><p><strong>c.&nbsp;Daten filtern</strong>, so dass nur Experimenttrials im Datensatz sind, keine Übungsaufgaben. (<code>filter()</code>)</p></li>
-<li><p><strong>d.&nbsp;Erstellen zwei neuer Variablen</strong> namens <code>trial</code> (diese Variable gibt die Trialnummer startend mit 1 an und <code>initials</code> (diese Variable gibt Ihre Initialen an) mit (<code>mutate()</code>). Falls Sie in einer Gruppe arbeiten, geben Sie mehrere Initialen in den Variablen <code>initals1</code>, <code>initials2</code> und <code>initials3</code> an.</p></li>
-<li><p><strong>e. Datensatz vereinfachen</strong>: Der Datensatz soll in dieser Reihenfolge folgende Informationen/Variablennamen enthalten (<code>select()</code>):</p>
-<pre><code>  - Versuchspersonenidentifikation (`id`)
-  - Trialnummer (`trial`)
-  - Bewegungsrichtung der Punkte (`direction`)
-  - Instruktionsbedingung (`condition`)
-  - Korrekte Antwort für diesen Trial (`corrAns`)
-  - Antwort der Versuchsperson (`resp`), 
-  - war die Antwort der Versuchsperson korrekt? (`corr`)
-  - Antwortzeit der Versuchsperson (`rt`)
-  - Initialen der ausführenden Person (`initials`)</code></pre></li>
-<li><p><strong>f.&nbsp;Automatisieren</strong></p>
-<ul>
-<li>Erstellen Sie nun eine Funktion, die dies für alle <em>Random Dot</em> Datensätze ausführt und einen aggregierten Datensatz erstellt. <a href="./datawrangling_automatisiert.html">Hier</a> finden Sie ein Anwendungsbeispiel dazu.</li>
-</ul></li>
-<li><p><strong>g. Erstellter Datensatz kontrollieren</strong>:</p>
-<ul>
-<li>Löschen Sie nun alle Variablen in der RStudio Umgebung (<code>Environment</code>) mit dem Besen-Icon oben rechts und führen Sie den Code nochmals aus. Wenn alles funktioniert, fahren Sie weiter.</li>
-</ul></li>
-<li><p><strong>h. Datensatz speichern</strong>:</p>
-<ul>
-<li><strong>Datensatz für Ilias:</strong> Speichern Sie den neuen Datensatz (der jetzt <strong>alle</strong> Datensätze vorverarbeitet und zusammengefügt enthält) als <code>.csv</code>-File namens <code>dataset_random_dot_clean_initialen.csv</code> in Ihren <code>data</code>-Ordner.</li>
-<li><strong>Datensatz fürs Visualisieren:</strong> Speichern Sie den Datensatz als <code>dataset_random_dot_clean.csv</code> im <code>data</code>-Ordner ab.</li>
-</ul></li>
-<li><p><strong>i. Gespeicherten Datensatz kontrollieren</strong>:</p>
-<ul>
-<li>Ihr Datensatz sollte nun wie untenstehend aussehen. <strong>Benutzen Sie dazu in Ihrem Code den Sie abgeben zwingend die Funktion <code>glimpse()</code></strong>. (Ohne <code>glimpse()</code> ist Ihre Abgabe ungültig.)</li>
-</ul></li>
-</ul>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 28,680
-Columns: 8
-$ id        &lt;chr&gt; "sub-001", "sub-001", "sub-001", "sub-001", "sub-001", "sub-…
-$ trial     &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1…
-$ direction &lt;chr&gt; "right", "left", "right", "left", "right", "left", "right", …
-$ condition &lt;chr&gt; "speed", "speed", "speed", "speed", "speed", "speed", "speed…
-$ corrAns   &lt;chr&gt; "right", "left", "right", "left", "right", "left", "right", …
-$ resp      &lt;chr&gt; "right", "left", "right", "left", "right", "left", "left", "…
-$ corr      &lt;int&gt; 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, …
-$ rt        &lt;dbl&gt; 49.83123, 49.61717, 49.31203, 49.57549, 50.58607, 49.55812, …</code></pre>
-</div>
+<p>Mehr Infos hier: <a href="https://rmarkdown.rstudio.com/index.html" class="uri">https://rmarkdown.rstudio.com/index.html</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="imgs/share.png" style="width:50.0%;height:50.0%" class="figure-img"></p>
+<figcaption>source: https://imgflip.com/i/1v1jxs</figcaption>
+</figure>
 </div>
 </section>
-<section id="b.-datenvisualisieren" class="level3">
-<h3 class="anchored" data-anchor-id="b.-datenvisualisieren">B. Datenvisualisieren</h3>
-<ul>
-<li><p>Im Ordner finden Sie eine Datei namens <code>initialen_plot.R</code>. Öffnen Sie die die Datei <em>initialen_plot.R</em>. Der Inhalt dieser Datei muss gleich aussehen, wie im Beispiel unten.</p></li>
-<li><p>Ändern Sie den Namen der Datei <em>initialen_plot.R</em>, indem Sie Ihre Initialen (oder mehrere: <code>initialen_initialen_initialen_plot.R</code>) einsetzen. Das File muss korrekt benannt werden für eine gültige Abgabe!</p></li>
-<li><p>Der Code auf von Zeile 1 bis Zeile 8 darf <strong>nicht verändert werden!</strong></p></li>
-<li><p>Fügen Sie den Code für Ihre Abbildung ab Zeile 9 ein.</p></li>
-<li><p>Der eingefügte Code muss die Abbildung erstellen (vgl. Zeile 9-12) und anzeigen (vgl. Zeile 12).</p></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code innerhalb der folgenden 2 Linien darf nicht verändert werden</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------------------------------------------------</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">'data/dataset_random_dot_clean.csv'</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------------------------------------------------</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Beginnen Sie hier mit Ihrem Code:</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> d <span class="sc">|&gt;</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(...) <span class="sc">+</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    ...</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li><strong>Der Plot muss Folgendes beinhalten:</strong>
-<ul>
-<li>Beides, Rohdaten UND mind. 1 zusammenfassendes Mass(z.B. Mittelwert mit Standardabweichungen, Box-/Violinplot, etc.). TIPP: Mehrere Geoms können übereinander gelegt werden.</li>
-<li>Mind. 2 unterschiedliche Farben (schwarz und weiss ausgenommen).</li>
-<li>Beschriftungen: Titel, Subtitel, Achsenbeschriftungen, (optional: Captions)</li>
-<li>Der Subtitel beinhaltet die Frage, welche der Plot beantwortet.<br>
-</li>
-<li>Ein Theme verwenden.</li>
-<li>Optional: Facets verwenden.</li>
-</ul></li>
-</ul>
 </section>
-<section id="hochladen-der-dateien-auf-ilias" class="level3">
-<h3 class="anchored" data-anchor-id="hochladen-der-dateien-auf-ilias">Hochladen der Dateien auf Ilias</h3>
-<p>Laden Sie folgende Dateien unter <code>Übung 3</code> auf Ilias hoch:</p>
+<section id="versionskontrolle-zusammenarbeit-mit-git" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="versionskontrolle-zusammenarbeit-mit-git"><span class="header-section-number">15.3</span> Versionskontrolle &amp; Zusammenarbeit mit Git</h2>
+<p>Hatten Sie schon einmal eine Datei mit einem Namen wie: final_final_v4_REAL?</p>
 <ul>
-<li><code>dataset_random_dot_clean_initialen.csv</code>-File</li>
-<li><code>preprocessing_random_dot_initialen_initialen_initialen.R</code></li>
-<li><code>initialen_initialen_initialen_plot.R</code></li>
-<li><code>.jpg</code> oder <code>.png</code> (oder anderes Bildformat) Ihres Plots</li>
+<li><p>Git verfolgt jede Änderung, die Sie an Dateien vornehmen – wie eine Zeitmaschine für Ihr Projekt.</p></li>
+<li><p>Es ist eine Cloud-Plattform, um Projekte zu speichern, zu teilen und gemeinsam daran zu arbeiten.</p></li>
 </ul>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -614,34 +529,58 @@ $ rt        &lt;dbl&gt; 49.83123, 49.61717, 49.31203, 49.57549, 50.58607, 49.558
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Wichtig
+Hands-on: Git vs Google Drive/Docs
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Ihr Plot und der dazugehörige Code wird in der <a href="./gallery.html">Galerie</a> anonym veröffentlich. Deshalb ist es wichtig, dass die oben aufgelisteten Voraussetzungen erfüllt sind.</p>
+<ul>
+<li><p>Gehen Sie zur Dokumentation von <a href="https://docs.github.com/en/get-started/start-your-journey/about-github-and-git">GitHub</a> oder <a href="https://docs.gitlab.com/topics/git/get_started/">GitLab</a></p></li>
+<li><p>Diskutieren Sie: Was sind Unterschiede zwischen Git und Google Drive oder anderen “klassischen” Cloud-Plattformen?</p></li>
+</ul>
 </div>
 </div>
-<p><br></p>
 </section>
-</section>
-<section id="abgabetermin" class="level2">
-<h2 class="anchored" data-anchor-id="abgabetermin">Abgabetermin</h2>
-<p>Der Abgabetermin für diese Übung ist der <strong>18. April 2025</strong>.</p>
-<!-- ## Trouble shooting -->
-<!-- __Das Einlesen funktioniert nicht.__ -->
-<!-- Kontrollieren Sie bei der `read.csv()`-Funktion das `sep = ` Zeichen. Passt dieses zum Datensatz? -->
-<!-- Stimmt die Ordnerstruktur? Arbeiten Sie in einem _R-Project_, ist das `.Rmd`-File im _selben_ Ordner wie das `.Rproj`-File und haben Sie die Daten im `data`-Ordner gespeichert (ungezippt, also nur die Datenfiles)? -->
-<!-- __Die Datensätze können nicht alle eingelesen werden, obwohl ein einzelner Datensatz eingelesen werden kann.__ -->
-<!-- Bitte öffnen Sie die Dateien nur in R, nicht in Excel oder in einem anderen Programm, das kann die Formatierung ändern und Probleme beim Einlesen verursachen. Falls Sie die Daten schon geöffnet haben, laden Sie den Datensatz nochmals neu von der Website herunter und speichern Sie ihn im Datenordner. -->
-<!-- __Weitere Fehlermeldungen__ -->
-<!-- Lesen Sie die Fehlermeldung genau durch: Finden Sie Informationen zur Lösung des Fehlers? -->
-<!-- _Häufigste Fehlerquellen:_ -->
-<!-- - Tippfehler? -->
-<!-- - Ist der Code-Chunk ist richtig formattiert: Er muss mit ` ```{r}` beginnen und mit ` ``` ` enden. Stellen Sie sicher, dass eine Lücke zum nächsten Code-Chunk besteht. -->
-<!-- - Reihenfolgenfehler? Löschen Sie alle Variablen mit dem "Besen"-Symbol oben rechts und lassen Sie Ihren Code nochmals von Beginn an durch laufen. -->
-<!-- __Bei Problemen, fragen Sie bitte an der nächsten Veranstaltung nach.__ -->
+<section id="preregistration" class="level2" data-number="15.4">
+<h2 data-number="15.4" class="anchored" data-anchor-id="preregistration"><span class="header-section-number">15.4</span> Preregistration</h2>
+<section id="was-ist-preregistration" class="level3" data-number="15.4.1">
+<h3 data-number="15.4.1" class="anchored" data-anchor-id="was-ist-preregistration"><span class="header-section-number">15.4.1</span> Was ist Preregistration ?</h3>
+<ul>
+<li><p>Ein Dokument, das Ihr Forschungsdesign und Ihre Analyse im Voraus festlegt – also bevor Sie das Projekt tatsächlich beginnen (z. B. bevor Sie mit der Datenerhebung starten)</p></li>
+<li><p>Es hilft dabei, Ihre Wissenschaft transparenter und vertrauenswürdiger zu machen</p></li>
+<li><p>Es schützt vor P-Hacking und kognitiven Verzerrungen</p></li>
+</ul>
+<p>Für weitere Informationen: <a href="https://help.osf.io/article/330-welcome-to-registrations" class="uri">https://help.osf.io/article/330-welcome-to-registrations</a></p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hands-on: Preregistration selber machen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Gehen Sie auf <a href="https://aspredicted.org/" class="uri">https://aspredicted.org/</a></p></li>
+<li><p>Kreuzen Sie <em>Just trying it out</em> an</p></li>
+<li><p>Klicken Sie auf <em>Create a new pre-registration</em></p></li>
+<li><p>Geben Sie Ihre Unibe-Email ein und <em>Continue</em></p></li>
+<li><p>Warten Sie, bis Sie einen Link bekommen und klicken Sie diesen Link</p></li>
+<li><p>Klicken Sie noch einmal auf <em>I am just trying things out</em></p></li>
+<li><p>Erstellen Sie eine Preregistrierung für Ihr Stroop oder Random-Dot Experiment.</p></li>
+</ul>
+</div>
+</div>
+<section id="extra-ressourcen" class="level4">
+<h4 class="anchored" data-anchor-id="extra-ressourcen">Extra Ressourcen:</h4>
+<ul>
+<li><p><a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005510">Good practices for scientific computing</a></p></li>
+<li><p><a href="https://raps-with-r.dev/">Building reproducible analytical pipelines with R</a></p></li>
+</ul>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1628,13 +1567,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="./data_visualization_2.html" class="pagination-link" aria-label="Grundlagen der Datenvisualisierung">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Grundlagen der Datenvisualisierung</span></span>
+      <a href="./uebung_4.html" class="pagination-link" aria-label="Übung 4">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Übung 4</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./gallery.html" class="pagination-link" aria-label="Galerie">
-        <span class="nav-page-text">Galerie</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./goodpractices_data.html" class="pagination-link" aria-label="Good Practices in der Datenverarbeitung">
+        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Good Practices in der Datenverarbeitung</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

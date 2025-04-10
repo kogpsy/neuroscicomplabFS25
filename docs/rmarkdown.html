@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Übung 3 – Neurowissenschaft im Computerlab</title>
+<title>17&nbsp; RStudio Projects und RMarkdown – Neurowissenschaft im Computerlab</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -64,8 +30,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./gallery.html" rel="next">
-<link href="./data_visualization_2.html" rel="prev">
+<link href="./webrconsole.html" rel="next">
+<link href="./goodpractices_data.html" rel="prev">
 <link href="./imgs/logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -149,7 +115,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data_visualization_1.html">Datenvisualisieren</a></li><li class="breadcrumb-item"><a href="./uebung_3.html">Übung 3</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./opensci.html">Open Science</a></li><li class="breadcrumb-item"><a href="./rmarkdown.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">RStudio Projects und RMarkdown</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -305,7 +271,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./uebung_3.html" class="sidebar-item-text sidebar-link active">
+  <a href="./uebung_3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Übung 3</span></a>
   </div>
 </li>
@@ -375,7 +341,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./rmarkdown.html" class="sidebar-item-text sidebar-link">
+  <a href="./rmarkdown.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">RStudio Projects und RMarkdown</span></span></a>
   </div>
 </li>
@@ -418,24 +384,22 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#auftrag" id="toc-auftrag" class="nav-link active" data-scroll-target="#auftrag">Auftrag</a></li>
-  <li><a href="#vorgehen" id="toc-vorgehen" class="nav-link" data-scroll-target="#vorgehen">Vorgehen</a>
-  <ul class="collapse">
-  <li><a href="#download-und-setup" id="toc-download-und-setup" class="nav-link" data-scroll-target="#download-und-setup">Download und Setup</a></li>
-  <li><a href="#a.-datapreprocessing-pipeline" id="toc-a.-datapreprocessing-pipeline" class="nav-link" data-scroll-target="#a.-datapreprocessing-pipeline">A. Datapreprocessing-Pipeline</a></li>
-  <li><a href="#b.-datenvisualisieren" id="toc-b.-datenvisualisieren" class="nav-link" data-scroll-target="#b.-datenvisualisieren">B. Datenvisualisieren</a></li>
-  <li><a href="#hochladen-der-dateien-auf-ilias" id="toc-hochladen-der-dateien-auf-ilias" class="nav-link" data-scroll-target="#hochladen-der-dateien-auf-ilias">Hochladen der Dateien auf Ilias</a></li>
-  </ul></li>
-  <li><a href="#abgabetermin" id="toc-abgabetermin" class="nav-link" data-scroll-target="#abgabetermin">Abgabetermin</a></li>
+  <li><a href="#rstudio-projects" id="toc-rstudio-projects" class="nav-link active" data-scroll-target="#rstudio-projects"><span class="header-section-number">17.1</span> RStudio Projects</a></li>
+  <li><a href="#r-markdown" id="toc-r-markdown" class="nav-link" data-scroll-target="#r-markdown"><span class="header-section-number">17.2</span> R Markdown</a></li>
+  <li><a href="#r-markdown-file-erstellen-und-ausführen" id="toc-r-markdown-file-erstellen-und-ausführen" class="nav-link" data-scroll-target="#r-markdown-file-erstellen-und-ausführen"><span class="header-section-number">17.3</span> R Markdown File erstellen und ausführen</a></li>
+  <li><a href="#knitten" id="toc-knitten" class="nav-link" data-scroll-target="#knitten"><span class="header-section-number">17.4</span> Knitten</a></li>
+  <li><a href="#yaml-header" id="toc-yaml-header" class="nav-link" data-scroll-target="#yaml-header"><span class="header-section-number">17.5</span> YAML header</a></li>
+  <li><a href="#text-erstellen-in-r-markdown" id="toc-text-erstellen-in-r-markdown" class="nav-link" data-scroll-target="#text-erstellen-in-r-markdown"><span class="header-section-number">17.6</span> Text erstellen in R Markdown</a></li>
+  <li><a href="#code-erstellen-in-r-markdown" id="toc-code-erstellen-in-r-markdown" class="nav-link" data-scroll-target="#code-erstellen-in-r-markdown"><span class="header-section-number">17.7</span> Code erstellen in R Markdown</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content column-body" id="quarto-document-content">
+<main class="content page-columns page-full column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data_visualization_1.html">Datenvisualisieren</a></li><li class="breadcrumb-item"><a href="./uebung_3.html">Übung 3</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./opensci.html">Open Science</a></li><li class="breadcrumb-item"><a href="./rmarkdown.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">RStudio Projects und RMarkdown</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Übung 3</h1>
+<h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">RStudio Projects und RMarkdown</span></h1>
 </div>
 
 
@@ -452,194 +416,225 @@ window.Quarto = {
 </header>
 
 
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Q&amp;A am 11. April 2025
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Bis am 7. April können Sie auf Ilias Fragen oder Themen hochladen, die noch einmal behandelt werden sollen.</p>
-<p><em>Beispiele:</em></p>
-<ul>
-<li><p><em>Wie könnnen einzelne Personen mit zu tiefen Accuracy-Werten aus dem Datensatz herausgefiltert werden?</em></p></li>
-<li><p><em>Können wir noch einmal ein Anwendungsbeispiel mit der Funktion <code>map_dfr()</code> durcharbeiten?</em></p></li>
-<li><p><em>Wie ändere ich am besten die Farben je nach Condition in einem Plot?</em></p></li>
-</ul>
-</div>
-</div>
-<section id="auftrag" class="level2">
-<h2 class="anchored" data-anchor-id="auftrag">Auftrag</h2>
-<p><strong>Teil A: Datapreprocessing-Pipeline </strong> Erstellen Sie eine automatisierte Datenverarbeitungs-Pipeline, die die Daten des Random Dot Experiments einlesen und vorverarbeiten.</p>
-<p><strong>Teil B: Datenvisualisieren</strong> Erstellen Sie einen Plot der Random Dot Daten. Verwenden Sie dazu <code>ggplot()</code>. Alle Plots und der entsprechende Code werden in der Galerie auf der Kurshomepage anonym veröffentlicht.</p>
-<p><strong>Wichtig</strong>:</p>
-<ul>
-<li><p><em>Information zum Arbeiten in Kleingruppen:</em></p>
-<ul>
-<li>Übungen dürfen alleine oder in Gruppen von max. 3 Personen erledigt werden. Alle Personen müssen die Übung auf Ilias hochladen, um die Übung zu bestehen.</li>
-<li>Die Files von Gruppenarbeiten müssen folgendermassen benannt werden, damit wir sehen, welche Übungsabgaben zusammengehören: Nennen Sie das File mit der Aufgabe und allen Initialen der Gruppe. Z.B. <code>uebung_1_GW_EW.R</code>. Geben Sie bei allen Files die Initialen in <strong>derselben</strong> Reihenfolge an.</li>
-</ul></li>
-<li><p><em>Arbeitsanweisung unter dem Unterkapitel <em>Vorgehen</em>:</em></p>
-<ul>
-<li>Lesen Sie die Anweisungen genau durch und geben Sie die Dateien in diesem Format ab (z.B. Benennung der Dateien).</li>
-<li>Arbeiten Sie entlang der Arbeitsanweisung, um den Prozess zu vereinfachen.</li>
-</ul></li>
-</ul>
-</section>
-<section id="vorgehen" class="level2">
-<h2 class="anchored" data-anchor-id="vorgehen">Vorgehen</h2>
-<section id="download-und-setup" class="level3">
-<h3 class="anchored" data-anchor-id="download-und-setup">Download und Setup</h3>
-<ul>
-<li><p>Laden Sie das <em>R-Project</em> <a href="data/uebung-3.zip">uebung-3</a> herunter und entzippen Sie den Ordner. Im <code>data</code>-Ordner finden Sie die Einzeldateien vom Experiment.</p></li>
-<li><p><strong>Achtung</strong>: Sie müssen nur die Daten des <em>Random Dot Experiments</em> einlesen, vorverarbeiten und visualisieren. Die Daten des <em>Stroop Experiments</em> wurden in der Veranstaltung bearbeitet.</p></li>
-</ul>
-</section>
-<section id="a.-datapreprocessing-pipeline" class="level3">
-<h3 class="anchored" data-anchor-id="a.-datapreprocessing-pipeline">A. Datapreprocessing-Pipeline</h3>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tipp
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Am besten erstellen Sie zuerst für <strong>einen</strong> Datensatz einen funktionierenden Vorverarbeitungsablauf. Dann erstellen Sie eine Funktion für diesen Ablauf. In einem letzten Schritt automatisieren Sie dann diesen Ablauf für alle Datensätze im Datenordner indem Sie eine Liste mit allen Filenamen erstellen. Sie können sich an dem <a href="">Automatisierungsbeispiel</a> mit dem Stroop Datensatz orientieren.</p>
-<p>Das Einlesen kann eine Weile dauern, es sind sehr viele Datensätze.</p>
-</div>
-</div>
-<ul>
-<li><p>Erstellen Sie ein neues <code>.R</code>-File und speichern Sie dieses unter <code>preprocessing_random_dot.R</code> im Projekt-Ordner. Sie können auch ein <em>RNotebook</em> erstellen! Falls Sie in einer Gruppe arbeiten speichern Sie dieses mit den Initialen ab, z.B. <code>preprocessing_random_dot_initialen_initialen_initialen.R</code>.</p></li>
-<li><p><strong>a. Packages laden</strong>: Laden Sie das Package {tidyverse}.</p></li>
-<li><p><strong>b. Daten einlesen</strong> (<code>read.csv()</code>)</p></li>
-<li><p><strong>c.&nbsp;Daten filtern</strong>, so dass nur Experimenttrials im Datensatz sind, keine Übungsaufgaben. (<code>filter()</code>)</p></li>
-<li><p><strong>d.&nbsp;Erstellen zwei neuer Variablen</strong> namens <code>trial</code> (diese Variable gibt die Trialnummer startend mit 1 an und <code>initials</code> (diese Variable gibt Ihre Initialen an) mit (<code>mutate()</code>). Falls Sie in einer Gruppe arbeiten, geben Sie mehrere Initialen in den Variablen <code>initals1</code>, <code>initials2</code> und <code>initials3</code> an.</p></li>
-<li><p><strong>e. Datensatz vereinfachen</strong>: Der Datensatz soll in dieser Reihenfolge folgende Informationen/Variablennamen enthalten (<code>select()</code>):</p>
-<pre><code>  - Versuchspersonenidentifikation (`id`)
-  - Trialnummer (`trial`)
-  - Bewegungsrichtung der Punkte (`direction`)
-  - Instruktionsbedingung (`condition`)
-  - Korrekte Antwort für diesen Trial (`corrAns`)
-  - Antwort der Versuchsperson (`resp`), 
-  - war die Antwort der Versuchsperson korrekt? (`corr`)
-  - Antwortzeit der Versuchsperson (`rt`)
-  - Initialen der ausführenden Person (`initials`)</code></pre></li>
-<li><p><strong>f.&nbsp;Automatisieren</strong></p>
-<ul>
-<li>Erstellen Sie nun eine Funktion, die dies für alle <em>Random Dot</em> Datensätze ausführt und einen aggregierten Datensatz erstellt. <a href="./datawrangling_automatisiert.html">Hier</a> finden Sie ein Anwendungsbeispiel dazu.</li>
-</ul></li>
-<li><p><strong>g. Erstellter Datensatz kontrollieren</strong>:</p>
-<ul>
-<li>Löschen Sie nun alle Variablen in der RStudio Umgebung (<code>Environment</code>) mit dem Besen-Icon oben rechts und führen Sie den Code nochmals aus. Wenn alles funktioniert, fahren Sie weiter.</li>
-</ul></li>
-<li><p><strong>h. Datensatz speichern</strong>:</p>
-<ul>
-<li><strong>Datensatz für Ilias:</strong> Speichern Sie den neuen Datensatz (der jetzt <strong>alle</strong> Datensätze vorverarbeitet und zusammengefügt enthält) als <code>.csv</code>-File namens <code>dataset_random_dot_clean_initialen.csv</code> in Ihren <code>data</code>-Ordner.</li>
-<li><strong>Datensatz fürs Visualisieren:</strong> Speichern Sie den Datensatz als <code>dataset_random_dot_clean.csv</code> im <code>data</code>-Ordner ab.</li>
-</ul></li>
-<li><p><strong>i. Gespeicherten Datensatz kontrollieren</strong>:</p>
-<ul>
-<li>Ihr Datensatz sollte nun wie untenstehend aussehen. <strong>Benutzen Sie dazu in Ihrem Code den Sie abgeben zwingend die Funktion <code>glimpse()</code></strong>. (Ohne <code>glimpse()</code> ist Ihre Abgabe ungültig.)</li>
-</ul></li>
-</ul>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 28,680
-Columns: 8
-$ id        &lt;chr&gt; "sub-001", "sub-001", "sub-001", "sub-001", "sub-001", "sub-…
-$ trial     &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1…
-$ direction &lt;chr&gt; "right", "left", "right", "left", "right", "left", "right", …
-$ condition &lt;chr&gt; "speed", "speed", "speed", "speed", "speed", "speed", "speed…
-$ corrAns   &lt;chr&gt; "right", "left", "right", "left", "right", "left", "right", …
-$ resp      &lt;chr&gt; "right", "left", "right", "left", "right", "left", "left", "…
-$ corr      &lt;int&gt; 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, …
-$ rt        &lt;dbl&gt; 49.83123, 49.61717, 49.31203, 49.57549, 50.58607, 49.55812, …</code></pre>
-</div>
-</div>
-</section>
-<section id="b.-datenvisualisieren" class="level3">
-<h3 class="anchored" data-anchor-id="b.-datenvisualisieren">B. Datenvisualisieren</h3>
-<ul>
-<li><p>Im Ordner finden Sie eine Datei namens <code>initialen_plot.R</code>. Öffnen Sie die die Datei <em>initialen_plot.R</em>. Der Inhalt dieser Datei muss gleich aussehen, wie im Beispiel unten.</p></li>
-<li><p>Ändern Sie den Namen der Datei <em>initialen_plot.R</em>, indem Sie Ihre Initialen (oder mehrere: <code>initialen_initialen_initialen_plot.R</code>) einsetzen. Das File muss korrekt benannt werden für eine gültige Abgabe!</p></li>
-<li><p>Der Code auf von Zeile 1 bis Zeile 8 darf <strong>nicht verändert werden!</strong></p></li>
-<li><p>Fügen Sie den Code für Ihre Abbildung ab Zeile 9 ein.</p></li>
-<li><p>Der eingefügte Code muss die Abbildung erstellen (vgl. Zeile 9-12) und anzeigen (vgl. Zeile 12).</p></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code innerhalb der folgenden 2 Linien darf nicht verändert werden</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------------------------------------------------</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">'data/dataset_random_dot_clean.csv'</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------------------------------------------------</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Beginnen Sie hier mit Ihrem Code:</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> d <span class="sc">|&gt;</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(...) <span class="sc">+</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    ...</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li><strong>Der Plot muss Folgendes beinhalten:</strong>
-<ul>
-<li>Beides, Rohdaten UND mind. 1 zusammenfassendes Mass(z.B. Mittelwert mit Standardabweichungen, Box-/Violinplot, etc.). TIPP: Mehrere Geoms können übereinander gelegt werden.</li>
-<li>Mind. 2 unterschiedliche Farben (schwarz und weiss ausgenommen).</li>
-<li>Beschriftungen: Titel, Subtitel, Achsenbeschriftungen, (optional: Captions)</li>
-<li>Der Subtitel beinhaltet die Frage, welche der Plot beantwortet.<br>
-</li>
-<li>Ein Theme verwenden.</li>
-<li>Optional: Facets verwenden.</li>
-</ul></li>
-</ul>
-</section>
-<section id="hochladen-der-dateien-auf-ilias" class="level3">
-<h3 class="anchored" data-anchor-id="hochladen-der-dateien-auf-ilias">Hochladen der Dateien auf Ilias</h3>
-<p>Laden Sie folgende Dateien unter <code>Übung 3</code> auf Ilias hoch:</p>
-<ul>
-<li><code>dataset_random_dot_clean_initialen.csv</code>-File</li>
-<li><code>preprocessing_random_dot_initialen_initialen_initialen.R</code></li>
-<li><code>initialen_initialen_initialen_plot.R</code></li>
-<li><code>.jpg</code> oder <code>.png</code> (oder anderes Bildformat) Ihres Plots</li>
-</ul>
+<section id="rstudio-projects" class="level2" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="rstudio-projects"><span class="header-section-number">17.1</span> RStudio Projects</h2>
+<p>RStudio Projekte ermöglichen vereinfachtes Arbeiten mit R, da alle Dateien, die in diesem Projektordner gespeichert sind, direkt verfügbar sind. So kann die aktuelle R Session abgespeichert werden und beim nächsten Öffnen kann dort weitergearbeitet werden wo man aufgehört hat. Projekte ermöglichen somit ein stabiles <code>working directory</code> für ein Datenanalyse-Projekt.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Wichtig
+Hands-on: Erstellen eines RStudio Projects
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Ihr Plot und der dazugehörige Code wird in der <a href="./gallery.html">Galerie</a> anonym veröffentlich. Deshalb ist es wichtig, dass die oben aufgelisteten Voraussetzungen erfüllt sind.</p>
+<ol type="1">
+<li><p>Öffnen Sie RStudio.</p></li>
+<li><p>Erstellen Sie ein neues RStudio-Project</p>
+<ul>
+<li><p>Klicken Sie dafür auf <code>File</code> &gt; <code>New Project</code></p></li>
+<li><p>Benennen Sie das Project <code>neurosci_complab_rmarkdown</code> und speichern Sie es an einem sinnvollen Ort auf Ihrem Computer.</p></li>
+</ul></li>
+</ol>
 </div>
 </div>
-<p><br></p>
+<p>Es empfiehlt sich bei RProjekten eine Einstellungsänderung (<code>Tools</code>&gt; <code>Project Options...</code>) vorzunehmen, so dass die aktuell gespeicherten Variablen bei jedem Schliessen vom Projekt gelöscht werden. Dies verhindert, dass der aktuelle Code nur aufgrund früherer Speicherung läuft.</p>
+<p><img src="imgs/rprojects_saveworkspace.jpg" class="img-fluid"></p>
 </section>
+<section id="r-markdown" class="level2 page-columns page-full" data-number="17.2">
+<h2 data-number="17.2" class="anchored" data-anchor-id="r-markdown"><span class="header-section-number">17.2</span> R Markdown</h2>
+<p>R Markdown ist eine simple Markup-Sprache, die es ermöglicht reproduzierbare Data Reports zu erstellen. R Markdown ist praktisch, weil Text und Code gleichzeitig verwendet werden kann und der Output des Codes angezeigt wird. Text kann verwendet werden, ohne dass vor jeder Zeile ein <code>#</code> zum Auskommentieren gesetzt werden. Zudem kann Text formatiert werden, also z.B. <strong>dick</strong> oder <em>kursiv</em> dargestellt werden oder Auflistungen beinhalten.</p>
+<p>Das Skript der R Markdown Files wird <em>geknittet</em> und so - je nach Wahl - zu einem HTML, PDF oder Word-Dokument zusammengefügt. R Markdown kann also beispielsweise eine Text-Beschreibung, Code zum Erstellen einer Grafik und auch die erstellte Grafik in einem Dokument kombinieren.</p>
+<aside>
+Mit R Markdown können auch Präsentationen, Webseiten, Bücher, Lebensläufe, Artikel oder Arbeiten erstellt werden. <a href="https://rmarkdown.rstudio.com/gallery.html">Hier</a> finden Sie eine Galerie. Die Kurswebsite wurde ebenfalls in R erstellt.
+</aside>
+<p>Das <code>working memory</code> innerhalb eines R Markdown Files ist der Speicherort des Files. Von dort aus können somit <em>relative</em> Pfade angegeben werden. Das hat den Vorteil, dass andere Benutzer denselben Projekt-Ordner auf Ihrem Computer mit unveränderten Pfaden verwenden können.</p>
+<aside>
+<a href="https://bookdown.org/yihui/rmarkdown-cookbook/working-directory.html">Weitere Infos</a> zu Pfaden in R Markdown.
+</aside>
 </section>
-<section id="abgabetermin" class="level2">
-<h2 class="anchored" data-anchor-id="abgabetermin">Abgabetermin</h2>
-<p>Der Abgabetermin für diese Übung ist der <strong>18. April 2025</strong>.</p>
-<!-- ## Trouble shooting -->
-<!-- __Das Einlesen funktioniert nicht.__ -->
-<!-- Kontrollieren Sie bei der `read.csv()`-Funktion das `sep = ` Zeichen. Passt dieses zum Datensatz? -->
-<!-- Stimmt die Ordnerstruktur? Arbeiten Sie in einem _R-Project_, ist das `.Rmd`-File im _selben_ Ordner wie das `.Rproj`-File und haben Sie die Daten im `data`-Ordner gespeichert (ungezippt, also nur die Datenfiles)? -->
-<!-- __Die Datensätze können nicht alle eingelesen werden, obwohl ein einzelner Datensatz eingelesen werden kann.__ -->
-<!-- Bitte öffnen Sie die Dateien nur in R, nicht in Excel oder in einem anderen Programm, das kann die Formatierung ändern und Probleme beim Einlesen verursachen. Falls Sie die Daten schon geöffnet haben, laden Sie den Datensatz nochmals neu von der Website herunter und speichern Sie ihn im Datenordner. -->
-<!-- __Weitere Fehlermeldungen__ -->
-<!-- Lesen Sie die Fehlermeldung genau durch: Finden Sie Informationen zur Lösung des Fehlers? -->
-<!-- _Häufigste Fehlerquellen:_ -->
-<!-- - Tippfehler? -->
-<!-- - Ist der Code-Chunk ist richtig formattiert: Er muss mit ` ```{r}` beginnen und mit ` ``` ` enden. Stellen Sie sicher, dass eine Lücke zum nächsten Code-Chunk besteht. -->
-<!-- - Reihenfolgenfehler? Löschen Sie alle Variablen mit dem "Besen"-Symbol oben rechts und lassen Sie Ihren Code nochmals von Beginn an durch laufen. -->
-<!-- __Bei Problemen, fragen Sie bitte an der nächsten Veranstaltung nach.__ -->
+<section id="r-markdown-file-erstellen-und-ausführen" class="level2 page-columns page-full" data-number="17.3">
+<h2 data-number="17.3" class="anchored" data-anchor-id="r-markdown-file-erstellen-und-ausführen"><span class="header-section-number">17.3</span> R Markdown File erstellen und ausführen</h2>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hands-on: R Markdown File in einem Projekt erstellen
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>Erstellen Sie ein neues <code>.Rmd</code>-File (<code>File</code> &gt; <code>New File</code> &gt; <code>R Markdown</code>).</p></li>
+<li><p>Geben Sie einen Titel und Ihren Namen ein und wählen Sie <code>HTML</code> als Output-Format.</p></li>
+<li><p>Speichern Sie dieses Dokument unter dem Namen <code>rmarkdown_example</code>ab.</p></li>
+</ol>
+<p>Welches Format (Endung) hat das abgespeicherte R Markdown Skript nun in Ihrem Ordner?</p>
+</div>
+</div>
+</div>
+<aside>
+<p><strong>Weiterführende Informationen:</strong></p>
+<p>👉 Einführung in die Verwendung von R/RStudio/Notebooks im Rahmen des Psychologie Studiums von Andrew Ellis und Boris Mayer <a href="https://methodenlehre.github.io/einfuehrung-in-R/chapters/01-workflow.html#r-notebooks-verwenden">Einführung in R</a></p>
+👉 Sehr kompakte, praxisnahe Einführung in R Markdown von Danielle Navarro (Slidedeck in englisch) <a href="https://djnavarro.net/slides-starting-rmarkdown">Einführung in R Markdown</a>
+</aside>
+</section>
+<section id="knitten" class="level2" data-number="17.4">
+<h2 data-number="17.4" class="anchored" data-anchor-id="knitten"><span class="header-section-number">17.4</span> Knitten</h2>
+<p>Mit <strong>Knit</strong> wird das R Markdown Skript ausgeführt und eine zusätzliche Datei wird erstellt, z.B. ein <code>html</code>-File.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hands-on: Knitten
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Führen Sie das File mit <code>Knit</code> aus und vergleichen Sie das R Markdown Skript mit dem Output den Sie erhalten haben. Was fällt Ihnen auf?</p>
+<ul>
+<li>Was ist nicht mehr zu sehen?</li>
+<li>Was ist zusätzlich zu sehen?</li>
+<li>Was hat sich im Projekt-Ordner verändert?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tipp
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Im geknitteten Dokument ist der YAML-header nicht mehr zu sehen. Ebenfalls sieht man die “Umrandungen”, also die <code>r</code> Einfassungen der Code-Snippets, die Markdown-Befehle zum Einfügen von Grafiken, Mathematischen Formulierungen, etc. nicht mehr.</p>
+<p>Neu sieht man den Output des Codes. Je nach Einstellungen Code und Fehler-/Warnmeldungen und gerenderte Inhalte (Bilder, Mathematische Formeln, etc.).</p>
+<p>Im Projektordner wird ein <code>.html</code>-File erstellt.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="yaml-header" class="level2 page-columns page-full" data-number="17.5">
+<h2 data-number="17.5" class="anchored" data-anchor-id="yaml-header"><span class="header-section-number">17.5</span> YAML header</h2>
+<p>Am Anfang des R Markdown Skripts befindet sich der <code>YAML header</code>. Hier werden Informationen zu Titel, Autor:Innen, Datum, Outputformat, Literaturverzeichnis und Layout festgelegt.</p>
+<aside>
+YAML: Yet Another Markdown Language
+</aside>
+<p>Das Layout kann unter <code>theme</code>geändert werden. Das kann beispielsweise wie folgt aussehen:</p>
+<pre><code>output:
+  html_document:
+    theme: cosmo</code></pre>
+<p>Achtung: Die Einrückungen müssen genau stimmen! Hier wurde das <code>theme</code> namens <code>cosmo</code> ausgewählt. Mögliche andere <code>themes</code>sind z.B. <code>default</code>, <code>cerulean</code>, <code>journal</code>, <code>flatly</code>, <code>darkly</code>, <code>readable</code>, <code>spacelab</code>, <code>united</code>, <code>cosmo</code>, <code>lumen</code>, <code>paper</code>, <code>sandstone</code>, <code>simplex</code>, <code>yeti</code>.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hands-on: Namen und Einstellungen anpassen
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Geben Sie dem Dokument einen neuen Titel z.B. <code>R Markdown Einführung</code></p></li>
+<li><p>Ändern Sie das Layout so, dass es Ihnen gefällt.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="text-erstellen-in-r-markdown" class="level2 page-columns page-full" data-number="17.6">
+<h2 data-number="17.6" class="anchored" data-anchor-id="text-erstellen-in-r-markdown"><span class="header-section-number">17.6</span> Text erstellen in R Markdown</h2>
+<p>Text kann in R Markdown Files nicht nur geschrieben, sondern auch relativ simpel formatiert werden.</p>
+<p>👉 <a href="https://github.com/rstudio/cheatsheets/raw/main/rmarkdown-2.0.pdf">Hier</a> können Sie das Cheatsheet herunterladen. Auf der rechten Seite finden Sie die Informationen für die Textformatierung.</p>
+<p>Es empfiehlt sich das Skript anfangs häufig zu knitten, so findet man den Fehler schneller, weil man noch weiss, was man als letztes verändert hat. Code kann aber auch einfach innerhalb der <em>Code-Chunks</em> überprüft werden.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hands-on: Texte, Formeln und Bilder in R Markdown einfügen
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Löschen Sie alles bis auf den YAML-Header</p></li>
+<li><p>Schreiben Sie im Textbereich eine Überschrift für ein Kapitel, ein Unterkapitel und normalen Text.</p></li>
+<li><p>Schreiben Sie im Text etwas kursiv und etwas fett.</p></li>
+<li><p>Erstellen Sie im Textbereich eine Liste mit 3 Punkten.</p></li>
+<li><p>Schreiben Sie <code>alpha</code> innerhalb von <code>$</code>, was passiert?</p></li>
+<li><p>Fügen Sie die untenstehende Formel in den Text ein. Verwenden Sie dafür zwei Dollarzeichen am Anfang und am Ende. Was passiert?</p></li>
+</ul>
+<p><span class="math display">\[
+a^2 + b^2 = c^2
+\]</span></p>
+<ul>
+<li><p>Fügen Sie einen Link ein, knitten Sie das File und schauen Sie ob der Link funktioniert. Können Sie einen Link nur mit einem unterstrichenen Text anzeigen, so dass die Linkadresse nicht sichtbar ist?</p></li>
+<li><p>Fügen Sie ein Bild ein. Speichern Sie dieses Bild zuerst in einem Ordner namens <code>img</code> im Projektordner.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<aside>
+<p>Hier finden Sie weiterführende Hilfe zum Einfügen von Mathnotationen.</p>
+<ul>
+<li><p><a href="https://rpruim.github.io/s341/S19/from-class/MathinRmd.html">Mathematics in RMarkdown</a></p></li>
+<li><p><a href="https://bookdown.org/yihui/rmarkdown/markdown-syntax.html#math-expressions">RMarkdown: The definitive Guide</a></p></li>
+</ul>
+</aside>
+</section>
+<section id="code-erstellen-in-r-markdown" class="level2" data-number="17.7">
+<h2 data-number="17.7" class="anchored" data-anchor-id="code-erstellen-in-r-markdown"><span class="header-section-number">17.7</span> Code erstellen in R Markdown</h2>
+<p>Code muss jeweils in einem <em>Code-Chunk</em> eingefügt werden. Ein <em>Code-Chunk</em> kann unter <code>Code</code> &gt; <code>Insert Chunk</code> eingefügt werden oder mit dem Kürzel <code>Ctrl</code>+<code>Alt</code>+ <code>I</code>.</p>
+<p><em>Code-Chunks</em> werden mit <code>```</code> begonnen und beendet. In den geschweiften Klammern steht <code>r</code>, das bedeutet dass der Code in <code>R</code> geschrieben ist. In dieser Klammer kann dem <em>Code-Chunk</em> einen Namen gegeben und bestimmt werden, ob der Code ausgeführt und z.B. nur angezeigt werden soll, sowie ob der Output des Codes angezeigt werden soll.</p>
+<p>Mit dem grünen Pfeil kann der <em>Code-Chunk</em> einzeln ausgeführt werden. Aber auch einzelne Zeilen können ausgeführt werden, genau so wie in einem <code>.R</code>- Skript.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hands-on: Code in R Markdown einfügen
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Erstellen Sie einen Code-Chunk, der ausgeführt, aber nicht angezeigt wird. Erstellen Sie eine Variable mit dem Namen <code>numbers</code>, die 10 Zahlen enthält.</p></li>
+<li><p>Erstellen Sie ein Code-Chunk, der ausgeführt wird und dessen Output angezeigt wird. Berechnen Sie in diesem Chunk den Mittelwert und die Standardabweichung von <code>numbers</code>.</p></li>
+<li><p>Erstellen Sie einen Plot mit <code>plot(numbers)</code>.</p></li>
+<li><p>Knitten Sie das File, um zu überprüfen, ob alles funktioniert</p></li>
+</ul>
+<p>👉 Schauen Sie für Hilfe nochmals im Cheatsheet nach oder drücken Sie auf das Zahnrädchen-Symbol beim Code-Chunk.</p>
+<p><strong>Für Fortgeschrittene:</strong></p>
+<ul>
+<li><p>Testen Sie, ob Sie Ihr File auch zu einem PDF knitten können.</p></li>
+<li><p>Erstellen Sie eine Tabelle</p></li>
+<li><p>Erstellen Sie einen <a href="https://debruine.github.io/glossary/">Glossar</a></p></li>
+<li><p>Erstellen Sie ein Dokument mit Reitern oben (z.B. Data, Preprocessing, Analysis, Conclusions)</p></li>
+<li><p>Fügen Sie <a href="https://shiny.posit.co/r/articles/build/interactive-docs/">interaktive Elemente</a> ein.</p></li>
+</ul>
+</div>
+</div>
+</div>
 
 
 </section>
@@ -1628,13 +1623,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="./data_visualization_2.html" class="pagination-link" aria-label="Grundlagen der Datenvisualisierung">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Grundlagen der Datenvisualisierung</span></span>
+      <a href="./goodpractices_data.html" class="pagination-link" aria-label="Good Practices in der Datenverarbeitung">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Good Practices in der Datenverarbeitung</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./gallery.html" class="pagination-link" aria-label="Galerie">
-        <span class="nav-page-text">Galerie</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./webrconsole.html" class="pagination-link" aria-label="WebR Konsole">
+        <span class="nav-page-text">WebR Konsole</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
