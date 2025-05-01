@@ -17,7 +17,7 @@ book:
   license: CC BY SA
   page-footer:
     center:
-      - text: Copyright 2025, Gerda Wyssen & Enea Weber
+      - text: Copyright 2025, Gerda Wyssen, Enea Weber, Daniel Fitze, and Andrew Ellis
         href: license.qmd
     right:
       - icon: github
@@ -32,12 +32,13 @@ book:
     - forschungsprozess.qmd # forschungsprozess
     - voraussetzungen.qmd
 
-  - part: Experimentieren
+  - part: Experimentieren & Programmieren
     chapters:
     - experiments.qmd
     - psychopy_experiments.qmd
     - stroop_experiment.qmd
     - random_dot_experiment.qmd
+    - intro_python.qmd
     - loops.qmd
     - uebung_1.qmd
 
@@ -52,7 +53,8 @@ book:
     - data_visualization_1.qmd
     - data_visualization_2.qmd
     - uebung_3.qmd
-    - gallery.qmd
+    #- plots_group1.qmd
+    #- plots_group2.qmd
 
   - part: Datenanalyse
     chapters:
@@ -66,6 +68,10 @@ book:
     - opensci.qmd
     - goodpractices_data.qmd
     - rmarkdown.qmd
+
+  - part: EEG
+    chapters:
+    - intro_eeg.qmd
 
   - part: Datenmodellierung
     #chapters:

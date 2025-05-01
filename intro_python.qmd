@@ -1,0 +1,333 @@
+---
+filters:
+  - pyodide
+---
+
+# Python: Einführung für Neurowissenschaften
+
+In diesem Kurs lernen Sie einige Grundlagen von Python, die bereits aus R bekannt sind. Wir werden Parallelen zu R ziehen.
+
+## Wichtige Datentypen in Python (mit Vergleich zu R)
+
+| Typ | Beschreibung | Python Beispiel | R-Äquivalent |
+|-----------------|-----------------------|-----------------|-----------------|
+| Liste | Veränderbare Sammlung von Elementen | `x = [1, 2, 3, "Hallo"]` | `x <- list(1, 2, 3, "Hallo")` |
+| Tupel | Unveränderbare Sammlung von Elementen | `x = (1, 2, 3)` | Kein direktes Äquivalent |
+| Dictionary | Sammlung von Schlüssel-Wert-Paaren | `x = {"Name": "Max", "Alter": 20}` | `x <- list(Name = "Max", Alter = 20)` |
+| NumPy Array | Numerisches Array für schnelle mathematische Operationen | `x = np.array([1, 2, 3])` | `x <- c(1, 2, 3)` |
+
+## Beispiele
+
+```{pyodide-python}
+x = 5
+print(x)
+
+meine_liste = [10, 20, 30]
+print(meine_liste[0])  # Erstes Element
+print(meine_liste[-1]) # Letztes Element
+
+# Dictionary
+teilnehmer = {"id": "S01", "alter": 22}
+print(teilnehmer["id"])
+
+import numpy as np
+# Array
+signal = np.array([0.1, 0.2, 0.3])
+print(signal.mean())
+```
+
+::: callout-note
+**Wichtig:** In Python beginnt die Zählung bei 0, nicht bei 1 wie in R!
+:::
+
+::: callout-caution
+## Hands-on 1: Eigene Liste und Tupel erstellen
+
+1.  Erstellen Sie eine Liste mit den Zahlen 10, 20, 30.
+2.  Fügen Sie der Liste die Zahl 40 hinzu: **eure_liste.append(40)**.
+3.  Erstellen Sie ein Tupel mit den gleichen Zahlen.
+4.  Versuchen Sie, ein Element mit *append* im Tupel hinzufügen. Was passiert?
+
+```{pyodide-python}
+
+```
+:::
+
+## Bibliotheken importieren
+
+In Python verwenden wir `import`, um externe Bibliotheken zu laden (ähnlich wie `library()` in R):
+
+```{pyodide-python}
+import pandas as pd
+import matplotlib.pyplot as plt
+```
+
+Hierbei sind: - `pandas` für Tabellenstrukturen (wie `data.frame` in R) - `numpy` für numerische Berechnungen - `matplotlib` für Grafiken
+
+::: callout-caution
+## Hands-on 2: Bibliotheken testen
+
+Importieren Sie `numpy` und erstellen Sie ein Array mit den Werten 5, 10, 15.
+
+```{pyodide-python}
+
+```
+:::
+
+::: callout-caution
+## Hands-on 3: Listen vs Arrays verstehen
+
+1.  Erstellen Sie eine Python-Liste `[2, 4, 6]` und verdoppeln Sie sie mit `* 2`.\
+2.  Erstellen Sie ein NumPy-Array mit denselben Werten und multiplizieren Sie es mit `2`.\
+3.  Was ist der Unterschied in der Ausgabe?
+
+```{pyodide-python}
+
+```
+:::
+
+```{r}
+a <- c(1, 2, 3)
+print(a * 2)
+#Jede Zahl wird mathematisch multipliziert (genau wie bei NumPy arrays).
+
+
+#b <- list(1, 2, 3)
+#print(b * 2)
+# Weil Listen in R keine mathematischen Operationen direkt unterstützen — sie sind nur Sammlungen von beliebigen Objekten.
+```
+
+## Datensätze einlesen und anschauen
+
+| R Funktion         | Python Funktion       |
+|--------------------|-----------------------|
+| `read.csv("path")` | `pd.read_csv("path")` |
+| `head(df)`         | `df.head()`           |
+
+```{pyodide-python}
+import pandas as pd
+
+df = pd.read_csv("https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv")
+
+print(df.head())
+```
+
+## Dot-Notation verstehen
+
+In R ruft man Funktionen wie `head(df)` auf, wobei das Objekt als Argument übergeben wird.\
+In Python gehört die Funktion direkt zum Objekt und wird mit **Punktnotation** aufgerufen:
+
+| R              | Python             |
+|----------------|--------------------|
+| `head(df)`     | `df.head()`        |
+| `mean(df$col)` | `df["col"].mean()` |
+
+::: callout-note
+**Merke:** In Python sind viele Funktionen **Methoden**, die direkt an ein Objekt (wie ein DataFrame) gebunden sind. Deshalb funktioniert `head(df)` **nicht**!
+:::
+
+::: callout-caution
+## Hands-on 4: Methoden mit Dot-Notation verwenden
+
+1.  Zeigen Sie die ersten 10 Zeilen von `df` an.
+2.  Verwenden Sie `df.describe()` für einen Überblick.
+3.  Wenden Sie `.mean()` und `.min()` auf `df["petal_width"]` an.
+
+```{pyodide-python}
+
+```
+:::
+
+## Zugriff auf Spalten und Zeilen
+
+In Python (mit pandas) können Sie ähnlich wie in R auf bestimmte Teile einer Tabelle zugreifen — aber mit etwas anderer Syntax.
+
+| Ziel | Python Syntax | R-Äquivalent |
+|--------------------|-------------------------|---------------------------|
+| Spalte auswählen | `df["species"]` | `df$species` |
+| Mehrere Spalten auswählen | `df[["sepal_length", "species"]]` | `df[, c("sepal_length", "species")]` |
+| Erste Zeilen anzeigen | `df.head(3)` | `head(df, 3)` |
+| Zeile nach Position | `df.iloc[0]` | `df[1, ]` |
+| Wert aus Zeile & Spalte | `df.iloc[0]["sepal_length"]` | `df[1, "sepal_length"]` |
+| Zeilen nach Bedingung | `df[df["sepal_length"] > 6]` | `df[df$sepal_length > 6, ]` |
+
+------------------------------------------------------------------------
+
+### Beispiele:
+
+```{pyodide-python}
+# Eine Spalte anzeigen
+print(df["species"])
+
+# Erste drei Zeilen
+print(df.head(3))
+
+# Erste Zeile
+print(df.iloc[0])
+
+# Wert aus Zeile 1, Spalte "sepal_length"
+print(df.iloc[0]["sepal_length"])
+
+```
+
+------------------------------------------------------------------------
+
+::: callout-caution
+## Hands-on 5: Zeilen und Spalten auswählen
+
+1.  Geben Sie nur die Spalte `"petal_width"` aus.\
+2.  Zeigen Sie die ersten 5 Zeilen des Datensatzes mit `df.head()`.\
+3.  Geben Sie `"sepal_length"` und `"sepal_width"` aus.\
+4.  Geben Sie den Wert in Zeile 1, Spalte `"species"` aus.
+
+```{pyodide-python}
+
+```
+:::
+
+## Daten filtern und neue Variablen erstellen
+
+```{pyodide-python}
+# Filter
+setosa = df[df["species"] == "setosa"]
+
+# Neue Spalte
+df["sepal_shorter"] = df["sepal_length"] - 1
+
+```
+
+::: callout-caution
+## Hands-on 6: Filtern und neue Spalten berechnen
+
+1.  Filtern Sie die Zeilen mit `sepal_length > 6`.
+2.  Erstellen Sie eine neue Spalte namens `petal_ratio`, die `petal_length / petal_width` ist.
+3.  Was ist der Mittelwert der neuen Spalte?
+
+```{pyodide-python}
+
+```
+:::
+
+::: callout-caution
+## Hands-on 7: Recap
+
+1.  Filtern Sie nur die `virginica`-Blumen.
+2.  Erstellen Sie eine neue Spalte: `sepal_area = sepal_length * sepal_width`
+3.  Was ist der Maximalwert von `petal_length` bei `virginica`?
+
+```{pyodide-python}
+
+```
+:::
+
+## Zusammenfassung: R vs Python
+
+| Aufgabe | R | Python |
+|-------------------|-----------------------|------------------------------|
+| Paket laden | `library(ggplot2)` | `import seaborn as sns` |
+| Vektor erstellen | `c(1, 2, 3)` | `np.array([1, 2, 3])` |
+| Liste erstellen | `list(1, 2, 3)` | `[1, 2, 3]` |
+| Benannte Liste | `list(id = 1)` | `{"id": 1}` |
+| CSV einlesen | `read.csv("data.csv")` | `pd.read_csv("data.csv")` |
+| Erste Zeilen anzeigen | `head(df)` | `df.head()` |
+| Spalte auswählen | `df$col` | `df["col"]` |
+| Mehrere Spalten | `df[, c("a", "b")]` | `df[["a", "b"]]` |
+| Zeile(n) nach Position | `df[1, ]` | `df.iloc[0]` |
+| Wert aus Zeile und Spalte | `df[1, "col"]` | `df.iloc[0]["col"]` |
+| Zeilen filtern | `df[df$col > 3, ]` | `df[df["col"] > 3]` |
+| Mittelwert berechnen | `mean(df$col)` | `df["col"].mean()` |
+| Standardabweichung | `sd(df$col)` | `df["col"].std()` |
+| Neue Spalte hinzufügen | `df$new <- df$a / df$b` | `df["new"] = df["a"] / df["b"]` |
+| Histogram | `hist(df$col)` | `sns.histplot(df["col"])` |
+| Boxplot | `boxplot(col ~ group, data=df)` | `sns.boxplot(x="group", y="col", data=df)` |
+
+::: {.callout-tip collapse="true"}
+## 💡 Lösungen zu den Hands-on Aufgaben
+
+### Hands-on 1
+
+``` python
+meine_liste = [10, 20, 30]
+meine_liste.append(40)
+print(meine_liste)
+
+mein_tupel = (10, 20, 30)
+# mein_tupel.append(40)  # Fehler! Tupel unterstützen .append() nicht
+```
+
+------------------------------------------------------------------------
+
+### Hands-on 2
+
+``` python
+import numpy as np
+x = np.array([5, 10, 15])
+print(x * 3)  # [15 30 45]
+```
+
+------------------------------------------------------------------------
+
+### Hands-on 3
+
+``` python
+a = [2, 4, 6]
+print(a * 2)  # [2, 4, 6, 2, 4, 6]
+
+b = np.array([2, 4, 6])
+print(b * 2)  # [4 8 12]
+```
+
+------------------------------------------------------------------------
+
+### Hands-on 4
+
+``` python
+print(df.head(10))
+print(df.describe())
+print(df["petal_width"].mean())
+print(df["petal_width"].min())
+```
+
+------------------------------------------------------------------------
+
+### Hands-on 5
+
+``` python
+# 1. Nur die Spalte "petal_width"
+print(df["petal_width"])
+
+# 2. Erste 5 Zeilen
+print(df.head(5))
+
+# 3. Zwei Spalten anzeigen
+print(df[["sepal_length", "sepal_width"]])
+
+# 4. Wert aus Zeile 1, Spalte "species"
+print(df.iloc[0]["species"])
+```
+
+------------------------------------------------------------------------
+
+### Hands-on 6
+
+``` python
+gefiltert = df[df["sepal_length"] > 6]
+df["petal_ratio"] = df["petal_length"] / df["petal_width"]
+print(df["petal_ratio"].mean())
+```
+
+------------------------------------------------------------------------
+
+### Hands-on 7 
+
+``` python
+# 1. Nur die virginica
+virginica = df[df["species"] == "virginica"]
+
+# 2. Neue Spalte: sepal_area = sepal_length * sepal_width
+virginica["sepal_area"] = virginica["sepal_length"] * virginica["sepal_width"]
+
+# 3. Maximalwert von petal_length
+print(virginica["petal_length"].max())
+```
+:::
