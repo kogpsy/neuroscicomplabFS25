@@ -53,8 +53,8 @@ book:
     - data_visualization_1.qmd
     - data_visualization_2.qmd
     - uebung_3.qmd
-    #- plots_group1.qmd
-    #- plots_group2.qmd
+    - plots_group1.qmd
+    - plots_group2.qmd
 
   - part: Datenanalyse
     chapters:
