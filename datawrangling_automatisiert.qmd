@@ -1,6 +1,5 @@
----
-title: "Automatisiertes Preprocessing"
----
+# Automatisiertes Preprocessing
+
 
 ::: callout-caution
 ## Hands-on: Vorbereitung
@@ -139,6 +138,7 @@ d_hand <- bind_rows(d1, d2, d3)
 Das Einlesen kann mit einem for-Loop automatisiert werden. Der Loop iteriert über alle Daten Files. Als erstes muss ein leerer Data Frame `d_loop` erstellt werden. Bei jeder Iteration des Loops wird ein Daten File eingelesen und dem erstellten Data Frame `d_loop` angehängt.
 
 ```{r}
+#| eval: false
 #| warning: false
 #| message: false
 d_loop <- tibble()
@@ -154,6 +154,7 @@ for (file in files){
 `map()` wendet eine Funktion auf alle Elemente eines Vektors an. Der Vektor `files` enthält die Pfade zu den Daten Files. Mit `map()` können wir also unsere selbst erstellte Funktion `read_stroop()` auf jeden Pfad anwenden. Im Anschluss müssen die Dataframes noch verbunden werden.
 
 ```{r}
+#| eval: false
 #| warning: false
 #| message: false
 d_map1 <- files |>
@@ -164,6 +165,7 @@ d_map1 <- files |>
 Die Funktion `map_dfr()` macht das gleiche wie `map()` fügt aber zusätzlich die einzelnen Data Frames automatisch zusammen.
 
 ```{r}
+#| eval: false
 #| warning: false
 #| message: false
 d_map2 <- files |>
@@ -185,6 +187,7 @@ TIPP: `map()` braucht als Argument eine Liste!
 ## Kompletter Stroop Code an einem Ort
 
 ```{r}
+#| eval: false
 #| warning: false
 #| message: false
 read_stroop <- function(path){

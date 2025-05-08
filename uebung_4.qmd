@@ -89,7 +89,7 @@ Wählen Sie eine Fragestellung und ein Variablenpaar aus.
     
 
 - __b. Methode/Methods__: Beschreiben Sie
-    - das Sample (N, Alter)
+    - das Sample (N)
     - das Experimentalparadigma / den Task
     - den Ablauf (evtl. eine Flowchart/ein Stimulusbild etc. einfügen)
     - UV(n)

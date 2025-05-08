@@ -3,6 +3,9 @@
 # *_cache/
 # *_files/
 
+archive
+_freeze
+
 .Rproj.user
 .Rhistory
 .Rdata
@@ -12,5 +15,3 @@ JASP/
 
 # MacOS specific stuff
 .DS_Store
-
-archive

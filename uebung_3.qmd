@@ -153,14 +153,14 @@ Laden Sie folgende Dateien unter `Übung 3` auf Ilias hoch:
 
 :::{.callout-caution}
 ## Wichtig
-Ihr Plot und der dazugehörige Code wird in der [Galerie](gallery.qmd) anonym veröffentlich. Deshalb ist es wichtig, dass die oben aufgelisteten Voraussetzungen erfüllt sind. 
+Ihr Plot und der dazugehörige Code wird in der [Galerie Gruppe 1](plots_group1.qmd) und [Galerie Gruppe 2](plots_group2.qmd)  anonym veröffentlich. Deshalb ist es wichtig, dass die oben aufgelisteten Voraussetzungen erfüllt sind. 
 :::
 
 <br>
 
 ## Abgabetermin
 
-Der Abgabetermin für diese Übung ist der __18. April 2025__.
+Der Abgabetermin für diese Übung ist der __18. April 2025__ (Nachholtermin: __21. Mai 2025__).
 
 
 

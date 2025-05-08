@@ -6,15 +6,346 @@
 
 ```{r}
 #| echo: false
-#| output: false
+#| warning: false
+#| message: false
+
+# Code innerhalb der folgenden 2 Linien darf nicht verändert werden
+# ---------------------------------------------------------------------
 library(tidyverse)
 d = read_csv('data/dataset_random_dot_clean.csv')
+# ---------------------------------------------------------------------
+
+# Beginnen Sie hier mit Ihrem Code:
+#install.packages("ggimage")
+library(ggimage)
+library(magick)
+library(png)
+library(grid)
+library(ggplot2)
+library(dplyr)
+library(patchwork)
+library(tibble)
+
+d <- d |>
+  mutate(
+    is_accuracy = condition == "accuracy",
+    is_speed = condition == "speed")
+
+d <- d |>
+  filter(rt < 10)
+
+d_summary <- d |>
+  group_by(condition, corr) |>
+  summarise(avg_rt = mean(rt), .groups = "drop") |>
+  mutate(image = ifelse(corr == 1, "imgs/1.png", "imgs/0.png"))
+
+pp = d |>
+  ggplot(aes(x = condition, y = rt)) +
+  
+  
+# Rohwert Datenpunkte
+  geom_jitter(aes(color = as.factor(corr)),
+              position = position_jitterdodge(jitter.width = 0.7, dodge.width = 1),
+              show.legend = FALSE,
+              alpha = 0.2,
+              size = 1.5) +
+  
+# Violinen mit Mean & SD
+  geom_violin(aes(fill = as.factor(corr)),
+              position = position_dodge(width = 1),
+              draw_quantiles = c(0.25, 0.5, 0.75),
+              alpha = 0.5,
+              width = 0.5,
+              color = alpha("#434255", 0.5))+
+  
+  geom_image(data = d_summary,
+             aes(x = condition, y = avg_rt, image = image),
+             size = 0.05,
+             position = position_dodge(width = 1)) +
+  
+  # Beschriftung Skalen
+  ## Violinen
+  scale_fill_manual(values = c("0" = "#277B74", "1" = "#B8696D"),
+                    labels = c("Falsch", "Richtig"),
+                    name = "") +
+  
+  ## #f98052orange, #8088D3blau
+  
+  ## Jitter
+  scale_color_manual(values = c("0" = "#277B74", "1" = "#B8696D")) +
+
+  
+  # Captions & Themes
+  labs(title = "Random Dot Task",
+       subtitle = "Wie unterscheiden sich die Conditions in ihren Reaktionszeiten?",
+       x = "Condition",
+       y = "Reaktionszeit [s]") +
+  
+  theme_linedraw() +
+  theme(legend.position = "bottom",
+        plot.title = element_text(hjust = 0.5,
+                                  face = "bold",
+                                  color = "#277B74",
+                                  size = 14),
+        plot.subtitle = element_text(hjust = 0.5,
+                                     size = 11))
+
+# Dummy-Daten für die Bildlegende
+legend_images <- tibble(x = 1:2,
+                        y = 1,
+                        label = c("", ""),
+                        image = c("imgs/1.png", "imgs/0.png"))
+
+# Plot für die Bildlegende
+image_legend <- ggplot(legend_images, aes(x = x, y = y)) +
+  
+  geom_image(aes(image = image), 
+             size = 0.5) +
+  geom_text(aes(label = label), 
+            vjust = 3, 
+            size = 4) +
+  xlim(0.0000000001, 3.02) + 
+  ylim(0.5, 1.3) +
+  ggtitle("Durchschnitt RT") +
+  theme_void() +
+  theme(plot.title = element_text(hjust = 0.5, size = 10))
+
+
+THE_plot <- pp / image_legend + plot_layout(heights = c(4, 1))
+THE_plot
+
 ```
+
+## Code
+
+```{r}
+#| echo: true
+#| eval: false
+#| message: false
+#| warning: false
+
+# Code innerhalb der folgenden 2 Linien darf nicht verändert werden
+# ---------------------------------------------------------------------
+library(tidyverse)
+d = read_csv('data/dataset_random_dot_clean.csv')
+# ---------------------------------------------------------------------
+
+# Beginnen Sie hier mit Ihrem Code:
+#install.packages("ggimage")
+library(ggimage)
+library(magick)
+library(png)
+library(grid)
+library(ggplot2)
+library(dplyr)
+library(patchwork)
+library(tibble)
+
+d <- d |>
+  mutate(
+    is_accuracy = condition == "accuracy",
+    is_speed = condition == "speed")
+
+d <- d |>
+  filter(rt < 10)
+
+d_summary <- d |>
+  group_by(condition, corr) |>
+  summarise(avg_rt = mean(rt), .groups = "drop") |>
+  mutate(image = ifelse(corr == 1, "1.png", "0.png"))
+
+pp = d |>
+  ggplot(aes(x = condition, y = rt)) +
+  
+  
+# Rohwert Datenpunkte
+  geom_jitter(aes(color = as.factor(corr)),
+              position = position_jitterdodge(jitter.width = 0.7, dodge.width = 1),
+              show.legend = FALSE,
+              alpha = 0.2,
+              size = 1.5) +
+  
+# Violinen mit Mean & SD
+  geom_violin(aes(fill = as.factor(corr)),
+              position = position_dodge(width = 1),
+              draw_quantiles = c(0.25, 0.5, 0.75),
+              alpha = 0.5,
+              width = 0.5,
+              color = alpha("#434255", 0.5))+
+  
+  geom_image(data = d_summary,
+             aes(x = condition, y = avg_rt, image = image),
+             size = 0.05,
+             position = position_dodge(width = 1)) +
+  
+  # Beschriftung Skalen
+  ## Violinen
+  scale_fill_manual(values = c("0" = "#277B74", "1" = "#B8696D"),
+                    labels = c("Falsch", "Richtig"),
+                    name = "") +
+  
+  ## #f98052orange, #8088D3blau
+  
+  ## Jitter
+  scale_color_manual(values = c("0" = "#277B74", "1" = "#B8696D")) +
+
+  
+  # Captions & Themes
+  labs(title = "Random Dot Task",
+       subtitle = "Wie unterscheiden sich die Conditions in ihren Reaktionszeiten?",
+       x = "Condition",
+       y = "Reaktionszeit [s]") +
+  
+  theme_linedraw() +
+  theme(legend.position = "bottom",
+        plot.title = element_text(hjust = 0.5,
+                                  face = "bold",
+                                  color = "#277B74",
+                                  size = 14),
+        plot.subtitle = element_text(hjust = 0.5,
+                                     size = 11))
+
+# Dummy-Daten für die Bildlegende
+legend_images <- tibble(x = 1:2,
+                        y = 1,
+                        label = c("", ""),
+                        image = c("1.png", "0.png"))
+
+# Plot für die Bildlegende
+image_legend <- ggplot(legend_images, aes(x = x, y = y)) +
+  
+  geom_image(aes(image = image), 
+             size = 0.5) +
+  geom_text(aes(label = label), 
+            vjust = 3, 
+            size = 4) +
+  xlim(0.0000000001, 3.02) + 
+  ylim(0.5, 1.3) +
+  ggtitle("Durchschnitt RT") +
+  theme_void() +
+  theme(plot.title = element_text(hjust = 0.5, size = 10))
+
+
+THE_plot <- pp / image_legend + plot_layout(heights = c(4, 1))
+THE_plot
+```
+:::
+
+::: panel-tabset
+## Plot
 
 ```{r}
 #| echo: false
 #| warning: false
+#| message: false
+# Code innerhalb der folgenden 2 Linien darf nicht verändert werden
+# ---------------------------------------------------------------------
+library(tidyverse)
+d = read_csv('data/dataset_random_dot_clean.csv')
+# ---------------------------------------------------------------------
 
+# Beginnen Sie hier mit Ihrem Code:
+
+d_filtered <- d %>% filter(rt <= 120)
+p = d |>
+  ggplot(data = d_filtered,
+         mapping = aes(x = condition, y = rt/10)) +
+  # Enhanced boxplots with more harmonious colors
+  geom_boxplot(aes(fill = condition), 
+               alpha = 0.7,              
+               outlier.shape = NA, 
+               width = 0.5,
+               lwd = 0.8,                
+               fatten = 1.2) +           
+  geom_jitter(aes(color = condition), 
+              width = 0.15, 
+              alpha = 0.5,               
+              size = 0.7) +              
+  stat_summary(fun = mean, 
+               geom = "point", 
+               shape = 23, 
+               size = 4, 
+               color = "black", 
+               fill = "#FFD700") +  # More refined gold color for the diamond
+  # Harmonious color palette: complementary blues and purples
+  scale_color_manual(values = c("speed" = "#3B7A9E", "accuracy" = "#7A559E")) +
+  scale_fill_manual(values = c("speed" = "#5F9AB8", "accuracy" = "#9C7CB8")) +
+  labs(title = "Verteilung der Reaktionszeiten nach Bedingungen",
+       subtitle = "Unterscheiden sich die Reaktionszeiten zwischen den beiden Bedingungen?",
+       x = "Instruktionsbedingung",
+       y = "Reaktionszeit (s)") +
+  theme_bw() +
+  theme(
+    legend.position = "none",
+    plot.title = element_text(face = "bold", size = 14),
+    plot.subtitle = element_text(size = 11, color = "grey30"),
+    axis.title = element_text(face = "bold"),
+    panel.grid.minor = element_blank(),
+    panel.grid.major.x = element_blank(),
+    panel.border = element_rect(color = "grey70", size = 1)
+  )
+p
+```
+
+## Code
+
+```{r}
+# Code innerhalb der folgenden 2 Linien darf nicht verändert werden
+# ---------------------------------------------------------------------
+library(tidyverse)
+d = read_csv('data/dataset_random_dot_clean.csv')
+# ---------------------------------------------------------------------
+
+# Beginnen Sie hier mit Ihrem Code:
+
+d_filtered <- d %>% filter(rt <= 120)
+p = d |>
+  ggplot(data = d_filtered,
+         mapping = aes(x = condition, y = rt/10)) +
+  # Enhanced boxplots with more harmonious colors
+  geom_boxplot(aes(fill = condition), 
+               alpha = 0.7,              
+               outlier.shape = NA, 
+               width = 0.5,
+               lwd = 0.8,                
+               fatten = 1.2) +           
+  geom_jitter(aes(color = condition), 
+              width = 0.15, 
+              alpha = 0.5,               
+              size = 0.7) +              
+  stat_summary(fun = mean, 
+               geom = "point", 
+               shape = 23, 
+               size = 4, 
+               color = "black", 
+               fill = "#FFD700") +  # More refined gold color for the diamond
+  # Harmonious color palette: complementary blues and purples
+  scale_color_manual(values = c("speed" = "#3B7A9E", "accuracy" = "#7A559E")) +
+  scale_fill_manual(values = c("speed" = "#5F9AB8", "accuracy" = "#9C7CB8")) +
+  labs(title = "Verteilung der Reaktionszeiten nach Bedingungen",
+       subtitle = "Unterscheiden sich die Reaktionszeiten zwischen den beiden Bedingungen?",
+       x = "Instruktionsbedingung",
+       y = "Reaktionszeit (s)") +
+  theme_bw() +
+  theme(
+    legend.position = "none",
+    plot.title = element_text(face = "bold", size = 14),
+    plot.subtitle = element_text(size = 11, color = "grey30"),
+    axis.title = element_text(face = "bold"),
+    panel.grid.minor = element_blank(),
+    panel.grid.major.x = element_blank(),
+    panel.border = element_rect(color = "grey70", size = 1)
+  )
+p
+```
+:::
+
+::: panel-tabset
+## Plot
+
+```{r}
+#| echo: false
+#| warning: false
 
 # Code innerhalb der folgenden 2 Linien darf nicht verändert werden
 # ---------------------------------------------------------------------
@@ -1170,14 +1501,8 @@ ggplot(d, aes(x = condition, y = rt, color = condition)) +
 
 ```{r}
 #| echo: false
-#| output: false
-
-d = read_csv('data/dataset_random_dot_clean.csv')
-```
-
-```{r}
-#| echo: false
 #| warning: false
+#| message: false
 
 
 # Code innerhalb der folgenden 2 Linien darf nicht verändert werden
@@ -1351,21 +1676,38 @@ d = read_csv('data/dataset_random_dot_clean.csv')
 
 # Beginnen Sie hier mit Ihrem Code:
 
-library(dplyr)
+#install.packages("ggpubr")
+#library(ggpubr)
 
-p=d |>
-  ggplot(mapping = aes(x = condition,y = corr, fill= condition)) +
+summary_d <- d |>
+  group_by(condition,id) |>
+  summarise(mean_acc= mean(corr))
+
+
+#t.test(mean_acc ~ condition, data = summary_d, paired = TRUE)
+
+
+
+p= summary_d |>
+  ggplot(mapping = aes(x = condition,y = mean_acc, fill= condition)) +
   geom_boxplot(alpha = 0.5, outlier.shape = NA, width = 0.4) +
   geom_jitter(width = 0.01, size = 0.4, alpha = 0.3) +
   stat_summary(fun = mean, geom = "crossbar", color = "darkred", size = 0.5)+
   labs(
     title = "Random-Dot Paradigma",
-    subtitle = "Gab es bei Speed oder Accuracy mehr richtige Antworten?",
+    subtitle = "Gab es signifikant mehr richtige Antworten in der \nAccuracy-Bedingung als in der Speed-Bedingung? ",
     x = "Bedingung",
     y = "Korrekte Antworten"
   ) +
   scale_fill_manual(values = c("speed" = "steelblue", "accuracy" = "tomato"))+
-  theme_minimal()
+  theme_minimal() +
+  stat_compare_means(
+    comparisons = list(c("speed", "accuracy")),
+    method = "t.test",
+    paired = TRUE,
+    label = "p.signif",  
+    label.y = 0.7       
+  )
 
 p
 
@@ -1386,24 +1728,40 @@ d = read_csv('data/dataset_random_dot_clean.csv')
 
 # Beginnen Sie hier mit Ihrem Code:
 
-library(dplyr)
+#install.packages("ggpubr")
+#library(ggpubr)
 
-p=d |>
-  ggplot(mapping = aes(x = condition,y = corr, fill= condition)) +
+summary_d <- d |>
+  group_by(condition,id) |>
+  summarise(mean_acc= mean(corr))
+
+
+#t.test(mean_acc ~ condition, data = summary_d, paired = TRUE)
+
+
+
+p= summary_d |>
+  ggplot(mapping = aes(x = condition,y = mean_acc, fill= condition)) +
   geom_boxplot(alpha = 0.5, outlier.shape = NA, width = 0.4) +
   geom_jitter(width = 0.01, size = 0.4, alpha = 0.3) +
   stat_summary(fun = mean, geom = "crossbar", color = "darkred", size = 0.5)+
   labs(
     title = "Random-Dot Paradigma",
-    subtitle = "Gab es bei Speed oder Accuracy mehr richtige Antworten?",
+    subtitle = "Gab es signifikant mehr richtige Antworten in der \nAccuracy-Bedingung als in der Speed-Bedingung? ",
     x = "Bedingung",
     y = "Korrekte Antworten"
   ) +
   scale_fill_manual(values = c("speed" = "steelblue", "accuracy" = "tomato"))+
-  theme_minimal()
+  theme_minimal() +
+  stat_compare_means(
+    comparisons = list(c("speed", "accuracy")),
+    method = "t.test",
+    paired = TRUE,
+    label = "p.signif",  
+    label.y = 0.7       
+  )
 
 p
-
 
 ```
 :::
@@ -1416,13 +1774,14 @@ p
 #| echo: false
 #| warning: false
 
-
-#### DATA VISUALISATION####
 # Code innerhalb der folgenden 2 Linien darf nicht verändert werden
 # ---------------------------------------------------------------------
 library(tidyverse)
 d = read_csv('data/dataset_random_dot_clean.csv')
 # ---------------------------------------------------------------------
+
+d <- d |>
+    filter(rt > 0.1 & rt < 12)
 
 # Beginnen Sie hier mit Ihrem Code:
 
@@ -1469,7 +1828,7 @@ library(patchwork)
 p = p1 / p2 / p3
 
 # Endgültigen Plot anzeigen
-print(p)
+p
 
 ```
 
@@ -1479,7 +1838,6 @@ print(p)
 #| echo: true
 #| eval: false
 
-#### DATA VISUALISATION####
 # Code innerhalb der folgenden 2 Linien darf nicht verändert werden
 # ---------------------------------------------------------------------
 library(tidyverse)
@@ -1487,6 +1845,8 @@ d = read_csv('data/dataset_random_dot_clean.csv')
 # ---------------------------------------------------------------------
 
 # Beginnen Sie hier mit Ihrem Code:
+d <- d |>
+    filter(rt > 0.1 & rt < 12)
 
 p1  = d |> 
   group_by(condition) |> 
