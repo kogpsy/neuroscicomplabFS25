@@ -3228,130 +3228,130 @@ p
 
 
 
-::: panel-tabset
-## Plot
+<!-- ::: panel-tabset -->
+<!-- ## Plot -->
 
-```{r}
-#| echo: false
-#| warning: false
+<!-- ```{r} -->
+<!-- #| echo: false -->
+<!-- #| warning: false -->
 
 
-#### DATA VISUALISATION####
-# Code innerhalb der folgenden 2 Linien darf nicht verändert werden
-# ---------------------------------------------------------------------
-library(tidyverse)
-d = read_csv('data/dataset_random_dot_clean.csv') 
-# ---------------------------------------------------------------------
+<!-- #### DATA VISUALISATION#### -->
+<!-- # Code innerhalb der folgenden 2 Linien darf nicht verändert werden -->
+<!-- # --------------------------------------------------------------------- -->
+<!-- library(tidyverse) -->
+<!-- d = read_csv('data/dataset_random_dot_clean.csv')  -->
+<!-- # --------------------------------------------------------------------- -->
 
-# Beginnen Sie hier mit Ihrem Code:
+<!-- # Beginnen Sie hier mit Ihrem Code: -->
 
-p  = d |> 
-  group_by(condition) |> 
-  summarise(accuracy = mean(corr, na.rm = TRUE)) |> 
-  ggplot(aes(x = condition, y = accuracy, fill = condition)) +
-  geom_col() +
-  labs(title = "Trefferquote pro Bedingung",
-       subtitle = "Wie hoch ist die durchschnittliche Trefferquote pro Bedingung?",
-       x = "Bedingung", y = "Trefferquote") +
-  theme_minimal() +
-  scale_fill_manual(values = c("#FF5733", "#3498DB"))  # Orange & Blau
-p1
+<!-- p  = d |>  -->
+<!--   group_by(condition) |>  -->
+<!--   summarise(accuracy = mean(corr, na.rm = TRUE)) |>  -->
+<!--   ggplot(aes(x = condition, y = accuracy, fill = condition)) + -->
+<!--   geom_col() + -->
+<!--   labs(title = "Trefferquote pro Bedingung", -->
+<!--        subtitle = "Wie hoch ist die durchschnittliche Trefferquote pro Bedingung?", -->
+<!--        x = "Bedingung", y = "Trefferquote") + -->
+<!--   theme_minimal() + -->
+<!--   scale_fill_manual(values = c("#FF5733", "#3498DB"))  # Orange & Blau -->
+<!-- p1 -->
 
-## 2. Reaktionszeit pro Bedingung
-p2 = d |> 
-  ggplot(aes(x = condition, y = rt, fill = condition)) +
-  geom_boxplot(alpha = 0.5) +
-  geom_jitter(width = 0.2, aes(color = condition), alpha = 0.5) +
-  labs(title = "Reaktionszeit pro Bedingung",
-       subtitle = "Wie unterscheiden sich die Reaktionszeiten pro Bedingung?",
-       x = "Bedingung", y = "Reaktionszeit (s)") +
-  theme_minimal() +
-  scale_fill_manual(values = c("#FF5733", "#3498DB")) +
-  scale_color_manual(values = c("#FF5733", "#3498DB"))
-p2
+<!-- ## 2. Reaktionszeit pro Bedingung -->
+<!-- p2 = d |>  -->
+<!--   ggplot(aes(x = condition, y = rt, fill = condition)) + -->
+<!--   geom_boxplot(alpha = 0.5) + -->
+<!--   geom_jitter(width = 0.2, aes(color = condition), alpha = 0.5) + -->
+<!--   labs(title = "Reaktionszeit pro Bedingung", -->
+<!--        subtitle = "Wie unterscheiden sich die Reaktionszeiten pro Bedingung?", -->
+<!--        x = "Bedingung", y = "Reaktionszeit (s)") + -->
+<!--   theme_minimal() + -->
+<!--   scale_fill_manual(values = c("#FF5733", "#3498DB")) + -->
+<!--   scale_color_manual(values = c("#FF5733", "#3498DB")) -->
+<!-- p2 -->
 
-#Reaktionszeit über Trials
-p3 = d |> 
-  ggplot(aes(x = trial, y = rt, group = id, color = condition)) +
-  geom_line(alpha = 0.5) +
-  geom_point(alpha = 0.5) +
-  labs(title = "Reaktionszeit über Trials",
-       subtitle = "Verändert sich die Reaktionszeit im Verlauf des Experiments?",
-       x = "Trial", y = "Reaktionszeit (s)") +
-  theme_minimal() +
-  scale_color_manual(values = c("#FF5733", "#3498DB"))
-p3
+<!-- #Reaktionszeit über Trials -->
+<!-- p3 = d |>  -->
+<!--   ggplot(aes(x = trial, y = rt, group = id, color = condition)) + -->
+<!--   geom_line(alpha = 0.5) + -->
+<!--   geom_point(alpha = 0.5) + -->
+<!--   labs(title = "Reaktionszeit über Trials", -->
+<!--        subtitle = "Verändert sich die Reaktionszeit im Verlauf des Experiments?", -->
+<!--        x = "Trial", y = "Reaktionszeit (s)") + -->
+<!--   theme_minimal() + -->
+<!--   scale_color_manual(values = c("#FF5733", "#3498DB")) -->
+<!-- p3 -->
 
-# Plots kombinieren mit patchwork
-library(patchwork)
+<!-- # Plots kombinieren mit patchwork -->
+<!-- library(patchwork) -->
 
-p = p1 / p2 / p3
+<!-- p = p1 / p2 / p3 -->
 
-# Endgültigen Plot anzeigen
-print(p)
-```
+<!-- # Endgültigen Plot anzeigen -->
+<!-- print(p) -->
+<!-- ``` -->
 
-## Code
+<!-- ## Code -->
 
-```{r}
-#| echo: true
-#| eval: false
+<!-- ```{r} -->
+<!-- #| echo: true -->
+<!-- #| eval: false -->
 
-#### DATA VISUALISATION####
-# Code innerhalb der folgenden 2 Linien darf nicht verändert werden
-# ---------------------------------------------------------------------
-library(tidyverse)
-d = read_csv('data/dataset_random_dot_clean.csv') 
-# ---------------------------------------------------------------------
+<!-- #### DATA VISUALISATION#### -->
+<!-- # Code innerhalb der folgenden 2 Linien darf nicht verändert werden -->
+<!-- # --------------------------------------------------------------------- -->
+<!-- library(tidyverse) -->
+<!-- d = read_csv('data/dataset_random_dot_clean.csv')  -->
+<!-- # --------------------------------------------------------------------- -->
 
-# Beginnen Sie hier mit Ihrem Code:
+<!-- # Beginnen Sie hier mit Ihrem Code: -->
 
-p  = d |> 
-  group_by(condition) |> 
-  summarise(accuracy = mean(corr, na.rm = TRUE)) |> 
-  ggplot(aes(x = condition, y = accuracy, fill = condition)) +
-  geom_col() +
-  labs(title = "Trefferquote pro Bedingung",
-       subtitle = "Wie hoch ist die durchschnittliche Trefferquote pro Bedingung?",
-       x = "Bedingung", y = "Trefferquote") +
-  theme_minimal() +
-  scale_fill_manual(values = c("#FF5733", "#3498DB"))  # Orange & Blau
-p1
+<!-- p  = d |>  -->
+<!--   group_by(condition) |>  -->
+<!--   summarise(accuracy = mean(corr, na.rm = TRUE)) |>  -->
+<!--   ggplot(aes(x = condition, y = accuracy, fill = condition)) + -->
+<!--   geom_col() + -->
+<!--   labs(title = "Trefferquote pro Bedingung", -->
+<!--        subtitle = "Wie hoch ist die durchschnittliche Trefferquote pro Bedingung?", -->
+<!--        x = "Bedingung", y = "Trefferquote") + -->
+<!--   theme_minimal() + -->
+<!--   scale_fill_manual(values = c("#FF5733", "#3498DB"))  # Orange & Blau -->
+<!-- p1 -->
 
-## 2. Reaktionszeit pro Bedingung
-p2 = d |> 
-  ggplot(aes(x = condition, y = rt, fill = condition)) +
-  geom_boxplot(alpha = 0.5) +
-  geom_jitter(width = 0.2, aes(color = condition), alpha = 0.5) +
-  labs(title = "Reaktionszeit pro Bedingung",
-       subtitle = "Wie unterscheiden sich die Reaktionszeiten pro Bedingung?",
-       x = "Bedingung", y = "Reaktionszeit (s)") +
-  theme_minimal() +
-  scale_fill_manual(values = c("#FF5733", "#3498DB")) +
-  scale_color_manual(values = c("#FF5733", "#3498DB"))
-p2
+<!-- ## 2. Reaktionszeit pro Bedingung -->
+<!-- p2 = d |>  -->
+<!--   ggplot(aes(x = condition, y = rt, fill = condition)) + -->
+<!--   geom_boxplot(alpha = 0.5) + -->
+<!--   geom_jitter(width = 0.2, aes(color = condition), alpha = 0.5) + -->
+<!--   labs(title = "Reaktionszeit pro Bedingung", -->
+<!--        subtitle = "Wie unterscheiden sich die Reaktionszeiten pro Bedingung?", -->
+<!--        x = "Bedingung", y = "Reaktionszeit (s)") + -->
+<!--   theme_minimal() + -->
+<!--   scale_fill_manual(values = c("#FF5733", "#3498DB")) + -->
+<!--   scale_color_manual(values = c("#FF5733", "#3498DB")) -->
+<!-- p2 -->
 
-#Reaktionszeit über Trials
-p3 = d |> 
-  ggplot(aes(x = trial, y = rt, group = id, color = condition)) +
-  geom_line(alpha = 0.5) +
-  geom_point(alpha = 0.5) +
-  labs(title = "Reaktionszeit über Trials",
-       subtitle = "Verändert sich die Reaktionszeit im Verlauf des Experiments?",
-       x = "Trial", y = "Reaktionszeit (s)") +
-  theme_minimal() +
-  scale_color_manual(values = c("#FF5733", "#3498DB"))
-p3
+<!-- #Reaktionszeit über Trials -->
+<!-- p3 = d |>  -->
+<!--   ggplot(aes(x = trial, y = rt, group = id, color = condition)) + -->
+<!--   geom_line(alpha = 0.5) + -->
+<!--   geom_point(alpha = 0.5) + -->
+<!--   labs(title = "Reaktionszeit über Trials", -->
+<!--        subtitle = "Verändert sich die Reaktionszeit im Verlauf des Experiments?", -->
+<!--        x = "Trial", y = "Reaktionszeit (s)") + -->
+<!--   theme_minimal() + -->
+<!--   scale_color_manual(values = c("#FF5733", "#3498DB")) -->
+<!-- p3 -->
 
-# Plots kombinieren mit patchwork
-library(patchwork)
+<!-- # Plots kombinieren mit patchwork -->
+<!-- library(patchwork) -->
 
-p = p1 / p2 / p3
+<!-- p = p1 / p2 / p3 -->
 
-# Endgültigen Plot anzeigen
-print(p)
-```
-:::
+<!-- # Endgültigen Plot anzeigen -->
+<!-- print(p) -->
+<!-- ``` -->
+<!-- ::: -->
 
 
 
@@ -3431,6 +3431,237 @@ p = d |>
 p
 ```
 :::
+
+::: panel-tabset
+## Plot
+```{r}
+#| echo: false
+#| warning: false
+# Code innerhalb der folgenden 2 Linien darf nicht verändert werden
+# ---------------------------------------------------------------------
+library(tidyverse)
+d = read_csv('data/dataset_random_dot_clean.csv')
+# ---------------------------------------------------------------------
+
+# Beginnen Sie hier mit Ihrem Code:
+
+d_filtered <- d %>%
+    filter((rt < 12) & (rt > 0.1))
+
+glimpse(d_filtered)
+
+d_filtered_corr <- d_filtered %>%
+    filter(corr == 1)
+
+d_filtered_incorr <- d_filtered %>%
+    filter(corr == 0)
+
+d_filtered_summary_corr <- d_filtered_corr %>%
+    summarise(mean_rt_corr = mean(rt),
+              sd_rt_corr = sd(rt))
+
+glimpse(d_filtered_summary_corr)
+
+d_filtered_summary_incorr <- d_filtered_incorr %>%
+    summarise(mean_rt_incorr = mean(rt),
+              sd_rt_incorr = sd(rt))
+
+p = d_filtered |>
+    ggplot(data = d_filtered,
+           mapping = aes(x = corr,
+                         y = rt)) +
+        geom_boxplot(width = 0.3) +
+        geom_jitter(width = 0.1) +
+        geom_hline(data = d_filtered_summary_corr,
+                   mapping = aes(yintercept = mean_rt_corr),
+                     colour = 'green') +
+        geom_hline(data = d_filtered_summary_corr,
+           mapping = aes(yintercept = mean_rt_corr + sd_rt_corr),
+           linetype = 'dashed',
+           colour = 'green') +
+        geom_hline(data = d_filtered_summary_corr,
+            mapping = aes(yintercept = mean_rt_corr - sd_rt_corr),
+            linetype = 'dashed',
+            colour = 'green') +
+        geom_hline(data = d_filtered_summary_incorr,
+            mapping = aes(yintercept = mean_rt_incorr),
+            colour = 'red') +
+        geom_hline(data = d_filtered_summary_incorr,
+            mapping = aes(yintercept = mean_rt_incorr + sd_rt_incorr),
+            linetype = 'dashed',
+            colour = 'red') +
+        geom_hline(data = d_filtered_summary_incorr,
+            mapping = aes(yintercept = mean_rt_incorr - sd_rt_incorr),
+            linetype = 'dashed',
+            colour = 'red') +
+        labs(title = "Abhängigkeit der Korrektheit von der Entscheidungszeit",
+             subtitle = "Wie unterscheiden sich die Reaktionszeiten der Korrekten Antworten, von den Inkorrekten?",
+             caption = "Grün: Mittelwert der Entscheidungszeit für korrekte Antworten\nRot: Mittelwert der Entscheidungszeit für inkorrekte Antworten\nGestrichelt: Jeweilige Standardabweichung",
+             y = "Entscheidungszeit [s]",
+             x = "Korrektheit [0,1]") +
+        theme_minimal()
+p + scale_x_continuous(breaks=seq(0,1,by=1))
+
+
+
+```
+
+
+## Code
+
+```{r}
+#| echo: true
+#| eval: false
+#| # Code innerhalb der folgenden 2 Linien darf nicht verändert werden
+# ---------------------------------------------------------------------
+library(tidyverse)
+d = read_csv('data/dataset_random_dot_clean.csv')
+# ---------------------------------------------------------------------
+
+# Beginnen Sie hier mit Ihrem Code:
+
+d_filtered <- d %>%
+    filter((rt < 12) & (rt > 0.1))
+
+glimpse(d_filtered)
+
+d_filtered_corr <- d_filtered %>%
+    filter(corr == 1)
+
+d_filtered_incorr <- d_filtered %>%
+    filter(corr == 0)
+
+d_filtered_summary_corr <- d_filtered_corr %>%
+    summarise(mean_rt_corr = mean(rt),
+              sd_rt_corr = sd(rt))
+
+glimpse(d_filtered_summary_corr)
+
+d_filtered_summary_incorr <- d_filtered_incorr %>%
+    summarise(mean_rt_incorr = mean(rt),
+              sd_rt_incorr = sd(rt))
+
+p = d_filtered |>
+    ggplot(data = d_filtered,
+           mapping = aes(x = corr,
+                         y = rt)) +
+        geom_boxplot(width = 0.3) +
+        geom_jitter(width = 0.1) +
+        geom_hline(data = d_filtered_summary_corr,
+                   mapping = aes(yintercept = mean_rt_corr),
+                     colour = 'green') +
+        geom_hline(data = d_filtered_summary_corr,
+           mapping = aes(yintercept = mean_rt_corr + sd_rt_corr),
+           linetype = 'dashed',
+           colour = 'green') +
+        geom_hline(data = d_filtered_summary_corr,
+            mapping = aes(yintercept = mean_rt_corr - sd_rt_corr),
+            linetype = 'dashed',
+            colour = 'green') +
+        geom_hline(data = d_filtered_summary_incorr,
+            mapping = aes(yintercept = mean_rt_incorr),
+            colour = 'red') +
+        geom_hline(data = d_filtered_summary_incorr,
+            mapping = aes(yintercept = mean_rt_incorr + sd_rt_incorr),
+            linetype = 'dashed',
+            colour = 'red') +
+        geom_hline(data = d_filtered_summary_incorr,
+            mapping = aes(yintercept = mean_rt_incorr - sd_rt_incorr),
+            linetype = 'dashed',
+            colour = 'red') +
+        labs(title = "Abhängigkeit der Korrektheit von der Entscheidungszeit",
+             subtitle = "Wie unterscheiden sich die Reaktionszeiten der Korrekten Antworten, von den Inkorrekten?",
+             caption = "Grün: Mittelwert der Entscheidungszeit für korrekte Antworten\nRot: Mittelwert der Entscheidungszeit für inkorrekte Antworten\nGestrichelt: Jeweilige Standardabweichung",
+             y = "Entscheidungszeit [s]",
+             x = "Korrektheit [0,1]") +
+        theme_minimal()
+p + scale_x_continuous(breaks=seq(0,1,by=1))
+
+
+```
+
+:::
+
+
+
+
+::: panel-tabset
+## Plot
+```{r}
+#| echo: false
+#| warning: false
+# Code innerhalb der folgenden 2 Linien darf nicht verändert werden
+# ---------------------------------------------------------------------
+library(tidyverse)
+d = read_csv('data/dataset_random_dot_clean.csv')
+# ---------------------------------------------------------------------
+
+# Beginnen Sie hier mit Ihrem Code:
+
+p = d |>
+  ggplot(aes(x = corr, y =rt, fill= condition)) +
+  geom_violin(alpha = 0.7, linetype = 7, show.legend = FALSE) + # Zusammenfassendes Mass Violinplot 
+  geom_jitter(width = 0.2, alpha = 0.05, color = "black", show.legend = FALSE) + # Rohdaten 
+  stat_summary(fun = mean, geom = "point", shape = 3, size = 4, color = "red", show.legend = FALSE) +
+  facet_wrap(~condition) +
+  scale_fill_manual(values = c("skyblue", "red2"))  + # Mind. 2 unterschiedliche Farben (schwarz und weiss ausgenommen)
+  theme_minimal(base_size = 14) + # Theme verwenden
+  scale_x_continuous(breaks = seq(0,1, by = 1)) + # Beschriftungen: Achsenbeschriftungen
+  scale_y_continuous(breaks = seq(0,12, by = 1)) +
+  theme(legend.position = "right") +
+  labs( # Beschriftungen: Titel, Subtitel
+    title = "Reaktionszeit nach Bedingung und Korrektheit",
+    subtitle = "Wie unterscheiden sich die Verteilungen der Reaktionszeiten zwischen den Bedingungen?", 
+    x = "0 = Falsche Antworten, 1 = Richtige Antworten",
+    y = "Reaktionszeit in Sekunden",
+    caption = "",
+    tag = ""
+  )
+p
+
+
+```
+
+
+## Code
+
+```{r}
+#| echo: true
+#| eval: false
+# Code innerhalb der folgenden 2 Linien darf nicht verändert werden
+# ---------------------------------------------------------------------
+library(tidyverse)
+d = read_csv('data/dataset_random_dot_clean.csv')
+# ---------------------------------------------------------------------
+
+# Beginnen Sie hier mit Ihrem Code:
+
+p = d |>
+  ggplot(aes(x = corr, y =rt, fill= condition)) +
+  geom_violin(alpha = 0.7, linetype = 7, show.legend = FALSE) + # Zusammenfassendes Mass Violinplot 
+  geom_jitter(width = 0.2, alpha = 0.05, color = "black", show.legend = FALSE) + # Rohdaten 
+  stat_summary(fun = mean, geom = "point", shape = 3, size = 4, color = "red", show.legend = FALSE) +
+  facet_wrap(~condition) +
+  scale_fill_manual(values = c("skyblue", "red2"))  + # Mind. 2 unterschiedliche Farben (schwarz und weiss ausgenommen)
+  theme_minimal(base_size = 14) + # Theme verwenden
+  scale_x_continuous(breaks = seq(0,1, by = 1)) + # Beschriftungen: Achsenbeschriftungen
+  scale_y_continuous(breaks = seq(0,12, by = 1)) +
+  theme(legend.position = "right") +
+  labs( # Beschriftungen: Titel, Subtitel
+    title = "Reaktionszeit nach Bedingung und Korrektheit",
+    subtitle = "Wie unterscheiden sich die Verteilungen der Reaktionszeiten zwischen den Bedingungen?", 
+    x = "0 = Falsche Antworten, 1 = Richtige Antworten",
+    y = "Reaktionszeit in Sekunden",
+    caption = "",
+    tag = ""
+  )
+p
+
+```
+
+:::
+
+
 
 
 

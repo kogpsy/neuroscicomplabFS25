@@ -231,6 +231,147 @@ THE_plot
 ```
 :::
 
+
+::: panel-tabset
+## Plot
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+# Code innerhalb der folgenden 2 Linien darf nicht verändert werden
+# ---------------------------------------------------------------------
+library(tidyverse)
+d = read_csv('data/dataset_random_dot_clean.csv')
+# ---------------------------------------------------------------------
+
+# Beginnen Sie hier mit Ihrem Code:
+
+##Loading packages 
+library(ggimage)
+# install.packages("remotes")
+# remotes::install_github("MatthewBJane/ThemePark")
+library(ThemePark)
+library(magick)
+library(png)
+library(grid)
+
+#Preparing data for plotting
+mean_data <- d |> filter(rt > 0.099 & rt < 12) |>
+    group_by(id, condition) |>
+    summarise(
+        N = n(),
+        ncorrect = sum(corr),
+        accuracy = mean(corr),
+        median_rt = median(rt)) |>
+          ungroup()
+
+mean_data <- mean_data |>
+  group_by(condition) |>
+  mutate(overall_accuracy = mean(accuracy), 
+  overall_rt = mean(median_rt))|>
+  ungroup()
+
+plot_data <- mean_data |> 
+  mutate(image = "imgs/clownfish.png",
+         image2 = "imgs/shark.png")
+
+img = png::readPNG("imgs/darla.png") %>%
+  rasterGrob(interpolate = TRUE) 
+img_1 <- readPNG("imgs/coral.png")
+
+#Creating plot
+nemo_plot <- ggplot(data = plot_data, 
+       mapping = aes(x = accuracy, y = median_rt))+
+  annotation_custom(rasterGrob(img_1, 
+                               width = unit(1,"npc"),
+                               height = unit(1,"npc")), 
+                    -Inf, Inf, -Inf, Inf) + 
+    geom_violin(draw_quantiles = c(0.25, 0.5, 0.75), color = "black", fill = "yellow") +
+           geom_image(aes(image=image), size = 0.06) +
+       facet_wrap(~condition) +
+  geom_image(aes(image = image2, x = overall_accuracy, y = overall_rt), size = 0.22) +
+  labs(title = "speed-accuracy-trade-off",  
+         subtitle = "Wie hängen die Reaktionszeit und die Accuracy zusammen?", 
+        x = "Accuracy", 
+        y = "Reaktionszeit") +
+  coord_cartesian(clip = "off") +
+  annotation_custom(img, x = 1.2, y = 13, ymax = 15.8, xmax = 2) +
+      theme_nemo()
+nemo_plot
+
+```
+
+## Code
+
+```{r}
+#| echo: true
+#| eval: false
+# Code innerhalb der folgenden 2 Linien darf nicht verändert werden
+# ---------------------------------------------------------------------
+library(tidyverse)
+d = read_csv('data/dataset_random_dot_clean.csv')
+# ---------------------------------------------------------------------
+
+# Beginnen Sie hier mit Ihrem Code:
+
+##Loading packages 
+library(ggimage)
+# install.packages("remotes")
+# remotes::install_github("MatthewBJane/ThemePark")
+library(ThemePark)
+library(magick)
+library(png)
+library(grid)
+
+#Preparing data for plotting
+mean_data <- d |> filter(rt > 0.099 & rt < 12) |>
+    group_by(id, condition) |>
+    summarise(
+        N = n(),
+        ncorrect = sum(corr),
+        accuracy = mean(corr),
+        median_rt = median(rt)) |>
+          ungroup()
+
+mean_data <- mean_data |>
+  group_by(condition) |>
+  mutate(overall_accuracy = mean(accuracy), 
+  overall_rt = mean(median_rt))|>
+  ungroup()
+
+plot_data <- mean_data |> 
+  mutate(image = "clownfish.png",
+         image2 = "shark.png")
+
+img = png::readPNG("darla.png") %>%
+  rasterGrob(interpolate = TRUE) 
+img_1 <- readPNG("coral.png")
+
+#Creating plot
+nemo_plot <- ggplot(data = plot_data, 
+       mapping = aes(x = accuracy, y = median_rt))+
+  annotation_custom(rasterGrob(img_1, 
+                               width = unit(1,"npc"),
+                               height = unit(1,"npc")), 
+                    -Inf, Inf, -Inf, Inf) + 
+    geom_violin(draw_quantiles = c(0.25, 0.5, 0.75), color = "black", fill = "yellow") +
+           geom_image(aes(image=image), size = 0.06) +
+       facet_wrap(~condition) +
+  geom_image(aes(image = image2, x = overall_accuracy, y = overall_rt), size = 0.22) +
+  labs(title = "speed-accuracy-trade-off",  
+         subtitle = "Wie hängen die Reaktionszeit und die Accuracy zusammen?", 
+        x = "Accuracy", 
+        y = "Reaktionszeit") +
+  coord_cartesian(clip = "off") +
+  annotation_custom(img, x = 1.2, y = 13, ymax = 15.8, xmax = 2) +
+      theme_nemo()
+nemo_plot
+
+```
+:::
+
+
 ::: panel-tabset
 ## Plot
 
@@ -1004,11 +1145,6 @@ p
 ```
 :::
 
-
-
-
-
-
 ::: panel-tabset
 ## Plot
 
@@ -1522,7 +1658,7 @@ p <- p|>
         trial = n(),
         ncorrect = sum(corr),
         mean_rt = mean(rt)
-)
+        )
 
 p |>
     ggplot(aes(x = condition, y = mean_rt, color = condition))+
@@ -1538,7 +1674,6 @@ p |>
     theme_minimal(base_size = 12) +
     theme(legend.position = "none")
 p
-
 
 ```
 
@@ -2076,32 +2211,19 @@ sp
 
 ```{r}
 #| echo: false
-#| output: false
-
-d = read_csv('data/dataset_random_dot_clean.csv')
-```
-
-```{r}
-#| echo: false
 #| warning: false
-
-
 # Code innerhalb der folgenden 2 Linien darf nicht verändert werden
 # ---------------------------------------------------------------------
 library(tidyverse)
 d = read_csv('data/dataset_random_dot_clean.csv')
 # ---------------------------------------------------------------------
 
-# Beginnen Sie hier mit Ihrem Code: Code von Leo Rieder und Vivienne Schäublin
-
-d <- read.csv("data/dataset_random_dot_clean.csv") %>%
-  mutate(condition = as.factor(condition)) # Variable condition zu Faktor konvertieren (wieso? ist das nicht schon der Fall?)
-
-#glimpse(d)
-
 # Ein Plot erstellen für die Fragestellung: Ist die Reaktionszeit in der Speed-Bedingung kürzer?
-ggplot(data = d,
-       mapping = aes(x = condition,
+
+d <- d %>% 
+    filter(rt <=12) # nur Reaktionszeiten unter 12ms 
+
+p <- ggplot(d, mapping = aes(x = condition,
                      y = rt)) +
   geom_jitter(width = 0.4, color= "#009ACD", alpha = 0.3) + 
   geom_boxplot(width = 0.2, color= "#FF34B3", alpha = 0.5) + # Boxplot-Farbe und transparenz, Boxplot als 2. Aufgelistet, dass es über den blauen Rohdatenpunkten erscheint und transparent, dass Rohdaten sichtbar bleiben.
@@ -2112,8 +2234,7 @@ ggplot(data = d,
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5), # Den Titel und Subtitel mittig ausrichten
         plot.subtitle = element_text(hjust = 0.5))
-
-
+p
 ```
 
 ## Code
@@ -2121,21 +2242,15 @@ ggplot(data = d,
 ```{r}
 #| echo: true
 #| eval: false
-
 # Code innerhalb der folgenden 2 Linien darf nicht verändert werden
 # ---------------------------------------------------------------------
 library(tidyverse)
 d = read_csv('data/dataset_random_dot_clean.csv')
 # ---------------------------------------------------------------------
 
-# Beginnen Sie hier mit Ihrem Code: Code von Leo Rieder und Vivienne Schäublin
-
-d <- read.csv("data/dataset_random_dot_clean.csv") %>%
-  mutate(condition = as.factor(condition)) # Variable condition zu Faktor konvertieren (wieso? ist das nicht schon der Fall?)
-
-##glimpse(d)
-
 # Ein Plot erstellen für die Fragestellung: Ist die Reaktionszeit in der Speed-Bedingung kürzer?
+
+d <- d %>% filter(rt <=12)|> # nur Reaktionszeiten unter 12ms 
 ggplot(data = d,
        mapping = aes(x = condition,
                      y = rt)) +
@@ -2149,6 +2264,26 @@ ggplot(data = d,
   theme(plot.title = element_text(hjust = 0.5), # Den Titel und Subtitel mittig ausrichten
         plot.subtitle = element_text(hjust = 0.5))
 
+
+# Zahlen zum Boxplot: hier können die Werte vom Mean und der SD ausgegeben werden
+unique(d$condition)
+# Mean und AD für die Bedingung speed berechnen
+d_speed <- d %>% 
+  filter(condition == "speed")
+
+d_speed_summary <- d_speed %>% 
+  summarise(mean_rt = mean(rt),
+            sd_value = sd(rt))
+glimpse(d_speed_summary)
+
+# Mean und SD für die Bedingung accuracy berechenen
+d_accuracy <- d %>% 
+  filter(condition == "accuracy")
+
+d_accuracy_summary <- d_accuracy %>% 
+  summarise(mean_rt = mean(rt),
+                  sd_value = sd(rt))
+glimpse(d_accuracy_summary)
 ```
 :::
 
