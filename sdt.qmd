@@ -1,0 +1,579 @@
+# Signalentdeckungstheorie
+
+```{r}
+#| echo: false
+#| warning: false
+library(tidyverse)
+library(ggdist)
+d = read.csv('data/sdt_random_dot_clean.csv')
+```
+
+Die Signalentdeckungstheorie (_signal detection theory_ (SDT)) befasst sich damit, wie aus verrauschten Daten möglichst effizient Informationen extrahiert werden können. Es wird davon ausgegangen, dass in den Daten ein Signal, also relevante Information, enthalten ist, dieses aber durch zufällige Informationen bzw. Rauschen (_noise_) überdeckt wird. SDT ist somit eine Framework die ermöglicht Entscheidungen unter Unsicherheit zu verstehen und zu modellieren.
+
+Die Signalentdeckungstheorie hat ihren Ursprung in der Psychophysik/Wahrnehmungspsychologie und wurde ursprünglich in den 1950er Jahren von Green &  Swets (z.B. Swets, 1964; Green & Swets, 1966) entwickelt. 
+Sie wurde u.a. zur Optimierung von Entscheidungen aufgrund Radarsignalen im 2. Weltkrieg verwendet.
+
+In der Psychologie wird die Signalentdeckungstheorie vor allem in der Wahrnehmungs- und Entscheidungsforschung angewandt.
+Dabei geht es darum, wie gut eine Person in verschiedenen Situationen in der Lage ist, ein Signal zu erkennen, wie beispielsweise einen Schwellenmessung eines akkustischen oder visuellen Stimulus. 
+
+Der Vorteil der Methode ist es, dass unterschieden werden kann, ob ein System/eine Person einen Reiz erkennen kann (_Sensitivität_) und was das System/die Person für ein Entscheidungsverhalten zeigt (_Antworttendenz_). __Sensitivität__ bezieht sich auf die Fähigkeit des Entscheidungsträgers, zwischen zwei verschiedenen Arten von Signalen zu unterscheiden, während der die __Antworttendenz (bias)__ die Tendenz des Entscheidungsträgers bezeichnet, eine Alternative gegenüber der anderen a priori zu bevorzugen. Durch die Trennung dieser beiden Komponenten können Forscher analysieren, wie verschiedene Faktoren die Entscheidungsleistung beeinflussen. 
+
+In der Signalentdeckungstheorie wird zwischen vier möglichen Ergebnissen unterschieden:
+
+|                | decision: present | decision: absent   |
+|----------------|------------------|-------------------|
+| __signal: present__ | __HIT__  <br> Signal  korrekt erkannt | __MISS__ <br> Signal fälschlicherweise nicht erkannt |
+| __signal: absent__  | __FALSE ALARM__  <br> Signal fälschlicherweise detektiert | __CORRECT REJECTION__ <br> Signal korrekt als abwesend erkannt |
+
+
+<br>
+
+Daraus folgend können Sensitivität und Antworttendenz wie folgt abgeleitet werden:
+
+Die __Sensitivität (_sensitivity_, $d'$)__, also wie gut eine Person das Signal erkennen kann, enspricht der standardisierten Differenz zwischen den Mittelwerten der Verteilungen _Signal präsent_ und _Signal abwesend_.
+
+$d' = z($Treffer$) - z($falscher Alarm$)$^[$z$-transformierte relative Häufigkeit der Treffer minus $z$-transformierte relative Häufigkeit der falschen Alarme]
+
+Die __Antworttendenz (_bias_, $c$)__, also ob eine Person eher dazu neigt ein Signal als präsent oder abwesend zu kategorisieren (unabhängig von dessen Anwesenheit) entspricht:
+
+$c = −0,5*(z($falscher Alarm$) + z($Treffer$))$
+
+<br>
+
+:::{.callout-tip title="Beispiel: Random Dot Experiment"}
+
+Im Random Dot Experiment mussten die Versuchspersonen ein perzeptuelle Entscheidungsaufgabe bearbeiten. 
+Dabei musste jeweils entscheiden werden, in welche Richtung sich eine Punktewolke bewegt.
+
+Die Punktewolke enthielt ein Signal, nämlich den Anteil (ca. 8%) der Punkte die sich in dieselbe Richtung bewegten (kohärente Punkte). 
+Zusätzlich enthielt die Punktewolke aber auch Rauschen, also Punkte, die sich in eine beliebige/zufällige Richtung bewegten.
+Die Versuchspersonen mussten also _unter Unsicherheit_ eine Entscheidung treffen.
+
+```{r}
+#| echo: false
+d |>
+    select(id, condition, stimulus = direction, resp, corr) |>
+    head()
+```
+
+Es gibt verschiedene Möglichkeiten die Leistung der Versuchspersonen im Random Dot Task zu beschreiben, da wir sowohl die Antwortgeschwindigkeit wie auch die Korrektheit der Antworten gemessen haben.
+
+Wir schauen uns in diesem Kapitel zwei Wege an, wie die Korrektheit der Antworten analysiert werden können:
+
+- %-Correct bestimmen
+- Sensitivität und Bias mit SDT bestimmen
+
+:::
+
+<br>
+
+## %-Correct
+
+Weshalb ist die SDT nützlich? Dies kann am Beispiel des Masses %-Correct aufgezeigt werden.
+Das Berechnen von %-Correct, also dem Anteil richtiger Antworten innerhalb eines Experiments / einer Person / einer Bedingung, ist ein häufig genutztes Vorgehen, um zu quantifizieren, wie gut Personen eine Aufgabe lösen kann.
+Sie eignet sich jedoch nur als Mass für Sensitivität, wenn nicht zwischen der Sensitivität und der Antworttendenz unterschieden werden soll.
+
+Für unseren Random Dot-Datensatz können wir den Anteil richtiger Antworten jeder Versuchsperson aufgrund der gegebenen Antworten (`resp`) bzw. der Variable `corr` berechnen. Diese entspricht bei richtiger Antwort `1` und bei falscher Antwort `0`. Wenn wir den Durchschnitt (`mean()`) der Variable `corr` berechnen, erhalten wir den Anteil korrekter Antworten. Wenn wir diese Zahl $\cdot 100$ rechnen, erhalten wir _%-Correct_.
+
+Im Experiment wurde die Instruktion (`speed` und `accuracy`) innerhalb der Versuchspersonen manipuliert. Es macht daher Sinn, für diese beiden Bedingungen je einen Wert pro Person zu berechnen.
+
+:::{.callout-caution title="Hands-on: %-Correct berechnen"}
+
+1. Erstellen Sie ein neues R-Projekt namens `complab_models`. Erstellen Sie im Projektordner einen Ordner `data`.
+
+2. Laden Sie Daten des Random Dot Experiments [hier](data/sdt_random_dot_clean.csv) herunter und speichern Sie diese im erstellten Projekt im Ordner `data`.
+
+3. Öffnen Sie ein neues R-Skript/RNotebook/RMarkdown `signaldetection` und lesen Sie die heruntergeladenen Daten ein.
+
+4. Berechnen Sie die Sensitivität für jede Versuchsperson individuell getrennt für die beiden Bedingungen `speed` und `accuracy` (vgl. Output unten).
+
+```{r}
+#| eval: false
+d_sens = |>
+    ...
+    ...
+    ...
+```
+
+```{r}
+#| warning: false
+#| echo: false
+d_sens = d |>
+    group_by(id, condition) |>
+    summarise(sens = mean(corr)) |>
+    mutate(sens = sens * 100,
+           sens = round(sens, digits = 1))
+d_sens |> head()
+```
+
+5. Der resultierende Datensatz der berechneten Sensitivitäten ist im Long-Format. Überführen Sie den Datensatz in das Wide-Format, um die Daten einfacher verständlich zu machen (vgl. Output unten).
+
+```{r}
+#| warning: false
+#| echo: false
+d_sens_2 = d |>
+    group_by(id, condition) |>
+    summarise(sens = mean(corr)) |>
+    mutate(sens = sens * 100,
+           sens = round(sens, digits = 1)) |>
+    pivot_wider(names_from = condition, 
+                values_from = sens)
+```
+:::
+
+```{r}
+#| echo: false
+#| warning: false
+d_sens_2 |>
+    mutate(diff = speed - accuracy) |>
+    ggplot(aes(x = diff, y = 1)) +
+    stat_dots(quantiles = 100,
+              side = 'bottom',
+              fill = 'slategray3',
+              color = 'slategray3',
+              alpha = .3) +
+    stat_halfeye(geom = 'slab',
+                 fill = 'slategray3',
+                 alpha = .7,
+                 size = 5) +
+    geom_vline(xintercept = 0,
+               size = 2) +
+    theme_minimal() +
+    theme(text = element_text(size = 12),
+          axis.text.y = element_blank()) +
+    labs(
+        title = 'Difference in %-Correct',
+        subtitle = '(speed - accuracy)',
+        x = '',
+        y = '') +
+    scale_x_continuous(breaks = seq(-20,20,by=10))
+    # lims(x = c(0,2))
+```
+
+Wir nehmen nicht an, dass sich im Experiment die "Sensitivität" verändert hat, also wie gut eine Person eine Aufgabe lösen kann, sondern viel mehr, dass sich ihr Entscheidungskriterium verändert hat durch die unterschiedliche Instruktion. Tatsächlich finden wir unseren Daten keinen Unterschied. 
+Es könnte aber sein, dass eine Instruktion dazu führt, dass eine Antworttendenz stärker auf die Daten Einfluss nimmt, als in einer anderen. In diesem Fall würde vielleicht eine Antworttendenz von Personen eher rechts als links zu drücken eher Einfluss nehmen, wenn man wenig Zeit hat die Aufgabe zu lösen.
+
+Wenn wir wissen möchten, ob die Aufgabe mit Speed-Instruktion gleich gut lösbar war wie die mit der Accuracy-Instruktion und gleichzeitig wissen möchten, ob die Personen eine Tendenz haben "rechts" oder "links" zu antworten, können wir die SDT anwenden.
+
+
+## Vorgehen in der SDT
+
+Die SDT ist eine statistische Entscheidungstheorie, deren zentrale Fragestellung lautet: **Was ist der (unbekannte) Zustand der Welt, angesichts der verrauschten Daten**? 
+
+In einem Modell macht es Sinn, sicherzustellen, dass das Problem einfach ist – wir beschränken die Welt auf zwei mögliche Zustände. Dies können beispielsweise sein: 
+
+- präsent -- abwesend
+- rechts -- links
+- neu/unbekannt -- alt/bekannt (in einem Gedächtnisparadigma)
+
+Wir werden das Vorgehen in der SDT anhand unserer eigenen Random Dot Experiment Daten nachvollziehen. 
+Hierfür werden wir das Experiment aus zwei Perspektiven betrachten: 
+
+1) aus der Perspektive einer Person, welche die Aufgabe hat, Stimuli in zwei Klassen zu klassifizieren und 
+
+2) aus der Perspektive eines Modells, das die Leistung der Person in der Aufgabe vorhersagt.
+
+### Die Perspektive der Versuchsperson
+
+Wir betrachten ein Experiment, bei dem eine Person einen Stimulus in eine von zwei möglichen Kategorien einordnen muss. Das Random Dot Experiment beinhaltete die Stimuluskategorien `Bewegung nach rechts` und `Bewegung nach links`. Die Aufgabe der Person war es, eine binäre Klassifikation mit den Antwortoptionen `rechts` und `links` durchzuführen. Die Antwortoptionen entsprechen den beiden möglichen Zuständen der "Welt", oder genauer gesagt, Hypothesen der Person über die möglichen Zustände der Welt.
+
+#### Annahmen
+
+1) Die Person verarbeitet den Stimulus und gelangt zu einer internen Repräsentation des Stimulus. Diese interne Repräsentation ist nicht deterministisch, sondern variiert zufällig und ist demzufolge eine Zufallsvariable $X$. Wir nehmen an, dass die interne Repräsentation normalverteilt ist. 
+
+2) Die Zufallsvariable $X$ repräsentiert die Information, die die Person über den Stimulus hat, also die Evidenz.
+
+3) Die Person weiss, dass $X$ aus einer von zwei Verteilungen gezogen wurde, die sich nur in ihrer Lage (in ihrem Mittelwert) unterscheiden. Welche Verteilung es war, weiss die Person jedoch nicht -- dies muss sie anhand eines Kriteriums entscheiden.
+
+4) Die Person hat ein Kriterium $k$, das sie verwendet, um zu entscheiden, ob sich der Stimulus nach `rechts` oder `links` bewegt. Eine einfache Entscheidungsregel lautet: Wenn $X > k$, dann bewegen sich die Punkte nach rechts, andernfalls nach links.
+
+![Plot adapted and modified from Vuorre (2017)^[<https://vuorre.com/posts/sdt-regression/index.html#fig-sdt-example>] ](imgs/vuorre_sdt_randomdot.png)
+
+### Die Perspektive des/der externen Beobachter*in
+
+Die Leistung der Versuchsperson kann durch die Wahrscheinlichkeit beschrieben werden, dass sie einen Treffer (`Hit`) oder einen `False Alarm` produziert. 
+Diese Wahrscheinlichkeiten werden als _Hit Rate_ und _False Alarm Rate_ bezeichnet. 
+Die _Hit Rate_ ist die Wahrscheinlichkeit, dass die Person einen richtig liegt, wenn der Stimulus rechts ist. 
+Die _False Alarm Rate_ ist die Wahrscheinlichkeit, dass die Person einen Fehler macht, wenn der Stimulus links ist.
+
+Die Antworten der Versuchspersonen können in einer Tabelle zusammengefasst werden, mit vier möglichen Ergebnissen.^[Meistens wird Signaldetektion im Rahmen von Signal vs. Rauschen verwendet, die beiden Verteilungen können aber wie hier auch "Bewegung nach Rechts" und "Bewegung nach links" unmfassen.]
+
+|              | **Stimulus**   |                        |
+|------------- |--------------- |------------------------|
+| **Antwort**  | Rechts         | Links                  |
+| Rechts       | Hit            | False alarm (FA)       |
+| Links        | Miss           | Correct rejection (CR) |
+
+
+- **Hit**:  Stimulus ist `rechts`, Antwort ist `rechts`
+- Miss: Stimulus ist `rechts`, Antwort ist `links`
+- **False alarm**: Stimulus ist `links`, Antwort ist `rechts`
+- Correct rejection: Stimulus is `links`,  Antwort ist `links`
+
+:::{.callout-caution title="Hands-on: Hit, False Alarm, Miss und Correct Rejection labeln"}
+
+Setzen Sie diese verbale Beschreibung in R-Code um. 
+
+1. Erstellen Sie dazu im Random Dot Datensatz mit der Funktion `mutate()` eine Variable `type`. In dieser Variable soll für jeden Trial stehen, ob es sich um einen `Hit`, einen `Miss`, einen `FA` oder eine `CR` handelt (vgl. Daten unten). 
+
+```{r}
+#| eval: false
+sdt <- d |>
+    select(id, stimulus = direction, resp) |>
+    mutate(type = case_when(
+        direction == ... & resp == ... ~ ...,
+        ...
+        ...
+        ...))
+```
+
+```{r}
+#| echo: false
+sdt <- d |>
+    mutate(type = case_when(
+        direction == "right" & resp == "right" ~ "Hit",
+        direction == "right" & resp == "left" ~ "FA",
+        direction == "left" & resp == "right" ~ "Miss",
+        direction == "left" & resp == "left" ~ "CR"))
+
+head(sdt)
+```
+:::
+
+
+## SDT Parameter berechnen
+
+Die beiden wichtigsten Parameter der Signal-Detektionstheorie sind $d'$ und $c$. 
+
+- $d'$ (_d-prime_) ist ein Mass für die Sensitivität eines Beobachters bei der Unterscheidung zwischen zwei Stimulusklassen. Ein größerer $d'$-Wert zeigt eine grössere Sensitivität an. Dies bedeutet, dass die Verteilungen der beiden  Stimulusklassen stärker voneinander getrennt sind und somit leichter unterscheidbar sind. 
+
+- $c$ (_criterion_) ist ein Mass dafür, ob eine Voreingenommenheit (bias) für eine der beiden Antwortoptionen besteht. Genauer gesagt ist $c$ der Abstand vom tatsächlichen Kriterium zum Punkt welcher genau zwischen den Verteilungen liegt.
+
+
+:::{.callout-tip title="Hands-on: Fragestellung"}
+
+Was bedeuten $d'$ und $c$ in unserem Beispiel?
+Welche Fragestellung(en) können wir untersuchen?
+
+:::
+
+### Relative Häufigkeiten von _Hits_ und _False Alarms_ berechnen
+
+Um $d'$ und $c$ aus den beobachteten Antworthäufigkeiten zu berechnen, müssen wir zuerst die relativen Häufigkeiten der _Hits_ (Hit Rate) und der _False Alarms_ (FA Rate) berechnen.
+
+Die Hits sind die `rechts`-Antworten auf `rechts`-Stimuli. 
+Dies bedeutet, dass wir zählen, wie oft bei einem `rechts` Stimulus die Antwort `rechts` war. 
+Die False Alarms sind die `rechts`-Antworten auf `links`-Stimuli. 
+Dies bedeutet, dass wir zählen, wie oft bei einem `links` Stimulus die Antwort `rechts` war.
+
+Um $d'$ und $c$ für jede Vpn in beiden Instruktions Bedingungen zu berechnen, zählen wir die verschiedenen Antworttypen (vgl. Daten unten) pro Person und Bedingung.
+
+:::{.callout-caution title="Relative Häufigkeiten von _Hits_ und _False Alarms_ berechnen"}
+
+```{r}
+#| eval: false
+sdt_summary <- sdt |>
+    group_by(..., ...) |>
+    count(...)
+
+sdt_summary
+```
+
+```{r}
+#| echo: false
+sdt_summary <- sdt |>
+    group_by(id, condition) |>
+    count(type)
+sdt_summary
+```
+:::
+
+Vor dem Berechnen von $d'$ und $c$ müssen wir den Datensatz noch formatieren:
+Hierzu konvertieren wir den Datensatz von `long` zu `wide`, um alle vier Antworttypen in jeweils eigenen Variablen zu speichern.
+
+```{r}
+sdt_summary <- sdt_summary |>
+    pivot_wider(names_from = type, 
+                values_from = n)
+sdt_summary
+```
+
+### NAs ersetzen
+Wir erstellen eine Hilfsfunktion `replace_NA()` um alle fehlenden Werte (`NA`) durch 0 zu ersetzen.
+
+```{r}
+replace_NA <- function(x) {
+    x = ifelse(is.na(x), 0, x)
+    x
+}
+```
+
+```{r}
+sdt_summary <- sdt_summary |>
+    mutate(across(c(Hit, Miss, FA, CR), replace_NA))
+sdt_summary
+```
+
+### _Hit Rate_ und _False Alarm Rate_ berechnen
+
+Die _Hit Rate_ und die _False Alarm Rate_ kann anhand der folgenden Formeln berechnet werden:
+
+<br>
+
+$$ Hit~Rate = \frac{Hits}{Hits + Misses} $$
+
+<br>
+
+$$ FA~Rate = \frac{False Alarms}{False Alarms + Correct Rejections} $$
+<br>
+
+:::{.callout-caution title="Hands-on: _Hit Rate_ und _False Alarm Rate_ berechnen"}
+```{r}
+#| eval: false
+sdt_summary <- sdt_summary |>
+    mutate(hit_rate = ...,
+           fa_rate = ...)
+sdt_summary
+```
+
+```{r}
+#| echo: false
+sdt_summary <- sdt_summary |>
+    mutate(hit_rate = Hit / (Hit + Miss),
+           fa_rate = FA / (FA + CR))
+sdt_summary
+```
+:::
+
+### 0 und 1 ersetzen
+
+Wir erstellen eine Hilfsfunktion `correct_zero_one()` mit der wir bei den Hit und False Alarm Rates alle 0 und 1 Werte durch 0.001 oder 0.999 ersetzen. 
+Dies machen wir, damit wir bei der Berechnung der z-Werte nicht $\pm \infty$ erhalten. 
+
+```{r}
+correct_zero_one <- function(x) {
+    if (identical(x, 0)) {
+        x = x + 0.001
+    } else if (identical(x, 1)) {
+        x = x - 0.001
+    }
+    x
+}
+```
+
+Für den nächsen Schritt nutzen wir die Funktion `correct_zero_one()`.
+
+```{r}
+sdt_summary <- sdt_summary |>
+    mutate(across(c(hit_rate, fa_rate), correct_zero_one))
+sdt_summary
+```
+
+### $z$-Transformation
+
+Als nächstes müssen die $z$-Werte der _Hit Rate_ und der _False Alarm Rate_ berechnet werden. 
+Dazu kann die Funktion `qnorm()`verwendet werden.
+
+:::{.callout-caution title="Hands-on: $z$-Transformation"}
+
+```{r}
+#| eval: false
+sdt_summary <- sdt_summary |>
+    mutate(zhr = ...,
+           zfa = ...)
+sdt_summary
+```
+
+```{r}
+#| echo: false
+sdt_summary <- sdt_summary |> 
+  mutate(zhr = qnorm(hit_rate),
+           zfa = qnorm(fa_rate))
+sdt_summary
+```
+:::
+
+### $d'$ und $c$ berechnen
+
+Nun können die SDT Parameter anhand der folgenden Formeln berechnet werden:
+
+<br>
+
+$$d' = z(Hit~Rate) - z(FA~Rate)$$
+
+<br>
+
+$$c = -0.5 * (z(Hit~Rate) + z(FA~Rate))$$
+<br>
+
+:::{.callout-caution title="Hands-on: $d'$ und $c$ berechnen"}
+```{r}
+#| eval: false
+sdt_summary <- sdt_summary |>
+    mutate(dprime = ...,
+           c = ...) |>
+    mutate(across(c(dprime, c), round, 2))
+```
+
+```{r}
+#| echo: false
+sdt_summary <- sdt_summary |> 
+  mutate(dprime = zhr - zfa,
+         k = -zfa,
+         c = -0.5 * (zhr + zfa)) |>
+    mutate(across(c(dprime, k, c), \(x) round(x, 2)))
+sdt_summary
+```
+:::
+
+### Neuer Datensatz erstellen
+
+Für den finalen Datensatz wählen wir `d'` und `c` für jede Person in jeder Bedingung.
+
+
+:::{.callout-caution title="Hands-on: Datensatz erstellen"}
+```{r}
+#| eval: false
+sdt_final <- sdt_summary |>
+    select(...)
+sdt_final
+```
+
+```{r}
+#| echo: false
+sdt_final <- sdt_summary |>
+    select(id, condition, dprime, c)
+sdt_final
+```
+:::
+
+## SDT Parameter vergleichen
+
+In einem weiteren Schritt können die berechneten Parameter verglichen werden.
+So kann unterschieden werden, worauf sich die Instruktion ausgewirkt hat: Auf die Antworttendenz oder auf die Sensitivität?
+
+Um die SDT parameter zwischen den Bedingungen zu vergleichen berechnen wir für $d'$ und $c$ den Mittelwert (`mean()`) und die Standardabweichung (`sd()`) in beiden Bedingungen (`speed` und `accuracy`).
+
+:::{.callout-caution title="Hands-on: Mittelwerte und SD berechnen, um Bedingungen zu vergleichen"}
+
+```{r}
+#| eval: false
+cs <- sdt_final |>
+    select(id, condition, c) |>
+    Rmisc::summarySEwithin(measurevar = "...",
+                           withinvars = "...",
+                           idvar = "...",
+                           na.rm = FALSE,
+                           conf.interval = 0.95)
+
+dprimes <- sdt_final |>
+    select(id, condition, dprime) |>
+    Rmisc::summarySEwithin(measurevar = "...",
+                           withinvars = "...",
+                           idvar = "...",
+                           na.rm = FALSE,
+                           conf.interval = 0.95)
+```
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+ 
+cs <- sdt_final |>
+    select(id, condition, c) |>
+    Rmisc::summarySEwithin(measurevar = "c",
+                           withinvars = "condition",
+                           idvar = "id",
+                           na.rm = FALSE,
+                           conf.interval = 0.95)
+
+dprimes <- sdt_final |>
+    select(id, condition, dprime) |>
+    Rmisc::summarySEwithin(measurevar = "dprime",
+                           withinvars = "condition",
+                           idvar = "id",
+                           na.rm = FALSE,
+                           conf.interval = 0.95)
+```
+:::
+
+Wenn alle Schritte ausgeführt wird, kann mit folgendem Code ein Plot erstellt werden:
+
+```{r}
+#| eval: true
+#| warning: false
+library(patchwork)
+    
+p_dprime <- dprimes |>
+    ggplot(aes(x = condition, y = dprime, group = 1)) +
+    geom_jitter(aes(condition, dprime), alpha = 0.1, data = sdt_final, width = 0.05) +
+    geom_line() +
+    geom_line(aes(condition, dprime, group = id), alpha = 0.05, data = sdt_final, width = 0.05) +
+    geom_errorbar(width = 0.1, aes(ymin = dprime - ci,
+                                   ymax = dprime + ci)) +
+    geom_point(shape = 21, size = 3, fill = "white") +
+    ggtitle("Sensitivity") + theme_minimal()
+
+p_bias <- cs |>
+    ggplot(aes(x = condition, y = c, group = 1)) + 
+    geom_jitter(aes(condition, c), alpha = 0.1, data = sdt_final, width = 0.05) +
+    geom_hline(yintercept = 0, 
+               linetype = "dashed",
+               color = "grey60") +
+    geom_line() +
+    geom_line(aes(condition, c, group = id), alpha = 0.05, data = sdt_final, width = 0.05) +
+    geom_errorbar(width = 0.1, aes(ymin = c - ci,
+                                   ymax = c + ci)) +
+    geom_point(shape = 21, size = 3, fill = "white") +
+    ggtitle("Bias") + theme_minimal()
+
+p_dprime + p_bias 
+```
+
+:::{.callout-caution title="Hands-on: Was wissen wir nun?"}
+
+Diskutieren Sie zusammen die beiden Plots: Was können wir daran sehen?
+
+Ob Unterschiede einer statistischen Untersuchung standhalten könnten wir z.B. mit einer ‘repeated-measures’ ANOVA untersuchen.
+:::
+
+## Anwendungsbeispiele
+
+Die SDT wird in einem breiten Spektrum von Fragestellungen verwendet. Hier einige Beispiele:
+
+- __Entdecken von Fake-News__: Batailler, C., Brannon, S. M., Teas, P. E., & Gawronski, B. (2021). A Signal Detection Approach to Understanding the Identification of Fake News. Perspectives on Psychological Science, 17(1), 78-98. https://doi.org/10.1177/1745691620986135 
+
+- __Go/No-Go-Task und Alkohol__: Ames, S. L., Wong, S. W., Bechara, A., Cappelli, C., Dust, M., Grenard, J. L., & Stacy, A. W. (2014). Neural correlates of a Go/NoGo task with alcohol stimuli in light and heavy young drinkers. Behavioural brain research, 274, 382-389. https://doi.org/10.1016/j.bbr.2014.08.039
+
+- __Somatic Signal Detection Task__: Mirams, L., Poliakoff, E., Brown, R.J. et al. Vision of the body increases interference on the somatic signal detection task. Exp Brain Res 202, 787–794 (2010). https://doi.org/10.1007/s00221-010-2185-7
+
+:::{.callout-caution title="Hands-on: Anwendung der SDT"}
+Suchen Sie sich ein Paper mit einer SDT-Analyse oder wählen Sie eine der oben angegebenen Paper:
+
+Lesen Sie den Abstract durch (und falls notwendig Teile des Papers):
+
+- Was war das Signal? Was der Noise?
+- Was entspricht $d'$ und was $c$?
+- Was waren die Findings?
+
+:::
+
+
+## Weiterführende Informationen
+
+:::{.callout-tip title="Weitere Anwendungsbeispiele"}
+Das laufende Kursexperiment kann zwar mit SDT analysiert werden, es gibt jedoch weitaus spannendere Datensätze als den unseres Paradigmas:
+
+- [Hier](https://kogpsy.github.io/neuroscicomplabFS23/pages/chapters/signal-detection-2.html) ein Beispiel eines Random Dot Experiments, bei dem den Personen vor den Dots Hinweisreize gezeigt wurde, in welche Richtung sich die Punktewolke am wahrscheinlichsten bewegen wird
+
+- [Hier](https://kogpsy.github.io/neuroscicomplabFS23/pages/chapters/signal-detection-1.html#ged%C3%A4chtnis-experiment) ein Beispiel der Analyse eines Datensatzes von einem Gedächtnisexperiment (Signal: schon gesehenes Gesicht, Rauschen: neues Gesicht)
+:::
+
+- Interaktives Tutorial zu SDT: <https://wise.cgu.edu/wise-tutorials/tutorial-signal-detection-theory/>
+- Ausführlichere Einführung in die SDT: Stanislaw and Todorov (1999) und Macmillan and Creelman (2004)
+- Einführung in die Verwendung von R zur Durchführung von SDT-Analysen: Knoblauch and Maloney (2012) 
+
+## Referenzen
+
+- Vuorre, Matti. 2017. “Estimating Signal Detection Models with Regression Using the Brms R Package.” PsyArXiv. https://doi.org/10.31234/osf.io/vtfc3_v1. 

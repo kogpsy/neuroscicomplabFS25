@@ -1,4 +1,4 @@
-## Datenvisualisierung mit ggplot2
+## Datenvisualisierung mit {ggplot2}
 
 ::: callout-caution
 ## Hands-on: Vorbereitung

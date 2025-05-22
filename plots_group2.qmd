@@ -281,23 +281,23 @@ img = png::readPNG("imgs/darla.png") %>%
 img_1 <- readPNG("imgs/coral.png")
 
 #Creating plot
-nemo_plot <- ggplot(data = plot_data, 
-       mapping = aes(x = accuracy, y = median_rt))+
-  annotation_custom(rasterGrob(img_1, 
-                               width = unit(1,"npc"),
-                               height = unit(1,"npc")), 
-                    -Inf, Inf, -Inf, Inf) + 
+nemo_plot <- ggplot(data = plot_data,
+                    mapping = aes(x = accuracy, y = median_rt))+
+    annotation_custom(rasterGrob(img_1,
+                                 width = unit(1,"npc"),
+                                 height = unit(1,"npc")),
+                      -Inf, Inf, -Inf, Inf) +
     geom_violin(draw_quantiles = c(0.25, 0.5, 0.75), color = "black", fill = "yellow") +
-           geom_image(aes(image=image), size = 0.06) +
-       facet_wrap(~condition) +
-  geom_image(aes(image = image2, x = overall_accuracy, y = overall_rt), size = 0.22) +
-  labs(title = "speed-accuracy-trade-off",  
-         subtitle = "Wie hängen die Reaktionszeit und die Accuracy zusammen?", 
-        x = "Accuracy", 
-        y = "Reaktionszeit") +
-  coord_cartesian(clip = "off") +
-  annotation_custom(img, x = 1.2, y = 13, ymax = 15.8, xmax = 2) +
-      theme_nemo()
+    geom_image(aes(image=image), size = 0.06) +
+    facet_wrap(~condition) +
+    geom_image(aes(image = image2, x = overall_accuracy, y = overall_rt), size = 0.22) +
+    labs(title = "speed-accuracy-trade-off",
+         subtitle = "Wie hängen die Reaktionszeit und die Accuracy zusammen?",
+         x = "Accuracy",
+         y = "Reaktionszeit") +
+    coord_cartesian(clip = "off") +
+    annotation_custom(img, x = 1.2, y = 13, ymax = 15.8, xmax = 2) +
+    theme_nemo()
 nemo_plot
 
 ```

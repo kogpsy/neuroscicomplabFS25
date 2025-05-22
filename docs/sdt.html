@@ -1,0 +1,2258 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>21&nbsp; Signalentdeckungstheorie – Neurowissenschaft im Computerlab</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./webrconsole.html" rel="next">
+<link href="./modeling.html" rel="prev">
+<link href="./imgs/logo.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="./styles/global.css">
+<link rel="stylesheet" href="include/webex.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./modeling.html">Datenmodellierung</a></li><li class="breadcrumb-item"><a href="./sdt.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Signalentdeckungstheorie</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Neurowissenschaft im Computerlab</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Herzlich Willkommen</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Neurowissenschaftliches Forschen</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./forschungsprozess.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Complab im Forschungsprozess</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./voraussetzungen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Voraussetzungen der Forschung</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Experimentieren &amp; Programmieren</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./experiments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Neurowissenschaftliche Experimente</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./psychopy_experiments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Verhaltensexperimente mit PsychoPy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./stroop_experiment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Stroop Paradigma</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./random_dot_experiment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Random Dot Paradigma</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro_python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Python: Einführung für Neurowissenschaften</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./loops.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Schleifen programmieren mit Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./uebung_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Übung 1</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data wrangling</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./datawrangling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Daten importieren und vorverarbeiten</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./datawrangling_automatisiert.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Automatisiertes Preprocessing</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./uebung_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Übung 2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Datenvisualisieren</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_visualization_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Datenvisualisierung mit</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_visualization_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Grundlagen der Datenvisualisierung</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./uebung_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Übung 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./plots_group1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plot Gallery - Group 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./plots_group2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plot Gallery - Group 2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Datenanalyse</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Datengenerierende Prozesse</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./parameterestimates.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Parameterschätzung: Einführung in die Bayesianische Statistik</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hypothesistests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Hypothesentests: Bayesianischer <span class="math inline">\(t\)</span>-Test und Äquivalenztests (TOSTs)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./uebung_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Übung 4</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Open Science</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./opensci.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Getting Started: Open Science and Good Practices</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./goodpractices_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Good Practices in der Datenverarbeitung</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./rmarkdown.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">RStudio Projects und RMarkdown</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">EEG</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro_eeg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Einführung EEG</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">Datenmodellierung</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modeling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Einführung</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sdt.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Signalentdeckungstheorie</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+ <span class="menu-text">Anhang</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./webrconsole.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">WebR Konsole</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./license.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">License and Authorship</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#correct" id="toc-correct" class="nav-link active" data-scroll-target="#correct"><span class="header-section-number">21.1</span> %-Correct</a></li>
+  <li><a href="#vorgehen-in-der-sdt" id="toc-vorgehen-in-der-sdt" class="nav-link" data-scroll-target="#vorgehen-in-der-sdt"><span class="header-section-number">21.2</span> Vorgehen in der SDT</a>
+  <ul class="collapse">
+  <li><a href="#die-perspektive-der-versuchsperson" id="toc-die-perspektive-der-versuchsperson" class="nav-link" data-scroll-target="#die-perspektive-der-versuchsperson"><span class="header-section-number">21.2.1</span> Die Perspektive der Versuchsperson</a></li>
+  <li><a href="#die-perspektive-desder-externen-beobachterin" id="toc-die-perspektive-desder-externen-beobachterin" class="nav-link" data-scroll-target="#die-perspektive-desder-externen-beobachterin"><span class="header-section-number">21.2.2</span> Die Perspektive des/der externen Beobachter*in</a></li>
+  </ul></li>
+  <li><a href="#sdt-parameter-berechnen" id="toc-sdt-parameter-berechnen" class="nav-link" data-scroll-target="#sdt-parameter-berechnen"><span class="header-section-number">21.3</span> SDT Parameter berechnen</a>
+  <ul class="collapse">
+  <li><a href="#relative-häufigkeiten-von-hits-und-false-alarms-berechnen" id="toc-relative-häufigkeiten-von-hits-und-false-alarms-berechnen" class="nav-link" data-scroll-target="#relative-häufigkeiten-von-hits-und-false-alarms-berechnen"><span class="header-section-number">21.3.1</span> Relative Häufigkeiten von <em>Hits</em> und <em>False Alarms</em> berechnen</a></li>
+  <li><a href="#nas-ersetzen" id="toc-nas-ersetzen" class="nav-link" data-scroll-target="#nas-ersetzen"><span class="header-section-number">21.3.2</span> NAs ersetzen</a></li>
+  <li><a href="#hit-rate-und-false-alarm-rate-berechnen" id="toc-hit-rate-und-false-alarm-rate-berechnen" class="nav-link" data-scroll-target="#hit-rate-und-false-alarm-rate-berechnen"><span class="header-section-number">21.3.3</span> <em>Hit Rate</em> und <em>False Alarm Rate</em> berechnen</a></li>
+  <li><a href="#und-1-ersetzen" id="toc-und-1-ersetzen" class="nav-link" data-scroll-target="#und-1-ersetzen"><span class="header-section-number">21.3.4</span> 0 und 1 ersetzen</a></li>
+  <li><a href="#z-transformation" id="toc-z-transformation" class="nav-link" data-scroll-target="#z-transformation"><span class="header-section-number">21.3.5</span> <span class="math inline">\(z\)</span>-Transformation</a></li>
+  <li><a href="#d-und-c-berechnen" id="toc-d-und-c-berechnen" class="nav-link" data-scroll-target="#d-und-c-berechnen"><span class="header-section-number">21.3.6</span> <span class="math inline">\(d'\)</span> und <span class="math inline">\(c\)</span> berechnen</a></li>
+  <li><a href="#neuer-datensatz-erstellen" id="toc-neuer-datensatz-erstellen" class="nav-link" data-scroll-target="#neuer-datensatz-erstellen"><span class="header-section-number">21.3.7</span> Neuer Datensatz erstellen</a></li>
+  </ul></li>
+  <li><a href="#sdt-parameter-vergleichen" id="toc-sdt-parameter-vergleichen" class="nav-link" data-scroll-target="#sdt-parameter-vergleichen"><span class="header-section-number">21.4</span> SDT Parameter vergleichen</a></li>
+  <li><a href="#anwendungsbeispiele" id="toc-anwendungsbeispiele" class="nav-link" data-scroll-target="#anwendungsbeispiele"><span class="header-section-number">21.5</span> Anwendungsbeispiele</a></li>
+  <li><a href="#weiterführende-informationen" id="toc-weiterführende-informationen" class="nav-link" data-scroll-target="#weiterführende-informationen"><span class="header-section-number">21.6</span> Weiterführende Informationen</a></li>
+  <li><a href="#referenzen" id="toc-referenzen" class="nav-link" data-scroll-target="#referenzen"><span class="header-section-number">21.7</span> Referenzen</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./modeling.html">Datenmodellierung</a></li><li class="breadcrumb-item"><a href="./sdt.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Signalentdeckungstheorie</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Signalentdeckungstheorie</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-body">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Die Signalentdeckungstheorie (<em>signal detection theory</em> (SDT)) befasst sich damit, wie aus verrauschten Daten möglichst effizient Informationen extrahiert werden können. Es wird davon ausgegangen, dass in den Daten ein Signal, also relevante Information, enthalten ist, dieses aber durch zufällige Informationen bzw. Rauschen (<em>noise</em>) überdeckt wird. SDT ist somit eine Framework die ermöglicht Entscheidungen unter Unsicherheit zu verstehen und zu modellieren.</p>
+<p>Die Signalentdeckungstheorie hat ihren Ursprung in der Psychophysik/Wahrnehmungspsychologie und wurde ursprünglich in den 1950er Jahren von Green &amp; Swets (z.B. Swets, 1964; Green &amp; Swets, 1966) entwickelt. Sie wurde u.a. zur Optimierung von Entscheidungen aufgrund Radarsignalen im 2. Weltkrieg verwendet.</p>
+<p>In der Psychologie wird die Signalentdeckungstheorie vor allem in der Wahrnehmungs- und Entscheidungsforschung angewandt. Dabei geht es darum, wie gut eine Person in verschiedenen Situationen in der Lage ist, ein Signal zu erkennen, wie beispielsweise einen Schwellenmessung eines akkustischen oder visuellen Stimulus.</p>
+<p>Der Vorteil der Methode ist es, dass unterschieden werden kann, ob ein System/eine Person einen Reiz erkennen kann (<em>Sensitivität</em>) und was das System/die Person für ein Entscheidungsverhalten zeigt (<em>Antworttendenz</em>). <strong>Sensitivität</strong> bezieht sich auf die Fähigkeit des Entscheidungsträgers, zwischen zwei verschiedenen Arten von Signalen zu unterscheiden, während der die <strong>Antworttendenz (bias)</strong> die Tendenz des Entscheidungsträgers bezeichnet, eine Alternative gegenüber der anderen a priori zu bevorzugen. Durch die Trennung dieser beiden Komponenten können Forscher analysieren, wie verschiedene Faktoren die Entscheidungsleistung beeinflussen.</p>
+<p>In der Signalentdeckungstheorie wird zwischen vier möglichen Ergebnissen unterschieden:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 33%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>decision: present</th>
+<th>decision: absent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>signal: present</strong></td>
+<td><strong>HIT</strong> <br> Signal korrekt erkannt</td>
+<td><strong>MISS</strong> <br> Signal fälschlicherweise nicht erkannt</td>
+</tr>
+<tr class="even">
+<td><strong>signal: absent</strong></td>
+<td><strong>FALSE ALARM</strong> <br> Signal fälschlicherweise detektiert</td>
+<td><strong>CORRECT REJECTION</strong> <br> Signal korrekt als abwesend erkannt</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>Daraus folgend können Sensitivität und Antworttendenz wie folgt abgeleitet werden:</p>
+<p>Die <strong>Sensitivität (<em>sensitivity</em>, <span class="math inline">\(d'\)</span>)</strong>, also wie gut eine Person das Signal erkennen kann, enspricht der standardisierten Differenz zwischen den Mittelwerten der Verteilungen <em>Signal präsent</em> und <em>Signal abwesend</em>.</p>
+<p><span class="math inline">\(d' = z(\)</span>Treffer<span class="math inline">\() - z(\)</span>falscher Alarm<span class="math inline">\()\)</span><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>Die <strong>Antworttendenz (<em>bias</em>, <span class="math inline">\(c\)</span>)</strong>, also ob eine Person eher dazu neigt ein Signal als präsent oder abwesend zu kategorisieren (unabhängig von dessen Anwesenheit) entspricht:</p>
+<p><span class="math inline">\(c = −0,5*(z(\)</span>falscher Alarm<span class="math inline">\() + z(\)</span>Treffer<span class="math inline">\())\)</span></p>
+<p><br></p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Beispiel: Random Dot Experiment">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Beispiel: Random Dot Experiment
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Im Random Dot Experiment mussten die Versuchspersonen ein perzeptuelle Entscheidungsaufgabe bearbeiten. Dabei musste jeweils entscheiden werden, in welche Richtung sich eine Punktewolke bewegt.</p>
+<p>Die Punktewolke enthielt ein Signal, nämlich den Anteil (ca. 8%) der Punkte die sich in dieselbe Richtung bewegten (kohärente Punkte). Zusätzlich enthielt die Punktewolke aber auch Rauschen, also Punkte, die sich in eine beliebige/zufällige Richtung bewegten. Die Versuchspersonen mussten also <em>unter Unsicherheit</em> eine Entscheidung treffen.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>       id condition stimulus  resp corr
+1 sub-007     speed    right right    1
+2 sub-007     speed     left right    0
+3 sub-007     speed     left  left    1
+4 sub-007     speed    right right    1
+5 sub-007     speed     left right    0
+6 sub-007     speed    right  left    0</code></pre>
+</div>
+</div>
+<p>Es gibt verschiedene Möglichkeiten die Leistung der Versuchspersonen im Random Dot Task zu beschreiben, da wir sowohl die Antwortgeschwindigkeit wie auch die Korrektheit der Antworten gemessen haben.</p>
+<p>Wir schauen uns in diesem Kapitel zwei Wege an, wie die Korrektheit der Antworten analysiert werden können:</p>
+<ul>
+<li>%-Correct bestimmen</li>
+<li>Sensitivität und Bias mit SDT bestimmen</li>
+</ul>
+</div>
+</div>
+<p><br></p>
+<section id="correct" class="level2" data-number="21.1">
+<h2 data-number="21.1" class="anchored" data-anchor-id="correct"><span class="header-section-number">21.1</span> %-Correct</h2>
+<p>Weshalb ist die SDT nützlich? Dies kann am Beispiel des Masses %-Correct aufgezeigt werden. Das Berechnen von %-Correct, also dem Anteil richtiger Antworten innerhalb eines Experiments / einer Person / einer Bedingung, ist ein häufig genutztes Vorgehen, um zu quantifizieren, wie gut Personen eine Aufgabe lösen kann. Sie eignet sich jedoch nur als Mass für Sensitivität, wenn nicht zwischen der Sensitivität und der Antworttendenz unterschieden werden soll.</p>
+<p>Für unseren Random Dot-Datensatz können wir den Anteil richtiger Antworten jeder Versuchsperson aufgrund der gegebenen Antworten (<code>resp</code>) bzw. der Variable <code>corr</code> berechnen. Diese entspricht bei richtiger Antwort <code>1</code> und bei falscher Antwort <code>0</code>. Wenn wir den Durchschnitt (<code>mean()</code>) der Variable <code>corr</code> berechnen, erhalten wir den Anteil korrekter Antworten. Wenn wir diese Zahl <span class="math inline">\(\cdot 100\)</span> rechnen, erhalten wir <em>%-Correct</em>.</p>
+<p>Im Experiment wurde die Instruktion (<code>speed</code> und <code>accuracy</code>) innerhalb der Versuchspersonen manipuliert. Es macht daher Sinn, für diese beiden Bedingungen je einen Wert pro Person zu berechnen.</p>
+<div class="callout callout-style-default callout-caution callout-titled" title="Hands-on: %-Correct berechnen">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hands-on: %-Correct berechnen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>Erstellen Sie ein neues R-Projekt namens <code>complab_models</code>. Erstellen Sie im Projektordner einen Ordner <code>data</code>.</p></li>
+<li><p>Laden Sie Daten des Random Dot Experiments <a href="data/sdt_random_dot_clean.csv">hier</a> herunter und speichern Sie diese im erstellten Projekt im Ordner <code>data</code>.</p></li>
+<li><p>Öffnen Sie ein neues R-Skript/RNotebook/RMarkdown <code>signaldetection</code> und lesen Sie die heruntergeladenen Daten ein.</p></li>
+<li><p>Berechnen Sie die Sensitivität für jede Versuchsperson individuell getrennt für die beiden Bedingungen <code>speed</code> und <code>accuracy</code> (vgl. Output unten).</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>d_sens <span class="ot">=</span> <span class="er">|&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+# Groups:   id [3]
+  id      condition  sens
+  &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;
+1 sub-007 accuracy   68.3
+2 sub-007 speed      66.7
+3 sub-010 accuracy  100  
+4 sub-010 speed     100  
+5 sub-011 accuracy   91.7
+6 sub-011 speed      90  </code></pre>
+</div>
+</div>
+<ol start="5" type="1">
+<li>Der resultierende Datensatz der berechneten Sensitivitäten ist im Long-Format. Überführen Sie den Datensatz in das Wide-Format, um die Daten einfacher verständlich zu machen (vgl. Output unten).</li>
+</ol>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="sdt_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Wir nehmen nicht an, dass sich im Experiment die “Sensitivität” verändert hat, also wie gut eine Person eine Aufgabe lösen kann, sondern viel mehr, dass sich ihr Entscheidungskriterium verändert hat durch die unterschiedliche Instruktion. Tatsächlich finden wir unseren Daten keinen Unterschied. Es könnte aber sein, dass eine Instruktion dazu führt, dass eine Antworttendenz stärker auf die Daten Einfluss nimmt, als in einer anderen. In diesem Fall würde vielleicht eine Antworttendenz von Personen eher rechts als links zu drücken eher Einfluss nehmen, wenn man wenig Zeit hat die Aufgabe zu lösen.</p>
+<p>Wenn wir wissen möchten, ob die Aufgabe mit Speed-Instruktion gleich gut lösbar war wie die mit der Accuracy-Instruktion und gleichzeitig wissen möchten, ob die Personen eine Tendenz haben “rechts” oder “links” zu antworten, können wir die SDT anwenden.</p>
+</section>
+<section id="vorgehen-in-der-sdt" class="level2" data-number="21.2">
+<h2 data-number="21.2" class="anchored" data-anchor-id="vorgehen-in-der-sdt"><span class="header-section-number">21.2</span> Vorgehen in der SDT</h2>
+<p>Die SDT ist eine statistische Entscheidungstheorie, deren zentrale Fragestellung lautet: <strong>Was ist der (unbekannte) Zustand der Welt, angesichts der verrauschten Daten</strong>?</p>
+<p>In einem Modell macht es Sinn, sicherzustellen, dass das Problem einfach ist – wir beschränken die Welt auf zwei mögliche Zustände. Dies können beispielsweise sein:</p>
+<ul>
+<li>präsent – abwesend</li>
+<li>rechts – links</li>
+<li>neu/unbekannt – alt/bekannt (in einem Gedächtnisparadigma)</li>
+</ul>
+<p>Wir werden das Vorgehen in der SDT anhand unserer eigenen Random Dot Experiment Daten nachvollziehen. Hierfür werden wir das Experiment aus zwei Perspektiven betrachten:</p>
+<ol type="1">
+<li><p>aus der Perspektive einer Person, welche die Aufgabe hat, Stimuli in zwei Klassen zu klassifizieren und</p></li>
+<li><p>aus der Perspektive eines Modells, das die Leistung der Person in der Aufgabe vorhersagt.</p></li>
+</ol>
+<section id="die-perspektive-der-versuchsperson" class="level3" data-number="21.2.1">
+<h3 data-number="21.2.1" class="anchored" data-anchor-id="die-perspektive-der-versuchsperson"><span class="header-section-number">21.2.1</span> Die Perspektive der Versuchsperson</h3>
+<p>Wir betrachten ein Experiment, bei dem eine Person einen Stimulus in eine von zwei möglichen Kategorien einordnen muss. Das Random Dot Experiment beinhaltete die Stimuluskategorien <code>Bewegung nach rechts</code> und <code>Bewegung nach links</code>. Die Aufgabe der Person war es, eine binäre Klassifikation mit den Antwortoptionen <code>rechts</code> und <code>links</code> durchzuführen. Die Antwortoptionen entsprechen den beiden möglichen Zuständen der “Welt”, oder genauer gesagt, Hypothesen der Person über die möglichen Zustände der Welt.</p>
+<section id="annahmen" class="level4">
+<h4 class="anchored" data-anchor-id="annahmen">Annahmen</h4>
+<ol type="1">
+<li><p>Die Person verarbeitet den Stimulus und gelangt zu einer internen Repräsentation des Stimulus. Diese interne Repräsentation ist nicht deterministisch, sondern variiert zufällig und ist demzufolge eine Zufallsvariable <span class="math inline">\(X\)</span>. Wir nehmen an, dass die interne Repräsentation normalverteilt ist.</p></li>
+<li><p>Die Zufallsvariable <span class="math inline">\(X\)</span> repräsentiert die Information, die die Person über den Stimulus hat, also die Evidenz.</p></li>
+<li><p>Die Person weiss, dass <span class="math inline">\(X\)</span> aus einer von zwei Verteilungen gezogen wurde, die sich nur in ihrer Lage (in ihrem Mittelwert) unterscheiden. Welche Verteilung es war, weiss die Person jedoch nicht – dies muss sie anhand eines Kriteriums entscheiden.</p></li>
+<li><p>Die Person hat ein Kriterium <span class="math inline">\(k\)</span>, das sie verwendet, um zu entscheiden, ob sich der Stimulus nach <code>rechts</code> oder <code>links</code> bewegt. Eine einfache Entscheidungsregel lautet: Wenn <span class="math inline">\(X &gt; k\)</span>, dann bewegen sich die Punkte nach rechts, andernfalls nach links.</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="imgs/vuorre_sdt_randomdot.png" class="img-fluid figure-img"></p>
+<figcaption>Plot adapted and modified from Vuorre (2017)<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="die-perspektive-desder-externen-beobachterin" class="level3" data-number="21.2.2">
+<h3 data-number="21.2.2" class="anchored" data-anchor-id="die-perspektive-desder-externen-beobachterin"><span class="header-section-number">21.2.2</span> Die Perspektive des/der externen Beobachter*in</h3>
+<p>Die Leistung der Versuchsperson kann durch die Wahrscheinlichkeit beschrieben werden, dass sie einen Treffer (<code>Hit</code>) oder einen <code>False Alarm</code> produziert. Diese Wahrscheinlichkeiten werden als <em>Hit Rate</em> und <em>False Alarm Rate</em> bezeichnet. Die <em>Hit Rate</em> ist die Wahrscheinlichkeit, dass die Person einen richtig liegt, wenn der Stimulus rechts ist. Die <em>False Alarm Rate</em> ist die Wahrscheinlichkeit, dass die Person einen Fehler macht, wenn der Stimulus links ist.</p>
+<p>Die Antworten der Versuchspersonen können in einer Tabelle zusammengefasst werden, mit vier möglichen Ergebnissen.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Stimulus</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Antwort</strong></td>
+<td>Rechts</td>
+<td>Links</td>
+</tr>
+<tr class="even">
+<td>Rechts</td>
+<td>Hit</td>
+<td>False alarm (FA)</td>
+</tr>
+<tr class="odd">
+<td>Links</td>
+<td>Miss</td>
+<td>Correct rejection (CR)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Hit</strong>: Stimulus ist <code>rechts</code>, Antwort ist <code>rechts</code></li>
+<li>Miss: Stimulus ist <code>rechts</code>, Antwort ist <code>links</code></li>
+<li><strong>False alarm</strong>: Stimulus ist <code>links</code>, Antwort ist <code>rechts</code></li>
+<li>Correct rejection: Stimulus is <code>links</code>, Antwort ist <code>links</code></li>
+</ul>
+<div class="callout callout-style-default callout-caution callout-titled" title="Hands-on: Hit, False Alarm, Miss und Correct Rejection labeln">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hands-on: Hit, False Alarm, Miss und Correct Rejection labeln
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Setzen Sie diese verbale Beschreibung in R-Code um.</p>
+<ol type="1">
+<li>Erstellen Sie dazu im Random Dot Datensatz mit der Funktion <code>mutate()</code> eine Variable <code>type</code>. In dieser Variable soll für jeden Trial stehen, ob es sich um einen <code>Hit</code>, einen <code>Miss</code>, einen <code>FA</code> oder eine <code>CR</code> handelt (vgl. Daten unten).</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sdt <span class="ot">&lt;-</span> d <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(id, <span class="at">stimulus =</span> direction, resp) <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">type =</span> <span class="fu">case_when</span>(</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        direction <span class="sc">==</span> ... <span class="sc">&amp;</span> resp <span class="sc">==</span> ... <span class="sc">~</span> ...,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        ...</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        ...</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        ...))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>       id trial direction condition corrAns  resp corr        rt type
+1 sub-007     1     right     speed   right right    1 0.6537022  Hit
+2 sub-007     2      left     speed    left right    0 0.5821858 Miss
+3 sub-007     3      left     speed    left  left    1 1.3868371   CR
+4 sub-007     4     right     speed   right right    1 0.9550371  Hit
+5 sub-007     5      left     speed    left right    0 0.4990127 Miss
+6 sub-007     6     right     speed   right  left    0 0.6926959   FA</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="sdt-parameter-berechnen" class="level2" data-number="21.3">
+<h2 data-number="21.3" class="anchored" data-anchor-id="sdt-parameter-berechnen"><span class="header-section-number">21.3</span> SDT Parameter berechnen</h2>
+<p>Die beiden wichtigsten Parameter der Signal-Detektionstheorie sind <span class="math inline">\(d'\)</span> und <span class="math inline">\(c\)</span>.</p>
+<ul>
+<li><p><span class="math inline">\(d'\)</span> (<em>d-prime</em>) ist ein Mass für die Sensitivität eines Beobachters bei der Unterscheidung zwischen zwei Stimulusklassen. Ein größerer <span class="math inline">\(d'\)</span>-Wert zeigt eine grössere Sensitivität an. Dies bedeutet, dass die Verteilungen der beiden Stimulusklassen stärker voneinander getrennt sind und somit leichter unterscheidbar sind.</p></li>
+<li><p><span class="math inline">\(c\)</span> (<em>criterion</em>) ist ein Mass dafür, ob eine Voreingenommenheit (bias) für eine der beiden Antwortoptionen besteht. Genauer gesagt ist <span class="math inline">\(c\)</span> der Abstand vom tatsächlichen Kriterium zum Punkt welcher genau zwischen den Verteilungen liegt.</p></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Hands-on: Fragestellung">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hands-on: Fragestellung
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Was bedeuten <span class="math inline">\(d'\)</span> und <span class="math inline">\(c\)</span> in unserem Beispiel? Welche Fragestellung(en) können wir untersuchen?</p>
+</div>
+</div>
+<section id="relative-häufigkeiten-von-hits-und-false-alarms-berechnen" class="level3" data-number="21.3.1">
+<h3 data-number="21.3.1" class="anchored" data-anchor-id="relative-häufigkeiten-von-hits-und-false-alarms-berechnen"><span class="header-section-number">21.3.1</span> Relative Häufigkeiten von <em>Hits</em> und <em>False Alarms</em> berechnen</h3>
+<p>Um <span class="math inline">\(d'\)</span> und <span class="math inline">\(c\)</span> aus den beobachteten Antworthäufigkeiten zu berechnen, müssen wir zuerst die relativen Häufigkeiten der <em>Hits</em> (Hit Rate) und der <em>False Alarms</em> (FA Rate) berechnen.</p>
+<p>Die Hits sind die <code>rechts</code>-Antworten auf <code>rechts</code>-Stimuli. Dies bedeutet, dass wir zählen, wie oft bei einem <code>rechts</code> Stimulus die Antwort <code>rechts</code> war. Die False Alarms sind die <code>rechts</code>-Antworten auf <code>links</code>-Stimuli. Dies bedeutet, dass wir zählen, wie oft bei einem <code>links</code> Stimulus die Antwort <code>rechts</code> war.</p>
+<p>Um <span class="math inline">\(d'\)</span> und <span class="math inline">\(c\)</span> für jede Vpn in beiden Instruktions Bedingungen zu berechnen, zählen wir die verschiedenen Antworttypen (vgl. Daten unten) pro Person und Bedingung.</p>
+<div class="callout callout-style-default callout-caution callout-titled" title="Relative Häufigkeiten von _Hits_ und _False Alarms_ berechnen">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Relative Häufigkeiten von <em>Hits</em> und <em>False Alarms</em> berechnen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sdt_summary <span class="ot">&lt;-</span> sdt <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(..., ...) <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(...)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>sdt_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 539 × 4
+# Groups:   id, condition [140]
+   id      condition type      n
+   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt; &lt;int&gt;
+ 1 sub-007 accuracy  CR       21
+ 2 sub-007 accuracy  FA       10
+ 3 sub-007 accuracy  Hit      20
+ 4 sub-007 accuracy  Miss      9
+ 5 sub-007 speed     CR       20
+ 6 sub-007 speed     FA       10
+ 7 sub-007 speed     Hit      20
+ 8 sub-007 speed     Miss     10
+ 9 sub-010 accuracy  CR       30
+10 sub-010 accuracy  Hit      30
+# ℹ 529 more rows</code></pre>
+</div>
+</div>
+</div>
+</div>
+<p>Vor dem Berechnen von <span class="math inline">\(d'\)</span> und <span class="math inline">\(c\)</span> müssen wir den Datensatz noch formatieren: Hierzu konvertieren wir den Datensatz von <code>long</code> zu <code>wide</code>, um alle vier Antworttypen in jeweils eigenen Variablen zu speichern.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sdt_summary <span class="ot">&lt;-</span> sdt_summary <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> type, </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">values_from =</span> n)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>sdt_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 140 × 6
+# Groups:   id, condition [140]
+   id      condition    CR    FA   Hit  Miss
+   &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
+ 1 sub-007 accuracy     21    10    20     9
+ 2 sub-007 speed        20    10    20    10
+ 3 sub-010 accuracy     30    NA    30    NA
+ 4 sub-010 speed        30    NA    30    NA
+ 5 sub-011 accuracy     26     1    29     4
+ 6 sub-011 speed        26     2    28     4
+ 7 sub-012 accuracy     29     1    29     1
+ 8 sub-012 speed        30     1    29    NA
+ 9 sub-015 accuracy     25     6    24     5
+10 sub-015 speed        22     5    25     8
+# ℹ 130 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="nas-ersetzen" class="level3" data-number="21.3.2">
+<h3 data-number="21.3.2" class="anchored" data-anchor-id="nas-ersetzen"><span class="header-section-number">21.3.2</span> NAs ersetzen</h3>
+<p>Wir erstellen eine Hilfsfunktion <code>replace_NA()</code> um alle fehlenden Werte (<code>NA</code>) durch 0 zu ersetzen.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>replace_NA <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">=</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(x), <span class="dv">0</span>, x)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    x</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sdt_summary <span class="ot">&lt;-</span> sdt_summary <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(Hit, Miss, FA, CR), replace_NA))</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>sdt_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 140 × 6
+# Groups:   id, condition [140]
+   id      condition    CR    FA   Hit  Miss
+   &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;
+ 1 sub-007 accuracy     21    10    20     9
+ 2 sub-007 speed        20    10    20    10
+ 3 sub-010 accuracy     30     0    30     0
+ 4 sub-010 speed        30     0    30     0
+ 5 sub-011 accuracy     26     1    29     4
+ 6 sub-011 speed        26     2    28     4
+ 7 sub-012 accuracy     29     1    29     1
+ 8 sub-012 speed        30     1    29     0
+ 9 sub-015 accuracy     25     6    24     5
+10 sub-015 speed        22     5    25     8
+# ℹ 130 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="hit-rate-und-false-alarm-rate-berechnen" class="level3" data-number="21.3.3">
+<h3 data-number="21.3.3" class="anchored" data-anchor-id="hit-rate-und-false-alarm-rate-berechnen"><span class="header-section-number">21.3.3</span> <em>Hit Rate</em> und <em>False Alarm Rate</em> berechnen</h3>
+<p>Die <em>Hit Rate</em> und die <em>False Alarm Rate</em> kann anhand der folgenden Formeln berechnet werden:</p>
+<p><br></p>
+<p><span class="math display">\[ Hit~Rate = \frac{Hits}{Hits + Misses} \]</span></p>
+<p><br></p>
+<p><span class="math display">\[ FA~Rate = \frac{False Alarms}{False Alarms + Correct Rejections} \]</span> <br></p>
+<div class="callout callout-style-default callout-caution callout-titled" title="Hands-on: _Hit Rate_ und _False Alarm Rate_ berechnen">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hands-on: <em>Hit Rate</em> und <em>False Alarm Rate</em> berechnen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>sdt_summary <span class="ot">&lt;-</span> sdt_summary <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">hit_rate =</span> ...,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">fa_rate =</span> ...)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>sdt_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 140 × 8
+# Groups:   id, condition [140]
+   id      condition    CR    FA   Hit  Miss hit_rate fa_rate
+   &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;
+ 1 sub-007 accuracy     21    10    20     9    0.690  0.323 
+ 2 sub-007 speed        20    10    20    10    0.667  0.333 
+ 3 sub-010 accuracy     30     0    30     0    1      0     
+ 4 sub-010 speed        30     0    30     0    1      0     
+ 5 sub-011 accuracy     26     1    29     4    0.879  0.0370
+ 6 sub-011 speed        26     2    28     4    0.875  0.0714
+ 7 sub-012 accuracy     29     1    29     1    0.967  0.0333
+ 8 sub-012 speed        30     1    29     0    1      0.0323
+ 9 sub-015 accuracy     25     6    24     5    0.828  0.194 
+10 sub-015 speed        22     5    25     8    0.758  0.185 
+# ℹ 130 more rows</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="und-1-ersetzen" class="level3" data-number="21.3.4">
+<h3 data-number="21.3.4" class="anchored" data-anchor-id="und-1-ersetzen"><span class="header-section-number">21.3.4</span> 0 und 1 ersetzen</h3>
+<p>Wir erstellen eine Hilfsfunktion <code>correct_zero_one()</code> mit der wir bei den Hit und False Alarm Rates alle 0 und 1 Werte durch 0.001 oder 0.999 ersetzen. Dies machen wir, damit wir bei der Berechnung der z-Werte nicht <span class="math inline">\(\pm \infty\)</span> erhalten.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>correct_zero_one <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">identical</span>(x, <span class="dv">0</span>)) {</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>        x <span class="ot">=</span> x <span class="sc">+</span> <span class="fl">0.001</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">identical</span>(x, <span class="dv">1</span>)) {</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>        x <span class="ot">=</span> x <span class="sc">-</span> <span class="fl">0.001</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    x</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Für den nächsen Schritt nutzen wir die Funktion <code>correct_zero_one()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>sdt_summary <span class="ot">&lt;-</span> sdt_summary <span class="sc">|&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(hit_rate, fa_rate), correct_zero_one))</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>sdt_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 140 × 8
+# Groups:   id, condition [140]
+   id      condition    CR    FA   Hit  Miss hit_rate fa_rate
+   &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;
+ 1 sub-007 accuracy     21    10    20     9    0.690  0.323 
+ 2 sub-007 speed        20    10    20    10    0.667  0.333 
+ 3 sub-010 accuracy     30     0    30     0    0.999  0.001 
+ 4 sub-010 speed        30     0    30     0    0.999  0.001 
+ 5 sub-011 accuracy     26     1    29     4    0.879  0.0370
+ 6 sub-011 speed        26     2    28     4    0.875  0.0714
+ 7 sub-012 accuracy     29     1    29     1    0.967  0.0333
+ 8 sub-012 speed        30     1    29     0    0.999  0.0323
+ 9 sub-015 accuracy     25     6    24     5    0.828  0.194 
+10 sub-015 speed        22     5    25     8    0.758  0.185 
+# ℹ 130 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="z-transformation" class="level3" data-number="21.3.5">
+<h3 data-number="21.3.5" class="anchored" data-anchor-id="z-transformation"><span class="header-section-number">21.3.5</span> <span class="math inline">\(z\)</span>-Transformation</h3>
+<p>Als nächstes müssen die <span class="math inline">\(z\)</span>-Werte der <em>Hit Rate</em> und der <em>False Alarm Rate</em> berechnet werden. Dazu kann die Funktion <code>qnorm()</code>verwendet werden.</p>
+<div class="callout callout-style-default callout-caution callout-titled" title="Hands-on: $z$-Transformation">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hands-on: <span class="math inline">\(z\)</span>-Transformation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>sdt_summary <span class="ot">&lt;-</span> sdt_summary <span class="sc">|&gt;</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">zhr =</span> ...,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">zfa =</span> ...)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>sdt_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 140 × 10
+# Groups:   id, condition [140]
+   id      condition    CR    FA   Hit  Miss hit_rate fa_rate   zhr    zfa
+   &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+ 1 sub-007 accuracy     21    10    20     9    0.690  0.323  0.495 -0.460
+ 2 sub-007 speed        20    10    20    10    0.667  0.333  0.431 -0.431
+ 3 sub-010 accuracy     30     0    30     0    0.999  0.001  3.09  -3.09 
+ 4 sub-010 speed        30     0    30     0    0.999  0.001  3.09  -3.09 
+ 5 sub-011 accuracy     26     1    29     4    0.879  0.0370 1.17  -1.79 
+ 6 sub-011 speed        26     2    28     4    0.875  0.0714 1.15  -1.47 
+ 7 sub-012 accuracy     29     1    29     1    0.967  0.0333 1.83  -1.83 
+ 8 sub-012 speed        30     1    29     0    0.999  0.0323 3.09  -1.85 
+ 9 sub-015 accuracy     25     6    24     5    0.828  0.194  0.945 -0.865
+10 sub-015 speed        22     5    25     8    0.758  0.185  0.699 -0.896
+# ℹ 130 more rows</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="d-und-c-berechnen" class="level3" data-number="21.3.6">
+<h3 data-number="21.3.6" class="anchored" data-anchor-id="d-und-c-berechnen"><span class="header-section-number">21.3.6</span> <span class="math inline">\(d'\)</span> und <span class="math inline">\(c\)</span> berechnen</h3>
+<p>Nun können die SDT Parameter anhand der folgenden Formeln berechnet werden:</p>
+<p><br></p>
+<p><span class="math display">\[d' = z(Hit~Rate) - z(FA~Rate)\]</span></p>
+<p><br></p>
+<p><span class="math display">\[c = -0.5 * (z(Hit~Rate) + z(FA~Rate))\]</span> <br></p>
+<div class="callout callout-style-default callout-caution callout-titled" title="Hands-on: $d'$ und $c$ berechnen">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hands-on: <span class="math inline">\(d'\)</span> und <span class="math inline">\(c\)</span> berechnen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>sdt_summary <span class="ot">&lt;-</span> sdt_summary <span class="sc">|&gt;</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">dprime =</span> ...,</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">c =</span> ...) <span class="sc">|&gt;</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(dprime, c), round, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 140 × 13
+# Groups:   id, condition [140]
+   id     condition    CR    FA   Hit  Miss hit_rate fa_rate   zhr    zfa dprime
+   &lt;chr&gt;  &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+ 1 sub-0… accuracy     21    10    20     9    0.690  0.323  0.495 -0.460   0.96
+ 2 sub-0… speed        20    10    20    10    0.667  0.333  0.431 -0.431   0.86
+ 3 sub-0… accuracy     30     0    30     0    0.999  0.001  3.09  -3.09    6.18
+ 4 sub-0… speed        30     0    30     0    0.999  0.001  3.09  -3.09    6.18
+ 5 sub-0… accuracy     26     1    29     4    0.879  0.0370 1.17  -1.79    2.96
+ 6 sub-0… speed        26     2    28     4    0.875  0.0714 1.15  -1.47    2.62
+ 7 sub-0… accuracy     29     1    29     1    0.967  0.0333 1.83  -1.83    3.67
+ 8 sub-0… speed        30     1    29     0    0.999  0.0323 3.09  -1.85    4.94
+ 9 sub-0… accuracy     25     6    24     5    0.828  0.194  0.945 -0.865   1.81
+10 sub-0… speed        22     5    25     8    0.758  0.185  0.699 -0.896   1.59
+# ℹ 130 more rows
+# ℹ 2 more variables: k &lt;dbl&gt;, c &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="neuer-datensatz-erstellen" class="level3" data-number="21.3.7">
+<h3 data-number="21.3.7" class="anchored" data-anchor-id="neuer-datensatz-erstellen"><span class="header-section-number">21.3.7</span> Neuer Datensatz erstellen</h3>
+<p>Für den finalen Datensatz wählen wir <code>d'</code> und <code>c</code> für jede Person in jeder Bedingung.</p>
+<div class="callout callout-style-default callout-caution callout-titled" title="Hands-on: Datensatz erstellen">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hands-on: Datensatz erstellen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>sdt_final <span class="ot">&lt;-</span> sdt_summary <span class="sc">|&gt;</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(...)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>sdt_final</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 140 × 4
+# Groups:   id, condition [140]
+   id      condition dprime     c
+   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;
+ 1 sub-007 accuracy    0.96 -0.02
+ 2 sub-007 speed       0.86  0   
+ 3 sub-010 accuracy    6.18  0   
+ 4 sub-010 speed       6.18  0   
+ 5 sub-011 accuracy    2.96  0.31
+ 6 sub-011 speed       2.62  0.16
+ 7 sub-012 accuracy    3.67  0   
+ 8 sub-012 speed       4.94 -0.62
+ 9 sub-015 accuracy    1.81 -0.04
+10 sub-015 speed       1.59  0.1 
+# ℹ 130 more rows</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="sdt-parameter-vergleichen" class="level2" data-number="21.4">
+<h2 data-number="21.4" class="anchored" data-anchor-id="sdt-parameter-vergleichen"><span class="header-section-number">21.4</span> SDT Parameter vergleichen</h2>
+<p>In einem weiteren Schritt können die berechneten Parameter verglichen werden. So kann unterschieden werden, worauf sich die Instruktion ausgewirkt hat: Auf die Antworttendenz oder auf die Sensitivität?</p>
+<p>Um die SDT parameter zwischen den Bedingungen zu vergleichen berechnen wir für <span class="math inline">\(d'\)</span> und <span class="math inline">\(c\)</span> den Mittelwert (<code>mean()</code>) und die Standardabweichung (<code>sd()</code>) in beiden Bedingungen (<code>speed</code> und <code>accuracy</code>).</p>
+<div class="callout callout-style-default callout-caution callout-titled" title="Hands-on: Mittelwerte und SD berechnen, um Bedingungen zu vergleichen">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hands-on: Mittelwerte und SD berechnen, um Bedingungen zu vergleichen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>cs <span class="ot">&lt;-</span> sdt_final <span class="sc">|&gt;</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(id, condition, c) <span class="sc">|&gt;</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    Rmisc<span class="sc">::</span><span class="fu">summarySEwithin</span>(<span class="at">measurevar =</span> <span class="st">"..."</span>,</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">withinvars =</span> <span class="st">"..."</span>,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">idvar =</span> <span class="st">"..."</span>,</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>                           <span class="at">na.rm =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>                           <span class="at">conf.interval =</span> <span class="fl">0.95</span>)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>dprimes <span class="ot">&lt;-</span> sdt_final <span class="sc">|&gt;</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(id, condition, dprime) <span class="sc">|&gt;</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    Rmisc<span class="sc">::</span><span class="fu">summarySEwithin</span>(<span class="at">measurevar =</span> <span class="st">"..."</span>,</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>                           <span class="at">withinvars =</span> <span class="st">"..."</span>,</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>                           <span class="at">idvar =</span> <span class="st">"..."</span>,</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>                           <span class="at">na.rm =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>                           <span class="at">conf.interval =</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p>Wenn alle Schritte ausgeführt wird, kann mit folgendem Code ein Plot erstellt werden:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>p_dprime <span class="ot">&lt;-</span> dprimes <span class="sc">|&gt;</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> condition, <span class="at">y =</span> dprime, <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(condition, dprime), <span class="at">alpha =</span> <span class="fl">0.1</span>, <span class="at">data =</span> sdt_final, <span class="at">width =</span> <span class="fl">0.05</span>) <span class="sc">+</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(condition, dprime, <span class="at">group =</span> id), <span class="at">alpha =</span> <span class="fl">0.05</span>, <span class="at">data =</span> sdt_final, <span class="at">width =</span> <span class="fl">0.05</span>) <span class="sc">+</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_errorbar</span>(<span class="at">width =</span> <span class="fl">0.1</span>, <span class="fu">aes</span>(<span class="at">ymin =</span> dprime <span class="sc">-</span> ci,</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">ymax =</span> dprime <span class="sc">+</span> ci)) <span class="sc">+</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">fill =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Sensitivity"</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>p_bias <span class="ot">&lt;-</span> cs <span class="sc">|&gt;</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> condition, <span class="at">y =</span> c, <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span> </span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(condition, c), <span class="at">alpha =</span> <span class="fl">0.1</span>, <span class="at">data =</span> sdt_final, <span class="at">width =</span> <span class="fl">0.05</span>) <span class="sc">+</span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, </span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>               <span class="at">linetype =</span> <span class="st">"dashed"</span>,</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>               <span class="at">color =</span> <span class="st">"grey60"</span>) <span class="sc">+</span></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(condition, c, <span class="at">group =</span> id), <span class="at">alpha =</span> <span class="fl">0.05</span>, <span class="at">data =</span> sdt_final, <span class="at">width =</span> <span class="fl">0.05</span>) <span class="sc">+</span></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_errorbar</span>(<span class="at">width =</span> <span class="fl">0.1</span>, <span class="fu">aes</span>(<span class="at">ymin =</span> c <span class="sc">-</span> ci,</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">ymax =</span> c <span class="sc">+</span> ci)) <span class="sc">+</span></span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">fill =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Bias"</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>p_dprime <span class="sc">+</span> p_bias </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="sdt_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled" title="Hands-on: Was wissen wir nun?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hands-on: Was wissen wir nun?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Diskutieren Sie zusammen die beiden Plots: Was können wir daran sehen?</p>
+<p>Ob Unterschiede einer statistischen Untersuchung standhalten könnten wir z.B. mit einer ‘repeated-measures’ ANOVA untersuchen.</p>
+</div>
+</div>
+</section>
+<section id="anwendungsbeispiele" class="level2" data-number="21.5">
+<h2 data-number="21.5" class="anchored" data-anchor-id="anwendungsbeispiele"><span class="header-section-number">21.5</span> Anwendungsbeispiele</h2>
+<p>Die SDT wird in einem breiten Spektrum von Fragestellungen verwendet. Hier einige Beispiele:</p>
+<ul>
+<li><p><strong>Entdecken von Fake-News</strong>: Batailler, C., Brannon, S. M., Teas, P. E., &amp; Gawronski, B. (2021). A Signal Detection Approach to Understanding the Identification of Fake News. Perspectives on Psychological Science, 17(1), 78-98. https://doi.org/10.1177/1745691620986135</p></li>
+<li><p><strong>Go/No-Go-Task und Alkohol</strong>: Ames, S. L., Wong, S. W., Bechara, A., Cappelli, C., Dust, M., Grenard, J. L., &amp; Stacy, A. W. (2014). Neural correlates of a Go/NoGo task with alcohol stimuli in light and heavy young drinkers. Behavioural brain research, 274, 382-389. https://doi.org/10.1016/j.bbr.2014.08.039</p></li>
+<li><p><strong>Somatic Signal Detection Task</strong>: Mirams, L., Poliakoff, E., Brown, R.J. et al.&nbsp;Vision of the body increases interference on the somatic signal detection task. Exp Brain Res 202, 787–794 (2010). https://doi.org/10.1007/s00221-010-2185-7</p></li>
+</ul>
+<div class="callout callout-style-default callout-caution callout-titled" title="Hands-on: Anwendung der SDT">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hands-on: Anwendung der SDT
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Suchen Sie sich ein Paper mit einer SDT-Analyse oder wählen Sie eine der oben angegebenen Paper:</p>
+<p>Lesen Sie den Abstract durch (und falls notwendig Teile des Papers):</p>
+<ul>
+<li>Was war das Signal? Was der Noise?</li>
+<li>Was entspricht <span class="math inline">\(d'\)</span> und was <span class="math inline">\(c\)</span>?</li>
+<li>Was waren die Findings?</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="weiterführende-informationen" class="level2" data-number="21.6">
+<h2 data-number="21.6" class="anchored" data-anchor-id="weiterführende-informationen"><span class="header-section-number">21.6</span> Weiterführende Informationen</h2>
+<div class="callout callout-style-default callout-tip callout-titled" title="Weitere Anwendungsbeispiele">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Weitere Anwendungsbeispiele
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Das laufende Kursexperiment kann zwar mit SDT analysiert werden, es gibt jedoch weitaus spannendere Datensätze als den unseres Paradigmas:</p>
+<ul>
+<li><p><a href="https://kogpsy.github.io/neuroscicomplabFS23/pages/chapters/signal-detection-2.html">Hier</a> ein Beispiel eines Random Dot Experiments, bei dem den Personen vor den Dots Hinweisreize gezeigt wurde, in welche Richtung sich die Punktewolke am wahrscheinlichsten bewegen wird</p></li>
+<li><p><a href="https://kogpsy.github.io/neuroscicomplabFS23/pages/chapters/signal-detection-1.html#ged%C3%A4chtnis-experiment">Hier</a> ein Beispiel der Analyse eines Datensatzes von einem Gedächtnisexperiment (Signal: schon gesehenes Gesicht, Rauschen: neues Gesicht)</p></li>
+</ul>
+</div>
+</div>
+<ul>
+<li>Interaktives Tutorial zu SDT: <a href="https://wise.cgu.edu/wise-tutorials/tutorial-signal-detection-theory/" class="uri">https://wise.cgu.edu/wise-tutorials/tutorial-signal-detection-theory/</a></li>
+<li>Ausführlichere Einführung in die SDT: Stanislaw and Todorov (1999) und Macmillan and Creelman (2004)</li>
+<li>Einführung in die Verwendung von R zur Durchführung von SDT-Analysen: Knoblauch and Maloney (2012)</li>
+</ul>
+</section>
+<section id="referenzen" class="level2" data-number="21.7">
+<h2 data-number="21.7" class="anchored" data-anchor-id="referenzen"><span class="header-section-number">21.7</span> Referenzen</h2>
+<ul>
+<li>Vuorre, Matti. 2017. “Estimating Signal Detection Models with Regression Using the Brms R Package.” PsyArXiv. https://doi.org/10.31234/osf.io/vtfc3_v1.</li>
+</ul>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p><span class="math inline">\(z\)</span>-transformierte relative Häufigkeit der Treffer minus <span class="math inline">\(z\)</span>-transformierte relative Häufigkeit der falschen Alarme<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://vuorre.com/posts/sdt-regression/index.html#fig-sdt-example" class="uri">https://vuorre.com/posts/sdt-regression/index.html#fig-sdt-example</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Meistens wird Signaldetektion im Rahmen von Signal vs.&nbsp;Rauschen verwendet, die beiden Verteilungen können aber wie hier auch “Bewegung nach Rechts” und “Bewegung nach links” unmfassen.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script>
+
+
+
+/* update total correct if #webex-total_correct exists */
+
+update_total_correct = function() {
+
+  console.log("webex: update total_correct");
+
+
+
+  var t = document.getElementsByClassName("webex-total_correct");
+
+  for (var i = 0; i < t.length; i++) {
+
+    p = t[i].parentElement;
+
+    var correct = p.getElementsByClassName("webex-correct").length;
+
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+
+    var selects = p.getElementsByClassName("webex-select").length;
+
+
+
+    t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+
+  }
+
+}
+
+
+
+/* webex-solution button toggling function */
+
+b_func = function() {
+
+  console.log("webex: toggle hide");
+
+
+
+  var cl = this.parentElement.classList;
+
+  if (cl.contains('open')) {
+
+    cl.remove("open");
+
+  } else {
+
+    cl.add("open");
+
+  }
+
+}
+
+
+
+/* check answers */
+
+check_func = function() {
+
+  console.log("webex: check answers");
+
+
+
+  var cl = this.parentElement.classList;
+
+  if (cl.contains('unchecked')) {
+
+    cl.remove("unchecked");
+
+    this.innerHTML = "Hide Answers";
+
+  } else {
+
+    cl.add("unchecked");
+
+    this.innerHTML = "Show Answers";
+
+  }
+
+}
+
+
+
+/* function for checking solveme answers */
+
+solveme_func = function(e) {
+
+  console.log("webex: check solveme");
+
+
+
+  var real_answers = JSON.parse(this.dataset.answer);
+
+  var my_answer = this.value;
+
+  var cl = this.classList;
+
+  if (cl.contains("ignorecase")) {
+
+    my_answer = my_answer.toLowerCase();
+
+  }
+
+  if (cl.contains("nospaces")) {
+
+    my_answer = my_answer.replace(/ /g, "")
+
+  }
+
+
+
+  if (my_answer == "") {
+
+    cl.remove("webex-correct");
+
+    cl.remove("webex-incorrect");
+
+  } else if (real_answers.includes(my_answer)) {
+
+    cl.add("webex-correct");
+
+    cl.remove("webex-incorrect");
+
+  } else {
+
+    cl.add("webex-incorrect");
+
+    cl.remove("webex-correct");
+
+  }
+
+
+
+  // match numeric answers within a specified tolerance
+
+  if(this.dataset.tol > 0){
+
+    var tol = JSON.parse(this.dataset.tol);
+
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+
+      cl.add("webex-correct");
+
+    } else {
+
+      cl.remove("webex-correct");
+
+    }
+
+  }
+
+
+
+  // added regex bit
+
+  if (cl.contains("regex")){
+
+    answer_regex = RegExp(real_answers.join("|"))
+
+    if (answer_regex.test(my_answer)) {
+
+      cl.add("webex-correct");
+
+    }
+
+  }
+
+
+
+  update_total_correct();
+
+}
+
+
+
+/* function for checking select answers */
+
+select_func = function(e) {
+
+  console.log("webex: check select");
+
+
+
+  var cl = this.classList
+
+
+
+  /* add style */
+
+  cl.remove("webex-incorrect");
+
+  cl.remove("webex-correct");
+
+  if (this.value == "answer") {
+
+    cl.add("webex-correct");
+
+  } else if (this.value != "blank") {
+
+    cl.add("webex-incorrect");
+
+  }
+
+
+
+  update_total_correct();
+
+}
+
+
+
+/* function for checking radiogroups answers */
+
+radiogroups_func = function(e) {
+
+  console.log("webex: check radiogroups");
+
+
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+
+  var cl = checked_button.parentElement.classList;
+
+  var labels = checked_button.parentElement.parentElement.children;
+
+
+
+  /* get rid of styles */
+
+  for (i = 0; i < labels.length; i++) {
+
+    labels[i].classList.remove("webex-incorrect");
+
+    labels[i].classList.remove("webex-correct");
+
+  }
+
+
+
+  /* add style */
+
+  if (checked_button.value == "answer") {
+
+    cl.add("webex-correct");
+
+  } else {
+
+    cl.add("webex-incorrect");
+
+  }
+
+
+
+  update_total_correct();
+
+}
+
+
+
+window.onload = function() {
+
+  console.log("webex onload");
+
+  /* set up solution buttons */
+
+  var buttons = document.getElementsByTagName("button");
+
+
+
+  for (var i = 0; i < buttons.length; i++) {
+
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+
+      buttons[i].onclick = b_func;
+
+    }
+
+  }
+
+
+
+  var check_sections = document.getElementsByClassName("webex-check");
+
+  console.log("check:", check_sections.length);
+
+  for (var i = 0; i < check_sections.length; i++) {
+
+    check_sections[i].classList.add("unchecked");
+
+
+
+    let btn = document.createElement("button");
+
+    btn.innerHTML = "Show Answers";
+
+    btn.classList.add("webex-check-button");
+
+    btn.onclick = check_func;
+
+    check_sections[i].appendChild(btn);
+
+
+
+    let spn = document.createElement("span");
+
+    spn.classList.add("webex-total_correct");
+
+    check_sections[i].appendChild(spn);
+
+  }
+
+
+
+  /* set up webex-solveme inputs */
+
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+
+
+  for (var i = 0; i < solveme.length; i++) {
+
+    /* make sure input boxes don't auto-anything */
+
+    solveme[i].setAttribute("autocomplete","off");
+
+    solveme[i].setAttribute("autocorrect", "off");
+
+    solveme[i].setAttribute("autocapitalize", "off");
+
+    solveme[i].setAttribute("spellcheck", "false");
+
+    solveme[i].value = "";
+
+
+
+    /* adjust answer for ignorecase or nospaces */
+
+    var cl = solveme[i].classList;
+
+    var real_answer = solveme[i].dataset.answer;
+
+    if (cl.contains("ignorecase")) {
+
+      real_answer = real_answer.toLowerCase();
+
+    }
+
+    if (cl.contains("nospaces")) {
+
+      real_answer = real_answer.replace(/ /g, "");
+
+    }
+
+    solveme[i].dataset.answer = real_answer;
+
+
+
+    /* attach checking function */
+
+    solveme[i].onkeyup = solveme_func;
+
+    solveme[i].onchange = solveme_func;
+
+
+
+    solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+
+  }
+
+
+
+  /* set up radiogroups */
+
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+
+  for (var i = 0; i < radiogroups.length; i++) {
+
+    radiogroups[i].onchange = radiogroups_func;
+
+  }
+
+
+
+  /* set up selects */
+
+  var selects = document.getElementsByClassName("webex-select");
+
+  for (var i = 0; i < selects.length; i++) {
+
+    selects[i].onchange = select_func;
+
+    selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+
+  }
+
+
+
+  update_total_correct();
+
+}
+
+
+
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/kogpsy\.github\.io\/neuroscicomplabFS25\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation column-body">
+  <div class="nav-page nav-page-previous">
+      <a href="./modeling.html" class="pagination-link" aria-label="Einführung">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Einführung</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./webrconsole.html" class="pagination-link" aria-label="WebR Konsole">
+        <span class="nav-page-text">WebR Konsole</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link active" href="./license.html" aria-current="page">
+<p>Copyright 2025, Gerda Wyssen, Enea Weber, Daniel Fitze, and Andrew Ellis</p>
+</a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/kogpsy/neuroscicomplabFS25">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

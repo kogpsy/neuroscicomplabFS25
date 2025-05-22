@@ -74,8 +74,9 @@ book:
     - intro_eeg.qmd
 
   - part: Datenmodellierung
-    #chapters:
-    #-
+    chapters:
+    - modeling.qmd
+    - sdt.qmd
 
   - part: Anhang
     chapters:
@@ -107,9 +108,9 @@ format:
 filters:
   - webr
 
-# execute:
-#   cache: false
-#   freeze: false # re-render only when source changes
+execute:
+  #cache: false
+  freeze: true # re-render only when source changes
 # #  execute-dir: project
 
 bibliography: bibliography.bib
