@@ -257,7 +257,15 @@ Welche Fragestellung(en) können wir untersuchen?
 
 :::
 
-### Relative Häufigkeiten von _Hits_ und _False Alarms_ berechnen
+Um $d'$ und $c$ zu erhalten, berechnen wir zuerst die _Hit Rate_ und die _False Alarm Rate_, $z$-transformieren diese und nehmen dann die Differenz.
+
+$$d' = z(Hit~Rate) - z(FA~Rate)$$
+
+<br>
+
+$$c = -0.5 * (z(Hit~Rate) + z(FA~Rate))$$
+
+#### __Relative Häufigkeiten von _Hits_ und _False Alarms_ berechnen__
 
 Um $d'$ und $c$ aus den beobachteten Antworthäufigkeiten zu berechnen, müssen wir zuerst die relativen Häufigkeiten der _Hits_ (Hit Rate) und der _False Alarms_ (FA Rate) berechnen.
 
@@ -298,7 +306,8 @@ sdt_summary <- sdt_summary |>
 sdt_summary
 ```
 
-### NAs ersetzen
+#### __NAs ersetzen__
+
 Wir erstellen eine Hilfsfunktion `replace_NA()` um alle fehlenden Werte (`NA`) durch 0 zu ersetzen.
 
 ```{r}
@@ -314,7 +323,7 @@ sdt_summary <- sdt_summary |>
 sdt_summary
 ```
 
-### _Hit Rate_ und _False Alarm Rate_ berechnen
+#### __*Hit Rate* und *False Alarm Rate* berechnen__
 
 Die _Hit Rate_ und die _False Alarm Rate_ kann anhand der folgenden Formeln berechnet werden:
 
@@ -345,7 +354,7 @@ sdt_summary
 ```
 :::
 
-### 0 und 1 ersetzen
+#### __0 und 1 ersetzen__
 
 Wir erstellen eine Hilfsfunktion `correct_zero_one()` mit der wir bei den Hit und False Alarm Rates alle 0 und 1 Werte durch 0.001 oder 0.999 ersetzen. 
 Dies machen wir, damit wir bei der Berechnung der z-Werte nicht $\pm \infty$ erhalten. 
@@ -369,7 +378,7 @@ sdt_summary <- sdt_summary |>
 sdt_summary
 ```
 
-### $z$-Transformation
+#### __$z$-Transformation__
 
 Als nächstes müssen die $z$-Werte der _Hit Rate_ und der _False Alarm Rate_ berechnet werden. 
 Dazu kann die Funktion `qnorm()`verwendet werden.
@@ -393,7 +402,7 @@ sdt_summary
 ```
 :::
 
-### $d'$ und $c$ berechnen
+#### __$d'$ und $c$ berechnen__
 
 Nun können die SDT Parameter anhand der folgenden Formeln berechnet werden:
 
@@ -426,7 +435,7 @@ sdt_summary
 ```
 :::
 
-### Neuer Datensatz erstellen
+#### __Neuer Datensatz erstellen__
 
 Für den finalen Datensatz wählen wir `d'` und `c` für jede Person in jeder Bedingung.
 
@@ -452,7 +461,7 @@ sdt_final
 In einem weiteren Schritt können die berechneten Parameter verglichen werden.
 So kann unterschieden werden, worauf sich die Instruktion ausgewirkt hat: Auf die Antworttendenz oder auf die Sensitivität?
 
-Um die SDT parameter zwischen den Bedingungen zu vergleichen berechnen wir für $d'$ und $c$ den Mittelwert (`mean()`) und die Standardabweichung (`sd()`) in beiden Bedingungen (`speed` und `accuracy`).
+Um die SDT Parameter zwischen den Bedingungen zu vergleichen berechnen wir für $d'$ und $c$ den Mittelwert (`mean()`) und die Standardabweichung (`sd()`) in beiden Bedingungen (`speed` und `accuracy`).
 
 :::{.callout-caution title="Hands-on: Mittelwerte und SD berechnen, um Bedingungen zu vergleichen"}
 

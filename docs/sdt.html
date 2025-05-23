@@ -472,16 +472,7 @@ window.Quarto = {
   <li><a href="#die-perspektive-der-versuchsperson" id="toc-die-perspektive-der-versuchsperson" class="nav-link" data-scroll-target="#die-perspektive-der-versuchsperson"><span class="header-section-number">21.2.1</span> Die Perspektive der Versuchsperson</a></li>
   <li><a href="#die-perspektive-desder-externen-beobachterin" id="toc-die-perspektive-desder-externen-beobachterin" class="nav-link" data-scroll-target="#die-perspektive-desder-externen-beobachterin"><span class="header-section-number">21.2.2</span> Die Perspektive des/der externen Beobachter*in</a></li>
   </ul></li>
-  <li><a href="#sdt-parameter-berechnen" id="toc-sdt-parameter-berechnen" class="nav-link" data-scroll-target="#sdt-parameter-berechnen"><span class="header-section-number">21.3</span> SDT Parameter berechnen</a>
-  <ul class="collapse">
-  <li><a href="#relative-häufigkeiten-von-hits-und-false-alarms-berechnen" id="toc-relative-häufigkeiten-von-hits-und-false-alarms-berechnen" class="nav-link" data-scroll-target="#relative-häufigkeiten-von-hits-und-false-alarms-berechnen"><span class="header-section-number">21.3.1</span> Relative Häufigkeiten von <em>Hits</em> und <em>False Alarms</em> berechnen</a></li>
-  <li><a href="#nas-ersetzen" id="toc-nas-ersetzen" class="nav-link" data-scroll-target="#nas-ersetzen"><span class="header-section-number">21.3.2</span> NAs ersetzen</a></li>
-  <li><a href="#hit-rate-und-false-alarm-rate-berechnen" id="toc-hit-rate-und-false-alarm-rate-berechnen" class="nav-link" data-scroll-target="#hit-rate-und-false-alarm-rate-berechnen"><span class="header-section-number">21.3.3</span> <em>Hit Rate</em> und <em>False Alarm Rate</em> berechnen</a></li>
-  <li><a href="#und-1-ersetzen" id="toc-und-1-ersetzen" class="nav-link" data-scroll-target="#und-1-ersetzen"><span class="header-section-number">21.3.4</span> 0 und 1 ersetzen</a></li>
-  <li><a href="#z-transformation" id="toc-z-transformation" class="nav-link" data-scroll-target="#z-transformation"><span class="header-section-number">21.3.5</span> <span class="math inline">\(z\)</span>-Transformation</a></li>
-  <li><a href="#d-und-c-berechnen" id="toc-d-und-c-berechnen" class="nav-link" data-scroll-target="#d-und-c-berechnen"><span class="header-section-number">21.3.6</span> <span class="math inline">\(d'\)</span> und <span class="math inline">\(c\)</span> berechnen</a></li>
-  <li><a href="#neuer-datensatz-erstellen" id="toc-neuer-datensatz-erstellen" class="nav-link" data-scroll-target="#neuer-datensatz-erstellen"><span class="header-section-number">21.3.7</span> Neuer Datensatz erstellen</a></li>
-  </ul></li>
+  <li><a href="#sdt-parameter-berechnen" id="toc-sdt-parameter-berechnen" class="nav-link" data-scroll-target="#sdt-parameter-berechnen"><span class="header-section-number">21.3</span> SDT Parameter berechnen</a></li>
   <li><a href="#sdt-parameter-vergleichen" id="toc-sdt-parameter-vergleichen" class="nav-link" data-scroll-target="#sdt-parameter-vergleichen"><span class="header-section-number">21.4</span> SDT Parameter vergleichen</a></li>
   <li><a href="#anwendungsbeispiele" id="toc-anwendungsbeispiele" class="nav-link" data-scroll-target="#anwendungsbeispiele"><span class="header-section-number">21.5</span> Anwendungsbeispiele</a></li>
   <li><a href="#weiterführende-informationen" id="toc-weiterführende-informationen" class="nav-link" data-scroll-target="#weiterführende-informationen"><span class="header-section-number">21.6</span> Weiterführende Informationen</a></li>
@@ -766,8 +757,12 @@ Hands-on: Fragestellung
 <p>Was bedeuten <span class="math inline">\(d'\)</span> und <span class="math inline">\(c\)</span> in unserem Beispiel? Welche Fragestellung(en) können wir untersuchen?</p>
 </div>
 </div>
-<section id="relative-häufigkeiten-von-hits-und-false-alarms-berechnen" class="level3" data-number="21.3.1">
-<h3 data-number="21.3.1" class="anchored" data-anchor-id="relative-häufigkeiten-von-hits-und-false-alarms-berechnen"><span class="header-section-number">21.3.1</span> Relative Häufigkeiten von <em>Hits</em> und <em>False Alarms</em> berechnen</h3>
+<p>Um <span class="math inline">\(d'\)</span> und <span class="math inline">\(c\)</span> zu erhalten, berechnen wir zuerst die <em>Hit Rate</em> und die <em>False Alarm Rate</em>, <span class="math inline">\(z\)</span>-transformieren diese und nehmen dann die Differenz.</p>
+<p><span class="math display">\[d' = z(Hit~Rate) - z(FA~Rate)\]</span></p>
+<p><br></p>
+<p><span class="math display">\[c = -0.5 * (z(Hit~Rate) + z(FA~Rate))\]</span></p>
+<section id="relative-häufigkeiten-von-hits-und-false-alarms-berechnen" class="level4">
+<h4 class="anchored" data-anchor-id="relative-häufigkeiten-von-hits-und-false-alarms-berechnen"><strong>Relative Häufigkeiten von <em>Hits</em> und <em>False Alarms</em> berechnen</strong></h4>
 <p>Um <span class="math inline">\(d'\)</span> und <span class="math inline">\(c\)</span> aus den beobachteten Antworthäufigkeiten zu berechnen, müssen wir zuerst die relativen Häufigkeiten der <em>Hits</em> (Hit Rate) und der <em>False Alarms</em> (FA Rate) berechnen.</p>
 <p>Die Hits sind die <code>rechts</code>-Antworten auf <code>rechts</code>-Stimuli. Dies bedeutet, dass wir zählen, wie oft bei einem <code>rechts</code> Stimulus die Antwort <code>rechts</code> war. Die False Alarms sind die <code>rechts</code>-Antworten auf <code>links</code>-Stimuli. Dies bedeutet, dass wir zählen, wie oft bei einem <code>links</code> Stimulus die Antwort <code>rechts</code> war.</p>
 <p>Um <span class="math inline">\(d'\)</span> und <span class="math inline">\(c\)</span> für jede Vpn in beiden Instruktions Bedingungen zu berechnen, zählen wir die verschiedenen Antworttypen (vgl. Daten unten) pro Person und Bedingung.</p>
@@ -834,8 +829,8 @@ Relative Häufigkeiten von <em>Hits</em> und <em>False Alarms</em> berechnen
 </div>
 </div>
 </section>
-<section id="nas-ersetzen" class="level3" data-number="21.3.2">
-<h3 data-number="21.3.2" class="anchored" data-anchor-id="nas-ersetzen"><span class="header-section-number">21.3.2</span> NAs ersetzen</h3>
+<section id="nas-ersetzen" class="level4">
+<h4 class="anchored" data-anchor-id="nas-ersetzen"><strong>NAs ersetzen</strong></h4>
 <p>Wir erstellen eine Hilfsfunktion <code>replace_NA()</code> um alle fehlenden Werte (<code>NA</code>) durch 0 zu ersetzen.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>replace_NA <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
@@ -866,8 +861,8 @@ Relative Häufigkeiten von <em>Hits</em> und <em>False Alarms</em> berechnen
 </div>
 </div>
 </section>
-<section id="hit-rate-und-false-alarm-rate-berechnen" class="level3" data-number="21.3.3">
-<h3 data-number="21.3.3" class="anchored" data-anchor-id="hit-rate-und-false-alarm-rate-berechnen"><span class="header-section-number">21.3.3</span> <em>Hit Rate</em> und <em>False Alarm Rate</em> berechnen</h3>
+<section id="hit-rate-und-false-alarm-rate-berechnen" class="level4">
+<h4 class="anchored" data-anchor-id="hit-rate-und-false-alarm-rate-berechnen"><strong><em>Hit Rate</em> und <em>False Alarm Rate</em> berechnen</strong></h4>
 <p>Die <em>Hit Rate</em> und die <em>False Alarm Rate</em> kann anhand der folgenden Formeln berechnet werden:</p>
 <p><br></p>
 <p><span class="math display">\[ Hit~Rate = \frac{Hits}{Hits + Misses} \]</span></p>
@@ -911,8 +906,8 @@ Hands-on: <em>Hit Rate</em> und <em>False Alarm Rate</em> berechnen
 </div>
 </div>
 </section>
-<section id="und-1-ersetzen" class="level3" data-number="21.3.4">
-<h3 data-number="21.3.4" class="anchored" data-anchor-id="und-1-ersetzen"><span class="header-section-number">21.3.4</span> 0 und 1 ersetzen</h3>
+<section id="und-1-ersetzen" class="level4">
+<h4 class="anchored" data-anchor-id="und-1-ersetzen"><strong>0 und 1 ersetzen</strong></h4>
 <p>Wir erstellen eine Hilfsfunktion <code>correct_zero_one()</code> mit der wir bei den Hit und False Alarm Rates alle 0 und 1 Werte durch 0.001 oder 0.999 ersetzen. Dies machen wir, damit wir bei der Berechnung der z-Werte nicht <span class="math inline">\(\pm \infty\)</span> erhalten.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>correct_zero_one <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
@@ -948,8 +943,8 @@ Hands-on: <em>Hit Rate</em> und <em>False Alarm Rate</em> berechnen
 </div>
 </div>
 </section>
-<section id="z-transformation" class="level3" data-number="21.3.5">
-<h3 data-number="21.3.5" class="anchored" data-anchor-id="z-transformation"><span class="header-section-number">21.3.5</span> <span class="math inline">\(z\)</span>-Transformation</h3>
+<section id="z-transformation" class="level4">
+<h4 class="anchored" data-anchor-id="z-transformation"><strong><span class="math inline">\(z\)</span>-Transformation</strong></h4>
 <p>Als nächstes müssen die <span class="math inline">\(z\)</span>-Werte der <em>Hit Rate</em> und der <em>False Alarm Rate</em> berechnet werden. Dazu kann die Funktion <code>qnorm()</code>verwendet werden.</p>
 <div class="callout callout-style-default callout-caution callout-titled" title="Hands-on: $z$-Transformation">
 <div class="callout-header d-flex align-content-center">
@@ -989,8 +984,8 @@ Hands-on: <span class="math inline">\(z\)</span>-Transformation
 </div>
 </div>
 </section>
-<section id="d-und-c-berechnen" class="level3" data-number="21.3.6">
-<h3 data-number="21.3.6" class="anchored" data-anchor-id="d-und-c-berechnen"><span class="header-section-number">21.3.6</span> <span class="math inline">\(d'\)</span> und <span class="math inline">\(c\)</span> berechnen</h3>
+<section id="d-und-c-berechnen" class="level4">
+<h4 class="anchored" data-anchor-id="d-und-c-berechnen"><strong><span class="math inline">\(d'\)</span> und <span class="math inline">\(c\)</span> berechnen</strong></h4>
 <p>Nun können die SDT Parameter anhand der folgenden Formeln berechnet werden:</p>
 <p><br></p>
 <p><span class="math display">\[d' = z(Hit~Rate) - z(FA~Rate)\]</span></p>
@@ -1035,8 +1030,8 @@ Hands-on: <span class="math inline">\(d'\)</span> und <span class="math inline">
 </div>
 </div>
 </section>
-<section id="neuer-datensatz-erstellen" class="level3" data-number="21.3.7">
-<h3 data-number="21.3.7" class="anchored" data-anchor-id="neuer-datensatz-erstellen"><span class="header-section-number">21.3.7</span> Neuer Datensatz erstellen</h3>
+<section id="neuer-datensatz-erstellen" class="level4">
+<h4 class="anchored" data-anchor-id="neuer-datensatz-erstellen"><strong>Neuer Datensatz erstellen</strong></h4>
 <p>Für den finalen Datensatz wählen wir <code>d'</code> und <code>c</code> für jede Person in jeder Bedingung.</p>
 <div class="callout callout-style-default callout-caution callout-titled" title="Hands-on: Datensatz erstellen">
 <div class="callout-header d-flex align-content-center">
@@ -1079,7 +1074,7 @@ Hands-on: Datensatz erstellen
 <section id="sdt-parameter-vergleichen" class="level2" data-number="21.4">
 <h2 data-number="21.4" class="anchored" data-anchor-id="sdt-parameter-vergleichen"><span class="header-section-number">21.4</span> SDT Parameter vergleichen</h2>
 <p>In einem weiteren Schritt können die berechneten Parameter verglichen werden. So kann unterschieden werden, worauf sich die Instruktion ausgewirkt hat: Auf die Antworttendenz oder auf die Sensitivität?</p>
-<p>Um die SDT parameter zwischen den Bedingungen zu vergleichen berechnen wir für <span class="math inline">\(d'\)</span> und <span class="math inline">\(c\)</span> den Mittelwert (<code>mean()</code>) und die Standardabweichung (<code>sd()</code>) in beiden Bedingungen (<code>speed</code> und <code>accuracy</code>).</p>
+<p>Um die SDT Parameter zwischen den Bedingungen zu vergleichen berechnen wir für <span class="math inline">\(d'\)</span> und <span class="math inline">\(c\)</span> den Mittelwert (<code>mean()</code>) und die Standardabweichung (<code>sd()</code>) in beiden Bedingungen (<code>speed</code> und <code>accuracy</code>).</p>
 <div class="callout callout-style-default callout-caution callout-titled" title="Hands-on: Mittelwerte und SD berechnen, um Bedingungen zu vergleichen">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
