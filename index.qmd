@@ -122,7 +122,7 @@ Sie haben die Möglichkeit das Quiz mehrmals zu wiederholen.
 | [Übung 2: Data wrangling](uebung_2.qmd) | 28.02.2025 | 14.03.2025 | Durcharbeiten des Skripts [Daten importieren und vorverarbeiten](datawrangling.qmd) auf eigenem PC (muss nicht abgegeben werden) |
 | [Übung 3: Datenpreprocessing und -visualisierung](uebung_3.qmd) | 21.03.2025 | 18.04.2025 23:55 | Daten verarbeiten und sinnvoll visualisieren |
 | [Übung 4: Datenanalyse Report](uebung_4.qmd) | 04.04.2025 | 08.05.2025 23:55 | Bayesianische Analyse oder Equivalence Testing |
-| [Übung 5: EEG Project]() | 09.05.2025 | 30.05.2025 23:55 | tba |
+| [Übung 5: EEG Project]() | 09.05.2025 | 06.06.2025 23:55 | auf Ilias |
 | [Abschlussquiz]() | 30.05.2025 | 07.06.2025 23:55 | auf Ilias |
 
 

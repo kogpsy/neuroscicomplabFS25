@@ -232,8 +232,8 @@ sdt <- d |>
 sdt <- d |>
     mutate(type = case_when(
         direction == "right" & resp == "right" ~ "Hit",
-        direction == "right" & resp == "left" ~ "FA",
-        direction == "left" & resp == "right" ~ "Miss",
+        direction == "right" & resp == "left" ~ "Miss",
+        direction == "left" & resp == "right" ~ "FA",
         direction == "left" & resp == "left" ~ "CR"))
 
 head(sdt)
