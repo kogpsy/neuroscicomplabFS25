@@ -452,12 +452,12 @@ data_ddm |>
 Die Decision Variable `dv` repräsentiert nun die kumulierten Evidenz, aufgrund dessen das Gehirn eine Entscheidung treffen kann. 
 Wenn der Wert der _decision variable_  grösser als die obere Grenze oder kleiner als die untere Grenze wird, wird die Evidenzakkumulierung abgebrochen, und eine Entscheidung getroffen.
 
-Wir können nun noch die _non-decision time_ hinzufügen, und den Anfangspunkt (_bias_) der Evidenzakkumulierung. 
+Wir können nun noch die __non-decision time__ und den Anfangspunkt (__bias__) der Evidenzakkumulierung hinzufügen. 
 
-Die _non-decision time_ beschreibt die Zeit, welche nicht der Evidenzakkumulierung dient.
+Die __non-decision time__ beschreibt die Zeit, welche nicht der Evidenzakkumulierung dient.
 Vor dem Entscheidungsprozess ist das z.B. das Ausrichten des Blicks auf die Aufgabe, nach dem Entscheidungsprozes ist dies z.B. die Ausführung des Tastendrucks.
 
-Der _bias_, also der Anfangspunkt ist ein sehr wichtiger Parameter der beeinflusst, ob schon vor dem Entscheidungsprozess zu einer gewissen Antwort tendiert wird (Antworttendenz).
+Der __bias__, also der Anfangspunkt ist ein sehr wichtiger Parameter der beeinflusst, ob schon vor dem Entscheidungsprozess zu einer gewissen Antwort tendiert wird (Antworttendenz).
 Wenn beispielsweise der Anfangspunkt unterhalb der Mitte liegt, braucht es weniger Evidenz um die untere Grenze zu überschreiten und mehr Evidenz für die obere Grenze zu überschreiten.
 
 Die _boundaries_ beeinflussen, wie viel Evidenz ausreicht, um eine Entscheidung zu treffen. Will man sich ganz sicher sein, sind die _boundaries_ weiter auseinander.
@@ -609,7 +609,7 @@ fastslow |>
 ## Code
 
 ```{r code_folding=TRUE}
-#| warning: false
+#| eval: false
 set.seed(829)
 
 slow = drift_diffusion(driftrate = 0.8) |> mutate(type = "slow")
