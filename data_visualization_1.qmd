@@ -303,13 +303,95 @@ Um in _RStudio_ ein GUI für das Datenvisualisieren zu verwenden, kann das _Pack
 ### Mehrere Plots in einer Grafik darstellen
 
 Dies können Sie mit dem Package `patchwork` sehr einfach machen. 
-Sie finden oben oder [hier](https://kogpsy.github.io/neuroscicomplabFS23/pages/chapters/summarizing-data.html#%C3%BCber-versuchsperson-aggregiert) ein Beispiel.
 
 <aside>Wenn Sie das _Package_ {patchwork} zum ersten Mal nutzen, können Sie es in der Konsole mit `install.packages("patchwork")` installieren. </aside>
+
+```{r}
+library(patchwork)
+p1 <- ggplot(data = d_away,
+       mapping = aes(x = value1,
+                     y = value2)) +
+    geom_point() +
+    labs(title = "Plot A", 
+         subtitle = "Verteilung der Rohwerte",
+        x = "Wert 1  [a.u.]",
+        y = "Wert 2 [a.u.]") +
+    theme_minimal()
+
+p2 <- ggplot(data = d_away,
+       mapping = aes(x = value1,
+                     y = value2)) +
+    geom_point() +
+    labs(title = "Plot B", 
+         subtitle = "Verteilung der Rohwerte",
+        x = "Wert 1  [a.u.]",
+        y = "Wert 2 [a.u.]") +
+    theme_minimal()
+
+p1 + p2
+
+```
+Oder auch untereinander
+
+```{r}
+p1 / p2
+```
+
 
 ### Grafik abspeichern
 
 Eine Grafik lässt sich abspeichern unter dem Reiter `Plots` > `Export` oder mit der Funktion `ggsave()`.
+
+### Wieso ist Plotten so wichtig?
+
+Studiendaten können wichtige Informationen enthalten, die ohne Grafiken übersehen werden können (vgl. Rousselet, Pernet und Wilcox, 2017). 
+Das Visualisieren der Rohdaten kann Muster zum Vorschein bringen, die durch statistische Auswertungen nicht sichtbar sind. 
+Die Wichtigkeit von Datenvisualisierung für das Entdecken von Mustern in den Daten zeigte Francis Anscombe 1973 mit dem *Anscombe's Quartet*. 
+Dies diente als Inspiration für das Erstellen des "künstlichen" Datensatzes `DatasaurusDozen`, welchen wir in der letzten Veranstaltung visualisiert haben. 
+Verschiedene Rohwerte, können dieselben Mittelwerte, Standardabweichungen und Korrelationen ergeben. 
+Nur wenn man die Rohwerte plottet erkennt man, wie unterschiedlich die Datenpunkte verteilt sind.
+
+Dies wird ersichtlich, wenn wir die Mittelwerte und Standardabweichungen für jede Gruppe berechnen und plotten:
+
+```{r}
+#| message: false
+#| warning: false
+# load DatasaurusDozen dataset
+dino_data <- read.csv("data/DatasaurusDozen.csv") %>%
+    mutate(condition = as.factor(condition))
+
+# Plot mean and standard deviation for value 1 per condition 
+dino_data |>   
+    group_by(condition) |>
+    summarise(mean_value1 = mean(value1),
+              sd_value1 = sd(value1)) |>
+    ggplot(mapping = aes(x = mean_value1,
+                     y = condition)) +
+    geom_point() +
+    geom_errorbar(aes(xmin = mean_value1 - sd_value1, 
+                      xmax = mean_value1 + sd_value1), 
+                  width = 0.2) +
+    theme_minimal()
+
+```
+
+Und dann die Rohwerte visualisieren:
+
+```{r}
+#| message: false
+#| warning: false
+# Plot raw values
+dino_data |> 
+    ggplot(aes(x = value1, y = value2)) +
+    geom_point(size = 1) +
+    facet_wrap(~condition) +
+    theme_minimal()
+
+```
+
+Hier sehen Sie das Ganze animiert:
+
+![Datensatz und Visualisierung von [@matejka_same_2017](https://www.autodesk.com/research/publications/same-stats-different-graphs)](https://damassets.autodesk.net/content/dam/autodesk/research/publications-assets/gifs/same-stats-different-graphs/DinoSequentialSmaller.gif)
 
 
 ### Inspiration

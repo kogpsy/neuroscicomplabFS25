@@ -1,0 +1,865 @@
+# Drift Diffusion Modell
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+library(tidyverse)
+#d = read_csv('data/dataset_random_dot_clean.csv')
+d = read_csv('data/dataset_rdk_clean.csv')
+fit = read_rds('data/rdk_ddm_fit.rds')
+```
+
+Jeden Tag treffen wir Tausende von kleinen Entscheidungen, meistens unter gewissem Zeitdruck. Viele davon sind trivial (z. B. welches Paar Socken man anzieht) und automatisch (z. B. ob man die Espresso- oder Lungo-Taste auf der Kaffeemaschine drückt). Die meisten Entscheidungen im wirklichen Leben setzen sich eigentlich aus zwei Entscheidungen zusammen: Einerseits der Entscheidung, mit dem Abwägen aufzuhören und aufgrund des aktuellen Wissenstandes zu handeln. Andererseits die Wahl oder Entscheidungshandlung selbst. Dieser sequentielle Charakter der Entscheidungsfindung ist eine grundlegende Eigenschaft des menschlichen Nervensystems.
+
+_Computational Models_ zur Untersuchung von Entscheidungen mit zwei Alternativen basieren typischerweise auf drei Annahmen (Bogacz et al., 2006^[Bogacz, Rafal; Eric Brown, Jeff Moehlis, Philip Holmes, Jonathan D. Cohen (2006). "The Physics of Optimal Decision Making: A Formal Analysis of Models of Performance in Two-Alternative Forced-Choice Tasks". Psychological Review. 113 (4): 700–765. <https://doi.org/10.1037/0033-295X.113.4.700>])
+:
+
+1. __Evidence accumulation__: Die Evidenz zugunsten jeder Alternative wird über die Zeit hinweg integriert.
+
+2. __Diffusion__: Dieser Prozess unterliegt zufälligen Schwankungen.
+
+3. __Decision__: Eine Entscheidung wird getroffen, sobald genügend Evidenz für eine der beiden Alternativen vorliegt.
+
+## DDM: Modell eines Entscheidungsprozesses
+
+In unserem _Random dot Experiment_ wurde neben der Antwort der Versuchspersonen (`links`, `rechts`) auch die Zeit (`rt`) gemessen, welche benötigt wurde um diese Antworten zu geben. 
+Diese Information wurde in den vorherigen Modellen nicht gleichzeitig mit der Antwortgenauigkeit berücksichtigt.
+
+Ein Modell mit dem solche Entscheidungsprozesse modelliert werden sind _Drift-Diffusion-Modelle_.
+Es geht davon aus, dass binäre Entscheidungen auf der Anhäufung von verrauschten Beweisen basieren, beginnend am Ausgangspunkt und endend an einer Entscheidungsschwelle, die mit einer bestimmten Entscheidung verbunden ist.
+
+<aside>Das Modell wurde von Roger Ratcliff entwickelt und hat seinen Ursprung in Modellen zu den Bewegungen von Partikeln in einer Flüssigkeit, und geht auf Arbeiten von Albert Einstein und Norbert Wiener zurück.</aside>
+
+Das Modell hat mindestens vier Parameter:
+
+1. __Drift rate__ steht für die durchschnittliche Anzahl von Beweisen pro Zeiteinheit und ist ein Index für die Schwierigkeit der Aufgabe oder die Fähigkeit des Subjekts.
+
+2. __Boundary separation__ stellt die Vorsicht dar; eine größere Trennung der Grenzen führt zu weniger Fehlern (wegen geringerer Auswirkung des Diffusionsrauschens innerhalb des Trials), jedoch um den Preis einer langsameren Reaktion (speed-accuracy tradeoff).
+
+3. __Starting point__ repräsentiert die a-priori Präferenz für eine der Wahlalternativen.
+
+4. __Non-decision time__ ist ein Verzögerungsparameter, der die Zeit für periphere Prozesse (Kodierung eines Reizes, Umwandlung der Repräsentation des Reizes in eine entscheidungsbezogene Repräsentation) und Ausführung einer Reaktion misst.
+
+Die Gesamtzeit für eine Reaktion ist die Zeit für die Ausbreitung vom Startpunkt bis zur Grenze plus die Non-decision time.
+
+:::{.callout-note title="Annahmen des DDM" collapse="true"}
+
+Das DDM geht von folgenden Annahmen aus:
+
+- Binary decision making: DDM ist ein Model für binäre Entscheidungen. Es gibt also 2 Möglichkeiten zwischen denen entschieden werden muss (in unserem Beispiel: _rechts_ und _links_).
+
+- Continuous sampling: Es wird davon ausgegangen, dass die Person den Stimulus verarbeitet und über die Zeit Evidenz akkumuliert (_sequential sampling_). Entscheidungen beruhen demnach auf einem kontinuierlichen Verarbeitung von Daten. 
+
+- Single-stage processing: Entscheidungen basieren auf einer einstufigen Verarbeitung.
+
+- Parameter sind konstant. Das heisst z.B. die _drift rate_ kann sich nicht über Zeit verändern.
+:::
+
+Im Modell wird die Zeit in ganz kleine Schritte $\Delta_t$ unterteilt (diskrete Zeitschritte). 
+Diese Evidenz wird in einer Entscheidungsvariable (_decision variable: dv_) gesammelt.
+
+Um nachzuvollziehen, wie sich eine Entscheidung (in unserem Beispiel: _rechts_ und _links_) innerhalb eines Trials entwickelt, kann dieser Prozess in _R_ simuliert werden.
+
+::: {.panel-tabset}
+
+## Entscheidungsprozess
+
+```{r}
+#| echo: false
+ggplot() +
+    geom_hline(yintercept = c(-1, 1)) +
+    geom_hline(yintercept = 0, linetype = 3) +
+    labs(x = 'Time', y = 'Evidence (dv)') +
+    scale_y_continuous(breaks = c(-1, 0, 1),
+                       labels = c('left', '0', 'right')) +
+    theme_minimal()
+```
+
+## Code
+
+```{r}
+#| eval: false
+ggplot() +
+    geom_hline(yintercept = c(-1, 1)) +
+    geom_hline(yintercept = 0, linetype = 3) +
+    labs(x = 'Time', y = 'Evidence (dv)') +
+    scale_y_continuous(breaks = c(-1, 0, 1),
+                       labels = c('left', '0', 'right')) +
+    theme_minimal()
+```
+
+:::
+
+## Random walk
+
+Ein _Random walk_ ist das Resultat der Aufsummierung von Zufallszahlen. 
+Dies kann in _R_ selbst nachvollzogen werden: 
+
+Dazu wird ein _Random walk_ mit 100 Zeitschritten simuliert (mit `rnorm()`). 
+Es wird mit $0$ begonnen und dann werden 99 normalverteilte Zufallszahlen dazuaddiert, also die kumulierte Summe berechnet (hierfür eignet sich die Funktion `cumsum()`).
+
+::: {.panel-tabset}
+
+## Random walk
+
+```{r}
+#| echo: false
+#| warning: false
+library(gganimate) # library for animation
+set.seed(546)
+
+# 0 + 100 standardnormalverteilte Zufallszahlen
+zufallszahlen_1 = c(0, rnorm(99, 0, 1))
+random_walk_1 = cumsum(zufallszahlen_1)
+
+d1 = tibble(nb = 1:100,
+            rand_walk = random_walk_1)
+
+# p <- d1 |>
+#     ggplot(aes(x = nb, y = rand_walk)) +
+#     geom_step() +
+#     geom_hline(yintercept = c(-30, 30)) +
+#     geom_hline(yintercept = 0, linetype = 3) +
+#     labs(x = 'Time', y = 'Random walk') +
+#       scale_y_continuous(breaks = c(-30, 0, 30),
+#                        labels = c('left', '0', 'right')) +
+#     theme_classic() +
+#     transition_reveal(nb) # animate
+# 
+# # Animate and save
+# pa <- animate(p, nframes = 100, fps = 2, width = 600, height = 400)
+# 
+# # Save as GIF
+# anim_save("imgs/step_plot_randomwalk.gif", animation = pa)
+```
+
+![](imgs/step_plot_randomwalk.gif)
+
+## Code
+
+```{r}
+#| eval: false
+#| warning: false
+library(gganimate) # library for animation
+set.seed(546)
+
+# 0 + 100 standardnormalverteilte Zufallszahlen
+zufallszahlen_1 = c(0, rnorm(99, 0, 1))
+random_walk_1 = cumsum(zufallszahlen_1)
+
+d1 = tibble(t = 1:100,
+            rand_walk = random_walk_1)
+
+d1 |>
+    ggplot(aes(x = t, y = rand_walk)) +
+    geom_step() +
+    geom_hline(yintercept = c(-30, 30)) +
+    geom_hline(yintercept = 0, linetype = 3) +
+    labs(x = 'Time', y = 'Random walk') +
+    scale_y_continuous(breaks = c(-30, 0, 30),
+                       labels = c('left', '0', 'right')) +
+    theme_classic() +
+    transition_reveal(nb) # animate
+```
+:::
+
+Die aktuelle _decision variable_ zu Zeitpunkt $t$ als wird hier als normalverteilte Zufallszahl modelliert.
+Dieser _Random walk_ hat keinen Trend, weil jeder Wert aus einer Normalverteilung mit Mittelwert $\mu=0$ gezogen wird.
+
+ 
+
+## Drift rate: Evidenzakkumulierung über die Zeit
+
+Wenn stattdessen aus einer Verteilung mit $\mu=0.1$ gezogen werden würde, ergäbe dies einen positiven Trend über die Zeit hinweg und es würde sich Evidenz für eine Entscheidungsrichtung ansammeln.
+
+Die `driftrate` entspricht also dem Mittelwert der Evidenz und `sd` deren Standardabweichung.
+
+:::{.callout-caution title="Hands-on: Drift rate"}
+
+Modellieren Sie die aktuelle _decision variable_ zu Zeitpunkt $t$ als normalverteilte Zufallszahl, bei der die `driftrate` nicht `0` entspricht.
+
+Verändern Sie dafür die Werte der Variablen `mean_driftrate` (positive und negative Werte) und `sd_driftrate` im Code.
+
+Was passiert?
+
+```{webR}
+library(tidyverse)
+timesteps = 99
+mean_driftrate = ...
+sd_driftrate = ...
+
+# 0 + 100 normalverteilte Zufallszahlen
+zufallszahlen_2 = c(0, rnorm(timesteps, mean_driftrate , sd_driftrate))
+random_walk_2 = cumsum(zufallszahlen_2)
+
+d2 = tibble(nb = 1:100,
+            rand_walk = random_walk_2)
+
+d2 |>
+    ggplot(aes(x = nb, y = rand_walk)) +
+    geom_step() +
+    geom_hline(yintercept = c(-30, 30)) +
+    geom_hline(yintercept = 0, linetype = 3) +
+    labs(x = 'Time', y = 'Random walk') +
+    scale_y_continuous(breaks = c(-30, 0, 30),
+                       labels = c('left', '0', 'right')) +
+    theme_classic()
+```
+:::
+
+Ist der Mittelwert für die _decision variable_ positiv wird zunehmend Evidenz für die positive Entscheidungsoption gesammelt. 
+
+```{r}
+driftrate = 0.5
+sd = 0.1
+```
+
+Ein "Stück" Evidenz ist also meistens positiv:
+
+```{r}
+evidence = rnorm(n = 1, mean = driftrate, sd = sd)
+evidence
+```
+
+```{r}
+evidence = rnorm(n = 1, mean = driftrate, sd = sd)
+evidence
+```
+
+```{r}
+evidence = rnorm(n = 1, mean = driftrate, sd = sd)
+evidence
+```
+
+Dies bedeutet, dass zum Zeitpunkt $t$ die Evidenz ungefähr `r round(evidence, 2)` beträgt. 
+Da die Evidenz die durchschnittliche Steigung repräsentiert, wird Evidenz $>0$ dazu führen, dass ein Schritt in Richtung der oberen Grenze gemacht wird. Wäre die Evidenz negativ, wird ein Schritt nach unten gemacht. Da die Evidenz aus einer Normalverteilung gezogen wird, ist es also möglich, dass die Evidenz zufällig negativ wird, obwohl die drift rate, d.h. die Repräsentation der Stimulusstärke, positiv ist.
+
+Wenn dieser Prozess nun über mehrere Zeitschritte hinweg wiederholt wird und die `evidence` Werte aufsummiert werden, ergibt sich die *decision variable*. 
+Diese gleicht einem *Random walk*, hat aber einen Drift in die Richtung der durchschnittlichen Evidenz.
+
+::: {.panel-tabset}
+
+## Random walk mit und ohne Drift
+
+```{r}
+#| echo: false
+#| warning: false
+set.seed(546)
+
+t = 100
+
+d3 <- tibble(
+    nb = 1:t,
+    random_walk_neg = cumsum(c(0, rnorm(t-1, -0.3, 1))),
+    random_walk_neutral = random_walk_1,
+    random_walk_pos = cumsum(c(0, rnorm(t-1, 0.3, 1)))
+    ) |>
+    pivot_longer(cols = c(random_walk_neg, random_walk_neutral, random_walk_pos),
+                 names_to = "name",
+                 values_to = "value")
+
+# # aggregate dataset and plot
+# p_3 <- d3 |>
+#     ggplot(aes(x = nb, y = value, color = name)) +
+#     geom_step() +
+#     geom_hline(yintercept = c(-30, 30)) +
+#     geom_hline(yintercept = 0, linetype = 3) +
+#     lims(y = c(-30, 30)) +
+#     labs(x = 'Time', y = 'Random walk', color = '') +
+#     scale_y_continuous(breaks = c(-30, 0, 30),
+#                        labels = c('left', '0', 'right')) +
+#     scale_color_manual(labels = c('negative drift', 'no drift', 'positive drift'), values = c("tomato4", "black", "skyblue")) +
+#     theme_classic() +
+#     transition_reveal(nb) # animate
+# 
+# # Animate and save
+# pa_3 <- animate(p_3, nframes = 100, fps = 2, width = 600, height = 400)
+# 
+# # Save as GIF
+# anim_save("imgs/step_plot_randomwalk_3.gif", animation = pa_3)
+```
+
+![](imgs/step_plot_randomwalk_3.gif)
+
+## Code
+
+```{r}
+#| eval: false
+#| warning: false
+set.seed(546)
+
+t = 100
+
+d3 <- tibble(
+    nb = 1:t,
+    random_walk_neg = cumsum(c(0, rnorm(t-1, -0.3, 1))),
+    random_walk_neutral = random_walk_1,
+    random_walk_pos = cumsum(c(0, rnorm(t-1, 0.3, 1)))
+    ) |>
+    pivot_longer(cols = c(random_walk_neg, random_walk_neutral, random_walk_pos),
+                 names_to = "name",
+                 values_to = "value")
+
+# aggregate dataset and plot
+d3 |>
+    ggplot(aes(x = nb, y = value, color = name)) +
+    geom_step() +
+    geom_hline(yintercept = c(-30, 30)) +
+    geom_hline(yintercept = 0, linetype = 3) +
+    lims(y = c(-30, 30)) +
+    labs(x = 'Time', y = 'Random walk', color = '') +
+    scale_y_continuous(breaks = c(-30, 0, 30),
+                       labels = c('left', '0', 'right')) +
+    scale_color_manual(labels = c('negative drift', 'no drift', 'positive drift'), values = c("tomato4", "black", "skyblue")) +
+    theme_classic()
+```
+
+:::
+
+### Evidenzakkumulierung in R modellieren
+
+Die Evidenzakkumulierung kann als Iterationen über einzelne Zeitschritte hinweg modelliert werden.
+In _R_ kann dies mit einem `for` Loop gemacht werden.
+
+```{r}
+driftrate = 0.5
+sd = 0.1
+
+n_steps = 10
+evidence = rep(NA, n_steps)
+
+dv = rep(NA, n_steps)
+
+time_steps = 1:n_steps
+
+# Ersten Wert aus der Verteilung ziehen
+evidence[1] = rnorm(1, mean = driftrate, sd = sd)
+dv[1] = evidence[1]
+
+# Für jeden weitern Zeitpunkt eine Zufallszahl ziehen und zur kumulierten DV addieren
+for (t in 2:n_steps) {
+    evidence[t] = rnorm(1, mean = driftrate, sd = sd)
+    dv[t] = dv[t-1] + evidence[t]}
+
+```
+
+:::{.callout-caution title="Hands-on für Interessierte: Funktion erstellen"}
+
+::: {.panel-tabset}
+
+## Funktion erstellen
+
+1. Erstellen Sie aus dem obigen Code eine _custom function_:
+
+  - Wie soll die Funktion heissen? (-> `name`)
+  - Was sind **Inputs** der Funktion? (-> `()`)
+  - Was soll die Funktion tun? (-> `{}`)
+
+```{r}
+#| eval: false
+
+# Zur Erinnerung die Struktur einer custom Funktion
+
+name = function(){
+    ...
+    ...
+}
+```
+ 
+  - Der Output der Funktion soll ein _data frame_ sein mit `evidence` und `dv`.
+  
+```{r}
+#| eval: false
+data_ddm <- name()
+```
+
+2. Machen Sie eine Abbildung dieser Daten
+  
+```{r}
+#| eval: false
+#| echo: true
+
+upper = ... # upper boundary
+lower = ... # lower boundary
+
+data_ddm |>
+    ggplot() +
+    ...
+    ...
+    geom_hline(yintercept = c(upper, loewr)) +
+    geom_hline(yintercept = 0, linetype = 3) +
+    labs(x = 'Time', y = 'Evidence (dv)') +
+    scale_y_continuous(breaks = c(upper, 0, lower),
+                       labels = c('right', '0', 'left')) +
+    theme_classic()
+```
+
+## Beispielscode
+
+```{r}
+#| eval: true
+ddm_function = function(driftrate = 0.3,
+                sd = 0.5,
+                n_steps = 100){
+    evidence = rep(NA, n_steps)
+    dv = rep(NA, n_steps)
+
+    time_steps = 1:n_steps
+
+    # Ersten Wert aus der Verteilung ziehen
+    evidence[1] = rnorm(1, mean = driftrate, sd = sd)
+    dv[1] = evidence[1]
+
+    # Für jeden weiteren Zeitpunkt eine Zufallszahl ziehen und zur kumulierten DV addieren
+    for (t in 2:n_steps) {
+        evidence[t] = rnorm(1, mean = driftrate, sd = sd)
+        dv[t] = dv[t-1] + evidence[t]}
+    
+    return(tibble(t = 1:n_steps, evidence, dv))
+}
+```
+
+
+```{r}
+#| eval: true
+data_ddm <- ddm_function()
+```
+
+```{r}
+#| eval: true
+#| echo: true
+upper = 20 # upper boundary
+lower = -20 # lower boundary
+
+data_ddm |>
+    ggplot(aes(x = t, y = dv)) +
+    geom_step() +
+    geom_hline(yintercept = c(upper, lower)) +
+    geom_hline(yintercept = 0, linetype = 3) +
+    labs(x = 'Time', y = 'Evidence (dv)') +
+    scale_y_continuous(breaks = c(upper, 0, lower),
+                       labels = c('right', '0', 'left')) +
+    theme_classic()
+```
+
+:::
+
+:::
+
+## Non-decision time, bias und boundaries
+
+Die Decision Variable `dv` repräsentiert nun die kumulierten Evidenz, aufgrund dessen das Gehirn eine Entscheidung treffen kann. 
+Wenn der Wert der _decision variable_  grösser als die obere Grenze oder kleiner als die untere Grenze wird, wird die Evidenzakkumulierung abgebrochen, und eine Entscheidung getroffen.
+
+Wir können nun noch die _non-decision time_ hinzufügen, und den Anfangspunkt (_bias_) der Evidenzakkumulierung. 
+
+Die _non-decision time_ beschreibt die Zeit, welche nicht der Evidenzakkumulierung dient.
+Vor dem Entscheidungsprozess ist das z.B. das Ausrichten des Blicks auf die Aufgabe, nach dem Entscheidungsprozes ist dies z.B. die Ausführung des Tastendrucks.
+
+Der _bias_, also der Anfangspunkt ist ein sehr wichtiger Parameter der beeinflusst, ob schon vor dem Entscheidungsprozess zu einer gewissen Antwort tendiert wird (Antworttendenz).
+Wenn beispielsweise der Anfangspunkt unterhalb der Mitte liegt, braucht es weniger Evidenz um die untere Grenze zu überschreiten und mehr Evidenz für die obere Grenze zu überschreiten.
+
+Die _boundaries_ beeinflussen, wie viel Evidenz ausreicht, um eine Entscheidung zu treffen. Will man sich ganz sicher sein, sind die _boundaries_ weiter auseinander.
+
+::: {.panel-tabset}
+
+## Model Parameters
+```{r echo=FALSE}
+tribble(~Parameter, ~Bedeutung, ~Anwendung,
+        "drift rate", "Qualität der Evidenz pro Zeiteinheit", "Task Schwierigkeit, Fähigkeit",
+        "bias", "Anfangspunkt der Evidenzakkumulierung", "A priori Präferenz für eine der beiden Alternativen",
+        "boundary separation", "Vorsicht (caution)", "Speed-Accuracy Trade-off",
+        "non-decision time", "Verzögerung", "Periphere Prozesse") |> 
+
+  knitr::kable()
+```
+
+## Function
+
+```{r}
+drift_diffusion = function(bias = 0.5, # z
+                           driftrate = 0.8, # v
+                           decision_boundary = 2, # a
+                           ndt = 0.5, # t0
+                           diffvar = 0.1, 
+                           dt = 0.001, # t step duration
+                           max_time = 6) {
+    
+    assertthat::assert_that(diffvar > 0)
+    
+    # rescale bias so that 0.5 lies halfway between upper and lower bound
+    bias = as.numeric(2 * decision_boundary * bias - decision_boundary)
+    
+    # initialize time_steps and dv
+    time_steps = max_time/dt
+    dv = array(dim = time_steps)
+    
+    # start accumulating from bias (starting point)
+    dv[1] = rnorm(1, mean = bias, sd = sqrt(dt))
+    
+    for (j in 2:time_steps) {
+        
+        # non-decision time
+        if (j <= ndt/dt) {
+            dv[j] = dv[j-1]
+        }
+        else {
+            error = rnorm(1, 0, sqrt(diffvar * dt))
+            dv[j] = dv[j-1] + driftrate * dt + error  # Cobb & Zacks (1985), Eq. 1.14
+            if (abs(dv[j]) > decision_boundary) {
+                dv[j] = dplyr::if_else(dv[j] > 0,
+                                       min(dv[j], decision_boundary),
+                                       max(dv[j], -decision_boundary))
+                break()
+            }
+        }
+    }
+    d = dplyr::tibble(time = round(seq_along(dv) * dt, 3),
+                      dv = dv,
+                      steps = seq_along(dv),
+                      driftrate = driftrate,
+                      decision_boundary = decision_boundary,
+                      bias = bias,
+                      ndt = ndt)
+    return(d)
+}
+```
+
+:::
+
+:::{.callout-caution title="Hands-on: DDM Parameter"}
+
+Verändern Sie im Code die Werte der Variablen 
+
+- `mean_driftrate` (positive und negative Werte)
+- `sd_driftrate` 
+- `bias`
+- `boundary`
+- `timesteps`. 
+
+Was passiert?
+
+```{webR}
+library(tidyverse)
+
+mean_driftrate = ...
+sd_driftrate = ...
+bias = ...
+boundary = ...
+
+timesteps = 99
+upper = boundary
+lower = boundary*-1
+
+# 0 + 100 normalverteilte Zufallszahlen
+zufallszahlen_2 = c(bias, rnorm(timesteps, mean_driftrate , sd_driftrate))
+random_walk_2 = cumsum(zufallszahlen_2)
+
+d2 = tibble(nb = 1:100,
+            rand_walk = random_walk_2)
+
+d2 |>
+    ggplot(aes(x = nb, y = rand_walk)) +
+    geom_step() +
+    geom_hline(yintercept = c(lower, upper)) +
+    geom_hline(yintercept = 0, linetype = 3) +
+    labs(x = 'Time', y = 'Random walk') +
+    scale_y_continuous(breaks = c(lower, 0, upper),
+                       labels = c('left', '0', 'right')) +
+    theme_classic()
+```
+:::
+
+
+## Auswirkungen der Parameter
+
+Um den Effekt dieser Parameter zu visualisieren, können Trials mit unterschiedlichen Parameterwerten geplottet werden.
+
+### Drift rate
+
+Wenn die _drift rate_ viel grösser als $0$ ist, also $>> 0$, wird die obere Entscheidungsgrenze (_decision boundary_) schnell erreicht. Zudem wird es nur wenige Fehler geben. 
+Ist die _drift rate_ kleiner, aber immer noch $> 0$, wird die durschnittliche Zeit länger, um eine korrekte Antwort zu geben.
+
+
+::: {.panel-tabset}
+
+## Hohe vs. tiefe drift rate
+
+```{r code_folding=TRUE}
+#| warning: false
+#| echo: false
+
+set.seed(829)
+
+slow = drift_diffusion(driftrate = 0.8) |> mutate(type = "slow")
+fast = drift_diffusion(driftrate = 1.2) |> mutate(type = "fast")
+
+fastslow = bind_rows(fast, slow) 
+
+fastslow |> 
+    ggplot(aes(time, dv, color = type)) +
+    geom_hline(yintercept = 0, linetype = 3) +
+    geom_line() +
+    scale_color_manual(values = c("steelblue", "skyblue")) +
+    geom_hline(yintercept = c(-2, 2)) +
+    theme_classic()
+```
+
+## Code
+
+```{r code_folding=TRUE}
+#| warning: false
+set.seed(829)
+
+slow = drift_diffusion(driftrate = 0.8) |> mutate(type = "slow")
+fast = drift_diffusion(driftrate = 1.2) |> mutate(type = "fast")
+
+fastslow = bind_rows(fast, slow) 
+
+fastslow |> 
+    ggplot(aes(time, dv, color = type)) +
+    geom_hline(yintercept = 0, linetype = 3) +
+    geom_line() +
+    scale_color_manual(values = c("skyblue3", "skyblue")) +
+    geom_hline(yintercept = c(-2, 2)) +
+    theme_classic()
+```
+
+:::
+
+### Bias
+
+Wenn der bias $>0.5$ ist, wird die obere Entscheidungsgrenze schneller erreicht. Hier gibt es nun eine Interaktion mit der drift rate---ist diese klein, und der bias $<0.5$, ist die Chance, schnelle Fehler zu machen erhöht.
+
+::: {.panel-tabset}
+
+## Starting point (bias)
+
+```{r code_folding = TRUE}
+#| warning: false
+#| echo: false
+set.seed(29)
+
+unbiased = drift_diffusion(bias = 0.5) |> mutate(type = "unbiased")
+upbiased = drift_diffusion(bias = 0.7) |> mutate(type = "upbiased")
+downbiased = drift_diffusion(bias = 0.3) |> mutate(type = "downbiased")
+
+bias = bind_rows(unbiased, upbiased, downbiased) 
+
+bias |> 
+    ggplot(aes(time, dv, color = type)) +
+    geom_hline(yintercept = 0, linetype = 3) +
+    geom_line() +
+    scale_color_manual(values = c("skyblue","skyblue3", "skyblue4")) +
+    geom_hline(yintercept = c(-2, 2)) +
+    theme_classic()
+```
+
+## Code
+
+```{r}
+#| eval: false
+set.seed(29)
+
+unbiased = drift_diffusion(bias = 0.5) |> mutate(type = "unbiased")
+upbiased = drift_diffusion(bias = 0.7) |> mutate(type = "upbiased")
+downbiased = drift_diffusion(bias = 0.3) |> mutate(type = "downbiased")
+
+bias = bind_rows(unbiased, upbiased, downbiased) 
+
+bias |> 
+    ggplot(aes(time, dv, color = type)) +
+    geom_hline(yintercept = 0, linetype = 3) +
+    geom_line() +
+    scale_color_manual(values = c("skyblue","skyblue3", "skyblue4")) +
+    geom_hline(yintercept = c(-2, 2)) +
+    theme_classic()
+```
+
+
+:::
+
+
+### Boundary separation
+
+Liegen die Grenzen weiter auseinander, braucht es mehr akkumulierte Evidenz, um eine der Grenzen zu erreichen. Dies führt dazu, dass weniger Fehler gemacht werden, da die zufällige Fluktuation über längere Zeit hinweg einen weniger starken Einfluss hat. Deshalb kann eine Verschiebung der Grenzen den Speed-Accuracy Trade-off erklären.
+
+::: {.panel-tabset}
+
+## Decision boundaries
+
+```{r code_folding = TRUE}
+#| echo: false
+#| warning: false
+set.seed(90)
+
+carefree = drift_diffusion(decision_boundary = 1.6) |> mutate(type = "carefree")
+cautious = drift_diffusion(decision_boundary = 2.1) |> mutate(type = "cautious")
+
+cautiouscareless = bind_rows(carefree, cautious) 
+
+decision_boundaries = tribble(~type, ~decision_boundary,
+                               "carefree", 1.6,
+                               "cautious", 2.1)
+cautiouscareless |> 
+    ggplot(aes(time, dv, color = type)) +
+    geom_hline(yintercept = 0, linetype = 3) +
+    geom_line() +
+    scale_color_manual(values = c("skyblue", "skyblue4")) +
+    geom_hline(aes(yintercept = decision_boundary, color = type), data = decision_boundaries) +
+    geom_hline(aes(yintercept = -decision_boundary, color = type), data = decision_boundaries) +
+    theme_classic()
+```
+
+## Code
+
+```{r}
+#| eval: false
+
+set.seed(90)
+
+carefree = drift_diffusion(decision_boundary = 1.6) |> mutate(type = "carefree")
+cautious = drift_diffusion(decision_boundary = 2.1) |> mutate(type = "cautious")
+
+cautiouscareless = bind_rows(carefree, cautious) 
+
+decision_boundaries = tribble(~type, ~decision_boundary,
+                               "carefree", 1.6,
+                               "cautious", 2.1)
+cautiouscareless |> 
+    ggplot(aes(time, dv, color = type)) +
+    geom_hline(yintercept = 0, linetype = 3) +
+    geom_line() +
+    scale_color_manual(values = c("skyblue", "skyblue4")) +
+    geom_hline(aes(yintercept = decision_boundary, color = type), data = decision_boundaries) +
+    geom_hline(aes(yintercept = -decision_boundary, color = type), data = decision_boundaries) +
+    theme_classic()
+```
+
+:::
+
+### Non-decision time
+
+Eine Veränderung der non-decision time hat eine Auswirkung auf die durschnittliche Reaktionszeit, hat aber keinen Einfluss auf die Fehlerrate.
+
+
+::: {.panel-tabset}
+
+## Non-decision time
+
+```{r code_folding = TRUE}
+#| warning: false
+#| echo: false
+set.seed(4534)
+
+longndt = drift_diffusion(ndt = 0.7) |> mutate(type = "longndt")
+shortndt = drift_diffusion(ndt = 0.2) |> mutate(type = "shortndt")
+
+ndt = bind_rows(longndt, shortndt) 
+
+ndts = tribble(~type, ~ndt,
+                "longndt", 0.7,
+                "shortndt", 0.2)
+
+ndt |> 
+    ggplot(aes(time, dv, color = type)) +
+    geom_hline(yintercept = 0, linetype = 3) +
+    geom_line() +
+    scale_color_manual(values = c("skyblue", "skyblue4")) +
+    geom_vline(aes(xintercept = ndt, color = type), data = ndts) +
+    geom_hline(yintercept = c(-2, 2)) +
+    theme_classic()
+```
+
+## Code
+
+```{r}
+#| eval: false
+set.seed(4534)
+
+longndt = drift_diffusion(ndt = 0.7) |> mutate(type = "longndt")
+shortndt = drift_diffusion(ndt = 0.2) |> mutate(type = "shortndt")
+
+ndt = bind_rows(longndt, shortndt) 
+
+ndts = tribble(~type, ~ndt,
+                "longndt", 0.7,
+                "shortndt", 0.2)
+
+ndt |> 
+    ggplot(aes(time, dv, color = type)) +
+    geom_hline(yintercept = 0, linetype = 3) +
+    geom_line() +
+    scale_color_manual(values = c("skyblue", "skyblue4")) +
+    geom_vline(aes(xintercept = ndt, color = type), data = ndts) +
+    geom_hline(yintercept = c(-2, 2)) +
+    theme_classic()
+```
+
+:::
+
+
+:::{.callout-caution title="Hands-on: Interpretation der Random Dot DDM Parameter"}
+
+::: {.panel-tabset}
+
+## DDM Random Dot Experiment
+
+Wie können die DDM Parameter interpretiert werden?
+
+```{r}
+#| echo: false
+#| warning: false
+library(broom.mixed)
+
+tidy(fit, parameters = c('Intercept', 'bs_conditionaccuracy', 'bs_conditionspeed', 'ndt', 'bias')) |>
+    select(term, estimate) |>
+    mutate(estimate = round(estimate, digits = 2),
+           term = case_match(term,
+                             '(Intercept)' ~ 'Drift rate',
+                             'b_bs_conditionaccuracy' ~ 'bs_accuracy',
+                             'b_bs_conditionspeed' ~ 'bs_speed',
+                             'ndt' ~ 'ndt',
+                             'bias' ~ 'bias')) |>
+    slice(2:6) |>
+    
+    knitr::kable()
+
+```
+
+## Code
+
+```{r}
+#| eval: false
+library(brms)
+library(cmdstanr)
+
+fit = brm(bf(rt | dec(resp) ~ 0,
+             bs ~ 0 + condition),
+          data = d,
+          family = wiener(link_bs = "identity",
+                          link_ndt = "identity",
+                          link_bias = "identity"),
+          cores = parallel::detectCores(),
+          chains = 4,
+          backend = "cmdstanr")
+```
+
+## Daten
+
+Die Daten stammen aus dem Random Dot Experiment FS24. Das Experiment war identisch mit dem diesjährig durchgeführten.
+
+:::
+
+:::
+
+
+## Diffusions Modell in der Forschung
+
+Weil mit dem Diffusionsmodell verschiedene Aspekte des Entscheidungsprozesses spezifisch modelliert und unterschieden werden können, wird dieses Modell häufig in der Forschung verwendet. So können detaillierte Einsichten in den Entscheidungsprozess gewonnen werden. Hier ein paar Beispiele:
+
+- Untersuchung der kognitiven Eigenschaften bei ADHS [Review](https://psycnet.apa.org/doiLanding?doi=10.1037%2Fbul0000319)
+- Untersuchung des Entscheidungsverhaltens im Zusammenhang mit Abhängigkeit ([Tabak](https://pubmed.ncbi.nlm.nih.gov/36929415/), [Alkohol](file:///Users/dafitze/Downloads/dora_et_al_ECP_2023.pdf) und [Glücksspiel)](https://www.sciencedirect.com/science/article/pii/S0149763423000520)
+- Untersuchung des Entscheidungsverhaltens im Zusammenhang mit [Depression](https://pubmed.ncbi.nlm.nih.gov/35678933/), und [Angst](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2859713/).
+- Untersuchung von verändertem Entscheidungsverhalten aufgrund von strukturellen oder funktionalen Veränderungen des Gehirns z.B. bei [Parkinson](https://pubmed.ncbi.nlm.nih.gov/35069160/).
