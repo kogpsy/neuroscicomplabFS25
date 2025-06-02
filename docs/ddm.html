@@ -310,7 +310,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"warning":"true","classes":"","message":"true","out-width":"700px","out-height":"","dpi":72,"fig-height":5,"results":"markup","comment":"","editor-max-height":"","fig-cap":"","read-only":"false","editor-font-scale":1,"context":"interactive","fig-width":7,"editor-quick-suggestions":"false","output":"true","autorun":"false","label":"unnamed-chunk-1"},"code":"library(tidyverse)\ntimesteps = 99\nmean_driftrate = ...\nsd_driftrate = ...\n\n# 0 + 100 normalverteilte Zufallszahlen\nzufallszahlen_2 = c(0, rnorm(timesteps, mean_driftrate , sd_driftrate))\nrandom_walk_2 = cumsum(zufallszahlen_2)\n\nd2 = tibble(nb = 1:100,\n            rand_walk = random_walk_2)\n\nd2 |>\n    ggplot(aes(x = nb, y = rand_walk)) +\n    geom_step() +\n    geom_hline(yintercept = c(-30, 30)) +\n    geom_hline(yintercept = 0, linetype = 3) +\n    labs(x = 'Time', y = 'Random walk') +\n    scale_y_continuous(breaks = c(-30, 0, 30),\n                       labels = c('left', '0', 'right')) +\n    theme_classic()","id":1},{"options":{"warning":"true","classes":"","message":"true","out-width":"700px","out-height":"","dpi":72,"fig-height":5,"results":"markup","comment":"","editor-max-height":"","fig-cap":"","read-only":"false","editor-font-scale":1,"context":"interactive","fig-width":7,"editor-quick-suggestions":"false","output":"true","autorun":"false","label":"unnamed-chunk-2"},"code":"library(tidyverse)\n\nmean_driftrate = ...\nsd_driftrate = ...\nbias = ...\nboundary = ...\n\ntimesteps = 99\nupper = boundary\nlower = boundary*-1\n\n# 0 + 100 normalverteilte Zufallszahlen\nzufallszahlen_2 = c(bias, rnorm(timesteps, mean_driftrate , sd_driftrate))\nrandom_walk_2 = cumsum(zufallszahlen_2)\n\nd2 = tibble(nb = 1:100,\n            rand_walk = random_walk_2)\n\nd2 |>\n    ggplot(aes(x = nb, y = rand_walk)) +\n    geom_step() +\n    geom_hline(yintercept = c(lower, upper)) +\n    geom_hline(yintercept = 0, linetype = 3) +\n    labs(x = 'Time', y = 'Random walk') +\n    scale_y_continuous(breaks = c(lower, 0, upper),\n                       labels = c('left', '0', 'right')) +\n    theme_classic()","id":2}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"fig-width":7,"fig-cap":"","warning":"true","classes":"","out-height":"","context":"interactive","autorun":"false","message":"true","editor-font-scale":1,"results":"markup","editor-max-height":"","output":"true","fig-height":5,"read-only":"false","dpi":72,"comment":"","editor-quick-suggestions":"false","label":"unnamed-chunk-1","out-width":"700px"},"code":"library(tidyverse)\ntimesteps = 99\nmean_driftrate = ...\nsd_driftrate = ...\n\n# 0 + 100 normalverteilte Zufallszahlen\nzufallszahlen_2 = c(0, rnorm(timesteps, mean_driftrate , sd_driftrate))\nrandom_walk_2 = cumsum(zufallszahlen_2)\n\nd2 = tibble(nb = 1:100,\n            rand_walk = random_walk_2)\n\nd2 |>\n    ggplot(aes(x = nb, y = rand_walk)) +\n    geom_step() +\n    geom_hline(yintercept = c(-30, 30)) +\n    geom_hline(yintercept = 0, linetype = 3) +\n    labs(x = 'Time', y = 'Random walk') +\n    scale_y_continuous(breaks = c(-30, 0, 30),\n                       labels = c('left', '0', 'right')) +\n    theme_classic()"},{"id":2,"options":{"fig-width":7,"fig-cap":"","warning":"true","classes":"","out-height":"","context":"interactive","autorun":"false","message":"true","editor-font-scale":1,"results":"markup","editor-max-height":"","output":"true","fig-height":5,"read-only":"false","dpi":72,"comment":"","editor-quick-suggestions":"false","label":"unnamed-chunk-2","out-width":"700px"},"code":"library(tidyverse)\n\nmean_driftrate = ...\nsd_driftrate = ...\nbias = ...\nboundary = ...\n\ntimesteps = 99\nupper = boundary\nlower = boundary*-1\n\n# 0 + 100 normalverteilte Zufallszahlen\nzufallszahlen_2 = c(bias, rnorm(timesteps, mean_driftrate , sd_driftrate))\nrandom_walk_2 = cumsum(zufallszahlen_2)\n\nd2 = tibble(nb = 1:100,\n            rand_walk = random_walk_2)\n\nd2 |>\n    ggplot(aes(x = nb, y = rand_walk)) +\n    geom_step() +\n    geom_hline(yintercept = c(lower, upper)) +\n    geom_hline(yintercept = 0, linetype = 3) +\n    labs(x = 'Time', y = 'Random walk') +\n    scale_y_continuous(breaks = c(lower, 0, upper),\n                       labels = c('left', '0', 'right')) +\n    theme_classic()"}];
 
 </script>
 <script type="module">
@@ -1792,7 +1792,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>In unserem <em>Random dot Experiment</em> wurde neben der Antwort der Versuchspersonen (<code>links</code>, <code>rechts</code>) auch die Zeit (<code>rt</code>) gemessen, welche benötigt wurde um diese Antworten zu geben. Diese Information wurde in den vorherigen Modellen nicht gleichzeitig mit der Antwortgenauigkeit berücksichtigt.</p>
 <p>Ein Modell mit dem solche Entscheidungsprozesse modelliert werden sind <em>Drift-Diffusion-Modelle</em>. Es geht davon aus, dass binäre Entscheidungen auf der Anhäufung von verrauschten Beweisen basieren, beginnend am Ausgangspunkt und endend an einer Entscheidungsschwelle, die mit einer bestimmten Entscheidung verbunden ist.</p>
 <aside>
-Das Modell wurde von Roger Ratcliff entwickelt und hat seinen Ursprung in Modellen zu den Bewegungen von Partikeln in einer Flüssigkeit, und geht auf Arbeiten von Albert Einstein und Norbert Wiener zurück.
+Das Modell wurde von Roger Ratcliff entwickelt. Es hat seinen Ursprung in Modellen zu den Bewegungen von Partikeln in einer Flüssigkeit, und geht auf Arbeiten von Albert Einstein und Norbert Wiener zurück.
 </aside>
 <p>Das Modell hat mindestens vier Parameter:</p>
 <ol type="1">
@@ -2422,35 +2422,60 @@ Hands-on: Interpretation der Random Dot DDM Parameter
 <div class="tab-content">
 <div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
 <p>Wie können die DDM Parameter interpretiert werden?</p>
+<p>Beachten Sie hierzu auch die <em>95% credible intervals</em>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
-<th style="text-align: left;">term</th>
+<th style="text-align: left;">parameter</th>
 <th style="text-align: right;">estimate</th>
+<th style="text-align: right;">95%CrI (lower)</th>
+<th style="text-align: right;">95%CrI (upper)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Drift rate</td>
-<td style="text-align: right;">0.01</td>
+<td style="text-align: left;">drift rate accuracy</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">-0.01</td>
+<td style="text-align: right;">0.05</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">bs_accuracy</td>
-<td style="text-align: right;">3.07</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">bs_speed</td>
-<td style="text-align: right;">2.48</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">ndt</td>
+<td style="text-align: left;">drift rate speed</td>
+<td style="text-align: right;">0.03</td>
 <td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.06</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">bias</td>
+<td style="text-align: left;">boundary accuracy</td>
+<td style="text-align: right;">2.85</td>
+<td style="text-align: right;">2.81</td>
+<td style="text-align: right;">2.88</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">boundary speed</td>
+<td style="text-align: right;">2.46</td>
+<td style="text-align: right;">2.43</td>
+<td style="text-align: right;">2.49</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">bias accuracy</td>
 <td style="text-align: right;">0.50</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">0.51</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">bias speed</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">0.48</td>
+<td style="text-align: right;">0.50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ndt</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">0.04</td>
 </tr>
 </tbody>
 </table>
@@ -2462,19 +2487,30 @@ Hands-on: Interpretation der Random Dot DDM Parameter
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(brms)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cmdstanr)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">=</span> <span class="fu">brm</span>(<span class="fu">bf</span>(rt <span class="sc">|</span> <span class="fu">dec</span>(resp) <span class="sc">~</span> <span class="dv">0</span>,</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>             bs <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> condition),</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> d,</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">family =</span> <span class="fu">wiener</span>(<span class="at">link_bs =</span> <span class="st">"identity"</span>,</span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>                          <span class="at">link_ndt =</span> <span class="st">"identity"</span>,</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>                          <span class="at">link_bias =</span> <span class="st">"identity"</span>),</span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">cores =</span> parallel<span class="sc">::</span><span class="fu">detectCores</span>(),</span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">chains =</span> <span class="dv">4</span>,</span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">backend =</span> <span class="st">"cmdstanr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">'data/sdt_random_dot_clean.csv'</span>) <span class="sc">|&gt;</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">resp =</span> <span class="fu">case_match</span>(resp,</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>                             <span class="st">'right'</span> <span class="sc">~</span> <span class="st">'upper'</span>,</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>                             <span class="st">'left'</span> <span class="sc">~</span> <span class="st">'lower'</span>))</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Vereinfachte Schätzung der DDM Parameter (ohne Einbezug der Messwiederholung!)</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">=</span> <span class="fu">brm</span>(<span class="fu">bf</span>(rt <span class="sc">|</span> <span class="fu">dec</span>(resp) <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> condition,</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>             bias <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> condition,</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>             bs <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> condition</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>           <span class="co">#ndt ~ 0 + condition</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>),</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>         <span class="co"># inits = 0.1,</span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> d,</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>          <span class="at">family =</span> <span class="fu">wiener</span>(<span class="at">link_bs =</span> <span class="st">"identity"</span>,</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>                          <span class="at">link_ndt =</span> <span class="st">"identity"</span>,</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>                          <span class="at">link_bias =</span> <span class="st">"identity"</span>),</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>          <span class="at">cores =</span> parallel<span class="sc">::</span><span class="fu">detectCores</span>(),</span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>          <span class="at">chains =</span> <span class="dv">4</span>,</span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>          <span class="at">backend =</span> <span class="st">"cmdstanr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-10-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-3-tab">
-<p>Die Daten stammen aus dem Random Dot Experiment FS24. Das Experiment war identisch mit dem diesjährig durchgeführten.</p>
+<p>Die Daten stammen aus dem Random Dot Experiment FS25.</p>
+<p><a href="data/sdt_random_dot.csv">Datensatz</a></p>
 </div>
 </div>
 </div>

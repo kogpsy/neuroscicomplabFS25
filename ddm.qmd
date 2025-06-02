@@ -7,7 +7,7 @@
 library(tidyverse)
 #d = read_csv('data/dataset_random_dot_clean.csv')
 d = read_csv('data/dataset_rdk_clean.csv')
-fit = read_rds('data/rdk_ddm_fit.rds')
+fit = read_rds('data/random_dot_fs25_ddm_fit.rds')
 ```
 
 Jeden Tag treffen wir Tausende von kleinen Entscheidungen, meistens unter gewissem Zeitdruck. Viele davon sind trivial (z. B. welches Paar Socken man anzieht) und automatisch (z. B. ob man die Espresso- oder Lungo-Taste auf der Kaffeemaschine drückt). Die meisten Entscheidungen im wirklichen Leben setzen sich eigentlich aus zwei Entscheidungen zusammen: Einerseits der Entscheidung, mit dem Abwägen aufzuhören und aufgrund des aktuellen Wissenstandes zu handeln. Andererseits die Wahl oder Entscheidungshandlung selbst. Dieser sequentielle Charakter der Entscheidungsfindung ist eine grundlegende Eigenschaft des menschlichen Nervensystems.
@@ -29,7 +29,7 @@ Diese Information wurde in den vorherigen Modellen nicht gleichzeitig mit der An
 Ein Modell mit dem solche Entscheidungsprozesse modelliert werden sind _Drift-Diffusion-Modelle_.
 Es geht davon aus, dass binäre Entscheidungen auf der Anhäufung von verrauschten Beweisen basieren, beginnend am Ausgangspunkt und endend an einer Entscheidungsschwelle, die mit einer bestimmten Entscheidung verbunden ist.
 
-<aside>Das Modell wurde von Roger Ratcliff entwickelt und hat seinen Ursprung in Modellen zu den Bewegungen von Partikeln in einer Flüssigkeit, und geht auf Arbeiten von Albert Einstein und Norbert Wiener zurück.</aside>
+<aside>Das Modell wurde von Roger Ratcliff entwickelt. Es hat seinen Ursprung in Modellen zu den Bewegungen von Partikeln in einer Flüssigkeit, und geht auf Arbeiten von Albert Einstein und Norbert Wiener zurück.</aside>
 
 Das Modell hat mindestens vier Parameter:
 
@@ -808,21 +808,31 @@ ndt |>
 
 Wie können die DDM Parameter interpretiert werden?
 
+Beachten Sie hierzu auch die _95% credible intervals_.
+
 ```{r}
 #| echo: false
 #| warning: false
 library(broom.mixed)
 
-tidy(fit, parameters = c('Intercept', 'bs_conditionaccuracy', 'bs_conditionspeed', 'ndt', 'bias')) |>
-    select(term, estimate) |>
+tidy(fit, parameters = c('b_conditionaccuracy', 'b_conditionspeed',
+                         'bs_conditionaccuracy', 'bs_conditionspeed', 
+                         'bias_conditionaccuracy', 'bias_conditionspeed',
+                         'ndt')) |>
+    select(term, estimate, conf.low, conf.high) |>
     mutate(estimate = round(estimate, digits = 2),
-           term = case_match(term,
-                             '(Intercept)' ~ 'Drift rate',
-                             'b_bs_conditionaccuracy' ~ 'bs_accuracy',
-                             'b_bs_conditionspeed' ~ 'bs_speed',
-                             'ndt' ~ 'ndt',
-                             'bias' ~ 'bias')) |>
-    slice(2:6) |>
+           `95%CrI (lower)` = round(conf.low, digits = 2),
+           `95%CrI (upper)`  = round(conf.high, digits = 2),
+           parameter = case_match(term,
+                                              'b_conditionaccuracy' ~ 'drift rate accuracy',
+                                              'b_conditionspeed' ~ 'drift rate speed',
+                                              'b_bs_conditionaccuracy' ~ 'boundary accuracy',
+                                              'b_bs_conditionspeed' ~ 'boundary speed',
+                                              'b_bias_conditionaccuracy' ~ 'bias accuracy',
+                                              'b_bias_conditionspeed' ~ 'bias speed',
+                                              'ndt' ~ 'ndt')) |>
+    select(parameter, estimate, `95%CrI (lower)`, `95%CrI (upper)`)|>
+               slice(1:7) |>
     
     knitr::kable()
 
@@ -835,8 +845,18 @@ tidy(fit, parameters = c('Intercept', 'bs_conditionaccuracy', 'bs_conditionspeed
 library(brms)
 library(cmdstanr)
 
-fit = brm(bf(rt | dec(resp) ~ 0,
-             bs ~ 0 + condition),
+d = read_csv('data/sdt_random_dot_clean.csv') |>
+    mutate(resp = case_match(resp,
+                             'right' ~ 'upper',
+                             'left' ~ 'lower'))
+
+# Vereinfachte Schätzung der DDM Parameter (ohne Einbezug der Messwiederholung!)
+fit = brm(bf(rt | dec(resp) ~ 0 + condition,
+             bias ~ 0 + condition,
+             bs ~ 0 + condition
+           #ndt ~ 0 + condition
+),
+         # inits = 0.1,
           data = d,
           family = wiener(link_bs = "identity",
                           link_ndt = "identity",
@@ -848,7 +868,9 @@ fit = brm(bf(rt | dec(resp) ~ 0,
 
 ## Daten
 
-Die Daten stammen aus dem Random Dot Experiment FS24. Das Experiment war identisch mit dem diesjährig durchgeführten.
+Die Daten stammen aus dem Random Dot Experiment FS25.
+
+[Datensatz](data/sdt_random_dot.csv)
 
 :::
 
